@@ -1,0 +1,23 @@
+
+font_identifier:="MySymbolD-Bold";
+font_size design_size * pt#;
+
+boolean bold_weight;
+bold_weight := true;
+
+input MySymbol-Parameter.mf;
+input MySym-Base.mf;
+
+negated := 0;
+
+input MySym-Order.mf;
+
+negated := 1;
+
+input MySym-Order.mf;
+
+negated := 2;
+
+input MySym-Order.mf;
+
+bye;
