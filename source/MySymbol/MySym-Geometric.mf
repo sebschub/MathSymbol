@@ -79,98 +79,116 @@ beginoperator(plus_size#, 1); "five dots";
 endchar;
 
 beginoperator(plus_size#, 1); "minus";
-  pickup rule_pen;
 
   r := plus_size/2; % - 11/10rule_thickness;
+  z1 = centre + r * dir 0;
+  z2 = centre + r * dir 180;
 
-  draw (centre + r * dir 0) -- (centre + r * dir 180);
+  draw_line(1,2);
 endchar;
 
 beginoperator(plus_size#, 1); "bar";
-  pickup rule_pen;
 
   r := plus_size/2; % - 11/10rule_thickness;
 
-  draw (centre + r * dir 90) -- (centre + r * dir 270);
+  z1 = centre + r * dir 90;
+  z2 = centre + r * dir 270;
+
+  draw_line(1,2);
 endchar;
 
 beginoperator(plus_size#, 1); "medium slash";
-  pickup rule_pen;
 
   r := plus_size/2; % - 11/10rule_thickness;
   r := r * 1/3[1, sqrt 2];
 
-  draw (centre + r * dir  45) -- (centre + r * dir 225);
+  z1 = centre + r * dir 45;
+  z2 = centre + r * dir 225;
+
+  draw_line(1,2);
 endchar;
 
 beginoperator(plus_size#, 1); "medium backslash";
-  pickup rule_pen;
 
   r := plus_size/2; % - 11/10rule_thickness;
   r := r * 1/3[1, sqrt 2];
 
-  draw (centre + r * dir 135) -- (centre + r * dir 315);
+  z1 = centre + r * dir 135;
+  z2 = centre + r * dir 315;
+
+  draw_line(1,2);
 endchar;
 
 beginoperator(plus_size#, 1); "plus";
-  pickup rule_pen;
-
   r := plus_size/2; % - 11/10rule_thickness;
 
-  draw (centre + r * dir  0) -- (centre + r * dir 180);
-  draw (centre + r * dir 90) -- (centre + r * dir 270);
+  z1 = centre + r * dir  0; z2 = centre + r * dir 180;
+  z3 = centre + r * dir 90; z4 = centre + r * dir 270;
+
+  draw_line(1,2);
+  draw_line(3,4);
 endchar;
 
 beginoperator(plus_size#, 1); "times";
-  pickup rule_pen;
 
   r := plus_size/2; % - 11/10rule_thickness;
   r := r * 1/3[1, sqrt 2];
 
-  draw (centre + r * dir  45) -- (centre + r * dir 225);
-  draw (centre + r * dir 135) -- (centre + r * dir 315);
+  z1 = centre + r * dir  45; z2 = centre + r * dir 225;
+  z3 = centre + r * dir 135; z4 = centre + r * dir 315;
+
+  draw_line(1,2);
+  draw_line(3,4);
 endchar;
 
 beginoperator(plus_size#, 1); "plus minus";
-  pickup rule_pen;
-
+  
   r := plus_size/2; % - 11/10rule_thickness;
 
-  draw (centre + r * dir  0) -- (centre + r * dir 180);
-  draw (centre + r * dir 90) -- (centre + (r - 1/4rule_thickness) * dir 270);
+  z1 = centre + r * dir  0; z2 = centre + r * dir 180;
+  z3 = centre + r * dir 90; z4 = centre + (r - 1/4rule_thickness) * dir 270;
 
-  draw (centre + r * (dir 0 - dir 90)) -- (centre + r * (dir 180 - dir 90));
+  z5 = centre + r * (dir 0 - dir 90); z6 = centre + r * (dir 180 - dir 90);
+
+  draw_line(1,2);
+  draw_line(3,4);
+  draw_line(5,6);
 endchar;
 
 beginoperator(plus_size#, 1); "minus plus";
-  pickup rule_pen;
 
   r := plus_size/2; % - 11/10rule_thickness;
 
-  draw (centre + r * dir  0)                       -- (centre + r * dir 180);
-  draw (centre + (r - 1/4rule_thickness) * dir 90) -- (centre + r * dir 270);
+  z1 = centre + r * dir  0; z2 = centre + r * dir 180;
+  z3 = centre + (r - 1/4rule_thickness) * dir 90; z4 = centre + r * dir 270;
 
-  draw (centre + r * (dir 0 + dir 90)) -- (centre + r * (dir 180 + dir 90));
+  z5 = centre + r * (dir 0 + dir 90); z6 = centre + r * (dir 180 + dir 90);
+
+  draw_line(1,2);
+  draw_line(3,4);
+  draw_line(5,6);
 endchar;
 
 for angle = 0, 90, 180, 270:
   beginoperator(plus_size#, 1); "dot minus (" & decimal angle & ")";
-    pickup rule_pen;
 
     r := plus_size/2; % - 11/10rule_thickness;
 
-    draw (centre - r * dir angle) -- (centre + r * dir angle);
+    z1 = centre - r * dir angle; z2 = centre + r * dir angle;
+    draw_line(1,2);
+  
     fill circle(centre + equal_spread * dir (angle + 90), dot_size);
   endchar;
 endfor;
 
 for angle = 0, 45, 90, 135:
   beginoperator(plus_size#, 1); "divides";
-    pickup rule_pen;
 
     r := plus_size/2; % - 11/10rule_thickness;
 
-    draw (centre - r * dir angle) -- (centre + r * dir angle);
+    z1 = centre - r * dir angle; z2 = centre + r * dir angle;
+    draw_line(1,2);
+  
     fill circle(centre + equal_spread * dir (angle + 90), dot_size);
     fill circle(centre - equal_spread * dir (angle + 90), dot_size);
   endchar;

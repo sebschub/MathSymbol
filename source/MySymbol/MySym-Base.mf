@@ -477,3 +477,12 @@ def draw_integral(suffix $)(expr scale, center) =
   penlabels(0$,1$,2$,3$,4$,5$,6$);
 enddef;
 
+def draw_line(suffix $, $$)=
+  %if (abs(angle(z$-z$$))<45) or (abs(angle(z$-z$$))>135) :
+  %  penpos$(rule_thickness,90); penpos$$(rule_thickness,90);
+  %else:
+  %  penpos$$(rule_thickness,0); penpos$$(rule_thickness,0);
+  %fi
+  penpos$(rule_thickness,angle(z$-z$$)+90); penpos$$(rule_thickness,angle(z$-z$$)+90);
+  penstroke z$e .. z$$e;
+enddef;
