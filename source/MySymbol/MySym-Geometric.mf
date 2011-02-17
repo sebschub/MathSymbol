@@ -198,21 +198,29 @@ endfor;
 % They should stay consistent.
 
 beginoperator(plus_size#, 1); "logical not";
-  pickup rule_pen;
 
   r := plus_size/2; % - 11/10rule_thickness;
 
-  draw (centre + r * dir 180) -- (centre + r * dir 0)
-                              -- (centre + r * dir 0 - equal_spread * dir 90);
+  z1 = centre + r * dir 180; z2 = centre + (r+rule_thickness/2) * dir 0;
+  draw_line(1,2);
+
+  z3 = z2 - rule_thickness/2* dir 0;
+  z4 = centre + r * dir 0 - equal_spread * dir 90;
+  draw_line(3,4);
 endchar;
 
 beginoperator(plus_size#, 1); "reversed logical not";
-  pickup rule_pen;
-
+  
   r := plus_size/2; % - 11/10rule_thickness;
+  
+  z1 = centre + r * dir 180 - equal_spread * dir 90;
+  z2 = centre + r * dir 180;
+  draw_line(1,2);
 
-  draw (centre + r * dir 180 - equal_spread * dir 90)
-    -- (centre + r * dir 180) -- (centre + r * dir 0)
+  z3 = z2 + rule_thickness/2 * dir 180;
+  z4 = centre + r * dir 0;
+  draw_line(3,4);
+
 endchar;
 
 for alpha = 0, 90, 180, 270:
@@ -310,11 +318,10 @@ endfor;
 
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "curly wedge";
-    pickup rule_pen;
 
-    draw prec(centre + sign * 1/2plus_size * dir 90,
+    draw_prec(1,2,3)(centre + sign * 1/2plus_size * dir 90,
               centre - sign * 1/2plus_size * dir 90,
-              plus_size);
+              plus_size, sign);
   endchar;
 endfor;
 
@@ -322,9 +329,9 @@ for sign = 1, -1:
   beginoperator(plus_size#, 1); "curly wedge dot";
     pickup rule_pen;
 
-    draw prec(centre + sign * 1/2plus_size * dir 90,
+    draw_prec(1,2,3)(centre + sign * 1/2plus_size * dir 90,
               centre - sign * 1/2plus_size * dir 90,
-              plus_size);
+              plus_size, sign);
     fill circle(centre - sign * 5/12plus_size * dir 90, dot_size);
   endchar;
 endfor;

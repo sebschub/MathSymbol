@@ -486,3 +486,19 @@ def draw_line(suffix $, $$)=
   penpos$(rule_thickness,angle(z$-z$$)+90); penpos$$(rule_thickness,angle(z$-z$$)+90);
   penstroke z$e .. z$$e;
 enddef;
+
+def draw_prec(suffix $,$$,$$$)(expr l, r, spread, s) =
+  z$ = r - 1/2spread * dir (angle (r-l) + 90);
+  z$$ = l;
+  z$$$ = (r + 1/2spread * dir (angle (r-l) + 90));
+
+  penpos$(rule_thickness, (angle (r-l) + 140)- s*90);
+  penpos$$(rule_thickness,0);
+  penpos$$$(rule_thickness, (angle (r-l) + 40) + s*90);
+  
+  penstroke z$e{dir (angle (r-l) + 140)}
+    .. {dir (angle (r-l) + 180)}z$$e;
+
+  penstroke z$$e{dir (angle (r-l))}
+  .. {dir (angle (r-l) + 40)}z$$$e;
+enddef;
