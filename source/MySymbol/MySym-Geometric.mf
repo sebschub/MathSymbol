@@ -148,7 +148,7 @@ beginoperator(plus_size#, 1); "plus minus";
   z1 = centre + r * dir  0; z2 = centre + r * dir 180;
   z3 = centre + r * dir 90; z4 = centre + (r - 1/4rule_thickness) * dir 270;
 
-  z5 = centre + r * (dir 0 - dir 90); z6 = centre + r * (dir 180 - dir 90);
+  z5 = centre + r * dir 0 - (r-1/2rule_thickness) * dir 90; z6 = centre + r * dir 180 - (r-1/2rule_thickness) * dir 90;
 
   draw_line(1,2);
   draw_line(3,4);
@@ -162,7 +162,7 @@ beginoperator(plus_size#, 1); "minus plus";
   z1 = centre + r * dir  0; z2 = centre + r * dir 180;
   z3 = centre + (r - 1/4rule_thickness) * dir 90; z4 = centre + r * dir 270;
 
-  z5 = centre + r * (dir 0 + dir 90); z6 = centre + r * (dir 180 + dir 90);
+  z5 = centre + r * dir 0 + (r-1/2rule_thickness) * dir 90; z6 = centre + r * dir 180 + (r-1/2rule_thickness) * dir 90;
 
   draw_line(1,2);
   draw_line(3,4);
@@ -225,38 +225,53 @@ endchar;
 
 for alpha = 0, 90, 180, 270:
   beginoperator(plus_size#, 1); "times (" & decimal alpha & ")";
-    pickup rule_pen;
-
+  
     r := plus_size/2; % - 11/10rule_thickness;
     r := r * 1/3[1, sqrt 2];
+    
+    z1 = centre + r * dir (alpha +  45); z2 = centre + r * dir (alpha + 225);
+    z3 = centre + r * dir (alpha + 315); z4 = centre + r * dir (alpha + 135);
 
-    draw (centre + r * dir (alpha +  45)) -- (centre + r * dir (alpha + 225)) --
-         (centre + r * dir (alpha + 315)) -- (centre + r * dir (alpha + 135));
+    draw_line(1,2); draw_line(3,4);
+    
+    z2r = z5l; z6l = z3r;
+    penpos5(rule_thickness,alpha-90); penpos6(rule_thickness,alpha-90);
+    penstroke z5e .. z6e;
+    
   endchar;
 endfor;
 
 for alpha = 0, 90:
   beginoperator(plus_size#, 1); "bowtie (" & decimal alpha & ")";
-    pickup rule_pen;
 
     r := plus_size/2; % - 11/10rule_thickness;
     r := r * 1/3[1, sqrt 2];
 
-    draw (centre + r * dir (alpha +  45)) -- (centre + r * dir (alpha + 225)) --
-         (centre + r * dir (alpha + 135)) -- (centre + r * dir (alpha + 315)) -- cycle;
+    z1 = centre + r * dir (alpha +  45); z2 = centre + r * dir (alpha + 225);
+    z3 = centre + r * dir (alpha + 135); z4 = centre + r * dir (alpha + 315);
+
+    draw_line(1,2); draw_line(3,4);
+
+    z2l = z5r; z6r = z3l;
+    penpos5(rule_thickness,alpha-0); penpos6(rule_thickness,alpha-0);
+    penstroke z5e .. z6e;
+
+    z1r = z7l; z8l = z4r;
+    penpos7(rule_thickness,alpha-0); penpos8(rule_thickness,alpha-0);
+    penstroke z7e .. z8e;
+
   endchar;
 endfor;
 
 for alpha = 0, 90, 180, 270:
   beginoperator(plus_size#, 1); "Y (" & decimal alpha & ")";
-    pickup rule_pen;
 
     r := plus_size/2; % - 11/10rule_thickness;
     r := r * 1/3[1, sqrt 2];
 
-    draw centre -- (centre + r * dir alpha);
-    draw centre -- (centre + r * dir (alpha + 120));
-    draw centre -- (centre + r * dir (alpha + 240));
+    z1 = centre; z2 = centre + r * dir alpha; draw_line(1,2);
+    z3 = centre; z4 = centre + r * dir (alpha + 120); draw_line(3,4);
+    z5 = centre; z6 = centre + r * dir (alpha + 240); draw_line(5,6);
   endchar;
 endfor;
 
@@ -264,42 +279,38 @@ endfor;
 
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "wedge";
-    pickup rule_pen;
 
-    z2 - z0 = plus_size * dir 0;
+    z2 - z0 = sign * plus_size * dir 0;
 
     x1 = 1/2[x0, x2] = w/2;
 
     y1 - y0 = sign * plus_size;
     1/2[y0,y1] = ypart centre;
 
-    draw z0 -- z1 -- z2;
+    draw_arrow(0,1,2);
   endchar;
 endfor;
 
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "wedge dot";
-    pickup rule_pen;
 
-    z2 - z0 = plus_size * dir 0;
+    z2 - z0 = sign * plus_size * dir 0;
 
     x1 = 1/2[x0, x2] = w/2;
 
     y1 - y0 = sign * plus_size;
     1/2[y0,y1] = ypart centre;
 
-    draw z0 -- z1 -- z2;
+    draw_arrow(0,1,2);
     fill circle(centre - sign * 1/3plus_size * dir 90, dot_size);
   endchar;
 endfor;
 
 for sign = 1, -1:
-  beginsymbol(13/9plus_size# + 2side_bearing#, vcentre(plus_size# + rule_thickness#));
+  beginsymbol(13/9plus_size# + 2side_bearing#, vcentre(plus_size#));
     "double wedge";
 
-    pickup rule_pen;
-
-    z2 - z0 = plus_size * dir 0;
+    z2 - z0 = sign * plus_size * dir 0;
 
     x1 = 1/2[x0, x2] = w/2;
 
@@ -309,10 +320,12 @@ for sign = 1, -1:
     1/2[z0a,z0b] = z0;
     1/2[z1a,z1b] = z1;
     1/2[z2a,z2b] = z2;
-    z0b - z0a = z1b - z1a = z2b - z2a = 4/9plus_size * dir 0;
+    z0b - z0a = z1b - z1a = z2b - z2a = sign * 4/9plus_size * dir 0;
 
-    draw z0a -- z1a -- z2a;
-    draw z0b -- z1b -- z2b;
+    draw_arrow(0a,1a,2a);
+    draw_arrow(0b,1b,2b);
+
+    labels(0,1,2,0a,0b,1a,1b,2a,2b);
   endchar;
 endfor;
 
@@ -321,23 +334,22 @@ for sign = 1, -1:
 
     draw_prec(1,2,3)(centre + sign * 1/2plus_size * dir 90,
               centre - sign * 1/2plus_size * dir 90,
-              plus_size, sign);
+              plus_size);
   endchar;
 endfor;
 
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "curly wedge dot";
-    pickup rule_pen;
 
     draw_prec(1,2,3)(centre + sign * 1/2plus_size * dir 90,
               centre - sign * 1/2plus_size * dir 90,
-              plus_size, sign);
+              plus_size);
     fill circle(centre - sign * 5/12plus_size * dir 90, dot_size);
   endchar;
 endfor;
 
 for sign = 1, -1:
-  beginsymbol(13/9plus_size# + 2side_bearing#, vcentre(plus_size# + rule_thickness#));
+  beginsymbol(13/9plus_size# + 2side_bearing#, vcentre(plus_size#));
     "double wedge";
 
     pickup rule_pen;
@@ -345,10 +357,10 @@ for sign = 1, -1:
     1/2[z0,z1] = (w/2, (h-d)/2);
     z1 - z0 = 4/9plus_size * dir 0;
 
-    draw prec(z0 + sign * 1/2plus_size * dir 90,
+    draw_prec(1a,2a,3a)(z0 + sign * 1/2plus_size * dir 90,
               z0 - sign * 1/2plus_size * dir 90,
               plus_size);
-    draw prec(z1 + sign * 1/2plus_size * dir 90,
+    draw_prec(1b,2b,3b)(z1 + sign * 1/2plus_size * dir 90,
               z1 - sign * 1/2plus_size * dir 90,
               plus_size);
   endchar;
