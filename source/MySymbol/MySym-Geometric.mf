@@ -368,9 +368,8 @@ endfor;
 
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "union";
-    pickup rule_pen;
 
-    draw subset(centre - sign * 1/2plus_size * dir 90,
+    draw_subset(1,2,3,4,5)(centre - sign * 1/2plus_size * dir 90,
                 centre + sign * 1/2plus_size * dir 90,
                 plus_size);
   endchar;
@@ -378,12 +377,11 @@ endfor;
 
 for sign = 1, -1:
   beginoperator(4/3plus_size#, 1); "double union";
-    pickup rule_pen;
 
-    draw subset(centre - sign * 5/18plus_size * dir 90,
+    draw_subset(1,2,3,4,5)(centre - sign * 5/18plus_size * dir 90,
                 centre + sign * 2/3plus_size * dir 90,
                 5/9plus_size);
-    draw subset(centre - sign * 2/3plus_size * dir 90,
+    draw_subset(6,7,8,9,10)(centre - sign * 2/3plus_size * dir 90,
                 centre + sign * 2/3plus_size * dir 90,
                 4/3plus_size);
   endchar;
@@ -391,9 +389,8 @@ endfor;
 
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "union dot";
-    pickup rule_pen;
 
-    draw subset(centre - sign * 1/2plus_size * dir 90,
+    draw_subset(1,2,3,4,5)(centre - sign * 1/2plus_size * dir 90,
                 centre + sign * 1/2plus_size * dir 90,
                 plus_size);
     fill circle(centre + sign * 1/6plus_size * dir 90, dot_size);
@@ -402,19 +399,20 @@ endfor;
 
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "union plus";
-    pickup rule_pen;
 
-    draw subset(centre - sign * 1/2plus_size * dir 90,
+    draw_subset(1,2,3,4,5)(centre - sign * 1/2plus_size * dir 90,
                 centre + sign * 1/2plus_size * dir 90,
                 plus_size);
 
     t := 22/10rule_thickness;
     r := 1/2plus_size - t;
 
-    draw (centre + sign * 1/6plus_size * dir 90 + r * dir  0)
-      -- (centre + sign * 1/6plus_size * dir 90 + r * dir 180);
-    draw (centre + (r + sign * 1/6plus_size) * dir 90)
-      -- (centre + (r - sign * 1/6plus_size) * dir 270);
+    z6 = centre + sign * 1/6plus_size * dir 90 + r * dir  0;
+    z7 = centre + sign * 1/6plus_size * dir 90 + r * dir 180;
+    draw_line(6,7);
+    z8 = centre + (r + sign * 1/6plus_size) * dir 90;
+    z9 = centre + (r - sign * 1/6plus_size) * dir 270;
+    draw_line(8,9);
   endchar;
 endfor;
 

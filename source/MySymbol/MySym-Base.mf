@@ -518,3 +518,20 @@ def draw_arrow(suffix $,$$,$$$) =
   penstroke z$e .. z$$e;
   penstroke z$$e .. z$$$e;
 enddef;
+
+def draw_subset(suffix $,$$,$$$,$$$$,$$$$$)(expr l, r, spread) =
+  z$ = r - 1/2spread * dir (angle (r-l) + 90);
+  z$$ = 1/3[l, r] - 1/2spread * dir (angle (r-l) + 90);
+  penpos$(rule_thickness,0); penpos$$(rule_thickness,0);
+
+  z$$$ = l - 1/2rule_thickness*dir(angle(l-r));
+  penpos$$$(rule_thickness,-90);
+
+  z$$$$ = 1/3[l, r] + 1/2spread * dir (angle (r-l) + 90);
+  z$$$$$ = r + 1/2spread * dir (angle (r-l) + 90);
+  penpos$$$$(rule_thickness,180);  penpos$$$$$(rule_thickness,180);
+  
+  penstroke z$e .. z$$e{l - r} .. {(l-r) rotated -90}z$$$e{(l-r) rotated -90} ..
+    {r-l}z$$$$e .. z$$$$$e;
+  %penlabels($,$$,$$$,$$$$,$$$$$);
+enddef;
