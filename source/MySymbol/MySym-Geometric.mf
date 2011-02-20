@@ -287,7 +287,7 @@ for sign = 1, -1:
     y1 - y0 = sign * plus_size;
     1/2[y0,y1] = ypart centre;
 
-    draw_arrow(0,1,2);
+    draw_arrow_cut(0,1,2);
   endchar;
 endfor;
 
@@ -301,7 +301,7 @@ for sign = 1, -1:
     y1 - y0 = sign * plus_size;
     1/2[y0,y1] = ypart centre;
 
-    draw_arrow(0,1,2);
+    draw_arrow_cut(0,1,2);
     fill circle(centre - sign * 1/3plus_size * dir 90, dot_size);
   endchar;
 endfor;
@@ -322,17 +322,16 @@ for sign = 1, -1:
     1/2[z2a,z2b] = z2;
     z0b - z0a = z1b - z1a = z2b - z2a = sign * 4/9plus_size * dir 0;
 
-    draw_arrow(0a,1a,2a);
-    draw_arrow(0b,1b,2b);
+    draw_arrow_cut(0a,1a,2a);
+    draw_arrow_cut(0b,1b,2b);
 
-    labels(0,1,2,0a,0b,1a,1b,2a,2b);
   endchar;
 endfor;
 
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "curly wedge";
 
-    draw_prec(1,2,3)(centre + sign * 1/2plus_size * dir 90,
+    draw_prec_cut(1,2,3)(centre + sign * 1/2plus_size * dir 90,
               centre - sign * 1/2plus_size * dir 90,
               plus_size);
   endchar;
@@ -341,7 +340,7 @@ endfor;
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "curly wedge dot";
 
-    draw_prec(1,2,3)(centre + sign * 1/2plus_size * dir 90,
+    draw_prec_cut(1,2,3)(centre + sign * 1/2plus_size * dir 90,
               centre - sign * 1/2plus_size * dir 90,
               plus_size);
     fill circle(centre - sign * 5/12plus_size * dir 90, dot_size);
@@ -357,10 +356,10 @@ for sign = 1, -1:
     1/2[z0,z1] = (w/2, (h-d)/2);
     z1 - z0 = 4/9plus_size * dir 0;
 
-    draw_prec(1a,2a,3a)(z0 + sign * 1/2plus_size * dir 90,
+    draw_prec_cut(1a,2a,3a)(z0 + sign * 1/2plus_size * dir 90,
               z0 - sign * 1/2plus_size * dir 90,
               plus_size);
-    draw_prec(1b,2b,3b)(z1 + sign * 1/2plus_size * dir 90,
+    draw_prec_cut(1b,2b,3b)(z1 + sign * 1/2plus_size * dir 90,
               z1 - sign * 1/2plus_size * dir 90,
               plus_size);
   endchar;

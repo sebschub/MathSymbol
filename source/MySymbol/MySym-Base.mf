@@ -477,14 +477,41 @@ def draw_integral(suffix $)(expr scale, center) =
   penlabels(0$,1$,2$,3$,4$,5$,6$);
 enddef;
 
+def ppos_cut(suffix $)(expr a, b) =
+  if sind(a) = 0 :
+    penpos$(rule_thickness,90);
+  else:
+    penpos$(rule_thickness/abs(sind(a)),b);
+  fi
+enddef;
+
 def draw_line(suffix $, $$)=
-  %if (abs(angle(z$-z$$))<45) or (abs(angle(z$-z$$))>135) :
-  %  penpos$(rule_thickness,90); penpos$$(rule_thickness,90);
-  %else:
-  %  penpos$$(rule_thickness,0); penpos$$(rule_thickness,0);
-  %fi
   penpos$(rule_thickness,angle(z$-z$$)+90); penpos$$(rule_thickness,angle(z$-z$$)+90);
   penstroke z$e .. z$$e;
+  penlabels($,$$)
+enddef;
+
+def draw_line_cut(suffix $, $$)=
+  if (abs(angle(z$-z$$))<45) or (abs(angle(z$-z$$))>135) :
+    ppos_cut($)(angle(z$-z$$),90);
+    ppos_cut($$)(angle(z$-z$$),90);
+%    if sind(angle(z$-z$$)) = 0 :
+%      penpos$(rule_thickness,90); penpos$$(rule_thickness,90);
+%    else:
+%      penpos$(rule_thickness/sind(angle(z$-z$$)),90); penpos$$(rule_thickness/sind(angle(z$-z$$)),90);
+%    fi
+  else:
+    ppos_cut($)(angle(z$-z$$),0);
+    ppos_cut($$)(angle(z$-z$$),0);
+    %if (sind(angle(z$-z$$)) = 0) :
+    %  penpos$(rule_thickness,0); penpos$$(rule_thickness,0);    
+    %else:
+    %  penpos$(rule_thickness/sind(angle(z$-z$$)),0); penpos$$(rule_thickness/sind(angle(z$-z$$)),0);
+    %fi
+  fi
+  %penpos$(rule_thickness,angle(z$-z$$)+90); penpos$$(rule_thickness,angle(z$-z$$)+90);
+  penstroke z$e .. z$$e;
+  penlabels($,$$)
 enddef;
 
 def draw_prec(suffix $,$$,$$$)(expr l, r, spread) =
@@ -495,17 +522,50 @@ def draw_prec(suffix $,$$,$$$)(expr l, r, spread) =
   if (angle(l-r)>0) :
     penpos$(rule_thickness, (angle (r-l) + 140) - 90);
     penpos$$$(rule_thickness, (angle (r-l) + 40) + 90);
+    penpos$$(rule_thickness,angle(z$$$-z$));
   else:
     penpos$(rule_thickness, (angle (r-l) + 140) + 90);
     penpos$$$(rule_thickness, (angle (r-l) + 40) - 90);
+    penpos$$(rule_thickness,angle(z$-z$$$));
   fi
-  penpos$$(rule_thickness,0);
   
   penstroke z$e{dir (angle (r-l) + 140)}
     .. {dir (angle (r-l) + 180)}z$$e;
 
   penstroke z$$e{dir (angle (r-l))}
     .. {dir (angle (r-l) + 40)}z$$$e;
+
+  penlabels($,$$,$$$);
+enddef;
+
+def draw_prec_cut(suffix $,$$,$$$)(expr l, r, spread) =
+  z$ = r - 1/2spread * dir (angle (r-l) + 90);
+  z$$ = l;
+  z$$$ = (r + 1/2spread * dir (angle (r-l) + 90));
+
+  if (angle(l-r)>0) :
+    ppos_cut($)(angle(z$$-z$),angle(z$$$-z$));
+%    ppos_cut($$)(angle(z$$-z$),angle(z$$$-z$));
+    ppos_cut($$$)(angle(z$$-z$),angle(z$$$-z$));
+%    penpos$(rule_thickness,angle(z$$$-z$));
+    penpos$$(rule_thickness,angle(z$$$-z$));
+%    penpos$$$(rule_thickness,angle(z$$$-z$));
+  else:
+    ppos_cut($)(angle(z$-z$$),angle(z$-z$$$));
+%    ppos_cut($$)(angle(z$-z$$),angle(z$-z$$$));
+    ppos_cut($$$)(angle(z$-z$$),angle(z$-z$$$));
+%    penpos$(rule_thickness,angle(z$-z$$$));
+    penpos$$(rule_thickness,angle(z$-z$$$));
+%    penpos$$$(rule_thickness,angle(z$-z$$$));
+  fi
+  
+  penstroke z$e{dir (angle (r-l) + 140)}
+    .. {dir (angle (r-l) + 180)}z$$e;
+
+  penstroke z$$e{dir (angle (r-l))}
+    .. {dir (angle (r-l) + 40)}z$$$e;
+
+  penlabels($,$$,$$$);
 enddef;
 
 % left, middle, right
@@ -517,6 +577,24 @@ def draw_arrow(suffix $,$$,$$$) =
   
   penstroke z$e .. z$$e;
   penstroke z$$e .. z$$$e;
+
+  penlabels($,$$,$$$)
+enddef;
+
+% left, middle, right
+def draw_arrow_cut(suffix $,$$,$$$) = 
+  %penpos$(rule_thickness,angle(z$$$-z$));
+  %penpos$$$(rule_thickness,angle(z$$$-z$));
+
+  ppos_cut($)(angle(z$-z$$),angle(z$$$-z$));
+  ppos_cut($$$)(angle(z$-z$$),angle(z$$$-z$));
+  
+  penpos$$(rule_thickness,angle(z$$$-z$));
+  
+  penstroke z$e .. z$$e;
+  penstroke z$$e .. z$$$e;
+
+  penlabels($,$$,$$$)
 enddef;
 
 def draw_subset(suffix $,$$,$$$,$$$$,$$$$$)(expr l, r, spread) =
