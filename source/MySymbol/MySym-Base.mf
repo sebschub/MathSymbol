@@ -613,3 +613,49 @@ def draw_subset(suffix $,$$,$$$,$$$$,$$$$$)(expr l, r, spread) =
     {r-l}z$$$$e .. z$$$$$e;
   %penlabels($,$$,$$$,$$$$,$$$$$);
 enddef;
+
+def draw_triangle(suffix $,$$,$$$,$$$$,$$$$$,#,##,###)(expr centre, size, agl) =
+  numeric s,t;
+  z$ = centre + size * dir agl;
+  z$$ = centre + size * dir (agl + 120);
+  z$$$ = centre + size * dir (agl + 240);
+
+  penpos$(rule_thickness,angle(z$$$-z$$));
+  penpos$$(rule_thickness,angle(z$$$-z$));
+  penpos$$$(rule_thickness,angle(z$-z$$));
+
+  penstroke z$e .. z$$e;
+  penstroke z$$$e .. z$e;
+
+  z$$$$ = z$$; z$$$$$ = z$$$;
+  penpos$$$$(rule_thickness,angle(z$$$-z$)+180);
+  penpos$$$$$(rule_thickness,angle(z$-z$$));
+  
+  penstroke z$$$$e .. z$$$$$e;
+
+  z# = t[z$l,z$$l];
+  z# = s[z$r,z$$$r];
+
+  z## = t[z$$l,z$l];
+  z### = t[z$$$l,z$$r];
+  
+  fill z$l -- z$r -- z# -- cycle;
+  fill z$$l -- z$$r -- z## -- cycle;
+  fill z$$$l -- z$$$r -- z### -- cycle;
+  
+  penlabels($,$$,$$$,6);
+enddef;
+
+def draw_circle(suffix $,$$,$$$,$$$$)(expr centre, radius) =
+  z$    = centre + radius * dir   0;
+  z$$   = centre + radius * dir  90;
+  z$$$  = centre + radius * dir 180;
+  z$$$$ = centre + radius * dir 270;
+  penpos$(rule_thickness,0);
+  penpos$$(rule_thickness,90);
+  penpos$$$(rule_thickness,180);
+  penpos$$$$(rule_thickness,270);
+
+  penstroke z$e .. z$$e .. z$$$e .. z$$$$e .. cycle;
+  penlabels($,$$,$$$,$$$$);
+enddef;
