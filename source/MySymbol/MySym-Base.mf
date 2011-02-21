@@ -643,7 +643,7 @@ def draw_triangle(suffix $,$$,$$$,$$$$,$$$$$,#,##,###)(expr centre, size, agl) =
   fill z$$l -- z$$r -- z## -- cycle;
   fill z$$$l -- z$$$r -- z### -- cycle;
   
-  penlabels($,$$,$$$,6);
+  penlabels($,$$,$$$);
 enddef;
 
 def draw_circle(suffix $,$$,$$$,$$$$)(expr centre, radius) =
@@ -657,5 +657,20 @@ def draw_circle(suffix $,$$,$$$,$$$$)(expr centre, radius) =
   penpos$$$$(rule_thickness,270);
 
   penstroke z$e .. z$$e .. z$$$e .. z$$$$e .. cycle;
+  penlabels($,$$,$$$,$$$$);
+enddef;
+
+def draw_square(suffix $,$$,$$$,$$$$)(expr centre, size, angle) =
+  z$    = centre + sqrt(2) * size * dir (angle +  45);
+  z$$   = centre + sqrt(2) * size * dir (angle + 135);
+  z$$$  = centre + sqrt(2) * size * dir (angle + 225);
+  z$$$$ = centre + sqrt(2) * size * dir (angle + 315);
+
+  penpos$   (sqrt(2)*rule_thickness, (angle +  45));
+  penpos$$  (sqrt(2)*rule_thickness, (angle + 135));
+  penpos$$$ (sqrt(2)*rule_thickness, (angle + 225));
+  penpos$$$$(sqrt(2)*rule_thickness, (angle + 315));
+
+  penstroke z$e{z$$-z$} .. {z$$-z$}z$$e{z$$$-z$$} .. {z$$$-z$$}z$$$e{z$$$$-z$$$} .. {z$$$$ - z$$$}z$$$$e{z$-z$$$$} .. {z$-z$$$$}cycle;
   penlabels($,$$,$$$,$$$$);
 enddef;
