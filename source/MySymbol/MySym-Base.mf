@@ -682,3 +682,45 @@ def reg_poly_points_p(suffix $)(expr n, centre, radius, agl,scale) =
     penlabels($[i]);
   endfor;
 enddef;
+
+def draw_smile(suffix $,$$,$$$)(expr sign, l, r, spread, round_smile) =
+ % if round_smile:
+    z$   = (l + sign * 1/2spread * dir (angle (r-l) + 90));
+    z$$  = (1/2[l,r] - sign * 1/2spread * dir (angle (r-l) + 90));
+    z$$$ = (r + sign * 1/2spread * dir (angle (r-l) + 90));
+
+    penpos$(rule_thickness,angle(z$-z$$)+90);
+    penpos$$(rule_thickness,angle(r-l)-90);
+    penpos$$$(rule_thickness,angle(z$$$-z$$)-90);
+
+    penlabels($,$$,$$$);
+    penstroke z$e .. {r - l}z$$e{r - l} .. z$$$e
+  % else:
+  %      (l + sign * 1/2spread * dir (angle (r-l) + 90))
+  %   -- (1/2[l,r] - sign * 1/2spread * dir (angle (r-l) + 90))
+  %   -- (r + sign * 1/2spread * dir (angle (r-l) + 90))
+ % fi
+
+enddef;
+    
+def draw_sim(suffix $,$$,$$$,#,##,###,####)(expr l, r) =
+  z$    = 0/26[l, r] - 1/3equal_spread * dir ((angle (r-l) + 90) mod 180);
+  z$$   = 1/26[l, r];
+  z$$$  = 5/26[l, r] + 1/3equal_spread * dir ((angle (r-l) + 90) mod 180);
+  z#    = 13/26[l, r];
+  z##   = 21/26[l, r] - 1/3equal_spread * dir ((angle (r-l) + 90) mod 180);
+  z###  = 25/26[l, r];
+  z#### = 26/26[l, r] + 1/3equal_spread * dir ((angle (r-l) + 90) mod 180);
+
+  penpos$(rule_thickness,angle(z$$-z$)+90);
+  penpos$$(rule_thickness,(angle(z$$$-z$$)+angle(z$$-z$))/2+90);
+  penpos$$$(rule_thickness,(angle(z#-z$$$)+angle(z$$$-z$$))/2+90);
+  penpos#(rule_thickness,(angle(z##-z#)+angle(z#-z$$$))/2+90);
+  penpos##(rule_thickness,(angle(z###-z##)+angle(z##-z#))/2+90);
+  penpos###(rule_thickness,(angle(z####-z###)+angle(z###-z##))/2+90);
+  penpos####(rule_thickness,angle(z####-z###)+90);
+
+  penstroke z$e .. z$$e .. z$$$e .. z#e .. z##e .. z###e .. z####e;
+  
+  penlabels($,$$,$$$,#,##,###,####);
+enddef;

@@ -1046,47 +1046,42 @@ for alpha = 0, 45, 90, 135:
 endfor;
 
 beginoperator(med_op_size#, 1); "between";
-  pickup rule_pen;
-
   r := w/2 - side_bearing;
 
-  draw smile( 1, centre - r * dir 90, centre + r * dir 90, equal_spread, true);
-  draw smile(-1, centre - r * dir 90, centre + r * dir 90, equal_spread, true);
+  draw_smile(1,2,3)( 1, centre - r * dir 90, centre + r * dir 90, equal_spread, true);
+  draw_smile(4,5,6)(-1, centre - r * dir 90, centre + r * dir 90, equal_spread, true);
 endchar;
 
 beginoperator(med_op_size#, 1); "reversed between";
-  pickup rule_pen;
-
   r := w/2 - side_bearing;
 
-  draw smile( 1,  centre - 2/3equal_spread * dir 0 - r * dir 90,
+  draw_smile(1,2,3)( 1,  centre - 2/3equal_spread * dir 0 - r * dir 90,
                   centre - 2/3equal_spread * dir 0 + r * dir 90,
                   2/3equal_spread, true);
-  draw smile(-1, centre + 2/3equal_spread * dir 0 - r * dir 90,
+  draw_smile(4,5,6)(-1, centre + 2/3equal_spread * dir 0 - r * dir 90,
                  centre + 2/3equal_spread * dir 0 + r * dir 90,
                  2/3equal_spread, true);
 endchar;
 
 for sign = 1, -1:
   beginsymbol(order_width# + 2side_bearing#, 2math_axis# + rule_thickness#, rule_thickness#); "top";
-    pickup rule_pen;
 
     z1 - z0 = z3 - z2 = order_width * dir 0;
     z2 - z0 = sign * 2math_axis * dir 90;
 
     1/2[1/2[z0,z1], 1/2[z2,z3]] = (w/2, (h-d)/2);
 
-    draw z0 -- z1;
-    draw 1/2[z0,z1] -- 1/2[z2,z3];
+    draw_line(0,1);
+    z4 =  1/2[z0,z1];
+    z5 =  1/2[z2,z3];
+    draw_line(4,5);
   endchar;
 endfor;
 
 beginsymbol(2/3equal_spread# + 2side_bearing#, vcentre(plus_size#+rule_thickness#)); "wreath";
-  pickup rule_pen;
-
   z0 = (w/2, (h-d)/2);
 
-  draw sim(z0 + 1/2plus_size * dir 90, z0 - 1/2plus_size * dir 90);
+  draw_sim(1,2,3,4,5,6,7)(z0 + 1/2plus_size * dir 90, z0 - 1/2plus_size * dir 90);
 endchar;
 
 beginoperator(med_op_size#, 1); "angle";
