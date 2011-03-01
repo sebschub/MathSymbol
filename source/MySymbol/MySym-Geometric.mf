@@ -811,38 +811,60 @@ endchar;
 beginoperator(small_op_size#, 1); "small star";
   pickup rule_pen;
   r := w/2 - side_bearing;
-  reg_poly_points(a)(5, centre, r, 90);
-  reg_poly_points(b)(5, centre, .4r, 126);
-  draw z.a0 -- z.b0 -- z.a1 -- z.b1 -- z.a2 -- z.b2 -- z.a3 -- z.b3 -- z.a4 -- z.b4 -- cycle;
+
+  z1 = centre + r * dir (90);
+  z2 = centre + .4r * dir (126);
+
+  % scale that thickness of line is rule_thickness
+  
+  reg_poly_points_p(a)(5, centre, r, 90,1/sind(angle(z1-z2)-angle(z1-centre)));
+  reg_poly_points_p(b)(5, centre, .4r, 126,1/sind(angle(z2-centre)-angle(z2-z1)));
+  penstroke z.a0e{z.b0-z.a0} .. {z.b0-z.a0}z.b0e{z.a1-z.b0} .. {z.a1-z.b0}z.a1e{z.b1-z.a1e} .. {z.b1-z.a1e}z.b1e{z.a2-z.b1} .. {z.a2-z.b1}z.a2e{z.b2-z.a2} .. {z.b2-z.a2}z.b2e{z.a3-z.b2} .. {z.a3-z.b2}z.a3e{z.b3-z.a3} .. {z.b3-z.a3}z.b3e{z.a4-z.b3} .. {z.a4-z.b3}z.a4e{z.b4-z.a4} .. {z.b4-z.a4}z.b4e{z.a0-z.b4} .. {z.a0-z.b4}cycle;
 endchar;
+
 beginoperator(small_op_size#, 1); "small filled star";
-  pickup rule_pen;
   r := w/2 - side_bearing;
-  reg_poly_points(a)(5, centre, r, 90);
-  reg_poly_points(b)(5, centre, .4r, 126);
-  draw z.a0 -- z.b0 -- z.a1 -- z.b1 -- z.a2 -- z.b2 -- z.a3 -- z.b3 -- z.a4 -- z.b4 -- cycle;
+
+  z1 = centre + r * dir (90);
+  z2 = centre + .4r * dir (126);
+  
+  reg_poly_points_p(a)(5, centre, r, 90,1/sind(angle(z1-z2)-angle(z1-centre)));
+  reg_poly_points_p(b)(5, centre, .4r, 126,1/sind(angle(z2-centre)-angle(z2-z1)));
+  penstroke z.a0e{z.b0-z.a0} .. {z.b0-z.a0}z.b0e{z.a1-z.b0} .. {z.a1-z.b0}z.a1e{z.b1-z.a1e} .. {z.b1-z.a1e}z.b1e{z.a2-z.b1} .. {z.a2-z.b1}z.a2e{z.b2-z.a2} .. {z.b2-z.a2}z.b2e{z.a3-z.b2} .. {z.a3-z.b2}z.a3e{z.b3-z.a3} .. {z.b3-z.a3}z.b3e{z.a4-z.b3} .. {z.a4-z.b3}z.a4e{z.b4-z.a4} .. {z.b4-z.a4}z.b4e{z.a0-z.b4} .. {z.a0-z.b4}cycle;
   fill z.a0 -- z.b0 -- z.a1 -- z.b1 -- z.a2 -- z.b2 -- z.a3 -- z.b3 -- z.a4 -- z.b4 -- cycle;
 endchar;
+
 beginoperator(med_op_size#, 1); "medium star";
-  pickup rule_pen;
   r := w/2 - side_bearing;
-  reg_poly_points(a)(5, centre, r, 90);
-  reg_poly_points(b)(5, centre, .4r, 126);
-  draw z.a0 -- z.b0 -- z.a1 -- z.b1 -- z.a2 -- z.b2 -- z.a3 -- z.b3 -- z.a4 -- z.b4 -- cycle;
+
+  z1 = centre + r * dir (90);
+  z2 = centre + .4r * dir (126);
+
+  reg_poly_points_p(a)(5, centre, r, 90,1/sind(angle(z1-z2)-angle(z1-centre)));
+  reg_poly_points_p(b)(5, centre, .4r, 126,1/sind(angle(z2-centre)-angle(z2-z1)));
+  penstroke z.a0e{z.b0-z.a0} .. {z.b0-z.a0}z.b0e{z.a1-z.b0} .. {z.a1-z.b0}z.a1e{z.b1-z.a1e} .. {z.b1-z.a1e}z.b1e{z.a2-z.b1} .. {z.a2-z.b1}z.a2e{z.b2-z.a2} .. {z.b2-z.a2}z.b2e{z.a3-z.b2} .. {z.a3-z.b2}z.a3e{z.b3-z.a3} .. {z.b3-z.a3}z.b3e{z.a4-z.b3} .. {z.a4-z.b3}z.a4e{z.b4-z.a4} .. {z.b4-z.a4}z.b4e{z.a0-z.b4} .. {z.a0-z.b4}cycle;
 endchar;
+
+
 beginoperator(large_op_size#, 1); "large star";
-  pickup rule_pen;
   r := w/2 - side_bearing;
-  reg_poly_points(a)(5, centre, r, 90);
-  reg_poly_points(b)(5, centre, .4r, 126);
-  draw z.a0 -- z.b0 -- z.a1 -- z.b1 -- z.a2 -- z.b2 -- z.a3 -- z.b3 -- z.a4 -- z.b4 -- cycle;
+
+  z1 = centre + r * dir (90);
+  z2 = centre + .4r * dir (126);
+
+  reg_poly_points_p(a)(5, centre, r, 90,1/sind(angle(z1-z2)-angle(z1-centre)));
+  reg_poly_points_p(b)(5, centre, .4r, 126,1/sind(angle(z2-centre)-angle(z2-z1)));
+  penstroke z.a0e{z.b0-z.a0} .. {z.b0-z.a0}z.b0e{z.a1-z.b0} .. {z.a1-z.b0}z.a1e{z.b1-z.a1e} .. {z.b1-z.a1e}z.b1e{z.a2-z.b1} .. {z.a2-z.b1}z.a2e{z.b2-z.a2} .. {z.b2-z.a2}z.b2e{z.a3-z.b2} .. {z.a3-z.b2}z.a3e{z.b3-z.a3} .. {z.b3-z.a3}z.b3e{z.a4-z.b3} .. {z.a4-z.b3}z.a4e{z.b4-z.a4} .. {z.b4-z.a4}z.b4e{z.a0-z.b4} .. {z.a0-z.b4}cycle;
 endchar;
+
 beginoperator(med_op_size#, 1); "medium pentagram";
   pickup rule_pen;
   r := w/2 - side_bearing;
   reg_poly_points(a)(5, centre, r, 90);
   draw z.a0 -- z.a2 -- z.a4 -- z.a1 -- z.a3 -- cycle;
 endchar;
+
+
 beginoperator(large_op_size#, 1); "large pentagram";
   pickup rule_pen;
   r := w/2 - side_bearing;
@@ -892,7 +914,6 @@ for alpha = 0, 45, 90, 135:
   beginsymbol(2order_width# * abs (cosd (alpha)) + 5/3equal_spread# * abs (sind (alpha)) + 2side_bearing#,
       vcentre(2order_width# * abs (sind (alpha)) + 5/3equal_spread# * abs (cosd (alpha)) + rule_thickness#));
     "infinity";
-    pickup rule_pen;
 
     pair centre;
     centre := (w/2, (h-d)/2);
@@ -908,16 +929,28 @@ for alpha = 0, 45, 90, 135:
     z4 = z7 + 5/6equal_spread * dir (alpha + 90);
     z5 = z7 - 5/6equal_spread * dir (alpha + 90);
 
-    draw z4{dir (alpha + 180)}
-      .. {dir (alpha + 225)}1/2[z0,z1]{dir (alpha + 225)}
-      .. {dir (alpha + 180)}z3{dir (alpha + 180)}
-      .. {dir (alpha + 90)}z0{dir (alpha + 90)}
-      .. {dir (alpha + 0)}z2{dir (alpha + 0)}
-      .. {dir (alpha + -45)}1/2[z0,z1]{dir (alpha + -45)}
-      .. {dir (alpha + 0)}z5{dir (alpha + 0)}
-      .. {dir (alpha + 90)}z1{dir (alpha + 90)}
+  z8 = 1/2[z0,z1];
+  z9 = z8;
+  
+  penpos4(rule_thickness,angle(z4-z5));
+  penpos3(rule_thickness,angle(z2-z3));
+  penpos0(rule_thickness,angle(z1-z0));
+  penpos2(rule_thickness,angle(z3-z2));
+  penpos5(rule_thickness,angle(z5-z4));
+  penpos1(rule_thickness,angle(z1-z0));
+  penpos8(rule_thickness,angle(z3-z4)-90);
+  penpos9(rule_thickness,angle(z2-z5)+90);
+  
+    penstroke z4e{dir (alpha + 180)}
+      .. {dir (alpha + 225)}z8e{dir (alpha + 225)}
+      .. {dir (alpha + 180)}z3e{dir (alpha + 180)}
+      .. {dir (alpha + 90)}z0e{dir (alpha + 90)}
+      .. {dir (alpha + 0)}z2e{dir (alpha + 0)}
+      .. {dir (alpha + -45)}z9e{dir (alpha + -45)}
+      .. {dir (alpha + 0)}z5e{dir (alpha + 0)}
+      .. {dir (alpha + 90)}z1e{dir (alpha + 90)}
       .. cycle;
-    labels (0,1,2,3,4,5,6,7);
+    penlabels (0,1,2,3,4,5,6,7,8);
   endchar;
 endfor
 
@@ -925,7 +958,6 @@ for alpha = 0, 90, 180, 270:
   beginsymbol(17/10order_width# * abs (cosd (alpha)) + 5/3equal_spread# * abs (sind (alpha)) + 2side_bearing#,
       vcentre(17/10order_width# * abs (sind (alpha)) + 5/3equal_spread# * abs (cosd (alpha)) + rule_thickness#));
     "proportional";
-    pickup rule_pen;
 
     pair centre;
     centre := (w/2, (h-d)/2);
@@ -943,14 +975,28 @@ for alpha = 0, 90, 180, 270:
     z2 = z8 + 5/6equal_spread * dir (alpha + 90);
     z3 = z8 - 5/6equal_spread * dir (alpha + 90);
 
-    draw z6 -- z4{dir (alpha + 180)}
-            .. {dir (alpha + 225)}5/8[z0,z1]{dir (alpha + 225)}
-            .. {dir (alpha + 180)}z3{dir (alpha + 180)}
-            .. {dir (alpha + 90)}z0{dir (alpha + 90)}
-            .. {dir (alpha + 0)}z2{dir (alpha + 0)}
-            .. {dir (alpha + -45)}5/8[z0,z1]{dir (alpha + -45)}
-            .. {dir (alpha + 0)}z5 -- z7;
-    labels (0,1,2,3,4,5,6,7);
+  z10 = 5/8[z0,z1];
+  z11 = z10;
+  
+  penpos4(rule_thickness,angle(z4-z5));
+  penpos6(rule_thickness,angle(z6-z7));
+  penpos3(rule_thickness,angle(z2-z3));
+  penpos0(rule_thickness,angle(z1-z0));
+  penpos2(rule_thickness,angle(z3-z2));
+  penpos5(rule_thickness,angle(z5-z4));
+  penpos7(rule_thickness,angle(z7-z6));
+  penpos10(rule_thickness,angle(z3-z4)-90);
+  penpos11(rule_thickness,angle(z2-z5)+90);
+
+  
+    penstroke z6e .. z4e{dir (alpha + 180)}
+            .. {dir (alpha + 225)}z10e{dir (alpha + 225)}
+            .. {dir (alpha + 180)}z3e{dir (alpha + 180)}
+            .. {dir (alpha + 90)}z0e{dir (alpha + 90)}
+            .. {dir (alpha + 0)}z2e{dir (alpha + 0)}
+            .. {dir (alpha + -45)}z11e{dir (alpha + -45)}
+            .. {dir (alpha + 0)}z5e .. z7e;
+    penlabels (0,1,2,3,4,5,6,7,10);
   endchar;
 endfor;
 
@@ -974,13 +1020,28 @@ for alpha = 0, 45, 90, 135:
     z6 - z4 = z7 - z5 = 1/10order_width * dir alpha;
     z2 - z8 = z3 - z9 = 1/10order_width * dir alpha;
 
-    draw z6 -- z4{dir (alpha + 180)}
-            .. {dir (alpha + 225)}1/2[z0,z1]{dir (alpha + 225)}
-            .. {dir (alpha + 180)}z3 -- z9;
-    draw z8 -- z2{dir (alpha + 0)}
-            .. {dir (alpha + -45)}1/2[z0,z1]{dir (alpha + -45)}
-            .. {dir (alpha + 0)}z5 -- z7;
-    labels (0,1,2,3,4,5,6,7,8,9);
+  z10 = 1/2[z0,z1];
+  z11 = z10;
+  
+  penpos4(rule_thickness,angle(z4-z5));
+  penpos6(rule_thickness,angle(z6-z7));
+  penpos3(rule_thickness,angle(z2-z3));
+  penpos9(rule_thickness,angle(z8-z9));
+  penpos2(rule_thickness,angle(z3-z2));
+  penpos8(rule_thickness,angle(z9-z8));
+  penpos5(rule_thickness,angle(z5-z4));
+  penpos7(rule_thickness,angle(z7-z6));
+  penpos10(rule_thickness,angle(z3-z4)-90);
+  penpos11(rule_thickness,angle(z2-z5)+90);
+
+  
+  penstroke z6e .. z4e{dir (alpha + 180)}
+            .. {dir (alpha + 225)}z10e{dir (alpha + 225)}
+            .. {dir (alpha + 180)}z3e .. z9e;
+  penstroke z8e .. z2e{dir (alpha + 0)}
+            .. {dir (alpha + -45)}z11e{dir (alpha + -45)}
+            .. {dir (alpha + 0)}z5e .. z7e;
+  penlabels (0,1,2,3,4,5,6,7,8,9,10);
   endchar;
 endfor;
 

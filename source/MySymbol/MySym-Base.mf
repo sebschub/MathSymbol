@@ -674,3 +674,11 @@ def draw_square(suffix $,$$,$$$,$$$$)(expr centre, size, angle) =
   penstroke z$e{z$$-z$} .. {z$$-z$}z$$e{z$$$-z$$} .. {z$$$-z$$}z$$$e{z$$$$-z$$$} .. {z$$$$ - z$$$}z$$$$e{z$-z$$$$} .. {z$-z$$$$}cycle;
   penlabels($,$$,$$$,$$$$);
 enddef;
+
+def reg_poly_points_p(suffix $)(expr n, centre, radius, agl,scale) =
+  for i = 0 upto n-1:
+    z$[i] = centre + radius * dir (agl + i/n * 360);
+    penpos$[i](rule_thickness*scale,angle(z$[i] - centre));
+    penlabels($[i]);
+  endfor;
+enddef;
