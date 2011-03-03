@@ -491,6 +491,13 @@ def draw_line(suffix $, $$)=
   penlabels($,$$)
 enddef;
 
+def draw_line_scaled(suffix $, $$)(expr s)=
+  penpos$(s*rule_thickness,angle(z$-z$$)+90); penpos$$(s*rule_thickness,angle(z$-z$$)+90);
+  penstroke z$e .. z$$e;
+  penlabels($,$$)
+enddef;
+
+
 def draw_line_cut(suffix $, $$)=
   if (abs(angle(z$-z$$))<45) or (abs(angle(z$-z$$))>135) :
     ppos_cut($)(angle(z$-z$$),90);
@@ -580,6 +587,24 @@ def draw_arrow(suffix $,$$,$$$) =
 
   penlabels($,$$,$$$)
 enddef;
+
+def draw_arrow_point(suffix $,$$,$$$,#) = 
+  numeric s,t;
+  penpos$(rule_thickness,angle(z$$-z$)-90);
+  penpos$$$(rule_thickness,angle(z$$$-z$$)+90);
+
+  penpos$$(rule_thickness,angle(z$$$-z$));
+  
+  penstroke z$e .. z$$e;
+  penstroke z$$e .. z$$$e;
+
+  z# = t[z$$l,z$l];
+  z# = s[z$$r,z$$$r];
+  fill z$$l -- z$$r -- z# -- cycle;
+  
+  penlabels($,$$,$$$,#)
+enddef;
+
 
 % left, middle, right
 def draw_arrow_cut(suffix $,$$,$$$) = 

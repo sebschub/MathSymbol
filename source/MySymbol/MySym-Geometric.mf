@@ -1085,8 +1085,6 @@ beginsymbol(2/3equal_spread# + 2side_bearing#, vcentre(plus_size#+rule_thickness
 endchar;
 
 beginoperator(med_op_size#, 1); "angle";
-  pickup rule_pen;
-
   z0 = centre - 1/3plus_size * dir 90;
 
   z1 = z0 + 1/2plus_size * dir 0;
@@ -1094,7 +1092,18 @@ beginoperator(med_op_size#, 1); "angle";
   x3 = xpart centre + 1/2plus_size;
   y3 = ypart centre + 2/3plus_size;
 
-  draw z1 -- z2 -- 5/6[z2,z3];
+  z4 = 5/6[z2,z3];
+  z5 = z2;
+  penpos5(rule_thickness,angle(z3-z2)+90);
+  penpos4(rule_thickness,angle(z3-z2)+90);
+  z6r = z2r;
+  z6  = z5  + (z2r-z5r);
+  z6l = z5l + (z2r-z5r);
+
+  draw_line(1,2);
+  penstroke z6e .. z4e;
+
+  penlabels(1,2,3,4,6);
 endchar;
 
 beginoperator(med_op_size#, 1); "measured angle";
@@ -1107,15 +1116,27 @@ beginoperator(med_op_size#, 1); "measured angle";
   x3 = xpart centre + 1/2plus_size;
   y3 = ypart centre + 2/3plus_size;
 
-  z4 = 2/3 [z2,z1];
-  z5 = z2 + (z4 - z2) rotated angle (z3 - z2);
+  z4 = 5/6[z2,z3];
+  z5 = z2;
+  penpos5(rule_thickness,angle(z3-z2)+90);
+  penpos4(rule_thickness,angle(z3-z2)+90);
+  z6r = z2r;
+  z6  = z5  + (z2r-z5r);
+  z6l = z5l + (z2r-z5r);
 
-  draw z1 -- z2 -- 5/6[z2,z3];
-  draw z4{dir 90} .. {dir (angle (z3 - z2) + 90)}z5;
+  draw_line(1,2);
+  penstroke z6e .. z4e;
+
+  penpos7(rule_thickness,angle(z2-z1));
+  penpos8(rule_thickness,angle(z2-z4));
+  z7 = 2/3 [z2,z1];
+  z8 = z2 + (2/3[z2,z1] - z2) rotated angle (z3 - z2);
+
+  penstroke z7e{dir 90} .. {dir (angle (z3 - z2) + 90)}z8e;
+  penlabels(3,4,7,8);
 endchar;
 
 beginoperator(med_op_size#, 1); "spherical angle";
-  pickup rule_pen;
 
   z0 = centre - 1/2plus_size * dir 0;
 
@@ -1123,9 +1144,13 @@ beginoperator(med_op_size#, 1); "spherical angle";
   z2 = z0 + plus_size * dir -25;
   z3 = z0 + 2/3plus_size * dir 25;
   z4 = z0 + 2/3plus_size * dir -25;
+%  draw_arrow_point(2,0,1,5);
+  draw_arrow(2,0,1);
 
-  draw z1 -- z0 -- z2;
-  draw z4{dir 65} .. {dir 115}z3;
+  penpos3(rule_thickness,angle(z1-z0));
+  penpos4(rule_thickness,angle(z2-z0));
+  penstroke z4e{dir 65} .. {dir 115}z3e;
+  penlabels(3,4);
 endchar;
 
 beginsymbol(5.5u#, 4/5asc_height#, 0); "prime";
@@ -1161,11 +1186,6 @@ for sign = 1, -1:
 endfor;
 
 beginsymbol(13u# + 2side_bearing#, asc_height#, 0); "check mark";
-  pickup pencircle
-    xscaled 3/2rule_thickness
-    yscaled 3/4rule_thickness
-    rotated 30;
-
   lft x1 = hround(1.5u);
   x2 = hround(w/3);
   x3 = w - x1;
@@ -1175,7 +1195,12 @@ beginsymbol(13u# + 2side_bearing#, asc_height#, 0); "check mark";
   y2 = -d;
   y3 = y4 = h;
 
-  draw z1 -- z2{z4 - z2} .. z3;
+  penpos1(3/2rule_thickness,30);
+  penpos2(3/2rule_thickness,30);
+  penpos3(3/4rule_thickness,-30);
+  %draw z1 -- z2{z4 - z2} .. z3;
+  penstroke z1e{z2-z1} .. z2e;
+  penstroke z2e{z4 - z2} .. z3e;
 
   penlabels(1,2,3,4);
 endchar; 
@@ -1226,12 +1251,18 @@ beginsymbol(11u#, 1/2[x_height#,asc_height#], 0)
   x3 - x1 = w - 2side_bearing;
   y1 = y3 = h/2;
 
-  pickup pencircle scaled rule_thickness;
+  penpos1(rule_thickness/sind(angle(z2-z1)),0);
+  penpos2(rule_thickness/sind(90-angle(z2-z1)),-90);
+  penpos3(rule_thickness/sind(angle(z2-z1)),-180);
+  penpos0(rule_thickness/sind(90-angle(z2-z1)),90);
 
-  draw z0{dir (90+30)} .. {dir (180-30)}z1{dir (0+30)}
-                       .. {dir (90-30)}z2{dir (270+30)}
-                       .. {dir (0-30)}z3{dir (180+30)}
-                       .. {dir (270-30)}z0 & cycle;
+
+  penstroke z0e{dir (90+30)} .. {dir (180-30)}z1e{dir (0+30)}
+                       .. {dir (90-30)}z2e{dir (270+30)}
+                       .. {dir (0-30)}z3e{dir (180+30)}
+                       .. {dir (270-30)}z0e .. cycle;
+  penlabels(0,1,2,3);
+
 endchar;
 
 beginsymbol(11u#, 1/2[x_height#,asc_height#], 0)
@@ -1252,9 +1283,18 @@ beginsymbol(11u#, 1/2[x_height#,asc_height#], 0)
 
   h - y1 = x4 - x2;
 
-  pickup pencircle scaled rule_thickness;
+  penpos1(rule_thickness,-180);
+  penpos2(rule_thickness,0);
+  penpos3(rule_thickness,0);
+  penpos4(rule_thickness,-90);
+  penpos5(rule_thickness,90);
+  penpos0(rule_thickness,0);
+  
 
-  draw z0{dir (90+20)} .. z2 .. z4 .. {dir (270+20)}z1{dir (90-20)} .. z5 .. z3 .. {dir (270-20)}z0 & cycle;
+penstroke z0e{dir (90+20)} .. z2e .. z4e .. {dir (270+20)}z1e;
+penstroke z1e{dir (90-20)} .. z5e .. z3e .. {dir (270-20)}z0e;
+
+  penlabels(0,1,2,3,4,5);
 endchar;
 
 beginsymbol(11u#, 1/2[x_height#,asc_height#], 0)
@@ -1324,7 +1364,6 @@ endchar;
 
 beginsymbol(5/4order_width# + 2side_bearing#, asc_height#, 0);
   "forall";
-  pickup rule_pen;
 
   lft x0 = side_bearing;
   rt x1  = w - side_bearing;
@@ -1338,11 +1377,9 @@ beginsymbol(5/4order_width# + 2side_bearing#, asc_height#, 0);
 
   y4 = y5 = x_height;
 
-  draw z0 -- z2 -- z1;
+  draw_arrow_cut(0,2,1);
 
-  pickup pencircle scaled 8/9rule_thickness;
-
-  draw z4 -- z5;
+  draw_line_scaled(4,5)(8/9);
 endchar;
 
 for negated = 0, 1:
