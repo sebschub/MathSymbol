@@ -17,7 +17,8 @@ define_whole_pixels(dot_size, small_op_size, med_op_size, large_op_size, plus_si
 math_axis      := good.y(math_axis# * hppp);
 rule_thickness := ceiling(rule_thickness# * hppp);
 side_bearing   := ceiling(side_bearing# * hppp);
-stroke_through_thickness := 2/3rule_thickness;
+stroke_through_thickness_factor := 2/3;
+stroke_through_thickness := stroke_through_thickness_factor*rule_thickness;
 
 pickup pencircle scaled rule_thickness;
 rule_pen := savepen;
@@ -471,8 +472,8 @@ def draw_integral(suffix $)(expr scale, center) =
       .. z4$r{right} .. {z1$-z3$}z3$r -- z1$r{z1$-z3$} .. tension 1.5 .. z2$r .. z7$ -- cycle;
   fi;
 
-  fill circle(z5$, 1/3thick);
-  fill circle(z6$, 1/3thick);
+%  fill circle(z5$, 1/3thick);
+%  fill circle(z6$, 1/3thick);
 
   penlabels(0$,1$,2$,3$,4$,5$,6$);
 enddef;
@@ -748,4 +749,15 @@ def draw_sim(suffix $,$$,$$$,#,##,###,####)(expr l, r) =
   penstroke z$e .. z$$e .. z$$$e .. z#e .. z##e .. z###e .. z####e;
   
   penlabels($,$$,$$$,#,##,###,####);
+enddef;
+
+def draw_stroke_through(suffix $,#)(expr pos, spread) =
+  begingroup;
+    stroke_len := 1/2spread / cosd 15;
+
+    pickup stroke_pen;
+    z$ = pos + stroke_len * dir 75; z# = pos - stroke_len * dir 75;
+    draw_line_scaled($,#)(stroke_through_thickness_factor);
+    penlabels($,#);
+  endgroup;
 enddef;

@@ -1396,13 +1396,18 @@ for negated = 0, 1:
     top y0 = top y1 = asc_height;
     bot y2 = bot y3 = 0;
 
-    z4 = 1/8[1/2[z0,z2], 1/2[z1,z3]];
+    z4 = 1/8[1/2[z0,z2], 1/2[z1,z3]];draw_line(0,1);
+    draw_line(3,2);
+    z1a = z1l;
+    z3a = z3l;
+    
+    draw_line(1a,3a);
 
-    draw z0 -- z1 -- z3 -- z2;
-    draw z4 -- 1/2[z1,z3];
+    z5 = 1/2[z1,z3];
+    draw_line(4,5);
 
     if negated = 1:
-      stroke_through(1/2[1/2[z0,z2], 1/2[z1,z3]], h + d - stroke_through_thickness)
+      draw_stroke_through(6,7)(1/2[1/2[z0,z2], 1/2[z1,z3]], h + d - stroke_through_thickness)
     fi;
   endchar;
 endfor;
@@ -1431,6 +1436,7 @@ beginsymbol(3/2order_width# + 2side_bearing#, vcentre(med_op_size#)); "nabla";
   draw z0 -- z1 -- z2 -- cycle;
   filldraw z0 -- z3 -- z4 -- z1 -- cycle;
   filldraw z0 -- z5 -- z6 -- z2 -- cycle;
+  penlabels(0,2,3,4,5);
 endchar;
 
 beginsymbol(2order_width# + 2side_bearing#, x_height#, 0); "infinity";
@@ -1464,12 +1470,18 @@ beginsymbol(2order_width# + 2side_bearing#, x_height#, 0); "infinity";
   z9  = point 7/12 of (z0{up} .. {right}z2);
   z10 = point 5/12 of (z5{right} .. {up}z1);
 
-  fill stroke z0e{up} .. {dir 45}z9e .. z2e{right} .. z7e
-    .. {dir -45}z6e .. z8e .. {right}z5e .. {dir 45}z10e .. {up}z1e;
 
-  draw z1{dir 90} .. z4{dir 180} .. {dir 225}z6{dir 225} .. {dir 180}z3{dir 180}
-    .. {dir 90}z0;
-  penlabels(0,1,2,3,4,5,6,7,8,9,10);
+  penpos4(rule_thickness,-90);
+  z11=z6;
+  penpos11(rule_thickness, -45);
+  penpos3(rule_thickness,-90);
+
+  fill stroke z0e{up} .. {dir 45}z9e .. z2e{right} .. z7e
+  .. {dir -45}z6e .. z8e .. {right}z5e .. {dir 45}z10e .. {up}z1e{dir 90}
+  .. z4e{dir 180} .. {dir 225}z11e{dir 225} .. {dir 180}z3e{dir 180}
+  .. {dir 90}z0e;
+
+  penlabels(0,1,2,3,4,5,6,7,8,9,10,11);
 endchar;
 
 beginsymbol(1/2order_width# + 2side_bearing#,
@@ -1480,7 +1492,7 @@ beginsymbol(1/2order_width# + 2side_bearing#,
   pair centre;
   centre := (w/2, (h - d)/2);
 
-  draw_integral([0])(1/2, centre);
+  draw_integral([0])(1/4, centre);
 endchar;
 
 beginsymbol(order_width#, asc_height#, 0)
@@ -1502,9 +1514,13 @@ beginsymbol(order_width#, asc_height#, 0)
 
   pickup pencircle scaled rule_thickness;
 
-  draw z0{dir 40} .. {up}z3 .. {dir 230}z4;
+  z0a = z0r - .5rule_thickness*dir -50;
+  penpos0a(rule_thickness,-50);
+  penpos4(rule_thickness,140);
 
-  penlabels (0,1,3,4);
+  penstroke z0a.e{dir 40} .. {up}z3e .. {dir 230}z4e;
+
+  penlabels (0,0a,1,3,4);
   endchar;
 
 beginsymbol(order_width#, asc_height#, 0)
@@ -1785,17 +1801,15 @@ currenttransform := identity slanted slant yscaled aspect_ratio scaled granulari
 beginsymbol(11u#, x_height#, 8/25asc_height#);
   "Weierstrass p";
 
-  pickup pencircle scaled 1/2rule_thickness;
-
   numeric theta;
   theta = 90-angle(8u,h);
   slope := -h/8u;  % angle at middle
   superness := 1/sqrt 2;
   superpull := 1/6;
 
-  penpos2(1/2rule_thickness, -90);
-  penpos1(5/6rule_thickness,theta);
-  penpos7(1/2rule_thickness, -90);
+  penpos2(rule_thickness, -90);
+  penpos1(rule_thickness,theta);
+  penpos7(rule_thickness, -90);
 
   x2 + .5u = x1 = x7 - .5u = 3u;
   top y2l = h;
@@ -1805,7 +1819,7 @@ beginsymbol(11u#, x_height#, 8/25asc_height#);
   lft x3l = hround .5u;
   rt  x6r = hround max(rt x7 + .5, .5w - .25u);
 
-  x3r - x3l = x6r - x6l = (hround 3/4rule_thickness) - 1/10rule_thickness;
+  x3r - x3l = x6r - x6l = rule_thickness;
 
   ellipse_set(2l,3l,4l,1l);
   ellipse_set(2r,3r,4r,1r);
@@ -1815,14 +1829,14 @@ beginsymbol(11u#, x_height#, 8/25asc_height#);
   y3 = y3r;
   y6 = y6r;
 
-  filldraw stroke super_arc.e(2,3) & z3e{down} .. z4e --- z5e .. z6e{down} & super_arc.e(6,7);  % flourish
+  fill stroke super_arc.e(2,3) & z3e{down} .. z4e --- z5e .. z6e{down} & super_arc.e(6,7);  % flourish
 
-  penpos8(1/2rule_thickness, 180);
-  penpos9(1/2rule_thickness, 90);
+  penpos8(rule_thickness, 180);
+  penpos9(rule_thickness, 90);
   penpos10(rule_thickness, 0);
-  penpos11(1/2rule_thickness, -90);
-  penpos12(1/2rule_thickness, -180);
-  penpos13(5/7rule_thickness, -180);
+  penpos11(rule_thickness, -90);
+  penpos12(rule_thickness, -180);
+  penpos13(rule_thickness, -180);
 
   rt  x10r = hround(w - 1.5u + 1/2rule_thickness);
   lft x12r = hround(.5w - .5u);
@@ -1833,10 +1847,12 @@ beginsymbol(11u#, x_height#, 8/25asc_height#);
   y10 = .5[y9,y11];
   bot y11r = y8;
 
-  filldraw stroke z7e{left} ... z8e{up} ... pulled_arc.e(9,10) & pulled_arc.e(10,11);  % stem and bowl
-
   y13 - 5/7rule_thickness = .15h;
-  bulb(11,12,13);  % bulb
+  z13r = z12r;  
+  
+  filldraw stroke z7e{left} ... z8e{up} ... pulled_arc.e(9,10) & pulled_arc.e(10,11) & pulled_arc.e(11,12);  % stem and bowl
+
+%  bulb(11,12,13);  % bulb
 
   penlabels(1,2,3,4,5,6,7,8,9,10,11,12,13);
 endchar;
@@ -1844,17 +1860,15 @@ endchar;
 beginsymbol(11u#, 11/10asc_height#, 1/10asc_height#);
   "powerset";
 
-  pickup pencircle scaled 1/2rule_thickness;
-
   numeric theta;
   theta = 90 - angle(12/7*8u, h);
   slope := -h/(12/7*8u);  % angle at middle
   superness := 1/sqrt 2;
   superpull := 1/6;
 
-  penpos2(1/2rule_thickness, -90);
+  penpos2(rule_thickness, -90);
   penpos1(rule_thickness,theta);
-  penpos7(1/2rule_thickness, -90);
+  penpos7(rule_thickness, -90);
 
   x2 + .5u = x1 = x7 - .5u = 3u;
   top y2l = h;
@@ -1864,7 +1878,7 @@ beginsymbol(11u#, 11/10asc_height#, 1/10asc_height#);
   lft x3l = hround .5u;
   rt  x6r = hround max(rt x7 + .5, .5w - .25u);
 
-  x3r - x3l = x6r - x6l = (hround 3/4rule_thickness) - 1/10rule_thickness;
+  x3r - x3l = x6r - x6l = rule_thickness;
 
   ellipse_set(2l,3l,4l,1l);
   ellipse_set(2r,3r,4r,1r);
@@ -1874,13 +1888,13 @@ beginsymbol(11u#, 11/10asc_height#, 1/10asc_height#);
   y3 = y3r;
   y6 = y6r;
 
-  filldraw stroke super_arc.e(2,3) & z3e{down} .. z4e --- z5e .. z6e{down} & super_arc.e(6,7);  % flourish
+  fill stroke super_arc.e(2,3) & z3e{down} .. z4e --- z5e .. z6e{down} & super_arc.e(6,7);  % flourish
 
-  penpos8(1/2rule_thickness, 180);
-  penpos9(1/2rule_thickness, 90);
+  penpos8(rule_thickness, 180);
+  penpos9(rule_thickness, 90);
   penpos10(rule_thickness, 0);
-  penpos11(1/2rule_thickness, -90);
-  penpos12(1/2rule_thickness, -180);
+  penpos11(rule_thickness, -90);
+  penpos12(rule_thickness, -180);
   penpos13(5/7rule_thickness, -180);
 
   rt  x10r = hround(w - 1.5u + 1/2rule_thickness);
@@ -1892,10 +1906,13 @@ beginsymbol(11u#, 11/10asc_height#, 1/10asc_height#);
   y10 = .5[y9,y11];
   bot y11r = y8;
 
-  filldraw stroke z7e{left} ... z8e{up} ... pulled_arc.e(9,10) & pulled_arc.e(10,11);  % stem and bowl
-
+  z13r = z12r;
   y13 - 5/7rule_thickness = y8 + 1/10h;
-  bulb(11,12,13);  % bulb
+
+  fill stroke z7e{left} ... z8e{up} ... pulled_arc.e(9,10) & pulled_arc.e(10,11) & pulled_arc.e(11,12);  % stem and bowl
+
+%  y13 - 5/7rule_thickness = y8 + 1/10h;
+%  bulb(11,12,13);  % bulb
 
   penlabels(1,2,3,4,5,6,7,8,9,10,11,12,13);
 endchar;
@@ -1906,33 +1923,39 @@ endgroup;
 % They should stay consistent.
 
 beginoperator(plus_size#, 1); "upside down logical not";
-  pickup rule_pen;
 
   r := plus_size/2; % - 11/10rule_thickness;
 
-  draw (centre + r * dir 180) -- (centre + r * dir 0)
-                              -- (centre + r * dir 0 + equal_spread * dir 90);
+  z1 = centre + r * dir 180; z2 = centre + r * dir 0;
+  z3 = centre + r * dir 0 + equal_spread * dir 90;
+  z2a = z2r;
+  
+  draw_line(1,2);
+  draw_line(2a,3);
 endchar;
 
 beginoperator(plus_size#, 1); "upside down reversed logical not";
-  pickup rule_pen;
 
   r := plus_size/2; % - 11/10rule_thickness;
 
-  draw (centre + r * dir 180 + equal_spread * dir 90)
-    -- (centre + r * dir 180) -- (centre + r * dir 0)
+  z1 = centre + r * dir 180 + equal_spread * dir 90;
+  z2 = centre + r * dir 180; z3 = centre + r * dir 0;
+  z2a = z2r;
+  
+  draw_line(1,2); draw_line(2a,3);
 endchar;
 
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "half square union";
-    pickup rule_pen;
 
     z3 - z0 = z2 - z1 = plus_size * dir 0;
     z0 - z1 = sign * plus_size * dir 90;
 
     1/2[1/2[z0,z1], 1/2[z2,z3]] = centre;
 
-    draw z0 -- z1 -- z2;
+    z1a = z1;
+    
+    draw_line(0,1); draw_line(1a,2);
   endchar;
 
   beginoperator(plus_size#, 1); "half square union";
@@ -1956,17 +1979,27 @@ for alpha = 0, 90, 180, 270:
     z2 = z1 + 1/2plus_size * dir (alpha + 90);
     z3 = z1 - 1/2plus_size * dir (alpha + 90);
 
-    draw z2{dir (alpha - 40)}
-      .. {dir alpha}z0{dir (alpha + 180)}
-      .. {dir (alpha - 140)}z3{dir (alpha + 40)}
-      .. {dir (alpha + 140)}z2 & cycle;
-
+    z3a = z3;
+    
+    penpos0(rule_thickness,-90+alpha);
+    penpos2(rule_thickness,120+90+alpha);
+    penpos3(rule_thickness,240+90+alpha);
+    penpos3a(rule_thickness,240+90+180+alpha);
+      
+    penstroke z0e{dir (alpha + 180)} .. {dir (alpha - 140)}z3e;
+    penstroke z2e{dir (alpha - 40)} .. {dir alpha}z0e;
+    penstroke z3a.e{dir (alpha + 40)}  .. {dir (alpha + 140)}z2e;
+%    draw z2{dir (alpha - 40)} .. {dir alpha}z0{dir (alpha + 180)}
+%      .. {dir (alpha - 140)}z3{dir (alpha + 40)}
+%      .. {dir (alpha + 140)}z2 .. cycle;
+    penlabels(0,1,2,3,3a);
+    
   endchar;
 endfor;
 
 for alpha = 0, 90, 180, 270:
   beginoperator(6/5plus_size#, 1); "slice";
-    pickup rule_pen;
+%    pickup rule_pen;
 
     z1 - 1/2[z0,z2] = plus_size * dir alpha;
 
@@ -1974,7 +2007,15 @@ for alpha = 0, 90, 180, 270:
 
     7/12[z1,1/2[z0,z2]] = centre;
 
-    draw z1 -- z0{dir (alpha + 120)} .. {dir (alpha + 60)}z2 -- cycle;
+    z0a = z0r;
+    z2a = z2l;
+
+    penpos0a(rule_thickness,angle(z1-z0));
+    penpos2a(rule_thickness,angle(z1-z2));
+    
+    draw_arrow(2,1,0);
+    penstroke z0a.e{dir (alpha + 120)} .. {dir (alpha + 60)}z2a.e;
+    penlabels(0,0a,1,2,2a);
   endchar;
 endfor;
 
