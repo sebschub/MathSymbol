@@ -755,8 +755,18 @@ def draw_stroke_through(suffix $,#)(expr pos, spread) =
   begingroup;
     stroke_len := 1/2spread / cosd 15;
 
-    pickup stroke_pen;
     z$ = pos + stroke_len * dir 75; z# = pos - stroke_len * dir 75;
+    draw_line_scaled($,#)(stroke_through_thickness_factor);
+    penlabels($,#);
+  endgroup;
+enddef;
+
+def draw_stroke_through_arrow(suffix $,#)(expr pos, alpha, spread)(text angles) =
+  begingroup;
+    stroke_dir := arrow_dir + select(alpha/45)(angles);
+    stroke_len := 1/2spread / sind (stroke_dir - arrow_dir);
+
+    z$ = pos + stroke_len * dir stroke_dir; z# = pos - stroke_len * dir stroke_dir;
     draw_line_scaled($,#)(stroke_through_thickness_factor);
     penlabels($,#);
   endgroup;

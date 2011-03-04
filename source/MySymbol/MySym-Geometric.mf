@@ -2088,15 +2088,13 @@ endchar;
 
 for alpha = 0, 90, 180, 270:
   beginoperator(med_op_size#, 1); "medium filled triangle (" & decimal alpha & ")";
-    pickup rule_pen;
-    draw triangle(centre, w/2-side_bearing, alpha);
+%    draw triangle(centre, w/2-side_bearing, alpha);
     fill triangle(centre, w/2-side_bearing, alpha);
   endchar;
 endfor;
 
 beginoperator(med_op_size#/sqrt(2), 1); "medium filled square";
-  pickup rule_pen;
-  draw_square(1,2,3,4)(centre, w/2 - side_bearing, 0);
+%  draw_square(1,2,3,4)(centre, w/2 - side_bearing, 0);
   fill square(centre, w/2 - side_bearing, 0);
 endchar;
 
@@ -2106,7 +2104,7 @@ beginoperator(large_op_size#, 1); "large filled star";
   r := w/2 - side_bearing;
   reg_poly_points(a)(5, centre, r, 90);
   reg_poly_points(b)(5, centre, .4r, 126);
-  draw z.a0 -- z.b0 -- z.a1 -- z.b1 -- z.a2 -- z.b2 -- z.a3 -- z.b3 -- z.a4 -- z.b4 -- cycle;
+%  draw z.a0 -- z.b0 -- z.a1 -- z.b1 -- z.a2 -- z.b2 -- z.a3 -- z.b3 -- z.a4 -- z.b4 -- cycle;
   fill z.a0 -- z.b0 -- z.a1 -- z.b1 -- z.a2 -- z.b2 -- z.a3 -- z.b3 -- z.a4 -- z.b4 -- cycle;
 endchar;
 
@@ -2161,7 +2159,6 @@ for negated = 0, 1:
 
   beginorder(1, order_width# + rule_thickness#, ifneg(2,4) * equal_spread# + rule_thickness#);
     "closedequal";
-    pickup rule_pen;
 
     z2 - z1 = z1 - z0 = equal_spread * dir 90;
     z5 - z4 = z4 - z3 = equal_spread * dir 90;
@@ -2169,11 +2166,14 @@ for negated = 0, 1:
     1/2[z0, z2] = left_point;
     1/2[z3, z5] = right_point;
 
-    draw z0 -- z3;
-    draw z1 -- z4 -- z5 -- z2 -- cycle;
+    draw_line(0,3);
+    draw_line(1,4);
+  z4a = z4r; draw_line(4a,5);
+  z5a = z5r; draw_line(5a,2);
+  z2a = z2r; z1a = z1r; draw_line(2a,1a);
 
     if negated = 1:
-      stroke_through(centre, 4equal_spread);
+      draw_stroke_through(6,7)(centre, 4equal_spread);
     fi;
   endchar;
 
@@ -2428,25 +2428,24 @@ beginarrow(0, 5/6, 7/4arrow_spread#);
 endchar;
 
 beginoperator(plus_size#, 1); "negated medium bar";
-  pickup rule_pen;
-
   r := plus_size/2; % - 11/10rule_thickness;
 
-  draw (centre + r * dir 90) -- (centre + r * dir 270);
+  z1a = centre + r * dir 90; z1b = centre + r * dir 270;
+  draw_line(1a,1b);
 
-  stroke_through_arrow(centre, 90, 2/3plus_size, 45);
+  draw_stroke_through_arrow(3,4)(centre, 90, 2/3plus_size, 45);
 endchar;
 
 beginoperator(plus_size#, 1); "double bar";
-  pickup rule_pen;
-
   r := plus_size/2; % - 11/10rule_thickness;
 
   z1 - z0 = equal_spread * right;
   1/2[z0,z1] = centre;
 
-  draw (z0 + r * up) -- (z0 + r * down);
-  draw (z1 + r * up) -- (z1 + r * down);
+  z0a = z0 + r * up; z0b = z0 + r * down;
+  draw_line(0a,0b);
+  z1a = z1 + r * up; z1b = z1 + r * down;
+  draw_line(1a,1b);
 endchar;
 
 beginoperator(plus_size#, 1); "negated double bar";
@@ -2457,9 +2456,11 @@ beginoperator(plus_size#, 1); "negated double bar";
   z1 - z0 = equal_spread * right;
   1/2[z0,z1] = centre;
 
-  draw (z0 + r * up) -- (z0 + r * down);
-  draw (z1 + r * up) -- (z1 + r * down);
+  z0a = z0 + r * up; z0b = z0 + r * down;
+  draw_line(0a,0b);
+  z1a = z1 + r * up; z1b = z1 + r * down;
+  draw_line(1a,1b);
 
-  stroke_through_arrow(centre, 90, plus_size, 40);
+  draw_stroke_through_arrow(3,4)(centre, 90, plus_size, 40);
 endchar;
 
