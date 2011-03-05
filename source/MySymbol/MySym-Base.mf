@@ -4,6 +4,7 @@ mode_setup;
 % mf2pt1 support
 
 if known ps_output:
+  input findoutl;
   pencircle      := mfplain_pencircle;
   let filldraw   := mfplain_filldraw;
   let unfilldraw := mfplain_unfilldraw;
@@ -588,6 +589,20 @@ def draw_arrow(suffix $,$$,$$$) =
 
   penlabels($,$$,$$$)
 enddef;
+
+def arrow_path(suffix $,$$,$$$)(text P) =
+  path a,b;
+  penpos$(rule_thickness,angle(z$$-z$)-90);
+  penpos$$$(rule_thickness,angle(z$$$-z$$)+90);
+
+  penpos$$(rule_thickness,angle(z$$$-z$));
+  
+  a:=stroke z$$e .. z$e;
+  b:=stroke z$$e .. z$$$e;
+  find_outlines(b,a)(P);
+  penlabels($,$$,$$$);
+enddef;
+
 
 def draw_arrow_point(suffix $,$$,$$$,#) = 
   numeric s,t;
