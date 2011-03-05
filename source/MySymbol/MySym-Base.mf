@@ -657,9 +657,9 @@ enddef;
 
 def draw_triangle(suffix $,$$,$$$,$$$$,$$$$$,#,##,###)(expr centre, size, agl) =
   numeric s,t;
-  z$ = centre + size * dir agl;
-  z$$ = centre + size * dir (agl + 120);
-  z$$$ = centre + size * dir (agl + 240);
+  z$ = centre + (size-sqrt(3)/2*rule_thickness) * dir agl;
+  z$$ = centre + (size-sqrt(3)/2*rule_thickness) * dir (agl + 120);
+  z$$$ = centre + (size-sqrt(3)/2*rule_thickness) * dir (agl + 240);
 
   penpos$(rule_thickness,angle(z$$$-z$$));
   penpos$$(rule_thickness,angle(z$$$-z$));
@@ -688,10 +688,10 @@ def draw_triangle(suffix $,$$,$$$,$$$$,$$$$$,#,##,###)(expr centre, size, agl) =
 enddef;
 
 def draw_circle(suffix $,$$,$$$,$$$$)(expr centre, radius) =
-  z$    = centre + radius * dir   0;
-  z$$   = centre + radius * dir  90;
-  z$$$  = centre + radius * dir 180;
-  z$$$$ = centre + radius * dir 270;
+  z$.r    = centre + radius * dir   0;
+  z$$.r   = centre + radius * dir  90;
+  z$$$.r  = centre + radius * dir 180;
+  z$$$$.r = centre + radius * dir 270;
   penpos$(rule_thickness,0);
   penpos$$(rule_thickness,90);
   penpos$$$(rule_thickness,180);
@@ -702,10 +702,10 @@ def draw_circle(suffix $,$$,$$$,$$$$)(expr centre, radius) =
 enddef;
 
 def draw_square(suffix $,$$,$$$,$$$$)(expr centre, size, angle) =
-  z$    = centre + sqrt(2) * size * dir (angle +  45);
-  z$$   = centre + sqrt(2) * size * dir (angle + 135);
-  z$$$  = centre + sqrt(2) * size * dir (angle + 225);
-  z$$$$ = centre + sqrt(2) * size * dir (angle + 315);
+  z$.r    = centre + sqrt(2) * size * dir (angle +  45);
+  z$$.r   = centre + sqrt(2) * size * dir (angle + 135);
+  z$$$.r  = centre + sqrt(2) * size * dir (angle + 225);
+  z$$$$.r = centre + sqrt(2) * size * dir (angle + 315);
 
   penpos$   (sqrt(2)*rule_thickness, (angle +  45));
   penpos$$  (sqrt(2)*rule_thickness, (angle + 135));
