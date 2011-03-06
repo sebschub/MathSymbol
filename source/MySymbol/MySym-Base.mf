@@ -76,7 +76,7 @@ def beginarrow(expr angle, scale, spread) =
     fi;
 
   beginsymbol(arrow_len# * abs (cosd (angle)) + spread * abs (sind (angle)) + 2side_bearing#,
-      vcentre(arrow_len# * abs (sind (angle)) + spread * abs (cosd (angle)) + rule_thickness#));
+      vcentre(arrow_len# * abs (sind (angle)) + spread * abs (cosd (angle))) );
 
     pair centre, head, foot;
 
@@ -480,10 +480,10 @@ def draw_integral(suffix $)(expr scale, center) =
 enddef;
 
 def ppos_cut(suffix $)(expr a, b) =
-  if sind(a) = 0 :
-    penpos$(rule_thickness,90);
+  if sind(a-b) = 0 :
+    penpos$(rule_thickness,0);
   else:
-    penpos$(rule_thickness/abs(sind(a)),b);
+    penpos$(rule_thickness/abs(sind(a-b)),b);
   fi
 enddef;
 
@@ -553,17 +553,19 @@ def draw_prec_cut(suffix $,$$,$$$)(expr l, r, spread) =
   z$$$ = (r + 1/2spread * dir (angle (r-l) + 90));
 
   if (angle(l-r)>0) :
-    ppos_cut($)(angle(z$$-z$),angle(z$$$-z$));
+    ppos_cut($)(50+angle(z$$$-z$),angle(z$$$-z$));
 %    ppos_cut($$)(angle(z$$-z$),angle(z$$$-z$));
-    ppos_cut($$$)(angle(z$$-z$),angle(z$$$-z$));
+    ppos_cut($$$)(50+angle(z$$$-z$),angle(z$$$-z$));
 %    penpos$(rule_thickness,angle(z$$$-z$));
+%    ppos_cut($$)(angle(z$$-z$),angle(z$$$-z$));
     penpos$$(rule_thickness,angle(z$$$-z$));
 %    penpos$$$(rule_thickness,angle(z$$$-z$));
   else:
-    ppos_cut($)(angle(z$-z$$),angle(z$-z$$$));
+    ppos_cut($)(50+angle(z$-z$$$),angle(z$-z$$$));
 %    ppos_cut($$)(angle(z$-z$$),angle(z$-z$$$));
-    ppos_cut($$$)(angle(z$-z$$),angle(z$-z$$$));
+    ppos_cut($$$)(50+angle(z$-z$$$),angle(z$-z$$$));
 %    penpos$(rule_thickness,angle(z$-z$$$));
+%    ppos_cut($$)(angle(z$-z$$),angle(z$-z$$$));    
     penpos$$(rule_thickness,angle(z$-z$$$));
 %    penpos$$$(rule_thickness,angle(z$-z$$$));
   fi
@@ -627,10 +629,11 @@ def draw_arrow_cut(suffix $,$$,$$$) =
   %penpos$(rule_thickness,angle(z$$$-z$));
   %penpos$$$(rule_thickness,angle(z$$$-z$));
 
-  ppos_cut($)(angle(z$-z$$),angle(z$$$-z$));
-  ppos_cut($$$)(angle(z$-z$$),angle(z$$$-z$));
+  ppos_cut($)(angle(z$$-z$),angle(z$$$-z$));
+  ppos_cut($$$)(angle(z$$-z$$$),angle(z$$$-z$));
   
-  penpos$$(rule_thickness,angle(z$$$-z$));
+  ppos_cut($$)(angle(z$$-z$),angle(z$$$-z$));
+  %penpos$$(rule_thickness,angle(z$$$-z$));
   
   penstroke z$e .. z$$e;
   penstroke z$$e .. z$$$e;
@@ -655,35 +658,20 @@ def draw_subset(suffix $,$$,$$$,$$$$,$$$$$)(expr l, r, spread) =
   %penlabels($,$$,$$$,$$$$,$$$$$);
 enddef;
 
-def draw_triangle(suffix $,$$,$$$,$$$$,$$$$$,#,##,###)(expr centre, size, agl) =
+def draw_triangle(suffix $,$$,$$$)(expr centre, size, agl) =
   numeric s,t;
   z$ = centre + (size-sqrt(3)/2*rule_thickness) * dir agl;
   z$$ = centre + (size-sqrt(3)/2*rule_thickness) * dir (agl + 120);
   z$$$ = centre + (size-sqrt(3)/2*rule_thickness) * dir (agl + 240);
 
-  penpos$(rule_thickness,angle(z$$$-z$$));
-  penpos$$(rule_thickness,angle(z$$$-z$));
-  penpos$$$(rule_thickness,angle(z$-z$$));
+  penpos$(rule_thickness/sind(30),agl);
+  penpos$$(rule_thickness/sind(30),agl+120);
+  penpos$$$(rule_thickness/sind(30),agl+240);
 
   penstroke z$e .. z$$e;
   penstroke z$$$e .. z$e;
+  penstroke z$$e .. z$$$e;
 
-  z$$$$ = z$$; z$$$$$ = z$$$;
-  penpos$$$$(rule_thickness,angle(z$$$-z$)+180);
-  penpos$$$$$(rule_thickness,angle(z$-z$$));
-  
-  penstroke z$$$$e .. z$$$$$e;
-
-  z# = t[z$l,z$$l];
-  z# = s[z$r,z$$$r];
-
-  z## = t[z$$l,z$l];
-  z### = t[z$$$l,z$$r];
-  
-  fill z$l -- z$r -- z# -- cycle;
-  fill z$$l -- z$$r -- z## -- cycle;
-  fill z$$$l -- z$$$r -- z### -- cycle;
-  
   penlabels($,$$,$$$);
 enddef;
 
@@ -744,26 +732,26 @@ def draw_smile(suffix $,$$,$$$)(expr sign, l, r, spread, round_smile) =
 
 enddef;
     
-def draw_sim(suffix $,$$,$$$,#,##,###,####)(expr l, r) =
-  z$    = 0/26[l, r] - 1/3equal_spread * dir ((angle (r-l) + 90) mod 180);
-  z$$   = 1/26[l, r];
-  z$$$  = 5/26[l, r] + 1/3equal_spread * dir ((angle (r-l) + 90) mod 180);
-  z#    = 13/26[l, r];
-  z##   = 21/26[l, r] - 1/3equal_spread * dir ((angle (r-l) + 90) mod 180);
-  z###  = 25/26[l, r];
-  z#### = 26/26[l, r] + 1/3equal_spread * dir ((angle (r-l) + 90) mod 180);
+def draw_sim(suffix $)(expr l, r) =
+  z$1    = 0/26[l, r] - 1/3equal_spread * dir ((angle (r-l) + 90) mod 180);
+  z$2   = 1/26[l, r];
+  z$3  = 5/26[l, r] + 1/3equal_spread * dir ((angle (r-l) + 90) mod 180);
+  z$4    = 13/26[l, r];
+  z$5   = 21/26[l, r] - 1/3equal_spread * dir ((angle (r-l) + 90) mod 180);
+  z$6  = 25/26[l, r];
+  z$7 = 26/26[l, r] + 1/3equal_spread * dir ((angle (r-l) + 90) mod 180);
 
-  penpos$(rule_thickness,angle(z$$-z$)+90);
-  penpos$$(rule_thickness,(angle(z$$$-z$$)+angle(z$$-z$))/2+90);
-  penpos$$$(rule_thickness,(angle(z#-z$$$)+angle(z$$$-z$$))/2+90);
-  penpos#(rule_thickness,(angle(z##-z#)+angle(z#-z$$$))/2+90);
-  penpos##(rule_thickness,(angle(z###-z##)+angle(z##-z#))/2+90);
-  penpos###(rule_thickness,(angle(z####-z###)+angle(z###-z##))/2+90);
-  penpos####(rule_thickness,angle(z####-z###)+90);
+  penpos$1(rule_thickness,angle(z$2-z$1)+90);
+  penpos$2(rule_thickness,(angle(z$3-z$2)+angle(z$2-z$1))/2+90);
+  penpos$3(rule_thickness,(angle(z$4-z$3)+angle(z$3-z$2))/2+90);
+  penpos$4(rule_thickness,(angle(z$5-z$4)+angle(z$4-z$3))/2+90);
+  penpos$5(rule_thickness,(angle(z$6-z$5)+angle(z$5-z$4))/2+90);
+  penpos$6(rule_thickness,(angle(z$7-z$6)+angle(z$6-z$5))/2+90);
+  penpos$7(rule_thickness,angle(z$7-z$6)+90);
 
-  penstroke z$e .. z$$e .. z$$$e .. z#e .. z##e .. z###e .. z####e;
+  penstroke z$1.e .. z$2.e .. z$3.e .. z$4.e .. z$5.e .. z$6.e .. z$7.e;
   
-  penlabels($,$$,$$$,#,##,###,####);
+  penlabels($1,$2,$3,$4,$5,$6,$7);
 enddef;
 
 def draw_stroke_through(suffix $,#)(expr pos, spread) =
@@ -785,4 +773,85 @@ def draw_stroke_through_arrow(suffix $,#)(expr pos, alpha, spread)(text angles) 
     draw_line_scaled($,#)(stroke_through_thickness_factor);
     penlabels($,#);
   endgroup;
+enddef;
+
+% left half of an arrow head
+def draw_arrowhead_left(suffix $)(expr pos, angle, spread) =
+  z$[0]=pos;
+  z$[1]=pos - 3/4spread * dir angle + spread/2 * dir (angle + 90);
+  z$[2]=pos - 1/4spread * dir angle;
+  penpos$[0](rule_thickness,angle+90);
+  penpos$[1](rule_thickness/sind(50),angle+90);
+  penpos$[2](rule_thickness,angle+90);
+
+  penlabels($[0],$[1],$[2]);
+
+  penstroke z$[0]e{dir (angle + 170)} .. {dir (angle + 130)}z$[1]e;
+ % penstroke z$[1]e{dir (angle - 50)}  .. {dir (angle -  50)}z$[2]e;
+enddef;
+
+% left half of an arrow head
+def arrowhead_left_path(suffix $)(expr pos, angle, spread)(text P) =
+  path a,b;
+  z$[0]=pos;
+  z$[1]=pos - 3/4spread * dir angle + spread/2 * dir (angle + 90);
+  z$[2]=pos - 1/4spread * dir angle;
+  penpos$[0](rule_thickness,angle+90);
+  penpos$[1](rule_thickness/sind(50),angle+90);
+  penpos$[2](rule_thickness,angle+90);
+
+  penlabels($[0],$[1],$[2]);
+
+  a := reverse stroke z$[0]e{dir (angle + 170)} .. {dir (angle + 130)}z$[1]e;
+%  b := stroke z$[1]e{dir (angle - 50)}  .. {dir (angle -  50)}z$[2]e;
+  fill a; %fill b;
+%  find_outlines(b,a)(P);
+enddef;
+
+% right half of an arrow head
+def draw_arrowhead_right(suffix $)(expr pos, angle, spread) =
+  z$[0]=pos;
+  z$[1]=pos - 3/4spread * dir angle + spread/2 * dir (angle - 90);
+  z$[2]=pos - 1/4spread * dir angle;
+  penpos$[0](rule_thickness,angle+90);
+  penpos$[1](rule_thickness/sind(50),angle+90);
+  penpos$[2](rule_thickness,angle+90);
+
+  penlabels($[0],$[1],$[2]);
+
+%  penstroke z$[2]e{dir (angle - 130)} .. {dir (angle - 130)}z$[1]e;
+  penstroke z$[1]e{dir (angle + 50)}  .. {dir (angle +  10)}z$[0]e;
+enddef;
+
+% right half of an arrow head
+def arrowhead_right_path(suffix $)(expr pos, angle, spread)(text P) =
+  path a,b;
+  z$[0]=pos;
+  z$[1]=pos - 3/4spread * dir angle + spread/2 * dir (angle - 90);
+  z$[2]=pos - 1/4spread * dir angle;
+  penpos$[0](rule_thickness,angle+90);
+  penpos$[1](rule_thickness/sind(50),angle+90);
+  penpos$[2](rule_thickness,angle+90);
+
+  penlabels($[0],$[1],$[2]);
+
+%  a:= stroke z$[2]e{dir (angle - 130)} .. {dir (angle - 130)}z$[1]e;
+  b:= reverse stroke z$[1]e{dir (angle + 50)}  .. {dir (angle +  10)}z$[0]e;
+  %fill a;
+  fill b;
+%  find_outlines(a,b)(P);
+enddef;
+
+% the whole arrow head
+def draw_arrowhead(suffix $,#)(expr pos, angle, spread) =
+%  if known ps_output:
+%    arrowhead_right_path(#)(pos, angle, spread)(P);
+%    arrowhead_left_path($)(pos, angle, spread)(Q);
+%    fill P[1]; fill Q[1];
+%    find_outlines(P[1],reverse Q[1])(R);
+%    fill R[1];
+%  else:
+    draw_arrowhead_left($)(pos, angle, spread);
+    draw_arrowhead_right(#)(pos, angle, spread);
+%  fi;
 enddef;

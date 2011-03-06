@@ -507,26 +507,26 @@ endfor;
 
 for alpha = 0, 90, 180, 270:
   beginoperator(small_op_size#, 1); "small triangle (" & decimal alpha & ")";
-    draw_triangle(1,2,3,4,5,6,7,8)(centre, w/2-side_bearing, alpha);
+    draw_triangle(1,2,3)(centre, w/2-side_bearing, alpha);
   endchar;
 endfor;
 
 for alpha = 0, 90, 180, 270:
   beginoperator(small_op_size#, 1); "small filled triangle (" & decimal alpha & ")";
-    draw_triangle(1,2,3,4,5,6,7,8)(centre, w/2-side_bearing, alpha);
+    draw_triangle(1,2,3)(centre, w/2-side_bearing, alpha);
     fill z1 -- z2 -- z3 -- cycle;
   endchar;
 endfor;
 
 for alpha = 0, 90, 180, 270:
   beginoperator(med_op_size#, 1); "medium triangle (" & decimal alpha & ")";
-    draw_triangle(1,2,3,4,5,6,7,8)(centre, w/2-side_bearing, alpha);
+    draw_triangle(1,2,3)(centre, w/2-side_bearing, alpha);
   endchar;
 endfor;
 
 for alpha = 0, 90, 180, 270:
   beginoperator(large_op_size#, 1); "large triangle (" & decimal alpha & ")";
-    draw_triangle(1,2,3,4,5,6,7,8)(centre, w/2-side_bearing, alpha);
+    draw_triangle(1,2,3)(centre, w/2-side_bearing, alpha);
   endchar;
 endfor;
 
@@ -607,7 +607,7 @@ endchar;
 
 beginoperator(4/5med_op_size#, 1); "medium circle triangle";
   draw_circle(1,2,3,4)(centre, 1/2(h+d));
-  draw_triangle(5,6,7,8,9,10,11,12)(centre, small_op_size/2, 90);
+  draw_triangle(5,6,7)(centre, small_op_size/2, 90);
 endchar;
 
 beginoperator(4/5med_op_size#, 1); "medium circle asterisk";
@@ -1080,7 +1080,7 @@ endfor;
 beginsymbol(2/3equal_spread# + 2side_bearing#, vcentre(plus_size#+rule_thickness#)); "wreath";
   z0 = (w/2, (h-d)/2);
 
-  draw_sim(1,2,3,4,5,6,7)(z0 + 1/2plus_size * dir 90, z0 - 1/2plus_size * dir 90);
+  draw_sim(1)(z0 + 1/2plus_size * dir 90, z0 - 1/2plus_size * dir 90);
 endchar;
 
 beginoperator(med_op_size#, 1); "angle";
@@ -2225,23 +2225,26 @@ for negated = 0, 1:
                      greater_spread# + ifneg(4/3, 8/3) * equal_spread# + rule_thickness#);
       "less sim";
 
-      pickup rule_pen;
-
       z1 - z0 = greater_spread * dir 90;
       y2 = 1/2[y0, y1];
       x0 = xpart right_point;
       x2 = xpart left_point;
       y3 = y4 = y0 - equal_spread;
-      x4 - x3 = sign * (x0 - x2);
+      x4 - x3 = sign * (x0 - x2) - rule_thickness;
       1/2[x3,x4] = xpart centre;
 
       1/2[y1, y4 - 1/3equal_spread] = ypart centre;
 
-      draw z0 -- z2 -- z1;
-      draw sim(z3, z4);
+    if sign=1:
+      draw_arrow_cut(1,2,0);
+    else:
+      draw_arrow_cut(0,2,1);
+    fi
+
+    draw_sim(5)(z3, z4);
 
       if negated = 1:
-        stroke_through(centre, 8/3equal_spread + greater_spread);
+        draw_stroke_through(6,7)(centre, 8/3equal_spread + greater_spread);
       fi;
     endchar;
   endfor;
@@ -2251,27 +2254,29 @@ for negated = 0, 1:
                      greater_spread# + ifneg(7/3, 9/3) * equal_spread# + rule_thickness#);
       "less approx";
 
-      pickup rule_pen;
-
       z1 - z0 = greater_spread * dir 90;
       y2 = 1/2[y0, y1];
       x0 = xpart right_point;
       x2 = xpart left_point;
       y3 = y4 = y0 - equal_spread;
       y5 = y6 = y4 - equal_spread;
-      x4 - x3 = sign * (x0 - x2);
+      x4 - x3 = sign * (x0 - x2)-rule_thickness;
       1/2[x3,x4] = xpart centre;
       x6 = x4;
       x5 = x3;
 
       1/2[y1, y6 - 1/3equal_spread] = ypart centre;
 
-      draw z0 -- z2 -- z1;
-      draw sim(z3, z4);
-      draw sim(z5, z6);
+      if sign=1:
+        draw_arrow_cut(1,2,0);
+      else:
+        draw_arrow_cut(0,2,1);
+      fi
+      draw_sim(7)(z3, z4);
+      draw_sim(14)(z5, z6);
 
       if negated = 1:
-        stroke_through(centre, 9/3equal_spread + greater_spread);
+        draw_stroke_through(21,22)(centre, 9/3equal_spread + greater_spread);
       fi;
     endchar;
   endfor;
@@ -2281,8 +2286,6 @@ for negated = 0, 1:
       greater_spread# + ifneg(1,3) * equal_spread# + rule_thickness#);
       "slanted equal or less than";
 
-      pickup rule_pen;
-
       z0 - z1 = greater_spread * dir 90;
       z3 - z2 = equal_spread * dir 90;
       z4 - z0 = equal_spread * dir 90;
@@ -2290,11 +2293,15 @@ for negated = 0, 1:
       1/2[z2, z3] = left_point;
       1/2[z1, z4] = right_point;
 
-      draw z0 -- z2 -- z1;
-      draw z3 -- z4;
+    if sign=1:
+      draw_arrow_cut(1,2,0);
+    else:
+      draw_arrow_cut(0,2,1);
+    fi
+      draw_line_cut(3,4);
 
       if negated = 1:
-        stroke_through(centre, 3equal_spread + greater_spread);
+        draw_stroke_through(5,6)(centre, 3equal_spread + greater_spread);
       fi;
     endchar;
   endfor;
@@ -2303,8 +2310,6 @@ for negated = 0, 1:
     beginorder(sign, order_width# + rule_thickness#,
                ifneg(1,3) * equal_spread# + 2/3[equal_spread#, greater_spread#] + rule_thickness#);
       "curly equal or curly less than";
-
-      pickup rule_pen;
 
       t := 2/3[equal_spread, greater_spread];
 
@@ -2316,17 +2321,31 @@ for negated = 0, 1:
       x0 = xpart left_point;
       x2 = xpart right_point;
 
-      path p;
+      path p,q,o;
 
       p = z0{z3 - z1} .. z2;
 
-      v := xpart (p intersectiontimes (z4 -- (z4 + h * dir (90 + sign * 20))));
+      v := xpart (p intersectiontimes (z4 -- (z4 + h * dir (90 + sign * 10))));
 
-      draw prec(z1, z3, t);
-      draw subpath (0,v) of p;
+      draw_prec(5,6,7)(z1, z3, t);
+      penpos2(rule_thickness,90+sign*40);
+      penpos0(rule_thickness,90);
 
+    % we want only a part of the path from z2 to z0 but with the same
+    % angle at the end
+      o = subpath (1-v,1) of (z2l{dir (-1*(90+sign*40))} .. {dir ((1+sign)*90)}z0l);
+      z8l = point 0 of o;
+      penpos8(rule_thickness,90+sign*40);
+
+      q := z2r{dir (-1*(90+sign*40))} .. {dir ((1+sign)*90)}z0r;
+      v := xpart (q intersectiontimes (z8l -- 1.2[z8l,z8r]));
+      q := subpath (v,1) of q;
+    
+    
+      fill o -- (reverse q) -- cycle;
+    
       if negated = 1:
-        stroke_through(centre, 3equal_spread + 2/3[equal_spread, greater_spread]);
+        draw_stroke_through(10,11)(centre, 3equal_spread + 2/3[equal_spread, greater_spread]);
       fi;
 
       labels(0,1,2,3,4);
@@ -2341,18 +2360,18 @@ for negated = 0, 1:
       z1 = foot;
       z4 = head;
 
-      pickup pencircle scaled 4/5rule_thickness;
+      z6 = arrowhead_intersection(head, arrow_dir, 14/10arrow_spread, z0 -- z3);
+      draw_line_scaled(0,6)(4/5);
+      %z7 = arrowhead_intersection(head, arrow_dir, 14/10arrow_spread, z1 -- z4);
+      draw_line_scaled(1,4)(4/5);
+      z8 =  arrowhead_intersection(head, arrow_dir, 14/10arrow_spread, z2 -- z5);
+      draw_line_scaled(2,8)(4/5);
 
-      draw z0 -- arrowhead_intersection(head, arrow_dir, 14/10arrow_spread, z0 -- z3);
-      draw z1 -- arrowhead_intersection(head, arrow_dir, 14/10arrow_spread, z1 -- z4);
-      draw z2 -- arrowhead_intersection(head, arrow_dir, 14/10arrow_spread, z2 -- z5);
+      draw_arrowhead(9,10)(head, arrow_dir, 14/10arrow_spread);
 
-      pickup rule_pen;
-
-      draw arrowhead(head, arrow_dir, 14/10arrow_spread);
-
+    
       if negated = 1:
-        stroke_through_arrow(1/2[foot, head - arrow_spread * dir arrow_dir], alpha, 21/10arrow_spread)
+        draw_stroke_through_arrow(11,12)(1/2[foot, head - arrow_spread * dir arrow_dir], alpha, 21/10arrow_spread)
                             (70, 70, 110, 110, 70, 70, 110, 110);
       fi
     endchar;
@@ -2364,8 +2383,6 @@ for sign = -1, 1:
   beginsymbol(4/3arrow_spread# + 2side_bearing#, vcentre(2arrow_spread# + rule_thickness#));
     "left shift";
 
-    pickup rule_pen;
-
     top y0 = top y1 = h - 1/2arrow_spread;
     bot y2 = -d;
 
@@ -2373,10 +2390,10 @@ for sign = -1, 1:
     x1 - x0 = sign * 4/3arrow_spread;
 
     x2 = x1;
+    z1a = z1+1/2rule_thickness*up;
+    draw_line(0,1); draw_line(1a,2);
 
-    draw z0 -- z1 -- z2;
-
-    draw arrowhead(z0, 90 + sign * 90, arrow_spread);
+    draw_arrowhead(3,4)(z0, 90 + sign * 90, arrow_spread);
   endchar;
 endfor;
 
@@ -2388,20 +2405,27 @@ for sign = -1, 1:
 
     z0 = centre + sign * arrow_len/2 * left;
     z1 = centre + arrow_len/2 * down;
-    z2 = centre + arrow_len/4 * up;
-    z3 = centre + sign * arrow_len/4 * right;
-    z4 = centre + arrow_len * (1/4sign, 1/2);
-    z5 = centre + arrow_len * (1/2sign, 1/4);
+    z2 = centre + (arrow_len-rule_thickness)/4 * up;
+    z3 = centre + sign * (arrow_len-rule_thickness)/4 * right;
+    z4 = centre + (arrow_len-rule_thickness) * (1/4sign, 1/2);
+    z5 = centre + (arrow_len-rule_thickness) * (1/2sign, 1/4);
 
-    draw z0 -- z3{sign * right} .. {up}z5 .. {sign * left}z4 .. {down}z2 -- z1;
+    penpos1(rule_thickness,90*(1-sign));
+    penpos2(rule_thickness,90*(1-sign));
+    penpos3(rule_thickness,90);
+    penpos4(rule_thickness,-90);
+    penpos5(rule_thickness,90*(1+sign));
+    penpos0(rule_thickness,90);
+    
+    penstroke z0e -- z3e{sign * right} .. {up}z5e .. {sign * left}z4e .. {down}z2e -- z1e;
 
-    draw arrowhead(z0, 90 + sign * 90, arrow_spread);
+    draw_arrowhead(c,d)(z0, 90 + sign * 90, arrow_spread);
+    penlabels(0,1,2,3,4,5);
   endchar;
 endfor;
 
 for sign = -1, 1:
   beginoperator(plus_size#, 1); "three times";
-    pickup rule_pen;
 
     r := plus_size/2;
     r := r * 1/3[1, sqrt 2];
@@ -2411,27 +2435,29 @@ for sign = -1, 1:
     z2 = centre + r * dir (270 + sign * 45);
     z3 = centre + 1/4rule_thickness * dir (270 + sign * 45);
 
-    draw z0 -- z1;
-    draw z3 -- z2;
+    draw_line(0,1);
+    draw_line(3,2);
   endchar;
 endfor;
 
 beginarrow(0, 5/6, 7/4arrow_spread#);
   "Vvdash";
 
-  pickup rule_pen;
-
   z0 = foot + 4/5equal_spread * dir arrow_dir;
   z1 = foot + 8/5equal_spread * dir arrow_dir;
 
-  draw z1 + 1/4rule_thickness * dir arrow_dir -- head;
-  draw (foot - 7/8arrow_spread * dir (arrow_dir + 90)) --
-       (foot + 7/8arrow_spread * dir (arrow_dir + 90));
-  draw (z0   - 7/8arrow_spread * dir (arrow_dir + 90)) --
-       (z0   + 7/8arrow_spread * dir (arrow_dir + 90));
-  draw (z1   - 7/8arrow_spread * dir (arrow_dir + 90)) --
-       (z1   + 7/8arrow_spread * dir (arrow_dir + 90));
-
+  z2 = z1 + 1/4rule_thickness * dir arrow_dir;
+  z3 = head;
+  draw_line(2,3);
+z4 = foot - 7/8arrow_spread * dir (arrow_dir + 90);
+z5 = foot + 7/8arrow_spread * dir (arrow_dir + 90);
+draw_line(4,5);
+z6 = z0   - 7/8arrow_spread * dir (arrow_dir + 90);
+z7 = z0   + 7/8arrow_spread * dir (arrow_dir + 90);
+draw_line(6,7);
+z8 = z1   - 7/8arrow_spread * dir (arrow_dir + 90);
+z9 = z1   + 7/8arrow_spread * dir (arrow_dir + 90);
+draw_line(8,9);
 endchar;
 
 beginoperator(plus_size#, 1); "negated medium bar";
