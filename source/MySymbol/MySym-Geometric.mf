@@ -369,7 +369,7 @@ for sign = 1, -1:
 
     draw_subset(1,2,3,4,5)(centre - sign * 1/2plus_size * dir 90,
                 centre + sign * 1/2plus_size * dir 90,
-                plus_size);
+                plus_size - rule_thickness);
   endchar;
 endfor;
 
@@ -378,10 +378,10 @@ for sign = 1, -1:
 
     draw_subset(1,2,3,4,5)(centre - sign * 5/18plus_size * dir 90,
                 centre + sign * 2/3plus_size * dir 90,
-                5/9plus_size);
+                5/9plus_size - rule_thickness);
     draw_subset(6,7,8,9,10)(centre - sign * 2/3plus_size * dir 90,
                 centre + sign * 2/3plus_size * dir 90,
-                4/3plus_size);
+                4/3plus_size - rule_thickness);
   endchar;
 endfor;
 
@@ -390,7 +390,7 @@ for sign = 1, -1:
 
     draw_subset(1,2,3,4,5)(centre - sign * 1/2plus_size * dir 90,
                 centre + sign * 1/2plus_size * dir 90,
-                plus_size);
+                plus_size - rule_thickness);
     fill circle(centre + sign * 1/6plus_size * dir 90, dot_size);
   endchar;
 endfor;
@@ -400,7 +400,7 @@ for sign = 1, -1:
 
     draw_subset(1,2,3,4,5)(centre - sign * 1/2plus_size * dir 90,
                 centre + sign * 1/2plus_size * dir 90,
-                plus_size);
+                plus_size - rule_thickness);
 
     t := 22/10rule_thickness;
     r := 1/2plus_size - t;
@@ -417,42 +417,43 @@ endfor;
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "square union";
     
-    z3 - z0 = z2 - z1 = plus_size * dir 0;
+    z3 - z0 = z2 - z1 = (plus_size - rule_thickness) * dir 0;
     z0 - z1 = sign * plus_size * dir 90;
 
     1/2[1/2[z0,z1], 1/2[z2,z3]] = centre;
 
     draw_line (0,1); draw_line(2,3);
 
-    z4 = z1 + sign * 1/2rule_thickness * dir(90);
-    z5 = z2 + sign * 1/2rule_thickness * dir(90);
-    draw_line(4,5);
+    z1a = z1 + 1/2*rule_thickness*(sign*up+left);
+    z2a = z2 + 1/2*rule_thickness*(sign*up+right);
     
+    draw_line(1a,2a);
   endchar;
 endfor;
 
 for sign = 1, -1:
   beginoperator(4/3plus_size#, 1); "double square union";
 
-    z3a - z0a = z2a - z1a = 4/3plus_size * dir 0;
+    z3a - z0a = z2a - z1a = (4/3plus_size - rule_thickness) * dir 0;
     z0a - z1a = sign * 4/3plus_size * dir 90;
 
     1/2[1/2[z0a,z1a], 1/2[z2a,z3a]] = centre;
 
-    z3b - z0b = z2b - z1b = 5/9plus_size * dir 0;
+    z3b - z0b = z2b - z1b = (5/9plus_size -rule_thickness) * dir 0;
     z0b - z1b = sign * 17/18plus_size * dir 90;
 
     y0b = y0a;
     1/2[x0b, x3b] = xpart centre;
 
     draw_line(0a, 1a); draw_line(2a,3a);
-    z4a = z1a + sign * 1/2rule_thickness * dir(90);
-    z5a = z2a + sign * 1/2rule_thickness * dir(90);
+    z4a = z1a + 1/2*rule_thickness*(sign*up+left);
+    z5a = z2a + 1/2*rule_thickness*(sign*up+right);
+    
     draw_line(4a,5a);
     
     draw_line(0b, 1b); draw_line(2b,3b);
-    z4b = z1b + sign * 1/2rule_thickness * dir(90);
-    z5b = z2b + sign * 1/2rule_thickness * dir(90);
+    z4b = z1b + 1/2*rule_thickness*(sign*up+left);
+    z5b = z2b + 1/2*rule_thickness*(sign*up+right);
     draw_line(4b,5b);
 
   endchar;
@@ -461,16 +462,17 @@ endfor;
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "square union dot";
 
-    z3 - z0 = z2 - z1 = plus_size * dir 0;
+    z3 - z0 = z2 - z1 = (plus_size - rule_thickness) * dir 0;
     z0 - z1 = sign * plus_size * dir 90;
 
     1/2[1/2[z0,z1], 1/2[z2,z3]] = centre;
 
     draw_line (0,1); draw_line(2,3);
 
-    z4 = z1 + sign * 1/2rule_thickness * dir(90);
-    z5 = z2 + sign * 1/2rule_thickness * dir(90);
-    draw_line(4,5);
+    z1a = z1 + 1/2*rule_thickness*(sign*up+left);
+    z2a = z2 + 1/2*rule_thickness*(sign*up+right);
+    
+    draw_line(1a,2a);
 
     fill circle(centre + sign * 1/6plus_size * dir 90, dot_size);
   endchar;
@@ -479,16 +481,17 @@ endfor;
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "square union plus";
 
-    z3 - z0 = z2 - z1 = plus_size * dir 0;
+    z3 - z0 = z2 - z1 = (plus_size - rule_thickness) * dir 0;
     z0 - z1 = sign * plus_size * dir 90;
 
     1/2[1/2[z0,z1], 1/2[z2,z3]] = centre;
 
     draw_line (0,1); draw_line(2,3);
 
-    z4 = z1 + sign * 1/2rule_thickness * dir(90);
-    z5 = z2 + sign * 1/2rule_thickness * dir(90);
-    draw_line(4,5);
+    z1a = z1 + 1/2*rule_thickness*(sign*up+left);
+    z2a = z2 + 1/2*rule_thickness*(sign*up+right);
+    
+    draw_line(1a,2a);
 
     t := 22/10rule_thickness;
     r := 1/2plus_size - t;
@@ -1947,25 +1950,31 @@ endchar;
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "half square union";
 
-    z3 - z0 = z2 - z1 = plus_size * dir 0;
+    z3 - z0 = z2 - z1 = (plus_size-rule_thickness) * dir 0;
     z0 - z1 = sign * plus_size * dir 90;
 
     1/2[1/2[z0,z1], 1/2[z2,z3]] = centre;
 
-    z1a = z1;
+    z1a = z1 + 1/2*rule_thickness*(sign*up+left);
+    z2a = z2 + 1/2*rule_thickness*(sign*up+right);
     
-    draw_line(0,1); draw_line(1a,2);
+    draw_line(0,1); draw_line(1a,2a);
+    penlabels(3);
   endchar;
 
   beginoperator(plus_size#, 1); "half square union";
     pickup rule_pen;
 
-    z3 - z0 = z2 - z1 = plus_size * dir 0;
+    z3 - z0 = z2 - z1 = (plus_size-rule_thickness) * dir 0;
     z0 - z1 = sign * plus_size * dir 90;
 
     1/2[1/2[z0,z1], 1/2[z2,z3]] = centre;
 
-    draw z1 -- z2 -- z3;
+    z1a = z1 + 1/2*rule_thickness*(sign*up+left);
+    z2a = z2 + 1/2*rule_thickness*(sign*up+right);
+
+    draw_line(2,3); draw_line(1a,2a);
+    penlabels(3);
   endchar;
 endfor;
 
@@ -2175,9 +2184,9 @@ for negated = 0, 1:
 
     draw_line(0,3);
     draw_line(1,4);
-  z4a = z4r; draw_line(4a,5);
-  z5a = z5r; draw_line(5a,2);
-  z2a = z2r; z1a = z1r; draw_line(2a,1a);
+    draw_line(2,5);
+    z4a = z4r+1/2rule_thickness*left; z5a = z5r+1/2rule_thickness*left; draw_line(4a,5a);
+    z2a = z2r-1/2rule_thickness*left; z1a = z1r-1/2rule_thickness*left; draw_line(2a,1a);
 
     if negated = 1:
       draw_stroke_through(6,7)(centre, 4equal_spread);
@@ -2186,7 +2195,6 @@ for negated = 0, 1:
 
   beginorder(1, order_width# + rule_thickness#, ifneg(2,4) * equal_spread# + rule_thickness#);
     "equalclosed";
-    pickup rule_pen;
 
     z2 - z1 = z1 - z0 = equal_spread * dir 90;
     z5 - z4 = z4 - z3 = equal_spread * dir 90;
@@ -2194,9 +2202,13 @@ for negated = 0, 1:
     1/2[z0, z2] = left_point;
     1/2[z3, z5] = right_point;
 
-    draw z0 -- z3 -- z4 -- z1 -- cycle;
-    draw z2 -- z5;
+    draw_line(0,3); 
+    draw_line(1,4);
+    draw_line(2,5);
 
+    z4a = z4r+1/2rule_thickness*left; z3a = z3r+1/2rule_thickness*left; draw_line(4a,3a);
+    z0a = z0r-1/2rule_thickness*left; z1a = z1r-1/2rule_thickness*left; draw_line(0a,1a);
+  
     if negated = 1:
       stroke_through(centre, 4equal_spread);
     fi;
@@ -2212,9 +2224,13 @@ for negated = 0, 1:
     1/2[z0, z2] = left_point;
     1/2[z3, z5] = right_point;
 
-    draw z0 -- z3 -- z5 -- z2 -- cycle;
-    draw (z1 + 1/4rule_thickness * right) -- (z4 + 1/4rule_thickness * left);
+    draw_line(0,3); 
+    draw_line(1,4);
+    draw_line(2,5);
 
+    z5a = z5r+1/2rule_thickness*left; z3a = z3r+1/2rule_thickness*left; draw_line(5a,3a);
+    z0a = z0r-1/2rule_thickness*left; z2a = z2r-1/2rule_thickness*left; draw_line(0a,2a);
+    
     if negated = 1:
       stroke_through(centre, 4equal_spread);
     fi;

@@ -655,7 +655,7 @@ def draw_subset(suffix $,$$,$$$,$$$$,$$$$$)(expr l, r, spread) =
   
   penstroke z$e .. z$$e{l - r} .. {(l-r) rotated -90}z$$$e{(l-r) rotated -90} ..
     {r-l}z$$$$e .. z$$$$$e;
-  %penlabels($,$$,$$$,$$$$,$$$$$);
+  penlabels($,$$,$$$,$$$$,$$$$$);
 enddef;
 
 def draw_triangle(suffix $,$$,$$$)(expr centre, size, agl) =
