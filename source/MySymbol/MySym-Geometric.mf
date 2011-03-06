@@ -1611,8 +1611,6 @@ endchar;
 
 beginsymbol(11u#, 0.85asc_height#, 0); "aleph";
 
-  pickup pencircle scaled 2/3rule_thickness;
-
   penpos 1(0, 65);
   penpos 2(rule_thickness, 65);
   penpos 3(rule_thickness, 65);
@@ -1620,8 +1618,8 @@ beginsymbol(11u#, 0.85asc_height#, 0); "aleph";
   penpos 5(rule_thickness, 65);
   penpos 6(rule_thickness, 65);
   penpos 7(rule_thickness, 65);
-  penpos 8(rule_thickness, 65);
-  penpos 9(rule_thickness, 65);
+  penpos 8(rule_thickness/sind(65), 65);
+  penpos 9(rule_thickness/sind(65), 65);
   penpos10(rule_thickness, 65);
   penpos11(rule_thickness, 65);
   penpos12(rule_thickness, 65);
@@ -1656,45 +1654,39 @@ beginsymbol(11u#, 0.85asc_height#, 0); "aleph";
 
   y11r := y11;  % prevent the stroke from sticking out at the other side
 
-  filldraw stroke z1e{down} ... {z3e-z2e}z2e -- z3e{z3e-z2e} ... {down}z4e;
-  filldraw stroke z12e -- z13e;
+  penstroke z1e{down} ... {z3e-z2e}z2e -- z3e{z3e-z2e} ... {down}z4e;
+  penstroke z12e -- z13e;
 
   alpha := angle (z5 - z7);
   beta  := (alpha + 90)/2;
-  penpos5'(3/2rule_thickness * abs cosd (155 - alpha), alpha - 90);
-  penpos7'(3/2rule_thickness * abs cosd (155 - beta),  beta  - 90);
+  penpos5'(rule_thickness, alpha - 90);
+  penpos7'(rule_thickness,  beta  - 90);
   z5' = z5;
   z7' = z7;
 
-  % We don't need a filldraw since the stroke is that thin.
-  % A filldraw might cause "Strange path" errors in low resolutions.
-
-  draw stroke z5'e{-dir alpha} .. {-dir beta}z7'e -- z8e;
-  filldraw stroke z8e -- z9e;
+  penstroke z5'e{-dir alpha} .. {-dir beta}z7'e -- z8e;
+  penstroke z8e -- z9e;
 
   alpha := angle (z10 - z6);
   beta := (alpha + 90)/2;
-  penpos 6'(3/2rule_thickness * abs cosd (155 - alpha), alpha - 90);
-  penpos10'(3/2rule_thickness * abs cosd (155 - beta),  beta  - 90);
+  penpos 6'(rule_thickness, alpha - 90);
+  penpos10'(rule_thickness,  beta  - 90);
   z6' = z6;
   z10' = z10;
 
-  draw stroke z6'e{dir alpha} .. {dir beta}z10'e -- z11e;
+  penstroke z6'e{dir alpha} .. {dir beta}z10'e -- z11e;
 
   penlabels(1,2,3,4,5,6,7,8,9,10,11,12,13,5',7');
 endchar;
 
 beginsymbol(11u#, 0.85asc_height#, 0); "beth";
-
-  pickup pencircle scaled 2/3rule_thickness;
-
-  penpos1(0, 65);
-  penpos2(rule_thickness, 65);
-  penpos3(rule_thickness, 65);
-  penpos4(rule_thickness, 65);
-  penpos5(rule_thickness, 65);
-  penpos6(rule_thickness, 65);
-  penpos7(rule_thickness, 65);
+  penpos1(rule_thickness, 65);
+  penpos2(rule_thickness/sind(65), 65);
+  penpos3(rule_thickness/sind(65), 65);
+  penpos4(1.2rule_thickness/sind(65), 65);
+  penpos5(1.2rule_thickness/sind(65), 65);
+  penpos6(rule_thickness/sind(65), 65);
+  penpos7(rule_thickness/sind(65), 65);
 
   x1l = side_bearing + rule_thickness;
   y1r = h;
@@ -1713,24 +1705,22 @@ beginsymbol(11u#, 0.85asc_height#, 0); "beth";
   x6 = w - x7l = side_bearing;
   y6 = y7 = y5;
 
-  filldraw stroke z1e{down} ... {z3e-z2e}z2e -- z3e{z3e-z2e} ... {down}z4e -- z5e;
-  filldraw stroke z6e -- z7e;
+  penstroke z1e{down} ... {z3e-z2e}z2e -- z3e{z3e-z2e} ... {down}z4e -- z5e;
+  penstroke z6e -- z7e;
 
   penlabels(1,2,3,4,5,6,7);
 endchar;
 
 beginsymbol(7u#, 0.85asc_height#, 0); "gimel";
 
-  pickup pencircle scaled 2/3rule_thickness;
-
-  penpos1(0, 65);
+  penpos1(rule_thickness, 65);
   penpos2(rule_thickness, 65);
   penpos3(rule_thickness, 65);
-  penpos4(rule_thickness, 65);
-  penpos5(rule_thickness, 65);
-  penpos6(rule_thickness, 65);
-  penpos7(rule_thickness, 65);
-  penpos8(rule_thickness, 65);
+  penpos4(1.2rule_thickness/sind(65), 65);
+  penpos5(1.2rule_thickness/sind(65), 65);
+  penpos6(rule_thickness/sind(65), 65);
+  penpos7(rule_thickness/sind(65), 65);
+  penpos8(rule_thickness/sind(65), 65);
 
   x1l = side_bearing + rule_thickness;
   y1r = h;
@@ -1754,8 +1744,8 @@ beginsymbol(7u#, 0.85asc_height#, 0); "gimel";
   rt x8r = lft x5l;
   y7 = y8 = y6;
 
-  filldraw stroke z1e{down} ... {z3e-z2e}z2e -- z3e{z3e-z2e} ... {down}z4e -- z5e .. z6e;
-  filldraw stroke z7e -- z8e;
+  penstroke z1e{down} ... {z3e-z2e}z2e -- z3e{z3e-z2e} ... {down}z4e -- z5e .. z6e;
+  penstroke z7e -- z8e;
 
   penlabels(1,2,3,4,5,6,7,8);
 endchar;
@@ -1764,26 +1754,26 @@ beginsymbol(11u#, 0.85asc_height#, 0); "daleth";
 
   pickup pencircle scaled 2/3rule_thickness;
 
-  penpos1(0, 65);
-  penpos2(rule_thickness, 65);
-  penpos3(rule_thickness, 65);
-  penpos4(1/2rule_thickness, 65);
-  penpos5(rule_thickness, 65);
+  penpos1(rule_thickness, 65);
+  penpos2(rule_thickness/sind(65), 65);
+  penpos3(rule_thickness/sind(65), 65);
+  penpos4(0.8rule_thickness/cosd(65), 65);
+  penpos5(rule_thickness/cosd(65), 65);
 
   x1l = side_bearing;
   y1r = h;
   x2 - x1 = ceiling (u/2);
   y1 - y2 = 3/2rule_thickness;
-  y2 = y3 = y4;
+  y2 = y3 = y4r;
 
   x3 = w - side_bearing;
   x4 = x3 - 3/2rule_thickness;
-  y5 = 0;
-  x5l = x4l;
+  y5l = 0;
+  x5 = x4;
 
 
-  filldraw stroke z1e{down} ... {z3e-z2e}z2e -- z3e{z3e-z2e};
-  filldraw stroke z4e{down} ... z5e;
+  penstroke z1e{down} ... {z3e-z2e}z2e -- z3e{z3e-z2e};
+  penstroke z4e{down} ... z5e;
 
   penlabels(1,2,3,4,5);
 endchar;
@@ -2036,30 +2026,37 @@ for alpha = 0, 90, 180, 270:
 endfor;
 
 beginoperator(5/6small_op_size#, 8/5); "small lozenge";
-  pickup rule_pen;
-
   lft x0 = w - rt x2 = side_bearing;
   y0 = y2 = ypart centre;
 
   x1 = x3 = xpart centre;
-  top y1 = h;
-  bot y3 = -d;
+  y1 = h;
+  y3 = -d;
 
-  draw z0 -- z1 -- z2 -- z3 -- cycle;
+  penpos0(rule_thickness/abs(sind(angle(z1-z0))),0);
+  penpos1(rule_thickness/abs(cosd(angle(z2-z1))),-90);
+  penpos2(rule_thickness/abs(sind(angle(z1-z0))),-180);
+  penpos3(rule_thickness/abs(cosd(angle(z2-z1))),90);
+  
+  penstroke z0e -- z1e -- z2e -- z3e -- cycle;
+
+  penlabels(0,1,2,3);
 endchar;
 
 beginoperator(5/6small_op_size#, 8/5); "small filled lozenge";
-  pickup rule_pen;
-
   lft x0 = w - rt x2 = side_bearing;
   y0 = y2 = ypart centre;
 
   x1 = x3 = xpart centre;
-  top y1 = h;
-  bot y3 = -d;
+  y1 = h;
+  y3 = -d;
 
-  draw z0 -- z1 -- z2 -- z3 -- cycle;
-  fill z0 -- z1 -- z2 -- z3 -- cycle;
+  penpos0(rule_thickness/abs(sind(angle(z1-z0))),0);
+  penpos1(rule_thickness/abs(cosd(angle(z2-z1))),-90);
+  penpos2(rule_thickness/abs(sind(angle(z1-z0))),-180);
+  penpos3(rule_thickness/abs(cosd(angle(z2-z1))),90);
+  
+  fill z0l -- z1l -- z2l -- z3l -- cycle;
 endchar;
 
 beginoperator(1/sqrt(2)*med_op_size#, 8/5); "medium lozenge";
@@ -2072,7 +2069,12 @@ beginoperator(1/sqrt(2)*med_op_size#, 8/5); "medium lozenge";
   top y1 = h;
   bot y3 = -d;
 
-  draw z0 -- z1 -- z2 -- z3 -- cycle;
+  penpos0(rule_thickness/abs(sind(angle(z1-z0))),0);
+  penpos1(rule_thickness/abs(cosd(angle(z2-z1))),-90);
+  penpos2(rule_thickness/abs(sind(angle(z1-z0))),-180);
+  penpos3(rule_thickness/abs(cosd(angle(z2-z1))),90);
+  
+  penstroke z0e -- z1e -- z2e -- z3e -- cycle;
 endchar;
 
 beginoperator(1/sqrt(2)*med_op_size#, 8/5); "medium filled lozenge";
@@ -2085,8 +2087,12 @@ beginoperator(1/sqrt(2)*med_op_size#, 8/5); "medium filled lozenge";
   top y1 = h;
   bot y3 = -d;
 
-  draw z0 -- z1 -- z2 -- z3 -- cycle;
-  fill z0 -- z1 -- z2 -- z3 -- cycle;
+  penpos0(rule_thickness/abs(sind(angle(z1-z0))),0);
+  penpos1(rule_thickness/abs(cosd(angle(z2-z1))),-90);
+  penpos2(rule_thickness/abs(sind(angle(z1-z0))),-180);
+  penpos3(rule_thickness/abs(cosd(angle(z2-z1))),90);
+  
+  fill z0l -- z1l -- z2l -- z3l -- cycle;
 endchar;
 
 beginoperator(1/sqrt(2)*large_op_size#, 8/5); "large lozenge";
@@ -2099,7 +2105,12 @@ beginoperator(1/sqrt(2)*large_op_size#, 8/5); "large lozenge";
   top y1 = h;
   bot y3 = -d;
 
-  draw z0 -- z1 -- z2 -- z3 -- cycle;
+  penpos0(rule_thickness/abs(sind(angle(z1-z0))),0);
+  penpos1(rule_thickness/abs(cosd(angle(z2-z1))),-90);
+  penpos2(rule_thickness/abs(sind(angle(z1-z0))),-180);
+  penpos3(rule_thickness/abs(cosd(angle(z2-z1))),90);
+  
+  penstroke z0e -- z1e -- z2e -- z3e -- cycle;
 endchar;
 
 for alpha = 0, 90, 180, 270:
@@ -2116,7 +2127,6 @@ endchar;
 
 
 beginoperator(large_op_size#, 1); "large filled star";
-  pickup rule_pen;
   r := w/2 - side_bearing;
   reg_poly_points(a)(5, centre, r, 90);
   reg_poly_points(b)(5, centre, .4r, 126);
@@ -2127,17 +2137,16 @@ endchar;
 beginoperator(med_op_size#, 1); "medium star of david";
   pickup pencircle scaled 4/5rule_thickness;
   r := w/2 - side_bearing;
-  reg_poly_points(a)(6, centre, r, 90);
-  draw z.a0 -- z.a2 -- z.a4 -- cycle;
-  draw z.a1 -- z.a3 -- z.a5 -- cycle;
+  reg_poly_points_p(a)(6, centre, r, 90, 1/sind(30));
+  penstroke z.a0e -- z.a2e -- z.a4e -- cycle;
+  penstroke z.a1e -- z.a3e -- z.a5e -- cycle;
 endchar;
 
 beginoperator(large_op_size#, 1); "large star of david";
-  pickup rule_pen;
   r := w/2 - side_bearing;
-  reg_poly_points(a)(6, centre, r, 90);
-  draw z.a0 -- z.a2 -- z.a4 -- cycle;
-  draw z.a1 -- z.a3 -- z.a5 -- cycle;
+  reg_poly_points_p(a)(6, centre, r, 90, 1/sind(30));
+  penstroke z.a0e -- z.a2e -- z.a4e -- cycle;
+  penstroke z.a1e -- z.a3e -- z.a5e -- cycle;
 endchar;
 
 beginoperator(med_op_size#, 1); "maltese";
@@ -2151,15 +2160,17 @@ beginoperator(med_op_size#, 1); "maltese";
   z0 - z1 = z5 - z4 = 1/2med_op_size * up;
   z3 - z2 = z6 - z7 = 1/2med_op_size * right;
 
-  filldraw z1{dir 45}
-    .. {right}centre{down}
+  fill z1{dir 45}
+    .. {right}(centre + 1/2*rule_thickness*(down+left)){down}
     .. {dir 225}z2 -- z3{dir 135}
-    .. {up}centre{right}
+    .. {up}(centre + 1/2rule_thickness*(right+down)){right}
     .. {dir -45}z4 -- z5{dir 225}
-    .. {left}centre{up}
+    .. {left}(centre + 1/2rule_thickness*(up+right)){up}
     .. {dir 45}z6 -- z7{dir -45}
-    .. {down}centre{left}
+    .. {down}(centre + 1/2rule_thickness*(left+up)){left}
     .. z0{dir 135} -- cycle;
+
+  penlabels(0,1,2,3,4,5,6,7)
 endchar;
 
 
