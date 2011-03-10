@@ -300,7 +300,7 @@ for alpha = 0, 90, 180, 270, 45, 135, 225, 315:
     draw_line(3,4);
   
     if negated:
-      draw_stroke_through_arrow(1/2[foot, head], alpha, 3/2arrow_spread)
+      draw_stroke_through_arrow(5,6)(1/2[foot, head], alpha, 3/2arrow_spread)
                           (70, 70, 110, 110, 70, 70, 110, 110);
     fi
   endchar;
@@ -318,7 +318,7 @@ for alpha = 0, 90, 180, 270, 45, 135, 225, 315:
                   2/3equal_spread, true);
 
     if negated:
-      draw_stroke_through_arrow(6,7,8)(1/2[foot, head - 2/3equal_spread * dir arrow_dir], alpha, 2/3med_op_size)
+      draw_stroke_through_arrow(6,7)(1/2[foot, head - 2/3equal_spread * dir arrow_dir], alpha, 2/3med_op_size)
                           (70, 70, 110, 110, 70, 70, 110, 110);
     fi
   endchar;
@@ -647,7 +647,7 @@ for alpha = 0, 90, 180, 270, 45, 135, 225, 315:
     draw_line(6,7);
   
     if negated:
-      draw_stroke_through_arrow(1/2[foot, head], alpha, 9/4arrow_spread)
+      draw_stroke_through_arrow(8,9)(1/2[foot, head], alpha, 9/4arrow_spread)
                           (70, 70, 110, 110, 70, 70, 110, 110);
     fi
   endchar;
@@ -705,22 +705,23 @@ for sign = 1, -1:
     beginoperator(large_op_size#, 1);
       if sign > 0: "right" else: "left" fi & " circle arrow (" & decimal alpha & ")";
 
-      pickup rule_pen;
-
       r := 0.8(w/2-u) - 1.1rule_thickness;
 
-      reg_poly_points(a)(8, centre, r, alpha);
+      reg_poly_points_p(a)(8, centre, r, alpha,1);
 
       z0 = centre + r * dir (alpha + 10);
       z1 = centre + r * dir (alpha - 10);
-
-      draw z0{dir (alpha + 100)} .. z.a1 .. z.a2 .. z.a3 .. z.a4 .. z.a5 .. z.a6 .. z.a7 ..
-          {dir (alpha + 80)}z1;
+      penpos0(rule_thickness,alpha+100-90);
+      penpos1(rule_thickness,alpha+80-90);
+      penlabels(0,1);
+      
+      penstroke z0e{dir (alpha + 100)} .. z.a1e .. z.a2e .. z.a3e .. z.a4e .. z.a5e .. z.a6e .. z.a7e ..
+          {dir (alpha + 80)}z1e;
 
       if sign > 0:
-        draw arrowhead(z1, (alpha + 65), arrow_spread);
+        draw_arrowhead(2,3)(z1, (alpha + 65), arrow_spread);
       else:
-        draw arrowhead(z0, (alpha - 65), arrow_spread);
+        draw_arrowhead(2,3)(z0, (alpha - 65), arrow_spread);
       fi;
 
       if negated:
@@ -728,8 +729,7 @@ for sign = 1, -1:
          y2 - y3 = large_op_size;
          z2 - z3 = whatever * dir 80;
 
-         pickup stroke_pen;
-         draw z2 -- z3;
+         draw_line_scaled(2,3)(stroke_through_thickness_factor);
       fi
     endchar;
   endfor;
