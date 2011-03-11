@@ -869,3 +869,22 @@ def draw_arrowhead(suffix $,#)(expr pos, angle, spread) =
     draw_arrowhead_right(#)(pos, angle, spread);
 %  fi;
 enddef;
+
+def draw_half_circle(suffix $)(expr centre, radius, angle) =
+  z$[1] = centre + radius * dir (angle +   0);
+  z$[2] = centre + radius * dir (angle +  45);
+  z$[3] = centre + radius * dir (angle +  90);
+  z$[4] = centre + radius * dir (angle + 135);
+  z$[5] = centre + radius * dir (angle + 180);
+
+  penpos$[1](rule_thickness,angle +   0 );
+  penpos$[2](rule_thickness,angle +  45 );
+  penpos$[3](rule_thickness,angle +  90 );
+  penpos$[4](rule_thickness,angle + 135 );
+  penpos$[5](rule_thickness,angle + 180 );
+  
+  penstroke z$[1]e{dir (angle +  90)} ... z$[2]e{dir (angle + 135)} ...
+    z$[3]e{dir (angle + 180)} ... z$[4]e{dir (angle + 225)} ...
+    z$[5]e{dir (angle + 270)};
+  penlabels($[1],$[2],$[3],$[4],$[5]);
+enddef;
