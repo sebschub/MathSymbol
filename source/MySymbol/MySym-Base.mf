@@ -675,34 +675,35 @@ def draw_triangle(suffix $,$$,$$$)(expr centre, size, agl) =
   penlabels($,$$,$$$);
 enddef;
 
-def draw_circle(suffix $,$$,$$$,$$$$)(expr centre, radius) =
-  z$.r    = centre + radius * dir   0;
-  z$$.r   = centre + radius * dir  90;
-  z$$$.r  = centre + radius * dir 180;
-  z$$$$.r = centre + radius * dir 270;
-  penpos$(rule_thickness,0);
-  penpos$$(rule_thickness,90);
-  penpos$$$(rule_thickness,180);
-  penpos$$$$(rule_thickness,270);
-
-  penstroke z$e .. z$$e .. z$$$e .. z$$$$e .. cycle;
-  penlabels($,$$,$$$,$$$$);
+def draw_circle(suffix $)(expr centre, radius) =
+  circle_pos($)(centre, radius, 1);
+  penstroke z$[1]e .. z$[2]e .. z$[3]e .. z$[4]e .. cycle;
 enddef;
 
-def fill_circle(suffix $,$$,$$$,$$$$)(expr centre, radius) =
-  z$.r    = centre + radius * dir   0;
-  z$$.r   = centre + radius * dir  90;
-  z$$$.r  = centre + radius * dir 180;
-  z$$$$.r = centre + radius * dir 270;
-  penpos$(rule_thickness,0);
-  penpos$$(rule_thickness,90);
-  penpos$$$(rule_thickness,180);
-  penpos$$$$(rule_thickness,270);
-
-  fill z$r .. z$$r .. z$$$r .. z$$$$r .. cycle;
-  penlabels($,$$,$$$,$$$$);
+def draw_circle_scaled(suffix $)(expr centre, radius, scale) =
+  circle_pos($)(centre, radius, scale);
+  penstroke z$[1]e .. z$[2]e .. z$[3]e .. z$[4]e .. cycle;
 enddef;
 
+def fill_circle(suffix $)(expr centre, radius) =
+  circle_pos($)(centre, radius, 1);
+  fill z$[1]r .. z$[2]r .. z$[3]r .. z$[4]r .. cycle;
+enddef;
+
+def circle_pos(suffix $)(expr centre, radius, scale) =
+  z$[1]r = centre + radius * dir   0;
+  z$[2]r = centre + radius * dir  90;
+  z$[3]r = centre + radius * dir 180;
+  z$[4]r = centre + radius * dir 270;
+  penpos$[1](rule_thickness*scale,  0);
+  penpos$[2](rule_thickness*scale, 90);
+  penpos$[3](rule_thickness*scale,180);
+  penpos$[4](rule_thickness*scale,270);
+
+  penlabels($[1],$[2],$[3],$[4]);
+enddef;
+
+  
 def draw_square(suffix $,$$,$$$,$$$$)(expr centre, size, angle) =
   z$.r    = centre + sqrt(2) * size * dir (angle +  45);
   z$$.r   = centre + sqrt(2) * size * dir (angle + 135);
@@ -726,18 +727,18 @@ def reg_poly_points_p(suffix $)(expr n, centre, radius, agl,scale) =
   endfor;
 enddef;
 
-def draw_smile(suffix $,$$,$$$)(expr sign, l, r, spread, round_smile) =
+def draw_smile(suffix $)(expr sign, l, r, spread, round_smile) =
  % if round_smile:
-    z$   = (l + sign * 1/2spread * dir (angle (r-l) + 90));
-    z$$  = (1/2[l,r] - sign * 1/2spread * dir (angle (r-l) + 90));
-    z$$$ = (r + sign * 1/2spread * dir (angle (r-l) + 90));
+    z$[1] = (l + sign * 1/2spread * dir (angle (r-l) + 90));
+    z$[2] = (1/2[l,r] - sign * 1/2spread * dir (angle (r-l) + 90));
+    z$[3] = (r + sign * 1/2spread * dir (angle (r-l) + 90));
 
-    penpos$(rule_thickness,angle(z$-z$$)+90);
-    penpos$$(rule_thickness,angle(r-l)-90);
-    penpos$$$(rule_thickness,angle(z$$$-z$$)-90);
+    penpos$[1](rule_thickness,angle(z$[1]-z$[2])+90);
+    penpos$[2](rule_thickness,angle(r-l)-90);
+    penpos$[3](rule_thickness,angle(z$[3]-z$[2])-90);
 
-    penlabels($,$$,$$$);
-    penstroke z$e .. {r - l}z$$e{r - l} .. z$$$e
+    penlabels($[1],$[2],$[3]);
+    penstroke z$[1]e .. {r - l}z$[2]e{r - l} .. z$[3]e;
   % else:
   %      (l + sign * 1/2spread * dir (angle (r-l) + 90))
   %   -- (1/2[l,r] - sign * 1/2spread * dir (angle (r-l) + 90))
@@ -757,12 +758,18 @@ def draw_sim(suffix $)(expr l, r) =
 
   penpos$1(rule_thickness,angle(z$2-z$1)+90);
   penpos$2(rule_thickness,(angle(z$3-z$2)+angle(z$2-z$1))/2+90);
-  penpos$3(rule_thickness,(angle(z$4-z$3)+angle(z$3-z$2))/2+90);
   penpos$4(rule_thickness,(angle(z$5-z$4)+angle(z$4-z$3))/2+90);
-  penpos$5(rule_thickness,(angle(z$6-z$5)+angle(z$5-z$4))/2+90);
   penpos$6(rule_thickness,(angle(z$7-z$6)+angle(z$6-z$5))/2+90);
   penpos$7(rule_thickness,angle(z$7-z$6)+90);
 
+  if (cosd(angle(l-r))<0):
+    penpos$3(rule_thickness,(angle(z$4-z$3)+angle(z$3-z$2))/2+90);
+    penpos$5(rule_thickness,(angle(z$6-z$5)+angle(z$5-z$4))/2+90);
+  else:
+    penpos$3(rule_thickness,(angle(z$4-z$3)+angle(z$3-z$2))/2-90);
+    penpos$5(rule_thickness,(angle(z$6-z$5)+angle(z$5-z$4))/2-90);
+  fi
+  
   penstroke z$1.e .. z$2.e .. z$3.e .. z$4.e .. z$5.e .. z$6.e .. z$7.e;
   
   penlabels($1,$2,$3,$4,$5,$6,$7);
