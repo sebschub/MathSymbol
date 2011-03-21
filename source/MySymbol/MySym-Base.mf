@@ -480,12 +480,17 @@ def draw_integral(suffix $)(expr scale, center) =
 enddef;
 
 def ppos_cut(suffix $)(expr a, b) =
+  ppos_cut_scaled($)(a, b, 1);
+enddef;
+
+def ppos_cut_scaled(suffix $)(expr a, b, scale) =
   if sind(a-b) = 0 :
-    penpos$(rule_thickness,0);
+    penpos$(rule_thickness*scale,0);
   else:
-    penpos$(rule_thickness/abs(sind(a-b)),b);
+    penpos$(rule_thickness*scale/abs(sind(a-b)),b);
   fi
 enddef;
+
 
 def draw_line(suffix $, $$)=
   penpos$(rule_thickness,angle(z$-z$$)+90); penpos$$(rule_thickness,angle(z$-z$$)+90);
@@ -626,13 +631,18 @@ enddef;
 
 % left, middle, right
 def draw_arrow_cut(suffix $,$$,$$$) = 
+  draw_arrow_cut_scaled($,$$,$$$)(1); 
+enddef;
+
+% left, middle, right
+def draw_arrow_cut_scaled(suffix $,$$,$$$)(expr scale) = 
   %penpos$(rule_thickness,angle(z$$$-z$));
   %penpos$$$(rule_thickness,angle(z$$$-z$));
 
-  ppos_cut($)(angle(z$$-z$),angle(z$$$-z$));
-  ppos_cut($$$)(angle(z$$-z$$$),angle(z$$$-z$));
+  ppos_cut_scaled($)(angle(z$$-z$),angle(z$$$-z$),scale);
+  ppos_cut_scaled($$$)(angle(z$$-z$$$),angle(z$$$-z$),scale);
   
-  ppos_cut($$)(angle(z$$-z$),angle(z$$$-z$));
+  ppos_cut_scaled($$)(angle(z$$-z$),angle(z$$$-z$),scale);
   %penpos$$(rule_thickness,angle(z$$$-z$));
   
   penstroke z$e .. z$$e;
@@ -640,6 +650,7 @@ def draw_arrow_cut(suffix $,$$,$$$) =
 
   penlabels($,$$,$$$)
 enddef;
+
 
 def draw_subset(suffix $,$$,$$$,$$$$,$$$$$)(expr l, r, spread) =
   z$ = r - 1/2spread * dir (angle (r-l) + 90);
@@ -658,21 +669,35 @@ def draw_subset(suffix $,$$,$$$,$$$$,$$$$$)(expr l, r, spread) =
   penlabels($,$$,$$$,$$$$,$$$$$);
 enddef;
 
-def draw_triangle(suffix $,$$,$$$)(expr centre, size, agl) =
-  numeric s,t;
-  z$ = centre + (size-sqrt(3)/2*rule_thickness) * dir agl;
-  z$$ = centre + (size-sqrt(3)/2*rule_thickness) * dir (agl + 120);
-  z$$$ = centre + (size-sqrt(3)/2*rule_thickness) * dir (agl + 240);
+def draw_triangle(suffix $)(expr centre, size, agl) =
+  triangle_pos($)(centre, size, agl, 1);
+  penstroke z$[1]e .. z$[2]e;
+  penstroke z$[3]e .. z$[1]e;
+  penstroke z$[2]e .. z$[3]e;
+enddef;
 
-  penpos$(rule_thickness/sind(30),agl);
-  penpos$$(rule_thickness/sind(30),agl+120);
-  penpos$$$(rule_thickness/sind(30),agl+240);
+def draw_triangle_scaled(suffix $)(expr centre, size, agl, scale) =
+  triangle_pos($)(centre, size, agl, scale);
+  penstroke z$[1]e .. z$[2]e;
+  penstroke z$[3]e .. z$[1]e;
+  penstroke z$[2]e .. z$[3]e;
+enddef;
 
-  penstroke z$e .. z$$e;
-  penstroke z$$$e .. z$e;
-  penstroke z$$e .. z$$$e;
+def fill_triangle(suffix $)(expr centre, size, agl) =
+  triangle_pos($)(centre, size, agl,1);
+  fill z$[1]r .. z$[2]r .. z$[3]r .. cycle;
+enddef;
 
-  penlabels($,$$,$$$);
+def triangle_pos(suffix $)(expr centre, size, agl, scale) =
+  z$[1] = centre + (size-sqrt(3)/2*rule_thickness) * dir agl;
+  z$[2] = centre + (size-sqrt(3)/2*rule_thickness) * dir (agl + 120);
+  z$[3] = centre + (size-sqrt(3)/2*rule_thickness) * dir (agl + 240);
+
+  penpos$[1](scale*rule_thickness/sind(30),agl);
+  penpos$[2](scale*rule_thickness/sind(30),agl+120);
+  penpos$[3](scale*rule_thickness/sind(30),agl+240);
+
+  penlabels($[1],$[2],$[3]);
 enddef;
 
 def draw_circle(suffix $)(expr centre, radius) =
