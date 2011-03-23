@@ -331,7 +331,7 @@ for alpha = 0, 90, 180, 270, 45, 135, 225, 315:
     pickup rule_pen;
 
     z1 = foot; z2 = head; draw_line(1,2);
-    draw_subset(3,4,5,6,7)(foot + 3/4plus_size * dir arrow_dir, foot, 3/4plus_size-rule_thickness);
+    draw_subset(3)(foot + 3/4plus_size * dir arrow_dir, foot, 3/4plus_size-rule_thickness);
 
     if negated:
       draw_stroke_through_arrow(8,9)(1/2[foot, head - 3/8plus_size * dir arrow_dir],
