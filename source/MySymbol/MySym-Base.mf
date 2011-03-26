@@ -212,9 +212,9 @@ enddef;
 % intersect the arrowhead curve with a path
 def arrowhead_intersection(expr pos, angle, spread, p) =
   (p intersectionpoint
-                      ((pos - 3/4spread * dir angle + spread/2 * dir (angle + 90)){dir (angle - 50)} ..
-    {dir (angle -  50)}(pos - 1/4spread * dir angle){dir (angle - 130)} ..
-    {dir (angle - 130)}(pos - 3/4spread * dir angle + spread/2 * dir (angle - 90))))
+      ((pos - 3/4spread * dir angle + spread/2 * dir (angle + 90)) --
+	(pos) --
+	(pos - 3/4spread * dir angle + spread/2 * dir (angle - 90))));
 enddef;
 
 def stroke_through_arrow(expr pos, alpha, spread)(text angles) =
@@ -491,11 +491,24 @@ def ppos_cut_scaled(suffix $)(expr a, b, scale) =
   fi
 enddef;
 
+def line_path(suffix $, $$)(text lpath)=
+  path lpath;
+  penpos$(rule_thickness,angle(z$-z$$)+90); penpos$$(rule_thickness,angle(z$-z$$)+90);
+  lpath := stroke z$e .. z$$e;
+  penlabels($,$$)
+enddef;
+
+def line_scaled_path(suffix $, $$)(expr scale)(text lpath)=
+  path lpath;
+  penpos$(rule_thickness*scale,angle(z$-z$$)+90); penpos$$(rule_thickness*scale,angle(z$-z$$)+90);
+  lpath := stroke z$e .. z$$e;
+  penlabels($,$$)
+enddef;
+
 
 def draw_line(suffix $, $$)=
-  penpos$(rule_thickness,angle(z$-z$$)+90); penpos$$(rule_thickness,angle(z$-z$$)+90);
-  penstroke z$e .. z$$e;
-  penlabels($,$$)
+  line_path($, $$)(lpath);
+  fill lpath;
 enddef;
 
 def draw_line_ec(suffix $, $$)=
@@ -858,83 +871,134 @@ enddef;
 
 % left half of an arrow head
 def draw_arrowhead_left(suffix $)(expr pos, angle, spread) =
-  z$[0]=pos;
+  z$[10]=pos;
   z$[1]=pos - 3/4spread * dir angle + spread/2 * dir (angle + 90);
-  z$[2]=pos - 1/4spread * dir angle;
-  penpos$[0](rule_thickness,angle+90);
-  penpos$[1](rule_thickness/sind(50),angle+90);
-  penpos$[2](rule_thickness,angle+90);
+  z$[2]=pos - 1/2rule_thickness*dir(angle + 90);
+  % cos(atan(2/3)) = 0.83205
+  penpos$[10](rule_thickness/0.83205,angle+90);
+  penpos$[1](rule_thickness/0.83205,angle+90);
 
-  penlabels($[0],$[1],$[2]);
+  z$[3]=whatever[z$[10].r,z$[1].r];
+  z$[3]=z$[2] + whatever* dir angle;
 
-  penstroke z$[0]e{dir (angle + 170)} .. {dir (angle + 130)}z$[1]e;
+  z$[4]= ((z$[2] -- z$[2]- 3/4spread * dir angle) intersectionpoint (z$[10].l .. z$[1].l));
+
+  % these points are fine but point of arrow is not where meant to be
+  % so shift all points
+  z$[5] = pos + 1/2rule_thickness*(dir angle + dir (angle-90));
+  z$[6] = z$[1] + z$[5] - z$[3]; penpos$[6](rule_thickness/0.83205,angle+90);
+  z$[7] = z$[4] + z$[5] - z$[3];
+
+  fill z$[5] -- z$[6].r -- z$[6].l -- z$[7] -- cycle;
+
+    % point to dock line
+  z$[0] = z$[7] + 1/2rule_thickness*dir (angle+90);
+  
+  penlabels($[5],$[6],$[7]);
+
+%  penstroke z$[0]e .. z$[1]e;
  % penstroke z$[1]e{dir (angle - 50)}  .. {dir (angle -  50)}z$[2]e;
-enddef;
-
-% left half of an arrow head
-def arrowhead_left_path(suffix $)(expr pos, angle, spread)(text P) =
-  path a,b;
-  z$[0]=pos;
-  z$[1]=pos - 3/4spread * dir angle + spread/2 * dir (angle + 90);
-  z$[2]=pos - 1/4spread * dir angle;
-  penpos$[0](rule_thickness,angle+90);
-  penpos$[1](rule_thickness/sind(50),angle+90);
-  penpos$[2](rule_thickness,angle+90);
-
-  penlabels($[0],$[1],$[2]);
-
-  a := reverse stroke z$[0]e{dir (angle + 170)} .. {dir (angle + 130)}z$[1]e;
-%  b := stroke z$[1]e{dir (angle - 50)}  .. {dir (angle -  50)}z$[2]e;
-  fill a; %fill b;
-%  find_outlines(b,a)(P);
 enddef;
 
 % right half of an arrow head
 def draw_arrowhead_right(suffix $)(expr pos, angle, spread) =
-  z$[0]=pos;
+  z$[10]=pos;
   z$[1]=pos - 3/4spread * dir angle + spread/2 * dir (angle - 90);
-  z$[2]=pos - 1/4spread * dir angle;
-  penpos$[0](rule_thickness,angle+90);
-  penpos$[1](rule_thickness/sind(50),angle+90);
-  penpos$[2](rule_thickness,angle+90);
+  z$[2]=pos - 1/2rule_thickness*dir(angle - 90);
+  % cos(atan(2/3)) = 0.83205
 
-  penlabels($[0],$[1],$[2]);
+  penpos$[10](rule_thickness/0.83205,angle+90);
+  penpos$[1](rule_thickness/0.83205,angle+90);
 
-%  penstroke z$[2]e{dir (angle - 130)} .. {dir (angle - 130)}z$[1]e;
-  penstroke z$[1]e{dir (angle + 50)}  .. {dir (angle +  10)}z$[0]e;
-enddef;
+  z$[3]=whatever[z$[10].l,z$[1].l];
+  z$[3]=z$[2] + whatever* dir angle;
 
-% right half of an arrow head
-def arrowhead_right_path(suffix $)(expr pos, angle, spread)(text P) =
-  path a,b;
-  z$[0]=pos;
-  z$[1]=pos - 3/4spread * dir angle + spread/2 * dir (angle - 90);
-  z$[2]=pos - 1/4spread * dir angle;
-  penpos$[0](rule_thickness,angle+90);
-  penpos$[1](rule_thickness/sind(50),angle+90);
-  penpos$[2](rule_thickness,angle+90);
+  z$[4]= ((z$[2] -- z$[2]- 3/4spread * dir angle) intersectionpoint (z$[10].r .. z$[1].r));
 
-  penlabels($[0],$[1],$[2]);
+  % these points are fine but point of arrow is not where meant to be
+  % so shift all points
+  z$[5] = pos + 1/2rule_thickness*(dir angle + dir (angle+90));
+  z$[6] = z$[1] + z$[5] - z$[3]; penpos$[6](rule_thickness/0.83205,angle+90);
+  z$[7] = z$[4] + z$[5] - z$[3];
+  
+  fill z$[5] -- z$[6].l -- z$[6].r -- z$[7] -- cycle;
 
-%  a:= stroke z$[2]e{dir (angle - 130)} .. {dir (angle - 130)}z$[1]e;
-  b:= reverse stroke z$[1]e{dir (angle + 50)}  .. {dir (angle +  10)}z$[0]e;
-  %fill a;
-  fill b;
-%  find_outlines(a,b)(P);
+      % point to dock line
+  z$[0] = z$[7] + 1/2rule_thickness*dir (angle-90);
+
+  penlabels($[0],$[1],$[3],$[4]);
 enddef;
 
 % the whole arrow head
-def draw_arrowhead(suffix $,#)(expr pos, angle, spread) =
-%  if known ps_output:
-%    arrowhead_right_path(#)(pos, angle, spread)(P);
-%    arrowhead_left_path($)(pos, angle, spread)(Q);
-%    fill P[1]; fill Q[1];
-%    find_outlines(P[1],reverse Q[1])(R);
-%    fill R[1];
-%  else:
-    draw_arrowhead_left($)(pos, angle, spread);
-    draw_arrowhead_right(#)(pos, angle, spread);
-%  fi;
+def arrowhead_bo_path(suffix $)(expr pos, angle, spread)(text ap) =
+  path ap;
+  z$[10] = pos - 1/2rule_thickness * dir angle;
+  z$[1] = z$[10] - 3/4spread * dir angle + spread/2 * dir (angle + 90);
+  z$[2] = z$[10] - 3/4spread * dir angle + spread/2 * dir (angle - 90);
+  
+  % cos(atan(2/3)) = 0.83205
+  penpos$[10](rule_thickness/0.55470,angle);
+  penpos$[1](rule_thickness/0.83205,angle+90);
+  penpos$[2](rule_thickness/0.83205,angle-90);
+
+  ap := stroke z$[1].e -- z$[10].e -- z$[2].e;
+
+  z$[0] = z$[10];
+  
+  %  penlabels($[0],$[1],$[3],$[4]);
+enddef;
+
+% the whole arrow head
+def arrowhead_fo_path(suffix $)(expr pos, angle, spread)(text ap) =
+  path ap;
+  z$[10]r = pos + 1/2rule_thickness * dir angle;
+  z$[1]  = z$[10] - 3/4spread * dir angle + spread/2 * dir (angle + 90);
+  z$[2]  = z$[10] - 3/4spread * dir angle + spread/2 * dir (angle - 90);
+  
+  % cos(atan(2/3)) = 0.83205
+  penpos$[10](rule_thickness/0.55470,angle);
+  penpos$[1](rule_thickness/0.83205,angle+90);
+  penpos$[2](rule_thickness/0.83205,angle-90);
+
+  ap := stroke z$[1].e -- z$[10].e -- z$[2].e;
+
+  z$[0] = z$[10];
+  
+  %  penlabels($[0],$[1],$[3],$[4]);
+enddef;
+
+% the whole arrow head
+def draw_arrowhead_bo(suffix $)(expr pos, angle, spread) =
+  arrowhead_bo_path($)(pos, angle, spread) (ahead);
+  fill ahead;
+enddef;
+
+% the whole arrow head
+def draw_arrowhead_fo(suffix $)(expr pos, angle, spread) =
+  arrowhead_fo_path($)(pos, angle, spread) (ahead);
+  fill ahead;
+enddef;
+
+
+% the whole arrow head
+def draw_arrowhead_fo_add(suffix $)(expr pos, angle, spread) =
+  arrowhead_fo_path($)(pos, angle, spread) (ahead);
+  z$[3] = z$[0];
+  z$[4] = z$[0] - 1/2spread * dir angle;
+
+  penpos$[3](rule_thickness, angle+90);
+  penpos$[4](rule_thickness, angle+90);
+
+  if known ps_output:
+    path q,o;
+    q :=stroke z$[4].e -- z$[3].e;
+    find_outlines(q,ahead)(o);
+    fill o[1];
+  else:
+    fill ahead;
+    penstroke z$[4].e -- z$[3].e;
+  fi
+  %  penlabels($[0],$[1],$[3],$[4]);
 enddef;
 
 def draw_half_circle(suffix $)(expr centre, radius, angle) =

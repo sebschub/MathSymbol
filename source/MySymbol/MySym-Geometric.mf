@@ -1221,12 +1221,11 @@ beginsymbol(6u# + 2side_bearing#, 5/4asc_height#, 1/8asc_height#); "lightning";
   z1l - z2l = whatever * (z4r - z3r);
   z2'r = whatever[z1l,z2l];
 
-  fill stroke z1e -- z2e -- z2'e -- z3'e -- z3e -- z4e;
+  draw_arrowhead_fo(5)(z4, angle (z4l - z3l), arrow_spread);
 
-  pickup rule_pen;
+  penpos5[0](5/6rule_thickness, -20);
 
-  draw_arrowhead(5,6)(z4, angle (z4l - z3l), arrow_spread);
-
+  fill stroke z1e -- z2e -- z2'e -- z3'e -- z3e -- z5[0].e;
   penlabels(1,2,2',3',3,4);
 endchar;
 
@@ -2348,20 +2347,37 @@ for negated = 0, 1:
   for alpha = 0, 180:
     beginarrow(alpha, 6/5, ifneg(14/10, 21/10) * arrow_spread#); "triple arrow (" & decimal alpha & ")";
 
+      path apath;
+    
       z1 - z0 = z2 - z1 = z4 - z3 = z5 - z4 = 2/3equal_spread * dir (arrow_dir + 90);
 
-      z1 = foot;
+      z1 = foot -1/2rule_thickness*dir alpha;
       z4 = head;
-
-      z6 = arrowhead_intersection(head, arrow_dir, 14/10arrow_spread, z0 -- z3);
-      draw_line_ec_scaled(0,6)(4/5);
+    
+      arrowhead_fo_path(9)(head, arrow_dir, 14/10arrow_spread)(apath);
+    
+      z6 = arrowhead_intersection(z9[0], arrow_dir, 14/10arrow_spread, z0 -- z3);
       %z7 = arrowhead_intersection(head, arrow_dir, 14/10arrow_spread, z1 -- z4);
-      draw_line_ec_scaled(1,4)(4/5);
-      z8 =  arrowhead_intersection(head, arrow_dir, 14/10arrow_spread, z2 -- z5);
-      draw_line_ec_scaled(2,8)(4/5);
+      z8 =  arrowhead_intersection(z9[0], arrow_dir, 14/10arrow_spread, z2 -- z5);
 
-      draw_arrowhead(9,10)(head+1/2rule_thickness*dir(alpha), arrow_dir, 14/10arrow_spread);
 
+
+      if known ps_output:
+	path lpatha, lpathb, lpathc, apathb, apathc, apathd;
+	line_scaled_path(0,6)(4/5)(lpatha);
+	line_scaled_path(2,8)(4/5)(lpathb);
+	line_scaled_path(1,9[0])(4/5)(lpathc);
+
+	find_outlines(reverse lpatha,apath)(apathb);
+	find_outlines(reverse lpathb,apathb[1])(apathc);
+	find_outlines(reverse lpathc,apathc[1])(apathd);
+	fill apathd[1];	
+      else:
+	fill apath;
+	draw_line_scaled(0,6)(4/5);
+	draw_line_scaled(2,8)(4/5);
+	draw_line_scaled(1,9[0])(4/5);
+      fi
     
       if negated = 1:
         draw_stroke_through_arrow(11,12)(1/2[foot, head - arrow_spread * dir arrow_dir], alpha, 21/10arrow_spread)
@@ -2383,10 +2399,11 @@ for sign = -1, 1:
     x1 - x0 = sign * 4/3arrow_spread;
 
     x2 = x1;
-    z1a = z1+1/2rule_thickness*up;
-    draw_line(0,1); draw_line(1a,2);
+    z5 = z1+1/2rule_thickness*up;
+    draw_arrowhead_fo_add(3)(z0, 90 + sign * 90, arrow_spread);
+    z4 = z3[0] - sign* 1/2arrow_spread * left;
+    draw_line_ec(4,1); draw_line(5,2);
 
-    draw_arrowhead(3,4)(z0+sign*1/2rule_thickness*left, 90 + sign * 90, arrow_spread);
   endchar;
 endfor;
 
@@ -2396,23 +2413,24 @@ for sign = -1, 1:
 
     pickup rule_pen;
 
-    z0 = centre + sign * (arrow_len+rule_thickness)/2 * left;
+    z0 = centre + sign * arrow_len/2 * left;
     z1 = centre + (arrow_len + rule_thickness)/2 * down;
     z2 = centre + arrow_len/4 * up;
     z3 = centre + sign * arrow_len/4 * right;
     z4 = centre + arrow_len * (1/4sign, 1/2);
     z5 = centre + arrow_len * (1/2sign, 1/4);
+    z6 = z0 - sign * arrow_spread/2 * left;
+    draw_arrowhead_fo_add(c)(z0, 90 + sign * 90, arrow_spread);
 
     penpos1(rule_thickness,90*(1-sign));
     penpos2(rule_thickness,90*(1-sign));
     penpos3(rule_thickness,90);
     penpos4(rule_thickness,-90);
     penpos5(rule_thickness,90*(1+sign));
-    penpos0(rule_thickness,90);
+    penpos6(rule_thickness,90);
     
-    penstroke z0e -- z3e{sign * right} .. {up}z5e .. {sign * left}z4e .. {down}z2e -- z1e;
+    penstroke z6e -- z3e{sign * right} .. {up}z5e .. {sign * left}z4e .. {down}z2e -- z1e;
 
-    draw_arrowhead(c,d)(z0, 90 + sign * 90, arrow_spread);
     penlabels(0,1,2,3,4,5);
   endchar;
 endfor;
