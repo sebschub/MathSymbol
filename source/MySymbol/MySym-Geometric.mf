@@ -365,8 +365,8 @@ endfor;
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "union";
 
-    draw_subset(1)(centre - sign * 1/2(plus_size + rule_thickness) * dir 90,
-                centre + sign * 1/2(plus_size + rule_thickness) * dir 90,
+    draw_subset(1)(centre - sign * 1/2plus_size * dir 90,
+                centre + sign * 1/2plus_size * dir 90,
                 plus_size);
   endchar;
 endfor;
@@ -374,11 +374,11 @@ endfor;
 for sign = 1, -1:
   beginoperator(4/3plus_size#, 1); "double union";
 
-    draw_subset(1)(centre - sign * (5/18plus_size + 1/2rule_thickness) * dir 90,
-                centre + sign * (2/3plus_size + 1/2rule_thickness) * dir 90,
+    draw_subset(1)(centre - sign * 5/18plus_size * dir 90,
+                centre + sign * 2/3plus_size * dir 90,
                 5/9plus_size);
-    draw_subset(2)(centre - sign * (2/3plus_size + 1/2rule_thickness) * dir 90,
-                centre + sign * (2/3plus_size + 1/2rule_thickness) * dir 90,
+    draw_subset(2)(centre - sign * 2/3plus_size * dir 90,
+                centre + sign * 2/3plus_size * dir 90,
                 4/3plus_size);
   endchar;
 endfor;
@@ -386,8 +386,8 @@ endfor;
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "union dot";
 
-    draw_subset(1)(centre - sign * 1/2(plus_size + rule_thickness) * dir 90,
-                centre + sign * 1/2(plus_size + rule_thickness) * dir 90,
+    draw_subset(1)(centre - sign * 1/2plus_size * dir 90,
+                centre + sign * 1/2plus_size * dir 90,
                 plus_size);
     fill circle(centre + sign * 1/6plus_size * dir 90, dot_size);
   endchar;
@@ -396,8 +396,8 @@ endfor;
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "union plus";
 
-    draw_subset(1)(centre - sign * 1/2(plus_size + rule_thickness) * dir 90,
-                centre + sign * 1/2(plus_size + rule_thickness) * dir 90,
+    draw_subset(1)(centre - sign * 1/2plus_size * dir 90,
+                centre + sign * 1/2plus_size * dir 90,
                 plus_size);
 
     t := 22/10rule_thickness;
