@@ -538,23 +538,28 @@ def draw_line_cut(suffix $, $$)=
   if (abs(angle(z$-z$$))<45) or (abs(angle(z$-z$$))>135) :
     ppos_cut($)(angle(z$-z$$),90);
     ppos_cut($$)(angle(z$-z$$),90);
-%    if sind(angle(z$-z$$)) = 0 :
-%      penpos$(rule_thickness,90); penpos$$(rule_thickness,90);
-%    else:
-%      penpos$(rule_thickness/sind(angle(z$-z$$)),90); penpos$$(rule_thickness/sind(angle(z$-z$$)),90);
-%    fi
   else:
     ppos_cut($)(angle(z$-z$$),0);
     ppos_cut($$)(angle(z$-z$$),0);
-    %if (sind(angle(z$-z$$)) = 0) :
-    %  penpos$(rule_thickness,0); penpos$$(rule_thickness,0);    
-    %else:
-    %  penpos$(rule_thickness/sind(angle(z$-z$$)),0); penpos$$(rule_thickness/sind(angle(z$-z$$)),0);
-    %fi
   fi
-  %penpos$(rule_thickness,angle(z$-z$$)+90); penpos$$(rule_thickness,angle(z$-z$$)+90);
   penstroke z$e .. z$$e;
   penlabels($,$$)
+enddef;
+
+def draw_line_cut_ec(suffix $, $$)=
+  if (abs(angle(z$-z$$))<45) or (abs(angle(z$-z$$))>135) :
+    z$a  = z$  - 1/2rule_thickness*((z$$-z$) dotprod left)/length((z$$-z$) dotprod left)*left;
+    z$$a = z$$ + 1/2rule_thickness*((z$$-z$) dotprod left)/length((z$$-z$) dotprod left)*left;
+    ppos_cut($a)(angle(z$-z$$),90);
+    ppos_cut($$a)(angle(z$-z$$),90);
+  else:
+    z$a  = z$  - 1/2rule_thickness*((z$$-z$) dotprod up)/length((z$$-z$) dotprod up)*up;
+    z$$a = z$$ + 1/2rule_thickness*((z$$-z$) dotprod up)/length((z$$-z$) dotprod up)*up;
+    ppos_cut($a)(angle(z$-z$$),0);
+    ppos_cut($$a)(angle(z$-z$$),0);
+  fi
+  penstroke z$a.e .. z$$a.e;
+  penlabels($a,$$a)
 enddef;
 
 def draw_prec(suffix $,$$,$$$)(expr l, r, spread) =
@@ -588,20 +593,12 @@ def draw_prec_cut(suffix $,$$,$$$)(expr l, r, spread) =
 
   if (angle(l-r)>0) :
     ppos_cut($)(50+angle(z$$$-z$),angle(z$$$-z$));
-%    ppos_cut($$)(angle(z$$-z$),angle(z$$$-z$));
     ppos_cut($$$)(50+angle(z$$$-z$),angle(z$$$-z$));
-%    penpos$(rule_thickness,angle(z$$$-z$));
-%    ppos_cut($$)(angle(z$$-z$),angle(z$$$-z$));
     penpos$$(rule_thickness,angle(z$$$-z$));
-%    penpos$$$(rule_thickness,angle(z$$$-z$));
   else:
     ppos_cut($)(50+angle(z$-z$$$),angle(z$-z$$$));
-%    ppos_cut($$)(angle(z$-z$$),angle(z$-z$$$));
     ppos_cut($$$)(50+angle(z$-z$$$),angle(z$-z$$$));
-%    penpos$(rule_thickness,angle(z$-z$$$));
-%    ppos_cut($$)(angle(z$-z$$),angle(z$-z$$$));    
     penpos$$(rule_thickness,angle(z$-z$$$));
-%    penpos$$$(rule_thickness,angle(z$-z$$$));
   fi
   
   penstroke z$e{dir (angle (r-l) + 140)}
@@ -612,6 +609,31 @@ def draw_prec_cut(suffix $,$$,$$$)(expr l, r, spread) =
 
   penlabels($,$$,$$$);
 enddef;
+
+def draw_prec_cut_ec(suffix $,$$,$$$)(expr l, r, spread) =
+  z$ = r - 1/2spread * dir (angle (r-l) + 90) - 1/2rule_thickness * (l-r)/length(l-r) ;
+  z$$ = l + 1/2rule_thickness * (l-r)/length(l-r) ;
+  z$$$ = (r + 1/2spread * dir (angle (r-l) + 90)) - 1/2rule_thickness * (l-r)/length(l-r) ;
+
+  if (angle(l-r)>0) :
+    ppos_cut($)(50+angle(z$$$-z$),angle(z$$$-z$));
+    ppos_cut($$$)(50+angle(z$$$-z$),angle(z$$$-z$));
+    penpos$$(rule_thickness,angle(z$$$-z$));
+  else:
+    ppos_cut($)(50+angle(z$-z$$$),angle(z$-z$$$));
+    ppos_cut($$$)(50+angle(z$-z$$$),angle(z$-z$$$));
+    penpos$$(rule_thickness,angle(z$-z$$$));
+  fi
+  
+  penstroke z$e{dir (angle (r-l) + 140)}
+    .. {dir (angle (r-l) + 180)}z$$e;
+
+  penstroke z$$e{dir (angle (r-l))}
+    .. {dir (angle (r-l) + 40)}z$$$e;
+
+  penlabels($,$$,$$$);
+enddef;
+
 
 % left, middle, right
 def draw_arrow(suffix $,$$,$$$) = 
@@ -662,6 +684,15 @@ enddef;
 def draw_arrow_cut(suffix $,$$,$$$) = 
   draw_arrow_cut_scaled($,$$,$$$)(1); 
 enddef;
+
+% left, middle, right
+def draw_arrow_cut_ec(suffix $,$$,$$$) = 
+  z$a   = z$   + 1/2rule_thickness*dir(angle(1/2[z$,z$$$]-z$$));
+  z$$a  = z$$  - 1/2rule_thickness*dir(angle(1/2[z$,z$$$]-z$$));
+  z$$$a = z$$$ + 1/2rule_thickness*dir(angle(1/2[z$,z$$$]-z$$));
+  draw_arrow_cut_scaled($a,$$a,$$$a)(1); 
+enddef;
+
 
 % left, middle, right
 def draw_arrow_cut_scaled(suffix $,$$,$$$)(expr scale) = 

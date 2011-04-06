@@ -2212,17 +2212,13 @@ for negated = 0, 1:
 
       1/2[y1, y4 - 1/3equal_spread] = ypart centre;
 
-    y1a = y1; y2a = y2; y0a = y0;
-    x0a = x1a = x1 + sign * 1/2rule_thickness;
-    x2a = x2 - sign * 1/2rule_thickness;
-    
-    if sign=1:
-      draw_arrow_cut(1a,2a,0a);
-    else:
-      draw_arrow_cut(0a,2a,1a);
-    fi
+      if sign=1:
+        draw_arrow_cut_ec(1,2,0);
+      else:
+        draw_arrow_cut_ec(0,2,1);
+      fi
 
-    draw_sim(5)(z3, z4);
+      draw_sim(5)(z3, z4);
 
       if negated = 1:
         draw_stroke_through(6,7)(centre, 8/3equal_spread + greater_spread);
@@ -2248,15 +2244,10 @@ for negated = 0, 1:
 
       1/2[y1, y6 - 1/3equal_spread] = ypart centre;
 
-    y1a = y1; y2a = y2; y0a = y0;
-    x0a = x1a = x1 + sign * 1/2rule_thickness;
-    x2a = x2 - sign * 1/2rule_thickness;
-
-    
       if sign=1:
-        draw_arrow_cut(1a,2a,0a);
+        draw_arrow_cut_ec(1,2,0);
       else:
-        draw_arrow_cut(0a,2a,1a);
+        draw_arrow_cut_ec(0,2,1);
       fi
       draw_sim(7)(z3, z4);
       draw_sim(14)(z5, z6);
@@ -2279,16 +2270,12 @@ for negated = 0, 1:
       1/2[z2, z3] = left_point;
       1/2[z1, z4] = right_point;
 
-    y1a = y1; y2a = y2; y0a = y0; y3a = y3; y4a = y4;
-    x0a = x1a = x4a = x1 + sign * 1/2rule_thickness;
-    x2a = x3a = x2 - sign * 1/2rule_thickness;
-
-    if sign=1:
-      draw_arrow_cut(1a,2a,0a);
-    else:
-      draw_arrow_cut(0a,2a,1a);
-    fi
-      draw_line_cut(3a,4a);
+      if sign=1:
+        draw_arrow_cut_ec(1,2,0);
+      else:
+        draw_arrow_cut_ec(0,2,1);
+      fi
+      draw_line_cut_ec(3,4);
 
       if negated = 1:
         draw_stroke_through(5,6)(centre, 3equal_spread + greater_spread);
@@ -2315,12 +2302,13 @@ for negated = 0, 1:
 
       p = z0{z3 - z1} .. z2;
 
-      v := xpart (p intersectiontimes (z4 -- (z4 + h * dir (90 + sign * 15))));
+      v := xpart (p intersectiontimes (z4 -- (z4 + h * dir (90 + sign * 20))));
 
       draw_prec_cut(5,6,7)(z1, z3, t);
       penpos2(rule_thickness,90+sign*40);
       penpos0(rule_thickness,90);
 
+    
     % we want only a part of the path from z2 to z0 but with the same
     % angle at the end
       o = subpath (1-v,1) of (z2l{dir (-1*(90+sign*40))} .. {dir ((1+sign)*90)}z0l);
@@ -2340,7 +2328,7 @@ for negated = 0, 1:
         draw_stroke_through(10,11)(centre, 3equal_spread + 2/3[equal_spread, greater_spread]);
       fi;
 
-      labels(1,2,3,4);
+      penlabels(1,2,3,4);
     endchar;
   endfor;
 
