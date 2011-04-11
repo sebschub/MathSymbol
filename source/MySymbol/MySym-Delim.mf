@@ -3,10 +3,10 @@
 def draw_bracket(expr sign, thick, draw_top, draw_mid, draw_bot, draw_double) =
   penpos0(thick, 90 - sign * 90);
   penpos1(thick, 90 - sign * 90);
-  penpos2(3/2thick, 90);
-  penpos3(1/2thick, 90);
-  penpos4(3/2thick, 90);
-  penpos5(1/2thick, 90);
+  penpos2(thick, 90);
+  penpos3(thick, 90);
+  penpos4(thick, 90);
+  penpos5(thick, 90);
   penpos6(1/2thick, 0);
   penpos7(1/2thick, 0);
 
@@ -45,6 +45,7 @@ def draw_bracket(expr sign, thick, draw_top, draw_mid, draw_bot, draw_double) =
   if draw_top: fill stroke z4e .. {sign * dir 0}z5e; fi;
   if draw_bot: fill stroke z2e .. {sign * dir 0}z3e; fi;
   if draw_double: fill stroke z6e -- z7e; fi;
+  penlabels(0,1,2,3,4,5,6,7);
 enddef;
 
 lsquare_char = current_char + 1;
@@ -333,12 +334,18 @@ def draw_angle(suffix $)(expr shift, sign, thick) =
 
   x3$ = x2$ + sign * 3/8thick;
 
-  top y1$ =  h;
-  bot y0$ = -d;
+  y1$ =  h;
+  y0$ = -d;
   1/2[y0$,y1$] = y2$ = y3$;
   1/2[x0$,x2$] = w/2;
 
-  draw (z0$ + shift * right) -- (z2$ + shift * right) -- (z1$ + shift * right) -- (z3$ + shift * right) -- cycle;
+  z4$ = 1/2[z2$,z3$];
+  penpos4$(10/8thick,0);
+
+  penpos0$(thick,0);   penpos1$(thick,0);
+
+  penstroke (z0$.e + shift * right) -- (z4$.e + shift * right) -- ( z1$.e + shift * right);
+  penlabels(0$,1$,4$);
 enddef;
 
 for sign = 1, -1:
@@ -360,9 +367,7 @@ for sign = 1, -1:
 
       x3 = x4 = (1/(2*scale))[x0a,x2a];
 
-      pickup pencircle scaled (11/25rule_thickness * sqrt scale);
-
-      draw z3 -- z4;
+      draw_line_scaled(3,4)(11/25 * sqrt scale);
     endchar;
   endfor;
   charlist current_char - 4: current_char - 3: current_char - 2: current_char - 1: current_char;
@@ -384,26 +389,24 @@ endfor;
 for sign = 1, -1:
   for scale = 2, 2.5, 3.3, 4.2, 5.1:
     beginsymbol(3scale * u# + side_bearing#, vcentre(scale * delim_height#)); "slash";
-      thick := 5/4rule_thickness * sqrt (scale/2);
+      thick := 5/4 * sqrt (scale/2);
 
-      pickup pencircle scaled thick;
+      x1 - x0 = sign * (w - side_bearing - thick*rule_thickness);
 
-      x1 - x0 = sign * (w - side_bearing - thick);
-
-      top y1 =  h;
-      bot y0 = -d;
+      y1 =  h;
+      y0 = -d;
       1/2[x0,x1] = w/2;
 
-      draw z0 -- z1;
+      draw_line_cut_scaled(0,1)(thick);
     endchar;
   endfor;
   charlist current_char - 4: current_char - 3: current_char - 2: current_char - 1: current_char;
 endfor;
 
 def draw_paren(expr sign, thick) =
-  penpos0(1/2thick,  90 - sign * 40);
-  penpos1(1/2thick, -90 + sign * 40);
-  penpos2(4/3thick,  90 - sign * 90);
+  penpos0(4/5thick,  0 );
+  penpos1(4/5thick,  0 );
+  penpos2(thick,  0);
 
   x0 = x1 = x2 + sign * (w - 2side_bearing - thick);
 
@@ -433,8 +436,8 @@ for sign = 1, -1:
   beginsymbol(2/3*(6 + 5.5) * u# + 2side_bearing#, vcentre(6/2 * delim_height#)); "parenthesis -- top";
     thick := 9/20rule_thickness * sqrt 24;
 
-    penpos1(1/2thick, -90 + sign * 40);
-    penpos2(4/3thick, 90 - sign * 90);
+    penpos1(4/5thick, 0);
+    penpos2(thick, 0);
 
     x1 = x2 + sign * (w - 2side_bearing - thick);
 
@@ -450,8 +453,8 @@ for sign = 1, -1:
   beginsymbol(2/3*(6 + 5.5) * u# + 2side_bearing#, vcentre(6/2 * delim_height#)); "parenthesis -- bot";
     thick := 9/20rule_thickness * sqrt 24;
 
-    penpos0(1/2thick, 90 - sign * 40);
-    penpos2(4/3thick, 90 - sign * 90);
+    penpos0(4/5thick, 0);
+    penpos2(thick, 0);
 
     x0 = x2 + sign * (w - 2side_bearing - thick);
 
@@ -467,9 +470,9 @@ for sign = 1, -1:
   beginsymbol(2/3*(6 + 5.5) * u# + 2side_bearing#, vcentre(delim_height#)); "parenthesis -- module";
     thick := 9/20rule_thickness * sqrt 24;
 
-    penpos1(1/2thick, 90 - sign * 40);
-    penpos2(4/3thick, 90 - sign * 90);
-    penpos3(4/3thick, 90 - sign * 90);
+    penpos1(4/5thick, 0);
+    penpos2(thick, 0);
+    penpos3(thick, 0);
 
     x2 = x3 = x1 - sign * (w - 2side_bearing - thick);
 
@@ -547,27 +550,27 @@ def draw_brace(expr center, size, width, alpha, thick, top_size, mid_size, bot_s
   beta := angle (5 (z1l-z2l) dotprod dir alpha, (z1l-z2l) dotprod dir (alpha+90));
 
   if top_size > 0:
-    filldraw z1r{-dir (alpha + beta)} ... z2r --- z2'r -- z2'l
+    fill z1r{-dir (alpha + beta)} ... z2r --- z2'r -- z2'l
       --- z2l ... {dir (alpha + beta)}z1'l -- z1l -- cycle;
     penlabels(1,2,2');
   elseif bot_size > 0:
-    filldraw 
+    fill 
       z6'r --- z6r ... {dir (alpha - beta)}z7r
       -- z7l -- z7'l{-dir (alpha - beta)} ... z6l --- z6'l -- cycle;
     penlabels(6',6,7);
   elseif mid_size > 0:
-    filldraw z3'r --- z3r{dir (alpha-90)} ... {dir alpha}z4r
+    fill z3'r --- z3r{dir (alpha-90)} ... {dir alpha}z4r
       -- z4'r{-dir alpha} ... {dir (alpha-90)}z5r --- z5'r -- z5'l --- z5l{dir (alpha+90)}
       ... {dir alpha}1/2[z4l, z4'l]{-dir alpha}
       ... {dir (alpha+90)}z3l --- z3'l -- cycle;
     penlabels(3',3,4,5,5');
   else:
-    filldraw z1r{-dir (alpha + beta)} ... z2r --- z3r{dir (alpha-90)} ... {dir alpha}z4r
+    fill z1r{-dir (alpha + beta)} ... z2r --- z3r{dir (alpha-90)} ... {dir alpha}z4r
       -- z4'r{-dir alpha} ... {dir (alpha-90)}z5r --- z6r ... {dir (alpha - beta)}z7r
       -- z7l -- z7'l{-dir (alpha - beta)} ... z6l --- z5l{dir (alpha+90)}
       ... {dir alpha}1/2[z4l, z4'l]{-dir alpha}
       ... {dir (alpha+90)}z3l --- z2l ... {dir (alpha + beta)}z1'l -- z1l -- cycle;
-    penlabels(1,2,3,4,5,6,7);
+    penlabels(1,1',2,2',3,4,4',5,5',6,6',7,7');
   fi;
 
 enddef;

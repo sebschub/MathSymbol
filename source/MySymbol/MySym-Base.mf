@@ -547,20 +547,41 @@ def draw_line_cut(suffix $, $$)=
 enddef;
 
 def draw_line_cut_ec(suffix $, $$)=
+  draw_line_cut_ec_scaled($, $$)(1);
+enddef;
+
+def draw_line_cut_ec_scaled(suffix $, $$)(expr scale)=
   if (abs(angle(z$-z$$))<45) or (abs(angle(z$-z$$))>135) :
     z$a  = z$  - 1/2rule_thickness*((z$$-z$) dotprod left)/length((z$$-z$) dotprod left)*left;
     z$$a = z$$ + 1/2rule_thickness*((z$$-z$) dotprod left)/length((z$$-z$) dotprod left)*left;
-    ppos_cut($a)(angle(z$-z$$),90);
-    ppos_cut($$a)(angle(z$-z$$),90);
+    ppos_cut_scaled($a)(angle(z$-z$$),90,scale);
+    ppos_cut_scaled($$a)(angle(z$-z$$),90,scale);
   else:
     z$a  = z$  - 1/2rule_thickness*((z$$-z$) dotprod up)/length((z$$-z$) dotprod up)*up;
     z$$a = z$$ + 1/2rule_thickness*((z$$-z$) dotprod up)/length((z$$-z$) dotprod up)*up;
-    ppos_cut($a)(angle(z$-z$$),0);
-    ppos_cut($$a)(angle(z$-z$$),0);
+    ppos_cut_scaled($a)(angle(z$-z$$),0,scale);
+    ppos_cut_scaled($$a)(angle(z$-z$$),0,scale);
   fi
   penstroke z$a.e .. z$$a.e;
   penlabels($a,$$a)
 enddef;
+
+def draw_line_cut_scaled(suffix $, $$)(expr scale)=
+  if (abs(angle(z$-z$$))<45) or (abs(angle(z$-z$$))>135) :
+    z$a  = z$;
+    z$$a = z$$;
+    ppos_cut_scaled($a)(angle(z$-z$$),90,scale);
+    ppos_cut_scaled($$a)(angle(z$-z$$),90,scale);
+  else:
+    z$a  = z$;
+    z$$a = z$$;
+    ppos_cut_scaled($a)(angle(z$-z$$),0,scale);
+    ppos_cut_scaled($$a)(angle(z$-z$$),0,scale);
+  fi
+  penstroke z$a.e .. z$$a.e;
+  penlabels($a,$$a)
+enddef;
+
 
 def draw_prec(suffix $,$$,$$$)(expr l, r, spread) =
   z$ = r - 1/2spread * dir (angle (r-l) + 90);
