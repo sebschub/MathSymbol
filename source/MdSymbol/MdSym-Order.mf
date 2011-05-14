@@ -1,0 +1,1412 @@
+
+% There are some additional order glyphs in MdSym-Geometric. Keep them consistent!
+
+vardef ifneg(text values) =
+  select(negated)(values)
+enddef;
+
+% equal signs
+
+if negated < 2:
+  beginorder(1, order_width# + rule_thickness#, ifneg(1,3) * equal_spread# + rule_thickness#); "equal";
+
+    z1 - z0 = equal_spread * dir 90;
+    z3 - z2 = equal_spread * dir 90;
+
+    1/2[z0, z1] = left_point;
+    1/2[z2, z3] = right_point;
+
+    draw_line_ec(0,2);
+    draw_line_ec(1,3);
+
+    if negated = 1:
+      draw_stroke_through(4,5)(centre, 3equal_spread);
+    fi;
+  endchar;
+fi;
+
+if negated < 2:
+  beginorder(1, order_width# + rule_thickness#, ifneg(2,4) * equal_spread# + rule_thickness#); "equiv";
+
+    z2 - z1 = z1 - z0 = equal_spread * dir 90;
+    z5 - z4 = z4 - z3 = equal_spread * dir 90;
+
+    1/2[z0, z2] = left_point;
+    1/2[z3, z5] = right_point;
+
+    draw_line_ec(0,3);
+    draw_line_ec(1,4);
+    draw_line_ec(2,5);
+
+    if negated = 1:
+      draw_stroke_through(6,7)(centre, 4equal_spread);
+    fi;
+  endchar;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#, ifneg(2/3, 8/3)*equal_spread# + rule_thickness#); "sim";
+
+      draw_sim(1)(left_point, right_point);
+
+      if negated = 1:
+        draw_stroke_through(2,3)(centre, 8/3equal_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#, ifneg(5/3, 11/3) * equal_spread# + rule_thickness#);
+      "approx";
+
+      draw_sim(1)(left_point + 1/2equal_spread * dir 90, right_point + 1/2equal_spread * dir 90);
+      draw_sim(2)(left_point - 1/2equal_spread * dir 90, right_point - 1/2equal_spread * dir 90);
+
+      if negated = 1:
+        draw_stroke_through(3,4)(centre, 11/3equal_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#, ifneg(8/3, 14/3) * equal_spread# + rule_thickness#);
+      "triple sim";
+
+      draw_sim(1)(left_point + equal_spread * dir 90, right_point + equal_spread * dir 90);
+      draw_sim(2)(left_point,                         right_point);
+      draw_sim(3)(left_point - equal_spread * dir 90, right_point - equal_spread * dir 90);
+
+      if negated = 1:
+        draw_stroke_through(4,5)(centre, 14/3equal_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#, ifneg(5/3, 11/3) * equal_spread# + rule_thickness#);
+      "sim equal";
+
+      draw_sim(1)(left_point + 1/2equal_spread * dir 90, right_point + 1/2equal_spread * dir 90);
+      z2 = left_point - 5/6equal_spread * dir 90;
+      z3 = right_point - 5/6equal_spread * dir 90;
+      draw_line_ec(2,3);
+    
+      if negated = 1:
+        draw_stroke_through(4,5)(centre, 11/3equal_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#, ifneg(5/3, 11/3) * equal_spread# + rule_thickness#); "equal sim";
+
+      z1 = left_point + 5/6equal_spread * dir 90;
+      z2 = right_point + 5/6equal_spread * dir 90;
+      draw_line_ec(1,2);
+      draw_sim(3)(left_point - 1/2equal_spread * dir 90, right_point - 1/2equal_spread * dir 90);
+
+      if negated = 1:
+        draw_stroke_through(4,5)(centre, 11/3equal_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#, ifneg(8/3, 14/3) * equal_spread# + rule_thickness#); "cong";
+
+      draw_sim(1)(left_point + equal_spread * dir 90, right_point + equal_spread * dir 90);
+      z2 = left_point - 1/3equal_spread * dir 90;
+      z3 = right_point - 1/3equal_spread * dir 90;
+      draw_line_ec(2,3);
+      z4 = left_point - 4/3equal_spread * dir 90;
+      z5 = right_point - 4/3equal_spread * dir 90;
+      draw_line_ec(4,5);
+    
+      if negated = 1:
+        draw_stroke_through(6,7)(centre, 14/3equal_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#, ifneg(8/3, 14/3) * equal_spread# + rule_thickness#);
+      "approx equal";
+
+      draw_sim(1)(left_point + equal_spread * dir 90, right_point + equal_spread * dir 90);
+      draw_sim(2)(left_point,                         right_point);
+      z3 = left_point - 4/3equal_spread * dir 90;
+      z4 = right_point - 4/3equal_spread * dir 90;
+      draw_line_ec(3,4);
+    
+      if negated = 1:
+        draw_stroke_through(5,6)(centre, 14/3equal_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  beginorder(1, order_width# + rule_thickness#, ifneg(1,3) * equal_spread# + 2/5order_width# + rule_thickness#);
+    "bump equal";
+
+    z1 - z0 = equal_spread * dir 90;
+    z3 - z2 = equal_spread * dir 90;
+
+    1/2[z0, z1] = left_point;
+    1/2[z2, z3] = right_point;
+
+    draw_line_ec(0,2);
+    draw_half_circle(4)(1/2[z1,z3], order_width/5, 0);
+
+    draw_line_ec(4[1],3);
+
+    draw_line_ec(1,4[5]);
+  
+    if negated = 1:
+      draw_stroke_through(7,8)(centre, 3equal_spread + 2/5order_width);
+    fi;
+  endchar;
+fi;
+
+if negated < 2:
+  beginorder(1, order_width# + rule_thickness#, ifneg(1,3) * equal_spread# + 2/5order_width# + rule_thickness#);
+    "equal bump";
+
+    z0 - z1 = equal_spread * dir 90;
+    z2 - z3 = equal_spread * dir 90;
+
+    1/2[z0, z1] = left_point;
+    1/2[z2, z3] = right_point;
+
+    draw_line_ec(0,2);
+    draw_half_circle(4)(1/2[z1,z3], order_width/5, 180);
+
+    draw_line_ec(1,4[1]);
+
+    draw_line_ec(3,4[5]);
+
+    if negated = 1:
+      draw_stroke_through(7,8)(centre, 3equal_spread + 2/5order_width);
+    fi;
+  endchar;
+fi;
+
+if negated < 2:
+  beginorder(1, order_width# + rule_thickness#, ifneg(1,3) * equal_spread# + 2/5order_width# + rule_thickness#);
+    "double bump equal";
+
+    z1 - z0 = equal_spread * dir 90;
+    z3 - z2 = equal_spread * dir 90;
+
+    1/2[z0, z1] = left_point;
+    1/2[z2, z3] = right_point;
+
+    draw_half_circle(4)(1/2[z0,z2], order_width/5, 180);
+    draw_line_ec(0,4[1]);
+    draw_line_ec(2,4[5]);
+
+    draw_half_circle(7)(1/2[z1,z3], order_width/5, 0);
+    draw_line_ec(3,7[1]);
+    draw_line_ec(1,7[5]);
+  
+    if negated = 1:
+      draw_stroke_through(10,11)(centre, 3equal_spread + 2/5order_width);
+    fi;
+  endchar;
+fi;
+
+if negated < 2:
+  beginorder(1, order_width# + rule_thickness#,
+                3equal_spread# + ifneg(2dot_size#, equal_spread# + rule_thickness#));
+    "dot equal";
+
+    z1 - z0 = equal_spread * dir 90;
+    z3 - z2 = equal_spread * dir 90;
+
+    1/2[z0, z1] = left_point;
+    1/2[z2, z3] = right_point;
+
+    draw_line_ec(0,2);
+    draw_line_ec(1,3);
+    fill circle(centre + 3/2equal_spread * dir 90, dot_size);
+
+    if negated = 1:
+      draw_stroke_through(4,5)(centre, 4equal_spread);
+    fi;
+  endchar;
+fi;
+
+if negated < 2:
+  beginorder(1, order_width# + rule_thickness#,
+                3equal_spread# + ifneg(2dot_size#, equal_spread# + rule_thickness#));
+    "equal dot";
+
+    z1 - z0 = equal_spread * dir 90;
+    z3 - z2 = equal_spread * dir 90;
+
+    1/2[z0, z1] = left_point;
+    1/2[z2, z3] = right_point;
+
+    draw_line_ec(0,2);
+    draw_line_ec(1,3);
+    fill circle(centre - 3/2equal_spread * dir 90, dot_size);
+
+    if negated = 1:
+      draw_stroke_through(4,5)(centre, 4equal_spread);
+    fi;
+  endchar;
+fi;
+
+if negated < 2:
+  beginorder(1, order_width# + rule_thickness#,
+                3equal_spread# + ifneg(2dot_size#, equal_spread# + rule_thickness#));
+    "dot equal dot";
+
+    z1 - z0 = equal_spread * dir 90;
+    z3 - z2 = equal_spread * dir 90;
+
+    1/2[z0, z1] = left_point;
+    1/2[z2, z3] = right_point;
+
+    draw_line_ec(0,2);
+    draw_line_ec(1,3);
+    fill circle(centre + 3/2equal_spread * dir 90, dot_size);
+    fill circle(centre - 3/2equal_spread * dir 90, dot_size);
+
+    if negated = 1:
+      draw_stroke_through(5,6)(centre, 4equal_spread);
+    fi;
+  endchar;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+                     3equal_spread# + ifneg(2dot_size#, equal_spread# + rule_thickness#));
+      "falling dot equal";
+
+      z1 - z0 = equal_spread * dir 90;
+      z3 - z2 = equal_spread * dir 90;
+
+      1/2[z0, z1] = left_point;
+      1/2[z2, z3] = right_point;
+
+      draw_line_ec(0,2);
+      draw_line_ec(1,3);
+      fill circle(left_point  + 3/2equal_spread * dir 90, dot_size);
+      fill circle(right_point - 3/2equal_spread * dir 90, dot_size);
+
+      if negated = 1:
+        draw_stroke_through(4,5)(centre, 4equal_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+for round_smile = true, false:
+
+  if negated < 2:
+    for sign = 1, -1:
+      beginorder(1, order_width# + rule_thickness#, ifneg(2/3, 8/3) * equal_spread# + rule_thickness#);
+        "smile";
+
+        draw_smile(1)(sign, left_point, right_point, 2/3equal_spread, round_smile);
+
+        if negated = 1:
+          draw_stroke_through(2,3)(centre, 8/3equal_spread);
+        fi;
+      endchar;
+    endfor;
+  fi;
+
+  if negated < 2:
+    for sign = 1, -1:
+      beginorder(1, order_width# + rule_thickness#, ifneg(5/3, 11/3) * equal_spread# + rule_thickness#); "double smile";
+
+        s := 1/2equal_spread;
+
+        draw_smile(1)(sign, left_point + s * dir 90, right_point + s * dir 90, 2/3equal_spread, round_smile);
+        draw_smile(2)(sign, left_point - s * dir 90, right_point - s * dir 90, 2/3equal_spread, round_smile);
+
+        if negated = 1:
+          draw_stroke_through(3,4)(centre, 11/3equal_spread);
+        fi;
+      endchar;
+    endfor;
+  fi;
+
+  if negated < 2:
+    for sign = 1, -1:
+      beginorder(1, order_width# + rule_thickness#, ifneg(8/3, 14/3) * equal_spread# + rule_thickness#); "triple smile";
+
+        s := equal_spread;
+
+        draw_smile(1)(sign, left_point + s * dir 90, right_point + s * dir 90, 2/3equal_spread, round_smile);
+        draw_smile(2)(sign, left_point,              right_point,              2/3equal_spread, round_smile);
+        draw_smile(3)(sign, left_point - s * dir 90, right_point - s * dir 90, 2/3equal_spread, round_smile);
+
+        if negated = 1:
+          draw_stroke_through(4,5)(centre, 14/3equal_spread);
+        fi;
+      endchar;
+    endfor;
+  fi;
+
+  if negated < 2:
+    for sign = 1, -1:
+      beginorder(1, order_width# + rule_thickness#, ifneg(7/3, 13/3) * equal_spread# + rule_thickness#); "smile frown";
+
+        s := 5/6equal_spread;
+
+        draw_smile(1)(sign,  left_point + s * dir 90, right_point + s * dir 90, 2/3equal_spread, round_smile);
+        draw_smile(2)(-sign, left_point - s * dir 90, right_point - s * dir 90, 2/3equal_spread, round_smile);
+
+        if negated = 1:
+          draw_stroke_through(3,4)(centre, 13/3equal_spread);
+        fi;
+      endchar;
+    endfor;
+  fi;
+
+  if negated < 2:
+    for sign = 1, -1:
+      beginorder(1, order_width# + rule_thickness#, ifneg(5/3, 11/3) * equal_spread# + rule_thickness#); "smile equal";
+
+        s := 1/6equal_spread;
+
+        draw_smile(1)(sign, left_point + 3s * dir 90, right_point + 3s * dir 90, 2/3equal_spread, round_smile);
+        z2 = left_point - 5s * dir 90; z3 = right_point - 5s * dir 90;
+        draw_line_ec(2,3);
+      
+        if negated = 1:
+          draw_stroke_through(4,5)(centre, 11/3equal_spread);
+        fi;
+      endchar;
+    endfor;
+  fi;
+
+  if negated < 2:
+    for sign = 1, -1:
+      beginorder(1, order_width# + rule_thickness#, ifneg(5/3, 11/3) * equal_spread# + rule_thickness#); "equal smile";
+        pickup rule_pen;
+
+        s := 1/6equal_spread;
+
+        z1 = left_point + 5s * dir 90; z2 = right_point + 5s * dir 90;
+        draw_line_ec(1,2);
+        draw_smile(3)(sign, left_point - 3s * dir 90, right_point - 3s * dir 90, 2/3equal_spread, round_smile);
+
+        if negated = 1:
+          draw_stroke_through(4,5)(centre, 11/3equal_spread);
+        fi;
+      endchar;
+    endfor;
+  fi;
+
+  if negated < 2:
+    for sign = 1, -1:
+      beginorder(1, order_width# + rule_thickness#, ifneg(8/3, 14/3) * equal_spread# + rule_thickness#);
+        "double smile equal";
+
+        s := 1/6equal_spread;
+
+        draw_smile(1)(sign, left_point + 6s * dir 90, right_point + 6s * dir 90, 2/3equal_spread, round_smile);
+        draw_smile(2)(sign, left_point,               right_point,               2/3equal_spread, round_smile);
+        z3 = left_point - 8s * dir 90; z4 = right_point - 8s * dir 90;
+        draw_line_ec(3,4);
+      
+        if negated = 1:
+          draw_stroke_through(5,6)(centre, 14/3equal_spread);
+        fi;
+      endchar;
+    endfor;
+  fi;
+
+  if negated < 2:
+    for sign = 1, -1:
+      beginorder(1, order_width# + rule_thickness#, ifneg(10/3, 16/3) * equal_spread# + rule_thickness#);
+        "smile equal frown";
+
+        s := 4/3equal_spread;
+
+        draw_smile(1)(sign,  left_point + s * dir 90, right_point + s * dir 90, 2/3equal_spread, round_smile);
+        z2 = left_point; z3 = right_point;
+        draw_line_ec(2,3);
+        draw_smile(4)(-sign, left_point - s * dir 90, right_point - s * dir 90, 2/3equal_spread, round_smile);
+
+        if negated = 1:
+          draw_stroke_through(5,6)(centre, 16/3equal_spread);
+        fi;
+      endchar;
+    endfor;
+  fi;
+
+  % Only the round version since we have no free glyphs left.
+  if round_smile and (negated < 2):
+    for sign = 1, -1:
+      beginorder(1, order_width# + rule_thickness#, ifneg(10/3, 16/3) * equal_spread# + rule_thickness#);
+        "smile frown equal";
+
+        s := 1/6equal_spread;
+
+        draw_smile(1)(sign,  left_point + 8s * dir 90, right_point + 8s * dir 90, 2/3equal_spread, round_smile);
+        draw_smile(2)(-sign, left_point - 1s * dir 90, right_point - 1s * dir 90, 2/3equal_spread, round_smile);
+        z3 = left_point - 10s * dir 90; z4 = right_point - 10s * dir 90;
+        draw_line_ec(3,4);
+      
+        if negated = 1:
+          draw_stroke_through(5,6)(centre, 16/3equal_spread);
+        fi;
+      endchar;
+    endfor;
+fi;
+
+endfor;
+
+if negated < 2:
+  beginorder(1, order_width# + rule_thickness#, ifneg(1,3) * equal_spread# + rule_thickness#);
+    "equal circled";
+
+    z1 - z0 = equal_spread * dir 90;
+    z3 - z2 = equal_spread * dir 90;
+
+    1/2[z0, z1] = left_point;
+    1/2[z2, z3] = right_point;
+
+    draw_line_ec(0,2);
+    draw_line_ec(1,3);
+
+    draw_circle_scaled(4)(centre, 1/2equal_spread,3/4);
+
+    if negated = 1:
+      draw_stroke_through(5,6)(centre, 3equal_spread);
+    fi;
+  endchar;
+fi;
+
+if negated < 2:
+  beginorder(1, order_width# + rule_thickness#, 3equal_spread# + 7/2dot_size# + rule_thickness#);
+    "circ equal";
+
+    z1 - z0 = equal_spread * dir 90;
+    z3 - z2 = equal_spread * dir 90;
+
+    1/2[z0, z1] = left_point;
+    1/2[z2, z3] = right_point;
+
+    draw_line_ec(0,2);
+    draw_line_ec(1,3);
+
+    draw_circle_scaled(4)(centre + 3/2equal_spread * dir 90,
+                min (7/4dot_size, equal_spread - 1/2*3/4rule_thickness),3/4);
+
+    if negated = 1:
+      draw_stroke_through(5,6)(centre, 3equal_spread + 7/2dot_size);
+    fi;
+  endchar;
+fi;
+
+if negated < 2:
+  beginorder(1, order_width# + rule_thickness#, 3equal_spread# + 7/2dot_size# + rule_thickness#);
+    "triangle equal";
+
+    z1 - z0 = equal_spread * dir 90;
+    z3 - z2 = equal_spread * dir 90;
+
+    1/2[z0, z1] = left_point;
+    1/2[z2, z3] = right_point;
+
+    x4 = xpart centre;
+    y4 = y5 + sind 60 * (x6 - x5) = h - 1/2rule_thickness;
+
+    y5 = y6;
+    1/2[x5, x6] = xpart centre;
+
+    y5 - y1 = 2/3equal_spread;
+
+    x10 = xpart centre; 
+    y10 = 1/2[y5,y4];
+  
+    draw_line_ec(0,2);
+    draw_line_ec(1,3);
+
+    draw_triangle_scaled(11)(z10,1/2(y4-y5),90,3/4);
+  
+    penlabels(4,5,6,10);
+    if negated = 1:
+      draw_stroke_through(7,8)(centre, 3equal_spread + 7/2dot_size);
+    fi;
+  endchar;
+fi;
+
+if negated < 2:
+  beginorder(1, order_width# + rule_thickness#, 5/2equal_spread# + 7/2dot_size# + rule_thickness#);
+    "hat equal";
+
+    pickup rule_pen;
+
+    z1 - z0 = equal_spread * dir 90;
+    z3 - z2 = equal_spread * dir 90;
+
+    1/2[z0, z1] = left_point;
+    1/2[z2, z3] = right_point;
+
+    x4 = xpart centre;
+    y4 = y5 + sind 30 * (x6 - x5) = h;
+
+    y5 = y6;
+    1/2[x5, x6] = xpart centre;
+
+    y5 - y1 = 2/3equal_spread;
+
+    draw_line_ec(0,2);
+    draw_line_ec(1,3);
+    draw_arrow_cut_scaled(6,4,5)(3/4);
+
+    if negated = 1:
+      draw_stroke_through(7,8)(centre, 3equal_spread + 7/2dot_size);
+    fi;
+  endchar;
+fi;
+
+% element signs
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, 17/24order_width# + rule_thickness#,
+                     ifneg(0,2) * equal_spread# + 8/9[equal_spread#, greater_spread#] + rule_thickness#);
+      "element";
+
+      s := 8/9[equal_spread, greater_spread];
+
+      z1 - z0 = s * dir 90;
+      1/2[z0, z1] = right_point;
+      z3 - z2 = s * dir 90;
+      1/2[z2, z3] = 7/10[left_point,right_point];
+
+      z1a - z1 = z0a - z0 = -1/2sign*rule_thickness*left;
+
+      z4 = left_point; z5 = right_point;
+      penpos0a(rule_thickness,90);
+      penpos2(rule_thickness,90);
+      penpos4(rule_thickness,1/2(1-sign)*180);
+      penpos3(rule_thickness,-90);
+      penpos1a(rule_thickness,-90);
+      penstroke z0a.e -- z2e{left_point - right_point} .. z4.e .. {right_point - left_point}z3.e -- z1a.e;
+      draw_line_ec(4r,5);
+
+      penlabels(0,1,2,3,4,5);
+      if negated = 1:
+        draw_stroke_through(6,7)(centre, 2equal_spread + 8/9[equal_spread, greater_spread]);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+% orderings
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+                     ifneg(0,2) * equal_spread# + greater_spread# + rule_thickness#);
+      "less than";
+
+      z1 - z0 = greater_spread * dir 90;
+
+      1/2[z0, z1] = right_point;
+
+      z2 = left_point;
+      draw_arrow_cut_ec(0,2,1);
+
+      if negated = 1:
+        draw_stroke_through(3,4)(centre, 2equal_spread + greater_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+                     greater_spread# + ifneg(2/3, 8/3) * equal_spread# + rule_thickness#);
+      "less than or equal";
+
+      z1 - z0 = greater_spread * dir 90;
+      y2 = 1/2[y0, y1];
+      x2 = x3 = xpart left_point;
+      y3 = y4;
+      z0 - z4 = 2/3equal_spread * dir 90;
+
+      1/2[z1, z4] = right_point;
+
+      draw_arrow_cut_ec(0,2,1);
+      draw_line_ec(3,4);
+
+      if negated = 1:
+        draw_stroke_through(5,6)(centre, 8/3equal_spread + greater_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+      greater_spread# + ifneg(1,3) * equal_spread# + rule_thickness#);
+      "less than or slanted equal";
+
+      z1 - z0 = greater_spread * dir 90;
+      z2 - z3 = equal_spread * dir 90;
+      z0 - z4 = equal_spread * dir 90;
+
+      1/2[z2, z3] = left_point;
+      1/2[z1, z4] = right_point;
+
+      draw_arrow_cut_ec(0,2,1);
+      draw_line_cut_ec(3,4);
+
+      if negated = 1:
+        draw_stroke_through(5,6)(centre, 3equal_spread + greater_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 3:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+      greater_spread# + ifneg(5/3, 11/3, 11/3) * equal_spread# + rule_thickness#);
+      "less than or double equal";
+
+      z1 - z0 = greater_spread * dir 90;
+      y2 = 1/2[y0, y1];
+      x2 = x3 = x5 = xpart left_point;
+      y3 = y4;
+      z0 - z4 = 2/3equal_spread * dir 90;
+      y5 = y6;
+      z4 - z6 = equal_spread * dir 90;
+
+      1/2[z1, z6] = right_point;
+
+      draw_arrow_cut_ec(0,2,1);
+      draw_line_ec(3,4);
+      draw_line_ec(5,6);
+
+      if negated = 1:
+        draw_stroke_through(7,8)(centre, 11/3equal_spread + greater_spread);
+      elseif negated = 2:
+        draw_stroke_through(7,8)(1/2[1/2[z3,z4], 1/2[z5,z6]], 3equal_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+      3/2greater_spread# + ifneg(1,3) * equal_spread# + rule_thickness#);
+      "less greater";
+
+      y1 - y0 = greater_spread;
+      y2 - y3 = equal_spread;
+      y0 - y4 = equal_spread;
+      y3 - y5 = greater_spread;
+
+      x2 = x3 = x5 = xpart left_point;
+      x0 = x1 = x4 = xpart right_point;
+
+      y2 = 1/2[y0, y1];
+
+      1/2[y1, y5] = ypart centre;
+
+      draw_arrow_cut_ec(0,2,1);
+      draw_arrow_cut_ec(3,4,5);
+
+      if negated = 1:
+        draw_stroke_through(6,7)(centre, 3equal_spread + 3/2greater_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+                     2greater_spread# + ifneg(4/3, 10/3) * equal_spread# + rule_thickness#);
+      "less equal greater";
+
+      pickup rule_pen;
+
+      y2 - y0 = greater_spread;
+      x0 = x2 = xpart right_point;
+
+      y1 = 1/2[y0, y2];
+      x1 = xpart left_point;
+
+      y5 - y3 = greater_spread;
+      x3 = x5 = xpart left_point;
+
+      y4 = 1/2[y3, y5];
+      x4 = xpart right_point;
+
+      y0 - y5 = 4/3equal_spread;
+
+      1/2[y0, y5] = ypart centre;
+
+      draw_arrow_cut_ec(0,1,2);
+      draw_arrow_cut_ec(3,4,5);
+      z6 = left_point; z7 = right_point;
+      draw_line_ec(6,7);
+    
+      if negated = 1:
+        draw_stroke_through(8,9)(centre, 10/3equal_spread + 2greater_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 3:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+                     2greater_spread# + ifneg(7/3, 13/3, 13/3) * equal_spread# + rule_thickness#);
+      "less double equal greater";
+
+      pickup rule_pen;
+
+      y2 - y0 = greater_spread;
+      x0 = x2 = xpart right_point;
+
+      y1 = 1/2[y0, y2];
+      x1 = xpart left_point;
+
+      y5 - y3 = greater_spread;
+      x3 = x5 = xpart left_point;
+
+      y4 = 1/2[y3, y5];
+      x4 = xpart right_point;
+
+      y0 - y5 = 7/3equal_spread;
+
+      1/2[y0, y5] = ypart centre;
+
+      1/2[z6, z7] = left_point;
+      1/2[z8, z9] = right_point;
+
+      z7 - z6 = equal_spread * dir 90;
+      z9 - z8 = equal_spread * dir 90;
+
+      draw_arrow_cut_ec(0,1,2);
+      draw_arrow_cut_ec(3,4,5);
+      draw_line_ec(6,8);
+      draw_line_ec(7,9);
+
+      if negated = 1:
+        draw_stroke_through(10,11)(centre, 13/3equal_spread + 2greater_spread);
+      elseif negated = 2:
+        draw_stroke_through(12,13)(centre, 3equal_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+                     3/2greater_spread# + ifneg(2,4) * equal_spread# + rule_thickness#);
+      "less slanted equal greater";
+
+      y2 - y0 = greater_spread;
+      x0 = x2 = xpart right_point;
+
+      y1 = 1/2[y0, y2];
+      x1 = xpart left_point;
+
+      y5 - y3 = greater_spread;
+      x3 = x5 = xpart left_point;
+
+      y4 = 1/2[y3, y5];
+      x4 = xpart right_point;
+
+      z6 = 1/2[z1, z5];
+      z7 = 1/2[z0, z4];
+
+      y1 - y6 = equal_spread;
+
+      1/2[y6, y7] = ypart centre;
+
+      draw_arrow_cut_ec(0,1,2);
+      draw_arrow_cut_ec(3,4,5);
+      draw_line_cut_ec(6,7);
+
+      if negated = 1:
+        draw_stroke_through(8,9)(centre, 4equal_spread + 3/2greater_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + 2equal_spread# + rule_thickness#,
+                     ifneg(0,2) * equal_spread# + greater_spread# + rule_thickness#);
+      "less less";
+
+      z1 - z0 = greater_spread * dir 90;
+      z3 - z5 = greater_spread * dir 90;
+      z2 = left_point;
+      z4 - z2 = sign * 2equal_spread * dir 0;
+      z3 - z1 = sign * 2equal_spread * dir 0;
+
+      1/2[z3, z5] = right_point;
+
+      draw_arrow_cut_ec(0,2,1);
+      draw_arrow_cut_ec(3,4,5);
+
+      if negated = 1:
+        draw_stroke_through(6,7)(centre, 2equal_spread + greater_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + 4equal_spread# + rule_thickness#,
+                     ifneg(0,2) * equal_spread# + greater_spread# + rule_thickness#);
+      "less less less";
+
+      z1 - z0 = greater_spread * dir 90;
+      z3 - z5 = greater_spread * dir 90;
+      z6 - z8 = greater_spread * dir 90;
+      z2 = left_point;
+      z4 - z2 = sign * 2equal_spread * dir 0;
+      z3 - z1 = sign * 2equal_spread * dir 0;
+      z7 - z4 = sign * 2equal_spread * dir 0;
+      z6 - z3 = sign * 2equal_spread * dir 0;
+
+      1/2[z6, z8] = right_point;
+
+      draw_arrow_cut_ec(0,2,1);
+      draw_arrow_cut_ec(3,4,5);
+      draw_arrow_cut_ec(6,7,8);
+
+      if negated = 1:
+        draw_stroke_through(9,10)(centre, 2equal_spread + greater_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+                     ifneg(0,2) * equal_spread# + greater_spread# + rule_thickness#);
+      "closed less than";
+
+      pickup rule_pen;
+
+      z1 - z0 = greater_spread * dir 90;
+
+      1/2[z0, z1] = right_point;
+
+      z2 = left_point;
+    
+      draw_arrow_cut_ec(0,2,1);
+
+    % CLOSURE NOT ROBUST, FIX IF NECESSARY!
+      if sign = 1:
+        z3r = z1a.l;       z4r = z0a.r;
+      else:
+	z3l = z1a.l;       z4l = z0a.r;
+      fi
+      penpos3(rule_thickness,0);       penpos4(rule_thickness,0);
+      penstroke z3e -- z4e;
+    
+      if negated = 1:
+        draw_stroke_through(5,6)(centre, 2equal_spread + greater_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+                     greater_spread# + ifneg(2/3, 8/3) * equal_spread# + rule_thickness#);
+      "closed less than or equal";
+
+      pickup rule_pen;
+
+      z1 - z0 = greater_spread * dir 90;
+      y2 = 1/2[y0, y1];
+      x2 = x3 = xpart left_point;
+      y3 = y4;
+      z0 - z4 = 2/3equal_spread * dir 90;
+
+      1/2[z1, z4] = right_point;
+
+      draw_arrow_cut_ec(0,2,1);
+    % CLOSURE NOT ROBUST, FIX IF NECESSARY!
+      if sign = 1:
+        z5r = z1a.l;       z6r = z0a.r;
+      else:
+	z5l = z1a.l;       z6l = z0a.r;
+      fi
+      penpos5(rule_thickness,0);       penpos6(rule_thickness,0);
+      penstroke z5e -- z6e;
+
+      draw_line_ec(3,4);
+
+      if negated = 1:
+        draw_stroke_through(7,8)(centre, 8/3equal_spread + greater_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+                     1/2[equal_spread#, greater_spread#] + ifneg(0,2) * equal_spread# + rule_thickness#);
+      "square subset";
+
+      pickup rule_pen;
+
+      z1 - z0 = 1/2[equal_spread, greater_spread] * dir 90;
+      z3 - z2 = 1/2[equal_spread, greater_spread] * dir 90;
+
+      1/2[z0, z1] = left_point;
+      1/2[z2, z3] = right_point;
+
+      draw_line_ec(3,1);
+      draw_line_ec(0,2);
+
+      z4 = z1; z5 = z0;
+      draw_line(4,5);
+
+      if negated = 1:
+        draw_stroke_through(6,7)(centre, 2equal_spread + 1/2[equal_spread, greater_spread]);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 3:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+                     ifneg(1,3,3) * equal_spread# + 1/2[equal_spread#, greater_spread#] + rule_thickness#);
+      "square subset equal";
+
+      pickup rule_pen;
+
+      z1 - z0 = 1/2[equal_spread, greater_spread] * dir 90;
+      z3 - z2 = 1/2[equal_spread, greater_spread] * dir 90;
+
+      1/2[z1, z4] = left_point;
+      1/2[z3, z5] = right_point;
+
+      y4 = y5 = y0 - equal_spread;
+      x4 = x0;
+      x5 = x2;
+
+      draw_line_ec(3,1); draw_line_ec(0,2);
+      z7 = z1; z8 = z0;
+      draw_line_ec(7,8);
+  
+      draw_line_ec(4,5);
+
+      if negated = 1:
+        draw_stroke_through(9,10)(centre, 3equal_spread + 1/2[equal_spread, greater_spread]);
+      elseif negated = 2:
+        draw_stroke_through(11,12)(1/2[1/2[z0,z2], 1/2[z4,z5]], 3equal_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 3:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+                     ifneg(2,4,4) * equal_spread# + 1/2[equal_spread#, greater_spread#] + rule_thickness#);
+      "square subset double equal";
+
+      z1 - z0 = 1/2[equal_spread, greater_spread] * dir 90;
+      z3 - z2 = 1/2[equal_spread, greater_spread] * dir 90;
+
+      1/2[z1, z6] = left_point;
+      1/2[z3, z7] = right_point;
+
+      y4 = y5 = y0 - equal_spread;
+      y6 = y7 = y4 - equal_spread;
+      x4 = x6 = x0;
+      x5 = x7 = x2;
+
+      draw_line_ec(3,1); draw_line_ec(0,2);
+      z8 = z1; z9 = z0;
+      draw_line_ec(8,9);
+
+      draw_line_ec(4,5);
+      draw_line_ec(6,7);
+
+      if negated = 1:
+        draw_stroke_through(10,11)(centre, 4equal_spread + 1/2[equal_spread, greater_spread]);
+      elseif negated = 2:
+        draw_stroke_through(10,11)(1/2[1/2[z4,z5], 1/2[z6,z7]], 3equal_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+                     ifneg(8/3, 14/3) * equal_spread# + rule_thickness#);
+      "double square subset";
+
+      z1 - z0 = equal_spread * dir 90;
+      z3 - z2 = equal_spread * dir 90;
+
+      1/2[z1, z0] = left_point + 3/4equal_spread * dir (90 - sign * 90);
+      1/2[z3, z2] = right_point;
+
+      z5 - z4 = 8/3equal_spread * dir 90;
+      z7 - z6 = 8/3equal_spread * dir 90;
+
+      1/2[z5, z4] = left_point;
+      1/2[z7, z6] = right_point;
+
+      draw_line_ec(3,1);  draw_line_ec(0,2);
+      z8 = z1; z9 = z0;
+      draw_line_ec(8,9);
+
+      draw_line_ec(7,5); draw_line_ec(4,6);
+      z10 = z5; z11 = z4;
+      draw_line_ec(10,11);
+
+      if negated = 1:
+        draw_stroke_through(12,13)(centre, 14/3equal_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+                     ifneg(0,2) * equal_spread# + 2/3[equal_spread#, greater_spread#] + rule_thickness#);
+      "subset";
+
+      draw_subset(1)(left_point, right_point, 2/3[equal_spread, greater_spread]);
+
+      if negated = 1:
+        draw_stroke_through(2,3)(centre, 2equal_spread + 2/3[equal_spread, greater_spread]);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 3:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+               ifneg(1,3,3) * equal_spread# + 2/3[equal_spread#, greater_spread#] + rule_thickness#);
+      "subset or equal";
+
+      t := 2/3[equal_spread, greater_spread];
+      s := 1/2equal_spread + 1/2t;
+
+      z1 - z0 = z3 - z2 = (t/2 + equal_spread) * dir 90;
+      y0 = y2 = ypart centre - s;
+      x0 = xpart left_point;
+      x2 = xpart right_point;
+
+      draw_subset(4)(z1, z3, t);
+      draw_line_ec(0,2);
+
+      if negated = 1:
+        draw_stroke_through(5,6)(centre, 3equal_spread + 2/3[equal_spread, greater_spread]);
+      elseif negated = 2:
+        draw_stroke_through(5,6)(1/2[z0,z2] + 1/2equal_spread * dir 90, 3equal_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 3:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+               ifneg(2,4,4) * equal_spread# + 2/3[equal_spread#, greater_spread#] + rule_thickness#);
+      "subset or double equal";
+
+      t := 2/3[equal_spread, greater_spread];
+      s := 1/2t;
+
+      z1 - z0 = z3 - z2 = (t/2 + equal_spread) * dir 90;
+      y0 = y2 = ypart centre - s;
+      x0 = xpart left_point;
+      x2 = xpart right_point;
+
+      z0 - z4 = z2 - z5 = equal_spread * dir 90;
+
+      draw_subset(6)(z1, z3, t);
+      draw_line_ec(0,2);
+      draw_line_ec(4,5);
+
+      if negated = 1:
+        draw_stroke_through(6,7)(centre, 4equal_spread + 2/3[equal_spread, greater_spread]);
+      elseif negated = 2:
+        draw_stroke_through(6,7)(1/2[1/2[z0,z2], 1/2[z4,z5]], 3equal_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#, ifneg(8/3, 14/3) * equal_spread# + rule_thickness#);
+      "double subset";
+
+      draw_subset(1)(left_point + 3/4equal_spread * dir (90 - sign * 90), right_point,
+                  equal_spread);
+      draw_subset(2)(left_point, right_point, 8/3equal_spread);
+
+      if negated = 1:
+        draw_stroke_through(3,4)(centre, 14/3equal_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+                     ifneg(0,2) * equal_spread# + 2/3[equal_spread#, greater_spread#] + rule_thickness#);
+      "curly less than";
+
+      draw_prec_cut_ec(1,2,3)(left_point, right_point, 2/3[equal_spread, greater_spread]);
+
+      if negated = 1:
+        draw_stroke_through(4,5)(centre, 2equal_spread + 2/3[equal_spread, greater_spread]);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+               ifneg(2/3, 8/3) * equal_spread# + 2/3[equal_spread#, greater_spread#] + rule_thickness#);
+      "curly less than or equal";
+
+      t := 2/3[equal_spread, greater_spread];
+      s := 1/3equal_spread + 1/2t;
+
+      z1 - z0 = z3 - z2 = (t/2 + 2/3equal_spread) * dir 90;
+      y0 = y2 = ypart centre - s;
+      x0 = xpart left_point;
+      x2 = xpart right_point;
+
+      draw_prec_cut_ec(4,5,6)(z1, z3, t);
+      draw_line_ec(0,2);
+
+      if negated = 1:
+        draw_stroke_through(7,8)(centre, 8/3equal_spread + 2/3[equal_spread, greater_spread]);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+               ifneg(1,3) * equal_spread# + 2/3[equal_spread#, greater_spread#] + rule_thickness#);
+      "curly less than or curly equal";
+
+      t := 2/3[equal_spread, greater_spread];
+
+      z1 - z0 = equal_spread * dir 90;
+      z4 - z2 = 7/5equal_spread * dir 90;
+      z3 - z4 = t/2 * dir 90;
+      y1 = y3;
+      y4 = ypart centre - 1/2(t - equal_spread);
+      x0 = xpart left_point - sign*1/2rule_thickness;
+      x2 = xpart right_point + sign*1/2rule_thickness;
+
+      path p,q,o;
+
+      p = z0{z3 - z1} .. z2;
+
+      v := xpart (p intersectiontimes (z4 -- (z4 + h * dir (270 - sign * 20))));
+
+      draw_prec_cut(5,6,7)(z1, z3, t);
+      penpos2(rule_thickness,90-sign*40);
+      penpos0(rule_thickness,90);
+
+      o = subpath (1-v,1) of (z2l{dir ((90+sign*40))} .. {dir ((1+sign)*90)}z0l);
+      z8l = point 0 of o;
+      penpos8(rule_thickness,90);
+
+      q := z2r{dir ((90+sign*40))} .. {dir ((1+sign)*90)}z0r;
+      v := xpart (q intersectiontimes (z8l -- 2[z8l,z8r]));
+      q := subpath (v,1) of q;
+
+      fill o -- (reverse q) -- cycle;    
+
+      if negated = 1:
+        draw_stroke_through(10,11)(centre, 3equal_spread + 2/3[equal_spread, greater_spread]);
+      fi;
+
+      penlabels(0,1,2,3,4);
+    endchar;
+  endfor;
+fi;
+
+if negated < 3:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+               ifneg(4/3, 10/3) * equal_spread# + 2/3[equal_spread#, greater_spread#] + rule_thickness#);
+      "curly less sim";
+
+      t := 2/3[equal_spread, greater_spread];
+      s := 1/3equal_spread + t/2;
+
+      z1 - z0 = z3 - z2 = (t/2 + equal_spread) * dir 90;
+      y0 = y2 = ypart centre - s;
+      x0 = xpart left_point;
+      x2 = xpart right_point;
+
+      draw_prec_cut_ec(4,5,6)(z1, z3, t);
+
+      if sign > 0:
+        draw_sim(7)(z0, z2);
+      else:
+        draw_sim(7)(z2, z0);
+      fi
+
+      if negated = 1:
+        draw_stroke_through(8,9)(centre, 10/3equal_spread + 2/3[equal_spread, greater_spread]);
+      elseif negated = 2:
+        draw_stroke_through(8,9)(1/2[z0,z2], 8/3equal_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 3:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+               ifneg(7/3, 13/3, 13/3) * equal_spread# + 2/3[equal_spread#, greater_spread#] + rule_thickness#);
+      "curly less approx";
+
+      t := 2/3[equal_spread, greater_spread];
+      s := -1/6equal_spread + t/2;
+
+      z1 - z0 = z3 - z2 = (t/2 + equal_spread) * dir 90;
+      y0 = y2 = ypart centre - s;
+      x0 = xpart left_point;
+      x2 = xpart right_point;
+
+      z0 - z4 = z2 - z5 = equal_spread * dir 90;
+
+      draw_prec_cut_ec(6,7,8)(z1, z3, t);
+
+      if sign > 0:
+        draw_sim(8)(z0, z2);
+        draw_sim(9)(z4, z5);
+      else:
+        draw_sim(8)(z2, z0);
+        draw_sim(9)(z5, z4);
+      fi
+
+      if negated = 1:
+        draw_stroke_through(10,11)(centre, 13/3equal_spread + 2/3[equal_spread, greater_spread]);
+      elseif negated = 2:
+        draw_stroke_through(10,11)(1/2[1/2[z0,z2], 1/2[z4,z5]], 11/3equal_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+                     ifneg(0,2) * equal_spread# + greater_spread# + rule_thickness#);
+      "less than dot";
+
+      z1 - z0 = greater_spread * dir 90;
+
+      1/2[z0, z1] = right_point;
+
+      z2 = left_point;
+      draw_arrow_cut_ec(0, 2, 1);
+      fill_circle(3)(right_point - sign * dot_size * dir 0, dot_size);
+
+      if negated = 1:
+        draw_stroke_through(4,5)(centre, 2equal_spread + greater_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+                     greater_spread# + ifneg(2/3, 10/3) * equal_spread# + rule_thickness#);
+      "less than or equal dot";
+
+      z1 - z0 = greater_spread * dir 90;
+      y2 = 1/2[y0, y1];
+      x2 = x3 = xpart left_point;
+      y3 = y4;
+      z0 - z4 = 2/3equal_spread * dir 90;
+
+      1/2[z1, z4] = right_point;
+
+      draw_arrow_cut_ec(0,2,1);
+      draw_line_ec(3,4);
+      fill_circle(5)(1/2[z0,z1] - sign * dot_size * dir 0, dot_size);
+
+      if negated = 1:
+        draw_stroke_through(6,7)(centre, 10/3equal_spread + greater_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+
+if negated < 2:
+  for sign = 1, -1:
+    beginorder(sign, order_width# + rule_thickness#,
+                     greater_spread# + ifneg(1,3) * equal_spread# + rule_thickness#);
+      "less than or slanted equal dot";
+
+      z1 - z0 = greater_spread * dir 90;
+      z2 - z3 = equal_spread * dir 90;
+      z0 - z4 = equal_spread * dir 90;
+
+      1/2[z2, z3] = left_point;
+      1/2[z1, z4] = right_point;
+
+      draw_arrow_cut_ec(0,2,1);
+      draw_line_cut_ec(3,4);
+      fill_circle(5)(1/2[z0,z1] - sign * dot_size * dir 0, dot_size);
+
+      if negated = 1:
+        draw_stroke_through(6,7)(centre, 3equal_spread + greater_spread);
+      fi;
+    endchar;
+  endfor;
+fi;
+

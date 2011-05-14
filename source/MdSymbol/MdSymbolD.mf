@@ -1,0 +1,23 @@
+
+font_identifier:="MdSymbolD";
+font_size design_size * pt#;
+
+boolean bold_weight;
+bold_weight := false;
+
+input MdSymbol-Parameter.mf;
+input MdSym-Base.mf;
+
+negated := 0;
+
+input MdSym-Order.mf;
+
+negated := 1;
+
+input MdSym-Order.mf;
+
+negated := 2;
+
+input MdSym-Order.mf;
+
+bye;

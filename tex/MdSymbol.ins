@@ -1,0 +1,23 @@
+\def\batchfile{MdSymbol.ins}
+\input docstrip.tex
+
+\preamble
+
+These files are public domain.
+
+\endpreamble
+
+\postamble
+vim:set ft=tex:
+\endpostamble
+
+\keepsilent
+\askforoverwritetrue
+
+\generate{%
+  \file{MdSymbol.drv}{\from{MdSymbol.dtx}{driver}}
+  \file{MdSymbol.sty}{\from{MdSymbol.dtx}{style}}
+}
+
+\endinput
+% vim:set ft=tex:

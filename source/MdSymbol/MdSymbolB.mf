@@ -1,0 +1,16 @@
+
+font_identifier:="MdSymbolB";
+font_size design_size * pt#;
+
+boolean bold_weight;
+bold_weight := false;
+
+input MdSymbol-Parameter.mf;
+input MdSym-Base.mf;
+
+boolean negated;
+negated := true;
+
+input MdSym-Arrows.mf;
+
+bye;

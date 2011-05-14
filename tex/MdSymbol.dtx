@@ -1,0 +1,3457 @@
+\def\filedate{2011/02/03}
+\def\fileversion{v0.1}
+%\iffalse
+%<*dtx>
+\ProvidesFile{MdSymbol.dtx}[2011/02/03 v0.1 math symbol font]
+%</dtx>
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{multicol}
+\usepackage[smallfamily]{MinionPro}
+\begin{document}
+\DocInput{MdSymbol.dtx}
+\end{document}
+%</driver>
+%\fi
+%
+% \newcommand*\?{\kern0.08em}
+%
+% \title{MdSymbol -- A Math Symbol Font}
+% \author{Sebastian Schubert\footnote{based on MnSymbol by Achim Blumensath}}
+% \date{\filedate}
+% \maketitle
+%
+% MdSymbol is a font of mathematical symbols designed as companion to Adobe MinionPro,
+% but it might also fit well to other renaissance or baroque faces.
+% To use this font in a \LaTeX\ document you can issue the command
+% \begin{quote}
+%   |\usepackage{MdSymbol}|
+% \end{quote}
+%
+% \paragraph{Interference with other packages.}
+% The \textsf{MdSymbol} package is incompatible with the \textsf{amssymb} and \textsf{amsfonts}
+% packages. It automatically loads the \textsf{amsmath} and \textsf{textcomp} packages. If you
+% want to pass options to these packages you can either put the corresponding |\usepackage| command
+% before the |\usepackage{MdSymbol}| or you can include the options in the |\documentclass| command.
+%
+% \paragraph{Options.}
+% The \textsf{MdSymbol} package supports the following options\?:
+% \begin{description}
+% \item[\textsf{mdsy}] (default) selects MdSymbolS as calligraphic font.
+% \item[\textsf{cmsy}] selects the Computer Modern calligraphic font.
+% \item[\textsf{abx}]  selects the experimental calligraphic font from the mathabx fonts.
+%   You need to have this font installed in order to use this option. mathabx
+%   contains also calligraphic lowercase letters, but the font is not quite finished yet.
+% \item[\textsf{retainmissing}] Normally \textsf{MdSymbol} takes some of the missing symbols
+%   from the text font and it sets the remaining ones to |\undefined|. If you want to
+%   retain the old definitions of these symbols then you can use the option \textsf{retainmissing}.
+% \end{description}
+%
+% \paragraph{Symbols.}
+% The \textsf{MdSymbol} package provides the following symbols.
+%
+% \def\cs#1{\texttt{\string#1}}
+% \def\showsymbol#1{\par\noindent\hangindent3em\hangafter1\hskip0pt{\hbox to 2em{$#1$\hfil}\cs{#1}}}
+% \def\showwidesymbol#1{\par\noindent\hangindent5em\hangafter1\hskip0pt{\hbox to 4em{$#1$\hfil}\cs{#1}}}
+% \def\showop#1{\par\noindent\hangindent6em\hangafter1\hskip0pt{\hbox to 5em{$#1$\hfil$\displaystyle#1$\hfil}\cs{#1}}}
+% \def\showmbrace#1{\par\noindent\hangindent5em\hangafter1\hskip0pt{\hbox to 4em{$#1\bigm#1\Bigm#1\biggm#1\Biggm#1$\hfil}\cs{#1}}}
+% \def\showlbrace#1{\par\noindent\hangindent5em\hangafter1\hskip0pt{\hbox to 4em{$\Biggl#1\biggl#1\Bigl#1\bigl#1#1$\hfil}\cs{#1}}}
+% \def\showrbrace#1{\par\noindent\hangindent5em\hangafter1\hskip0pt{\hbox to 4em{$#1\bigr#1\Bigr#1\biggr#1\Biggr#1$\hfil}\cs{#1}}}
+% \def\showover#1{\par\noindent\hangindent3em\hangafter1\hskip0pt{\hbox to 2em{$#1{abc}$\hfil}\cs{#1}}}
+% \def\showaccent#1{\par\noindent\hangindent3em\hangafter1\hskip0pt{\hbox to 2em{$#1b$\hfil}\cs{#1}}}
+%
+% \subsection*{Arrows}
+%
+% \begin{multicols}{2}
+% \raggedright
+% \showsymbol\rightarrow,
+%   \cs{\to}
+% \showsymbol\uparrow
+% \showsymbol\leftarrow,
+%   \cs{\gets}
+% \showsymbol\downarrow
+% \showsymbol\nearrow
+% \showsymbol\nwarrow
+% \showsymbol\swarrow
+% \showsymbol\searrow
+% \showsymbol\Rightarrow
+% \showsymbol\Uparrow
+% \showsymbol\Leftarrow
+% \showsymbol\Downarrow
+% \showsymbol\Nearrow
+% \showsymbol\Nwarrow
+% \showsymbol\Swarrow
+% \showsymbol\Searrow
+% \showsymbol\leftrightarrow
+% \showsymbol\updownarrow
+% \showsymbol\neswarrow
+% \showsymbol\nwsearrow
+% \showsymbol\Leftrightarrow
+% \showsymbol\Updownarrow
+% \showsymbol\Neswarrow
+% \showsymbol\Nwsearrow
+% \showsymbol\twoheadrightarrow
+% \showsymbol\twoheaduparrow
+% \showsymbol\twoheadleftarrow
+% \showsymbol\twoheaddownarrow
+% \showsymbol\twoheadnearrow
+% \showsymbol\twoheadnwarrow
+% \showsymbol\twoheadswarrow
+% \showsymbol\twoheadsearrow
+% \showsymbol\rightarrowtail
+% \showsymbol\uparrowtail
+% \showsymbol\leftarrowtail
+% \showsymbol\downarrowtail
+% \showsymbol\nearrowtail
+% \showsymbol\nwarrowtail
+% \showsymbol\swarrowtail
+% \showsymbol\searrowtail
+% \showsymbol\rightmapsto,
+%   \cs{\mapsto}
+% \showsymbol\upmapsto
+% \showsymbol\leftmapsto
+% \showsymbol\downmapsto
+% \showsymbol\nemapsto
+% \showsymbol\nwmapsto
+% \showsymbol\swmapsto
+% \showsymbol\semapsto
+% \showsymbol\lhookrightarrow,
+%   \cs{\hookrightarrow}
+% \showsymbol\lhookuparrow
+% \showsymbol\lhookleftarrow
+% \showsymbol\lhookdownarrow
+% \showsymbol\lhooknearrow
+% \showsymbol\lhooknwarrow
+% \showsymbol\lhookswarrow
+% \showsymbol\lhooksearrow
+% \showsymbol\rhookrightarrow
+% \showsymbol\rhookuparrow
+% \showsymbol\rhookleftarrow,
+%   \cs{\hookleftarrow}
+% \showsymbol\rhookdownarrow
+% \showsymbol\rhooknearrow
+% \showsymbol\rhooknwarrow
+% \showsymbol\rhookswarrow
+% \showsymbol\rhooksearrow
+% \showsymbol\rightharpoonccw,
+%   \cs{\rightharpoonup}
+% \showsymbol\upharpoonccw,
+%   \cs{\upharpoonleft}
+% \showsymbol\leftharpoonccw,
+%   \cs{\leftharpoondown}
+% \showsymbol\downharpoonccw,
+%   \cs{\downharpoonright}
+% \showsymbol\neharpoonccw
+% \showsymbol\nwharpoonccw
+% \showsymbol\swharpoonccw
+% \showsymbol\seharpoonccw
+% \showsymbol\rightharpooncw,
+%   \cs{\rightharpoondown}
+% \showsymbol\upharpooncw,
+%   \cs{\upharpoonright},
+%   \cs{\restriction}
+% \showsymbol\leftharpooncw,
+%   \cs{\leftharpoonup}
+% \showsymbol\downharpooncw,
+%   \cs{\downharpoonleft}
+% \showsymbol\neharpooncw
+% \showsymbol\nwharpooncw
+% \showsymbol\swharpooncw
+% \showsymbol\seharpooncw
+% \showsymbol\leftrightharpoonupdown
+% \showsymbol\updownharpoonleftright
+% \showsymbol\neswharpoonnwse
+% \showsymbol\nwseharpoonnesw
+% \showsymbol\leftrightharpoondownup
+% \showsymbol\updownharpoonrightleft
+% \showsymbol\neswharpoonsenw
+% \showsymbol\nwseharpoonswne
+% \showsymbol\rightleftharpoons
+% \showsymbol\updownharpoons
+% \showsymbol\neswharpoons
+% \showsymbol\senwharpoons
+% \showsymbol\leftrightharpoons
+% \showsymbol\downupharpoons
+% \showsymbol\swneharpoons
+% \showsymbol\nwseharpoons
+% \showsymbol\dashedrightarrow,
+%   \cs{\dashrightarrow},
+%   \cs{\dasharrow}
+% \showsymbol\dasheduparrow
+% \showsymbol\dashedleftarrow,
+%   \cs{\dashleftarrow}
+% \showsymbol\dasheddownarrow
+% \showsymbol\dashednearrow
+% \showsymbol\dashednwarrow
+% \showsymbol\dashedswarrow
+% \showsymbol\dashedsearrow
+% \showsymbol\rightspoon,
+%   \cs{\multimap}
+% \showsymbol\upspoon
+% \showsymbol\leftspoon
+% \showsymbol\downspoon
+% \showsymbol\nespoon
+% \showsymbol\nwspoon
+% \showsymbol\swspoon
+% \showsymbol\sespoon
+% \showsymbol\rightfilledspoon
+% \showsymbol\upfilledspoon
+% \showsymbol\leftfilledspoon
+% \showsymbol\downfilledspoon
+% \showsymbol\nefilledspoon
+% \showsymbol\nwfilledspoon
+% \showsymbol\swfilledspoon
+% \showsymbol\sefilledspoon
+% \showsymbol\rightfootline
+% \showsymbol\upfootline
+% \showsymbol\leftfootline
+% \showsymbol\downfootline
+% \showsymbol\nefootline
+% \showsymbol\nwfootline
+% \showsymbol\swfootline
+% \showsymbol\sefootline
+% \showsymbol\rightfree
+% \showsymbol\upfree
+% \showsymbol\leftfree
+% \showsymbol\downfree
+% \showsymbol\nefree
+% \showsymbol\nwfree
+% \showsymbol\swfree
+% \showsymbol\sefree
+% \showsymbol\rightpitchfork
+% \showsymbol\uppitchfork,
+%   \cs{\pitchfork}
+% \showsymbol\leftpitchfork
+% \showsymbol\downpitchfork
+% \showsymbol\nepitchfork
+% \showsymbol\nwpitchfork
+% \showsymbol\swpitchfork
+% \showsymbol\sepitchfork
+% \showsymbol\rightrightarrows
+% \showsymbol\upuparrows
+% \showsymbol\leftleftarrows
+% \showsymbol\downdownarrows
+% \showsymbol\nenearrows
+% \showsymbol\nwnwarrows
+% \showsymbol\swswarrows
+% \showsymbol\sesearrows
+% \showsymbol\rightleftarrows
+% \showsymbol\updownarrows
+% \showsymbol\neswarrows
+% \showsymbol\nwsearrows
+% \showsymbol\leftrightarrows
+% \showsymbol\downuparrows
+% \showsymbol\swnearrows
+% \showsymbol\senwarrows
+% \showsymbol\rightlsquigarrow,
+%   \cs{\leadsto},
+%   \cs{\rightsquigarrow}
+% \showsymbol\uplsquigarrow
+% \showsymbol\leftlsquigarrow
+% \showsymbol\downlsquigarrow
+% \showsymbol\nelsquigarrow
+% \showsymbol\nwlsquigarrow
+% \showsymbol\swlsquigarrow
+% \showsymbol\selsquigarrow
+% \showsymbol\rightrsquigarrow
+% \showsymbol\uprsquigarrow
+% \showsymbol\leftrsquigarrow
+% \showsymbol\downrsquigarrow
+% \showsymbol\nersquigarrow
+% \showsymbol\nwrsquigarrow
+% \showsymbol\swrsquigarrow
+% \showsymbol\sersquigarrow
+% \showsymbol\squigarrowleftright,
+%   \cs{\leftrightsquigarrow}
+% \showsymbol\squigarrowupdown
+% \showsymbol\squigarrowrightleft
+% \showsymbol\squigarrowdownup
+% \showsymbol\squigarrownesw
+% \showsymbol\squigarrownwse
+% \showsymbol\squigarrowswne
+% \showsymbol\squigarrowsenw
+% \showsymbol\lcurvearrowright,
+%   \cs{\curvearrowright}
+% \showsymbol\lcurvearrowup
+% \showsymbol\lcurvearrowleft
+% \showsymbol\lcurvearrowdown
+% \showsymbol\lcurvearrowne
+% \showsymbol\lcurvearrownw
+% \showsymbol\lcurvearrowsw
+% \showsymbol\lcurvearrowse
+% \showsymbol\rcurvearrowright
+% \showsymbol\rcurvearrowup
+% \showsymbol\rcurvearrowleft,
+%   \cs{\curvearrowleft}
+% \showsymbol\rcurvearrowdown
+% \showsymbol\rcurvearrowne
+% \showsymbol\rcurvearrownw
+% \showsymbol\rcurvearrowsw
+% \showsymbol\rcurvearrowse
+% \showsymbol\curvearrowleftright
+% \showsymbol\curvearrowupdown
+% \showsymbol\curvearrowrightleft
+% \showsymbol\curvearrowdownup
+% \showsymbol\curvearrownesw
+% \showsymbol\curvearrownwse
+% \showsymbol\curvearrowswne
+% \showsymbol\curvearrowsenw
+% \showsymbol\leftrightline,
+%   \cs{\relbar}
+% \showsymbol\updownline,
+%   \cs{\divides}
+% \showsymbol\neswline,
+%   \cs{\diagup}
+% \showsymbol\nwseline,
+%   \cs{\diagdown}
+% \showsymbol\Leftrightline,
+%   \cs{\Relbar}
+% \showsymbol\Updownline,
+%   \cs{\parallel}
+% \showsymbol\Neswline
+% \showsymbol\Nwseline
+% \showsymbol\rightvdash,
+%   \cs{\vdash}
+% \showsymbol\upvdash,
+%   \cs{\perp}
+% \showsymbol\leftvdash,
+%   \cs{\dashv}
+% \showsymbol\downvdash
+% \showsymbol\nevdash
+% \showsymbol\nwvdash
+% \showsymbol\swvdash
+% \showsymbol\sevdash
+% \showsymbol\rightmodels,
+%   \cs{\models},
+%   \cs{\vDash}
+% \showsymbol\upmodels
+% \showsymbol\leftmodels
+% \showsymbol\downmodels
+% \showsymbol\nemodels
+% \showsymbol\nwmodels
+% \showsymbol\swmodels
+% \showsymbol\semodels
+% \showsymbol\rightVdash,
+%   \cs{\Vdash}
+% \showsymbol\upVdash
+% \showsymbol\leftVdash
+% \showsymbol\downVdash
+% \showsymbol\neVdash
+% \showsymbol\nwVdash
+% \showsymbol\swVdash
+% \showsymbol\seVdash
+% \showsymbol\rightModels,
+%   \cs{\VDash}
+% \showsymbol\upModels
+% \showsymbol\leftModels
+% \showsymbol\downModels
+% \showsymbol\neModels
+% \showsymbol\nwModels
+% \showsymbol\swModels
+% \showsymbol\seModels
+% \showsymbol\rcirclearrowright
+% \showsymbol\rcirclearrowup,
+%   \cs{\circlearrowleft}
+% \showsymbol\rcirclearrowleft
+% \showsymbol\rcirclearrowdown
+% \showsymbol\lcirclearrowright
+% \showsymbol\lcirclearrowup,
+%   \cs{\circlearrowright}
+% \showsymbol\lcirclearrowleft
+% \showsymbol\lcirclearrowdown
+% \showsymbol\longrightarrow
+% \showsymbol\longleftarrow
+% \showsymbol\longleftrightarrow
+% \showsymbol\Longrightarrow
+% \showsymbol\Longleftarrow
+% \showsymbol\Longleftrightarrow
+% \showsymbol\longmapsto
+% \showsymbol\emptyfilledspoon
+% \showsymbol\filledemptyspoon
+% \showsymbol\largeemptyfilledspoon
+% \showsymbol\largefilledemptyspoon
+% \showsymbol\Rrightarrow
+% \showsymbol\Lleftarrow
+% \showsymbol\Rsh
+% \showsymbol\Lsh
+% \showsymbol\looparrowright
+% \showsymbol\looparrowleft
+% \showsymbol\Vvdash
+% \end{multicols}
+%
+% \subsection*{Negated arrows}
+%
+% \begin{multicols}{2}
+% \raggedright
+% \showsymbol\nrightarrow,
+%   \cs{\nto}
+% \showsymbol\nuparrow
+% \showsymbol\nleftarrow,
+%   \cs{\ngets}
+% \showsymbol\ndownarrow
+% \showsymbol\nnearrow
+% \showsymbol\nnwarrow
+% \showsymbol\nswarrow
+% \showsymbol\nsearrow
+% \showsymbol\nRightarrow
+% \showsymbol\nUparrow
+% \showsymbol\nLeftarrow
+% \showsymbol\nDownarrow
+% \showsymbol\nNearrow
+% \showsymbol\nNwarrow
+% \showsymbol\nSwarrow
+% \showsymbol\nSearrow
+% \showsymbol\nleftrightarrow
+% \showsymbol\nupdownarrow
+% \showsymbol\nneswarrow
+% \showsymbol\nnwsearrow
+% \showsymbol\nLeftrightarrow
+% \showsymbol\nUpdownarrow
+% \showsymbol\nNeswarrow
+% \showsymbol\nNwsearrow
+% \showsymbol\ntwoheadrightarrow
+% \showsymbol\ntwoheaduparrow
+% \showsymbol\ntwoheadleftarrow
+% \showsymbol\ntwoheaddownarrow
+% \showsymbol\ntwoheadnearrow
+% \showsymbol\ntwoheadnwarrow
+% \showsymbol\ntwoheadswarrow
+% \showsymbol\ntwoheadsearrow
+% \showsymbol\nrightarrowtail
+% \showsymbol\nuparrowtail
+% \showsymbol\nleftarrowtail
+% \showsymbol\ndownarrowtail
+% \showsymbol\nnearrowtail
+% \showsymbol\nnwarrowtail
+% \showsymbol\nswarrowtail
+% \showsymbol\nsearrowtail
+% \showsymbol\nrightmapsto,
+%   \cs{\nmapsto}
+% \showsymbol\nupmapsto
+% \showsymbol\nleftmapsto
+% \showsymbol\ndownmapsto
+% \showsymbol\nnemapsto
+% \showsymbol\nnwmapsto
+% \showsymbol\nswmapsto
+% \showsymbol\nsemapsto
+% \showsymbol\nlhookrightarrow,
+%   \cs{\nhookrightarrow}
+% \showsymbol\nlhookuparrow
+% \showsymbol\nlhookleftarrow
+% \showsymbol\nlhookdownarrow
+% \showsymbol\nlhooknearrow
+% \showsymbol\nlhooknwarrow
+% \showsymbol\nlhookswarrow
+% \showsymbol\nlhooksearrow
+% \showsymbol\nrhookrightarrow
+% \showsymbol\nrhookuparrow
+% \showsymbol\nrhookleftarrow,
+%   \cs{\nhookleftarrow}
+% \showsymbol\nrhookdownarrow
+% \showsymbol\nrhooknearrow
+% \showsymbol\nrhooknwarrow
+% \showsymbol\nrhookswarrow
+% \showsymbol\nrhooksearrow
+% \showsymbol\nrightharpoonccw,
+%   \cs{\nrightharpoonup}
+% \showsymbol\nupharpoonccw,
+%   \cs{\nupharpoonleft}
+% \showsymbol\nleftharpoonccw,
+%   \cs{\nleftharpoondown}
+% \showsymbol\ndownharpoonccw,
+%   \cs{\ndownharpoonright}
+% \showsymbol\nneharpoonccw
+% \showsymbol\nnwharpoonccw
+% \showsymbol\nswharpoonccw
+% \showsymbol\nseharpoonccw
+% \showsymbol\nrightharpooncw,
+%   \cs{\nrightharpoondown}
+% \showsymbol\nupharpooncw,
+%   \cs{\nupharpoonright},
+%   \cs{\nrestriction}
+% \showsymbol\nleftharpooncw,
+%   \cs{\nleftharpoonup}
+% \showsymbol\ndownharpooncw,
+%   \cs{\ndownharpoonleft}
+% \showsymbol\nneharpooncw
+% \showsymbol\nnwharpooncw
+% \showsymbol\nswharpooncw
+% \showsymbol\nseharpooncw
+% \showsymbol\nleftrightharpoonupdown
+% \showsymbol\nupdownharpoonleftright
+% \showsymbol\nneswharpoonnwse
+% \showsymbol\nnwseharpoonnesw
+% \showsymbol\nleftrightharpoondownup
+% \showsymbol\nupdownharpoonrightleft
+% \showsymbol\nneswharpoonsenw
+% \showsymbol\nnwseharpoonswne
+% \showsymbol\nrightleftharpoons
+% \showsymbol\nupdownharpoons
+% \showsymbol\nneswharpoons
+% \showsymbol\nsenwharpoons
+% \showsymbol\nleftrightharpoons
+% \showsymbol\ndownupharpoons
+% \showsymbol\nswneharpoons
+% \showsymbol\nnwseharpoons
+% \showsymbol\ndashedrightarrow,
+%   \cs{\ndashrightarrow},
+%   \cs{\ndasharrow}
+% \showsymbol\ndasheduparrow
+% \showsymbol\ndashedleftarrow,
+%   \cs{\ndashleftarrow}
+% \showsymbol\ndasheddownarrow
+% \showsymbol\ndashednearrow
+% \showsymbol\ndashednwarrow
+% \showsymbol\ndashedswarrow
+% \showsymbol\ndashedsearrow
+% \showsymbol\nrightspoon,
+%   \cs{\nmultimap}
+% \showsymbol\nupspoon
+% \showsymbol\nleftspoon
+% \showsymbol\ndownspoon
+% \showsymbol\nnespoon
+% \showsymbol\nnwspoon
+% \showsymbol\nswspoon
+% \showsymbol\nsespoon
+% \showsymbol\nrightfilledspoon
+% \showsymbol\nupfilledspoon
+% \showsymbol\nleftfilledspoon
+% \showsymbol\ndownfilledspoon
+% \showsymbol\nnefilledspoon
+% \showsymbol\nnwfilledspoon
+% \showsymbol\nswfilledspoon
+% \showsymbol\nsefilledspoon
+% \showsymbol\nrightfootline
+% \showsymbol\nupfootline
+% \showsymbol\nleftfootline
+% \showsymbol\ndownfootline
+% \showsymbol\nnefootline
+% \showsymbol\nnwfootline
+% \showsymbol\nswfootline
+% \showsymbol\nsefootline
+% \showsymbol\nrightfree
+% \showsymbol\nupfree
+% \showsymbol\nleftfree
+% \showsymbol\ndownfree
+% \showsymbol\nnefree
+% \showsymbol\nnwfree
+% \showsymbol\nswfree
+% \showsymbol\nsefree
+% \showsymbol\nrightpitchfork
+% \showsymbol\nuppitchfork,
+%   \cs{\npitchfork}
+% \showsymbol\nleftpitchfork
+% \showsymbol\ndownpitchfork
+% \showsymbol\nnepitchfork
+% \showsymbol\nnwpitchfork
+% \showsymbol\nswpitchfork
+% \showsymbol\nsepitchfork
+% \showsymbol\nrightrightarrows
+% \showsymbol\nupuparrows
+% \showsymbol\nleftleftarrows
+% \showsymbol\ndowndownarrows
+% \showsymbol\nnenearrows
+% \showsymbol\nnwnwarrows
+% \showsymbol\nswswarrows
+% \showsymbol\nsesearrows
+% \showsymbol\nrightleftarrows
+% \showsymbol\nupdownarrows
+% \showsymbol\nneswarrows
+% \showsymbol\nnwsearrows
+% \showsymbol\nleftrightarrows
+% \showsymbol\ndownuparrows
+% \showsymbol\nswnearrows
+% \showsymbol\nsenwarrows
+% \showsymbol\nrightlsquigarrow,
+%   \cs{\nleadsto},
+%   \cs{\nrightsquigarrow}
+% \showsymbol\nuplsquigarrow
+% \showsymbol\nleftlsquigarrow
+% \showsymbol\ndownlsquigarrow
+% \showsymbol\nnelsquigarrow
+% \showsymbol\nnwlsquigarrow
+% \showsymbol\nswlsquigarrow
+% \showsymbol\nselsquigarrow
+% \showsymbol\nrightrsquigarrow
+% \showsymbol\nuprsquigarrow
+% \showsymbol\nleftrsquigarrow
+% \showsymbol\ndownrsquigarrow
+% \showsymbol\nnersquigarrow
+% \showsymbol\nnwrsquigarrow
+% \showsymbol\nswrsquigarrow
+% \showsymbol\nsersquigarrow
+% \showsymbol\nsquigarrowleftright,
+%   \cs{\nleftrightsquigarrow}
+% \showsymbol\nsquigarrowupdown
+% \showsymbol\nsquigarrowrightleft
+% \showsymbol\nsquigarrowdownup
+% \showsymbol\nsquigarrownesw
+% \showsymbol\nsquigarrownwse
+% \showsymbol\nsquigarrowswne
+% \showsymbol\nsquigarrowsenw
+% \showsymbol\nlcurvearrowright,
+%   \cs{\ncurvearrowright}
+% \showsymbol\nlcurvearrowup
+% \showsymbol\nlcurvearrowleft
+% \showsymbol\nlcurvearrowdown
+% \showsymbol\nlcurvearrowne
+% \showsymbol\nlcurvearrownw
+% \showsymbol\nlcurvearrowsw
+% \showsymbol\nlcurvearrowse
+% \showsymbol\nrcurvearrowright
+% \showsymbol\nrcurvearrowup
+% \showsymbol\nrcurvearrowleft,
+%   \cs{\ncurvearrowleft}
+% \showsymbol\nrcurvearrowdown
+% \showsymbol\nrcurvearrowne
+% \showsymbol\nrcurvearrownw
+% \showsymbol\nrcurvearrowsw
+% \showsymbol\nrcurvearrowse
+% \showsymbol\ncurvearrowleftright
+% \showsymbol\ncurvearrowupdown
+% \showsymbol\ncurvearrowrightleft
+% \showsymbol\ncurvearrowdownup
+% \showsymbol\ncurvearrownesw
+% \showsymbol\ncurvearrownwse
+% \showsymbol\ncurvearrowswne
+% \showsymbol\ncurvearrowsenw
+% \showsymbol\nleftrightline,
+%   \cs{\nrelbar}
+% \showsymbol\nupdownline,
+%   \cs{\ndivides},
+%   \cs{\nmid}
+% \showsymbol\nneswline,
+%   \cs{\ndiagup}
+% \showsymbol\nnwseline,
+%   \cs{\ndiagdown}
+% \showsymbol\nLeftrightline,
+%   \cs{\nRelbar}
+% \showsymbol\nUpdownline,
+%   \cs{\nparallel}
+% \showsymbol\nNeswline
+% \showsymbol\nNwseline
+% \showsymbol\nrightvdash,
+%   \cs{\nvdash}
+% \showsymbol\nupvdash,
+%   \cs{\nperp}
+% \showsymbol\nleftvdash,
+%   \cs{\ndashv}
+% \showsymbol\ndownvdash
+% \showsymbol\nnevdash
+% \showsymbol\nnwvdash
+% \showsymbol\nswvdash
+% \showsymbol\nsevdash
+% \showsymbol\nrightmodels,
+%   \cs{\nmodels},
+%   \cs{\nvDash}
+% \showsymbol\nupmodels
+% \showsymbol\nleftmodels
+% \showsymbol\ndownmodels
+% \showsymbol\nnemodels
+% \showsymbol\nnwmodels
+% \showsymbol\nswmodels
+% \showsymbol\nsemodels
+% \showsymbol\nrightVdash,
+%   \cs{\nVdash}
+% \showsymbol\nupVdash
+% \showsymbol\nleftVdash
+% \showsymbol\ndownVdash
+% \showsymbol\nneVdash
+% \showsymbol\nnwVdash
+% \showsymbol\nswVdash
+% \showsymbol\nseVdash
+% \showsymbol\nrightModels,
+%   \cs{\nVDash}
+% \showsymbol\nupModels
+% \showsymbol\nleftModels
+% \showsymbol\ndownModels
+% \showsymbol\nneModels
+% \showsymbol\nnwModels
+% \showsymbol\nswModels
+% \showsymbol\nseModels
+% \showsymbol\nrcirclearrowright
+% \showsymbol\nrcirclearrowup,
+%   \cs{\ncirclearrowleft}
+% \showsymbol\nrcirclearrowleft
+% \showsymbol\nrcirclearrowdown
+% \showsymbol\nlcirclearrowright
+% \showsymbol\nlcirclearrowup,
+%   \cs{\ncirclearrowright}
+% \showsymbol\nlcirclearrowleft
+% \showsymbol\nlcirclearrowdown
+% \showsymbol\nRrightarrow
+% \showsymbol\nLleftarrow
+% \end{multicols}
+%
+% \subsection*{Binary operators and letters}
+%
+% \begin{multicols}{2}
+% \raggedright
+% \showsymbol\cdot,
+%   \cs{\cdotp}
+% \showsymbol\hdotdot
+% \showsymbol{:},
+%   \cs{\vdotdot},
+%   \cs{\colon}
+% \showsymbol\udotdot
+% \showsymbol\ddotdot
+% \showsymbol\hdots,
+%   \cs{\cdots}
+% \showsymbol\vdots
+% \showsymbol\udots
+% \showsymbol\ddots
+% \showsymbol\righttherefore
+% \showsymbol\uptherefore,
+%   \cs{\therefore}
+% \showsymbol\lefttherefore
+% \showsymbol\downtherefore,
+%   \cs{\because}
+% \showsymbol\diamonddots
+% \showsymbol\squaredots
+% \showsymbol\fivedots
+% \showsymbol{-},
+%   \cs{\minus}
+% \showsymbol\medvert,
+%   \cs{\shortmid}
+% \showsymbol\medslash
+% \showsymbol\medbackslash,
+%   \cs{\setminus},
+%   \cs{\smallsetminus}
+% \showsymbol{+},
+%   \cs{\plus}
+% \showsymbol\times
+% \showsymbol\pm
+% \showsymbol\mp
+% \showsymbol\dotminus
+% \showsymbol\dotmedvert
+% \showsymbol\minusdot
+% \showsymbol\medvertdot
+% \showsymbol\div
+% \showsymbol\slashdiv
+% \showsymbol\vertdiv
+% \showsymbol\backslashdiv
+% \showsymbol\neg,
+%   \cs{\lnot}, \cs{\minushookdown}
+% \showsymbol\backneg,
+%   \cs{\hookdownminus}
+% \showsymbol\dtimes
+% \showsymbol\rtimes
+% \showsymbol\utimes
+% \showsymbol\ltimes
+% \showsymbol\bowtie,
+%   \cs{\Join}
+% \showsymbol\vertbowtie
+% \showsymbol\rightY
+% \showsymbol\upY
+% \showsymbol\leftY
+% \showsymbol\downY
+% \showsymbol\wedge,
+%   \cs{\land}
+% \showsymbol\vee,
+%   \cs{\lor}
+% \showsymbol\wedgedot
+% \showsymbol\veedot
+% \showsymbol\doublewedge
+% \showsymbol\doublevee
+% \showsymbol\curlywedge
+% \showsymbol\curlyvee
+% \showsymbol\curlywedgedot
+% \showsymbol\curlyveedot
+% \showsymbol\doublecurlywedge
+% \showsymbol\doublecurlyvee
+% \showsymbol\cup
+% \showsymbol\cap
+% \showsymbol\doublecup,
+%   \cs{\Cup}
+% \showsymbol\doublecap,
+%   \cs{\Cap}
+% \showsymbol\cupdot
+% \showsymbol\capdot
+% \showsymbol\cupplus,
+%   \cs{\uplus}
+% \showsymbol\capplus
+% \showsymbol\sqcup
+% \showsymbol\sqcap
+% \showsymbol\doublesqcup
+% \showsymbol\doublesqcap
+% \showsymbol\sqcupdot
+% \showsymbol\sqcapdot
+% \showsymbol\sqcupplus
+% \showsymbol\sqcapplus
+% \showsymbol\smalltriangleright
+% \showsymbol\smalltriangleup
+% \showsymbol\smalltriangleleft
+% \showsymbol\smalltriangledown
+% \showsymbol\filledtriangleright,
+%   \cs{\blacktriangleright}
+% \showsymbol\filledtriangleup
+% \showsymbol\filledtriangleleft,
+%   \cs{\blacktriangleleft}
+% \showsymbol\filledtriangledown
+% \showsymbol\medtriangleright,
+%   \cs{\triangleright}
+% \showsymbol\medtriangleup,
+%   \cs{\triangle},
+%   \cs{\vartriangle},
+%   \cs{\bigtriangleup}
+% \showsymbol\medtriangleleft,
+%   \cs{\triangleleft}
+% \showsymbol\medtriangledown,
+%   \cs{\bigtriangledown},
+%   \cs{\triangledown}
+% \showsymbol\largetriangleright
+% \showsymbol\largetriangleup
+% \showsymbol\largetriangleleft
+% \showsymbol\largetriangledown
+% \showsymbol\circ
+% \showsymbol\bullet
+% \showsymbol\medcircle
+% \showsymbol\largecircle,
+%   \cs{\bigcirc}
+% \showsymbol\ominus,
+%   \cs{\circleddash}
+% \showsymbol\overt
+% \showsymbol\oslash
+% \showsymbol\obackslash
+% \showsymbol\oplus
+% \showsymbol\otimes
+% \showsymbol\odot
+% \showsymbol\ocirc,
+%   \cs{\circledcirc}
+% \showsymbol\otriangle
+% \showsymbol\oast,
+%   \cs{\circledast}
+% \showsymbol\ostar
+% \showsymbol\diameter,
+%   \cs{\emptyset},
+%   \cs{\varnothing}
+% \showsymbol\smallsquare
+% \showsymbol\filledsquare
+% \showsymbol\medsquare,
+%   \cs{\square},
+%   \cs{\Box}
+% \showsymbol\largesquare
+% \showsymbol\smalldiamond,
+%   \cs{\diamond}
+% \showsymbol\filleddiamond
+% \showsymbol\meddiamond,
+%   \cs{\Diamond}
+% \showsymbol\largediamond
+% \showsymbol\boxminus
+% \showsymbol\boxvert
+% \showsymbol\boxslash
+% \showsymbol\boxbackslash
+% \showsymbol\boxplus
+% \showsymbol\boxtimes
+% \showsymbol\boxdot
+% \showsymbol\boxbox
+% \showsymbol\diamondminus
+% \showsymbol\diamondvert
+% \showsymbol\diamondslash
+% \showsymbol\diamondbackslash
+% \showsymbol\diamondplus
+% \showsymbol\diamondtimes
+% \showsymbol\diamonddot
+% \showsymbol\diamonddiamond
+% \showsymbol\smallstar
+% \showsymbol\filledstar
+% \showsymbol\medstar
+% \showsymbol\largestar
+% \showsymbol\pentagram
+% \showsymbol\largepentagram
+% \showsymbol\thinstar,
+%   \cs{\star}
+% \showsymbol{*},
+%   \cs{\ast}
+% \showsymbol\hbipropto
+% \showsymbol\neswbipropto
+% \showsymbol\vbipropto
+% \showsymbol\nwsebipropto
+% \showsymbol\leftpropto, \cs{\propto},
+%   \cs{\varpropto}
+% \showsymbol\downpropto
+% \showsymbol\rightpropto
+% \showsymbol\uppropto
+% \showsymbol\hcrossing
+% \showsymbol\neswcrossing
+% \showsymbol\vcrossing
+% \showsymbol\nwsecrossing
+% \showsymbol\between
+% \showsymbol\separated
+% \showsymbol\bot
+% \showsymbol\top,
+%   \cs{\intercal}
+% \showsymbol\wreath,
+%   \cs{\wr}
+% \showsymbol\angle
+% \showsymbol\measuredangle
+% \showsymbol\sphericalangle
+% \showsymbol\prime
+% \showsymbol\backprime
+% \showsymbol\smallprod
+% \showsymbol\amalg
+% \showsymbol\checkmark
+% \showsymbol\lightning
+% \showsymbol\diamondsuit
+% \showsymbol\heartsuit
+% \showsymbol\spadesuit
+% \showsymbol\clubsuit
+% \showsymbol\forall
+% \showsymbol\exists
+% \showsymbol\nexists
+% \showsymbol\nabla
+% \showsymbol\infty
+% \showsymbol\smallint
+% \showsymbol\flat
+% \showsymbol\natural
+% \showsymbol\sharp
+% \showsymbol\aleph
+% \showsymbol\beth
+% \showsymbol\gimel
+% \showsymbol\daleth
+% \showsymbol\wp
+% \showsymbol\powerset
+% \showsymbol\invneg,
+%   \cs{\minushookup}
+% \showsymbol\invbackneg,
+%   \cs{\hookupminus}
+% \showsymbol\lefthalfcup
+% \showsymbol\righthalfcup
+% \showsymbol\lefthalfcap
+% \showsymbol\righthalfcap
+% \showsymbol\closedsucc
+% \showsymbol\closedcurlywedge
+% \showsymbol\closedprec
+% \showsymbol\closedcurlyvee
+% \showsymbol\rightslice
+% \showsymbol\upslice
+% \showsymbol\leftslice
+% \showsymbol\downslice
+% \showsymbol\smalllozenge
+% \showsymbol\filledlozenge
+% \showsymbol\medlozenge,
+%   \cs{\lozenge}
+% \showsymbol\filledmedlozenge,
+%   \cs{\blacklozenge}
+% \showsymbol\largelozenge
+% \showsymbol\filledmedtriangleright
+% \showsymbol\filledmedtriangleup,
+%   \cs{\blacktriangle}
+% \showsymbol\filledmedtriangleleft
+% \showsymbol\filledmedtriangledown,
+%   \cs{\blacktriangledown}
+% \showsymbol\filledmedsquare,
+%   \cs{\blacksquare}
+% \showsymbol\filledlargestar,
+%   \cs{\bigstar}
+% \showsymbol\medstarofdavid
+% \showsymbol\largestarofdavid
+% \showsymbol\maltese
+% \showsymbol\leftthreetimes
+% \showsymbol\rightthreetimes
+% \showsymbol\nshortmid
+% \showsymbol\shortparallel
+% \showsymbol\nshortparallel
+% \end{multicols}
+%
+% \subsection*{Relations}
+%
+% \begin{multicols}{2}
+% \raggedright
+% \showsymbol{=},
+%   \cs{\equal}
+% \showsymbol\equiv
+% \showsymbol\sim
+% \showsymbol\backsim
+% \showsymbol\approx
+% \showsymbol\backapprox
+% \showsymbol\triplesim
+% \showsymbol\backtriplesim
+% \showsymbol\simeq
+% \showsymbol\backsimeq
+% \showsymbol\eqsim
+% \showsymbol\backeqsim
+% \showsymbol\cong
+% \showsymbol\backcong
+% \showsymbol\approxeq
+% \showsymbol\backapproxeq
+% \showsymbol\bumpeq
+% \showsymbol\eqbump
+% \showsymbol\Bumpeq
+% \showsymbol\doteq
+% \showsymbol\eqdot
+% \showsymbol\Doteq,
+%   \cs{\doteqdot}
+% \showsymbol\fallingdotseq
+% \showsymbol\risingdotseq
+% \showsymbol\smile,
+%   \cs{\smallsmile}
+% \showsymbol\frown,
+%   \cs{\smallfrown}
+% \showsymbol\doublesmile
+% \showsymbol\doublefrown
+% \showsymbol\triplesmile
+% \showsymbol\triplefrown
+% \showsymbol\smilefrown,
+%   \cs{\asymp}
+% \showsymbol\frownsmile
+% \showsymbol\smileeq
+% \showsymbol\frowneq
+% \showsymbol\eqsmile
+% \showsymbol\eqfrown
+% \showsymbol\doublesmileeq
+% \showsymbol\doublefrowneq
+% \showsymbol\smileeqfrown
+% \showsymbol\frowneqsmile
+% \showsymbol\smilefrowneq
+% \showsymbol\frownsmileeq
+% \showsymbol\sqsmile
+% \showsymbol\sqfrown
+% \showsymbol\sqdoublesmile
+% \showsymbol\sqdoublefrown
+% \showsymbol\sqtriplesmile
+% \showsymbol\sqtriplefrown
+% \showsymbol\sqsmilefrown
+% \showsymbol\sqfrownsmile
+% \showsymbol\sqsmileeq
+% \showsymbol\sqfrowneq
+% \showsymbol\sqeqsmile
+% \showsymbol\sqeqfrown
+% \showsymbol\sqdoublesmileeq
+% \showsymbol\sqdoublefrowneq
+% \showsymbol\sqsmileeqfrown
+% \showsymbol\sqfrowneqsmile
+% \showsymbol\eqcirc
+% \showsymbol\circeq
+% \showsymbol\triangleeq,
+%   \cs{\triangleq}
+% \showsymbol\hateq
+% \showsymbol\in
+% \showsymbol\owns,
+%   \cs{\ni}
+% \showsymbol{<},
+%   \cs{\less}
+% \showsymbol{>},
+%   \cs{\gtr}
+% \showsymbol\leq,
+%   \cs{\le}
+% \showsymbol\geq,
+%   \cs{\ge}
+% \showsymbol\leqslant
+% \showsymbol\geqslant
+% \showsymbol\leqq
+% \showsymbol\geqq
+% \showsymbol\lessgtr
+% \showsymbol\gtrless
+% \showsymbol\lesseqgtr
+% \showsymbol\gtreqless
+% \showsymbol\lesseqqgtr
+% \showsymbol\gtreqqless
+% \showsymbol\lesseqgtrslant
+% \showsymbol\gtreqlessslant
+% \showsymbol\ll
+% \showsymbol\gg
+% \showsymbol\lll,
+%   \cs{\llless}
+% \showsymbol\ggg,
+%   \cs{\gggtr}
+% \showsymbol\lessclosed,
+%   \cs{\lhd},
+%   \cs{\vartriangleleft}
+% \showsymbol\gtrclosed,
+%   \cs{\rhd},
+%   \cs{\vartriangleright}
+% \showsymbol\leqclosed,
+%   \cs{\unlhd},
+%   \cs{\trianglelefteq}
+% \showsymbol\geqclosed,
+%   \cs{\unrhd},
+%   \cs{\trianglerighteq}
+% \showsymbol\sqsubset
+% \showsymbol\sqsupset
+% \showsymbol\sqsubseteq
+% \showsymbol\sqsupseteq
+% \showsymbol\sqsubseteqq
+% \showsymbol\sqsupseteqq
+% \showsymbol\Sqsubset
+% \showsymbol\Sqsupset
+% \showsymbol\subset
+% \showsymbol\supset
+% \showsymbol\subseteq
+% \showsymbol\supseteq
+% \showsymbol\subseteqq
+% \showsymbol\supseteqq
+% \showsymbol\Subset
+% \showsymbol\Supset
+% \showsymbol\prec
+% \showsymbol\succ
+% \showsymbol\preceq
+% \showsymbol\succeq
+% \showsymbol\preccurlyeq
+% \showsymbol\succcurlyeq
+% \showsymbol\precsim
+% \showsymbol\succsim
+% \showsymbol\precapprox
+% \showsymbol\succapprox
+% \showsymbol\lessdot
+% \showsymbol\gtrdot
+% \showsymbol\leqdot
+% \showsymbol\geqdot
+% \showsymbol\leqslantdot
+% \showsymbol\geqslantdot
+% \showsymbol\closedequal
+% \showsymbol\equalclosed
+% \showsymbol\equivclosed
+% \showsymbol\lesssim
+% \showsymbol\gtrsim
+% \showsymbol\lessapprox
+% \showsymbol\gtrapprox
+% \showsymbol\eqslantless
+% \showsymbol\eqslantgtr
+% \showsymbol\curlyeqprec
+% \showsymbol\curlyeqsucc
+% \showsymbol\nequal,
+%   \cs{\neq},
+%   \cs{\ne}
+% \showsymbol\nequiv
+% \showsymbol\nsim
+% \showsymbol\nbacksim
+% \showsymbol\napprox
+% \showsymbol\nbackapprox
+% \showsymbol\ntriplesim
+% \showsymbol\nbacktriplesim
+% \showsymbol\nsimeq
+% \showsymbol\nbacksimeq
+% \showsymbol\neqsim
+% \showsymbol\nbackeqsim
+% \showsymbol\ncong
+% \showsymbol\nbackcong
+% \showsymbol\napproxeq
+% \showsymbol\nbackapproxeq
+% \showsymbol\nbumpeq
+% \showsymbol\neqbump
+% \showsymbol\nBumpeq
+% \showsymbol\ndoteq
+% \showsymbol\neqdot
+% \showsymbol\nDoteq
+% \showsymbol\nfallingdotseq
+% \showsymbol\nrisingdotseq
+% \showsymbol\nsmile
+% \showsymbol\nfrown
+% \showsymbol\ndoublesmile
+% \showsymbol\ndoublefrown
+% \showsymbol\ntriplesmile
+% \showsymbol\ntriplefrown
+% \showsymbol\nsmilefrown,
+%   \cs{\nasymp}
+% \showsymbol\nfrownsmile
+% \showsymbol\nsmileeq
+% \showsymbol\nfrowneq
+% \showsymbol\neqsmile
+% \showsymbol\neqfrown
+% \showsymbol\ndoublesmileeq
+% \showsymbol\ndoublefrowneq
+% \showsymbol\nsmileeqfrown
+% \showsymbol\nfrowneqsmile
+% \showsymbol\nsmilefrowneq
+% \showsymbol\nfrownsmileeq
+% \showsymbol\nsqsmile
+% \showsymbol\nsqfrown
+% \showsymbol\nsqdoublesmile
+% \showsymbol\nsqdoublefrown
+% \showsymbol\nsqtriplesmile
+% \showsymbol\nsqtriplefrown
+% \showsymbol\nsqsmilefrown
+% \showsymbol\nsqfrownsmile
+% \showsymbol\nsqsmileeq
+% \showsymbol\nsqfrowneq
+% \showsymbol\nsqeqsmile
+% \showsymbol\nsqeqfrown
+% \showsymbol\nsqdoublesmileeq
+% \showsymbol\nsqdoublefrowneq
+% \showsymbol\nsqsmileeqfrown
+% \showsymbol\nsqfrowneqsmile
+% \showsymbol\neqcirc
+% \showsymbol\ncirceq
+% \showsymbol\ntriangleeq
+% \showsymbol\nhateq
+% \showsymbol\nin,
+%   \cs{\notin}
+% \showsymbol\nowns
+% \showsymbol\nless
+% \showsymbol\ngtr
+% \showsymbol\nleq,
+%    \cs{\lneq}
+% \showsymbol\ngeq,
+%    \cs{\gneq}
+% \showsymbol\nleqslant
+% \showsymbol\ngeqslant
+% \showsymbol\nleqq
+% \showsymbol\ngeqq
+% \showsymbol\nlessgtr
+% \showsymbol\ngtrless
+% \showsymbol\nlesseqgtr
+% \showsymbol\ngtreqless
+% \showsymbol\nlesseqqgtr
+% \showsymbol\ngtreqqless
+% \showsymbol\nlesseqgtrslant
+% \showsymbol\ngtreqlessslant
+% \showsymbol\nll
+% \showsymbol\ngg
+% \showsymbol\nlll
+% \showsymbol\nggg
+% \showsymbol\nlessclosed,
+%   \cs{\ntriangleleft}
+% \showsymbol\ngtrclosed,
+%   \cs{\ntriangleright}
+% \showsymbol\nleqclosed,
+%   \cs{\ntrianglelefteq}
+% \showsymbol\ngeqclosed,
+%   \cs{\ntrianglerighteq}
+% \showsymbol\nsqsubset
+% \showsymbol\nsqsupset
+% \showsymbol\nsqsubseteq
+% \showsymbol\nsqsupseteq
+% \showsymbol\nsqsubseteqq
+% \showsymbol\nsqsupseteqq
+% \showsymbol\nSqsubset
+% \showsymbol\nSqsupset
+% \showsymbol\nsubset
+% \showsymbol\nsupset
+% \showsymbol\nsubseteq
+% \showsymbol\nsupseteq
+% \showsymbol\nsubseteqq
+% \showsymbol\nsupseteqq
+% \showsymbol\nSubset
+% \showsymbol\nSupset
+% \showsymbol\nprec
+% \showsymbol\nsucc
+% \showsymbol\npreceq,
+%   \cs{\precneqq}
+% \showsymbol\nsucceq,
+%   \cs{\succneqq}
+% \showsymbol\npreccurlyeq
+% \showsymbol\nsucccurlyeq
+% \showsymbol\nprecsim
+% \showsymbol\nsuccsim
+% \showsymbol\nprecapprox
+% \showsymbol\nsuccapprox
+% \showsymbol\nlessdot
+% \showsymbol\ngtrdot
+% \showsymbol\nleqdot
+% \showsymbol\ngeqdot
+% \showsymbol\nleqslantdot
+% \showsymbol\ngeqslantdot
+% \showsymbol\lneqq,
+%   \cs{\lvertneqq}
+% \showsymbol\gneqq,
+%   \cs{\gvertneqq}
+% \showsymbol\lessneqqgtr
+% \showsymbol\gtrneqqless
+% \showsymbol\sqsubsetneq
+% \showsymbol\sqsupsetneq
+% \showsymbol\sqsubsetneqq
+% \showsymbol\sqsupsetneqq
+% \showsymbol\subsetneq,
+%   \cs{\varsubsetneq}
+% \showsymbol\supsetneq,
+%   \cs{\varsupsetneq}
+% \showsymbol\subsetneqq,
+%   \cs{\varsubsetneqq}
+% \showsymbol\supsetneqq,
+%   \cs{\varsupsetneqq}
+% \showsymbol\precnsim
+% \showsymbol\succnsim
+% \showsymbol\precnapprox
+% \showsymbol\succnapprox
+% \showsymbol\nclosedequal
+% \showsymbol\nequalclosed
+% \showsymbol\nequivclosed
+% \showsymbol\lnsim
+% \showsymbol\gnsim
+% \showsymbol\lnapprox
+% \showsymbol\gnapprox
+% \showsymbol\neqslantless
+% \showsymbol\neqslantgtr
+% \showsymbol\ncurlyeqprec
+% \showsymbol\ncurlyeqsucc
+% \end{multicols}
+%
+% \subsection*{Operators}
+%
+% \begin{multicols}{2}
+% \raggedright
+% \showop\bigplus
+% \showop\bigtimes
+% \showop\bigwedge
+% \showop\bigvee
+% \showop\bigwedgedot
+% \showop\bigveedot
+% \showop\bigdoublewedge
+% \showop\bigdoublevee
+% \showop\bigcurlywedge
+% \showop\bigcurlyvee
+% \showop\bigcurlywedgedot
+% \showop\bigcurlyveedot
+% \showop\bigdoublecurlywedge
+% \showop\bigdoublecurlyvee
+% \showop\bigcap
+% \showop\bigcup
+% \showop\bigcapdot
+% \showop\bigcupdot
+% \showop\bigcapplus,
+%   \cs\biguplus
+% \showop\bigcupplus
+% \showop\bigsqcap
+% \showop\bigsqcup
+% \showop\bigsqcapdot
+% \showop\bigsqcupdot
+% \showop\bigsqcapplus
+% \showop\bigsqcupplus
+% \showop\bigcircle
+% \showop\bigominus
+% \showop\bigovert
+% \showop\bigoslash
+% \showop\bigobackslash
+% \showop\bigoplus
+% \showop\bigotimes
+% \showop\bigodot
+% \showop\bigocirc
+% \showop\bigotriangle
+% \showop\bigoast
+% \showop\bigostar
+% \showop\prod
+% \showop\coprod
+% \showop\sum
+% \showop\int
+% \showop\iint
+% \showop\iiint
+% \showop\iiiint
+% \showop\idotsint
+% \showop\landupint
+% \showop\landdownint
+% \showop\strokedint
+% \showop\oint
+% \showop\oiint
+% \showop\rcirclerightint
+% \showop\lcirclerightint
+% \showop\rcircleleftint
+% \showop\lcircleleftint
+% \showop\sumint
+% \showop\complement
+% \end{multicols}
+%
+% \subsection*{Braces and accents}
+%
+% \begin{multicols}{2}
+% \raggedright
+% \showlbrace{(}
+% \showrbrace{)}
+% \showlbrace{[}
+% \showrbrace{]}
+% \showlbrace{\lbrace},
+%   \cs{\{}
+% \showrbrace{\rbrace},
+%   \cs{\}}
+% \showlbrace{\langle}
+% \showrbrace{\rangle}
+% \showlbrace{\langlebar}
+% \showrbrace{\ranglebar}
+% \showlbrace{\llangle}
+% \showrbrace{\rrangle}
+% \showlbrace{\lfloor}
+% \showrbrace{\rfloor}
+% \showlbrace{\lceil}
+% \showrbrace{\rceil}
+% \showlbrace{\ulcorner}
+% \showrbrace{\urcorner}
+% \showlbrace{\llcorner}
+% \showrbrace{\lrcorner}
+% \showlbrace{\ullcorner}
+% \showrbrace{\ulrcorner}
+% \showlbrace{\lsem}
+% \showrbrace{\rsem}
+% \showmbrace{/}
+% \showmbrace{\backslash}
+% {\catcode`\|=11
+% \showmbrace{|},
+%   \cs{\vert}}
+% \showmbrace{\mvert},
+%   \cs{\mid}
+% \showlbrace{\lvert}
+% \showrbrace{\rvert}
+% \showmbrace{\Vert},
+%   \cs{\|}
+% \showmbrace{\mVert}
+% \showlbrace{\lVert}
+% \showrbrace{\rVert}
+% \showmbrace{\arrowvert}
+% \showmbrace{\Arrowvert}
+% \showlbrace{\lwavy}
+% \showrbrace{\rwavy}
+% \showlbrace{\lWavy}
+% \showrbrace{\rWavy}
+% \showlbrace{\lgroup}
+% \showrbrace{\rgroup}
+% \showlbrace{\lmoustache}
+% \showrbrace{\rmoustache}
+% \showmbrace{\bracevert}
+% \showmbrace{\uparrow}
+% \showmbrace{\downarrow}
+% \showmbrace{\updownarrow}
+% \showmbrace{\Uparrow}
+% \showmbrace{\Downarrow}
+% \showmbrace{\Updownarrow}
+% \end{multicols}
+% \begin{multicols}{2}
+% \showwidesymbol\downbrace
+% \showwidesymbol\downbraceg
+% \showwidesymbol\downbracegg
+% \showwidesymbol\downbraceggg
+% \showwidesymbol\downbracegggg
+% \showwidesymbol\upbrace
+% \showwidesymbol\upbraceg
+% \showwidesymbol\upbracegg
+% \showwidesymbol\upbraceggg
+% \showwidesymbol\upbracegggg
+% \showwidesymbol\braceld
+% \showwidesymbol\bracelu
+% \showwidesymbol\bracerd
+% \showwidesymbol\braceru
+% \showwidesymbol\bracemd
+% \showwidesymbol\bracemu
+% \showwidesymbol\bracemid
+% \end{multicols}
+% \begin{multicols}{2}
+% \showover\overbrace
+% \showover\underbrace
+% \showover\overgroup
+% \showover\undergroup
+% \showover\overlinesegment
+% \showover\overleftharpoon
+% \showover\overrightharpoon
+% \showover\underlinesegment
+% \end{multicols}
+%
+% \begin{multicols}{2}
+% \raggedright
+% \showaccent\sqrt
+% \showsymbol\surd
+% \showover\widehat
+% \showover\widetilde
+% \showover\wideparen
+% \showaccent\vec
+% \showaccent\middlebar
+% \showaccent\middleslash
+% \showaccent\strokethrough
+% \end{multicols}
+%
+% \subsection*{Faked symbols}
+%
+% The following symbols are taken from the text font or they are assembled
+% from several glyphs.
+% \begin{multicols}{2}
+% \raggedright
+% \showsymbol\coloneq
+% \showsymbol\dagger
+% \showsymbol\ddagger
+% \showsymbol\mathparagraph
+% \showsymbol\mathsection
+% \showsymbol\mathdollar
+% \showsymbol\mathsterling
+% \showsymbol\yen
+% \showsymbol\Re
+% \showsymbol\Im
+% \showsymbol\hbar
+% \showsymbol\hslash
+% \showsymbol\circledR
+% \showsymbol\circledS
+% \showsymbol\dotplus
+% \showsymbol\thicksim
+% \showsymbol\thickapprox
+% \showsymbol\veebar
+% \showsymbol\barwedge
+% \showsymbol\doublebarwedge
+% \showsymbol\centerdot
+% \showsymbol\divideontimes
+% \end{multicols}
+%
+% \paragraph{Missing symbols.}
+% The following symbols from Computer Modern or the AMS fonts are missing in MdSymbol.
+% If available they should be taken from the text font. (For instance, the
+% \textsf{MinionPro} package defines most of them.)
+% \begin{multicols}{3}
+% \parindent=0pt
+% |\mho|\par
+% |\Finv|\par
+% |\Game|\par
+% |\eth|\par
+% |\digamma|\par
+% |\varkappa|\par
+% |\Bbbk|\par
+% |\backepsilon|\par
+% |\mapstochar|\par
+% |\lhook|\par
+% |\rhook|\par
+% \end{multicols}
+%
+% \section{The style file}
+%
+% \figureversion{tabular}
+%    \begin{macrocode}
+%<*style>
+\ProvidesPackage{MdSymbol}[2007/01/21 v1.4 support for the MdSymbol font]
+%    \end{macrocode}
+%
+% Options to select the calligraphic font.
+%
+%    \begin{macrocode}
+\DeclareOption{mdsy}{%
+  \def\Md@Load@Cal@Font{%
+    \DeclareMathAlphabet\mathcal  {OMS}{MdSymbolS}{m}{n}%
+    \SetMathAlphabet\mathcal{bold}{OMS}{MdSymbolS}{b}{n}}}
+\DeclareOption{cmsy}{%
+  \def\Md@Load@Cal@Font{%
+    \DeclareMathAlphabet\mathcal  {OMS}{cmsy}{m}{n}%
+    \SetMathAlphabet\mathcal{bold}{OMS}{cmsy}{b}{n}}}
+\DeclareOption{abx}{%
+  \def\Md@Load@Cal@Font{%
+    \DeclareFontFamily{OT1}{mathc}{}%
+    \DeclareFontShape{OT1}{mathc}{m}{n}{ <-> mathc10 }{}%
+%    \DeclareFontShape{OT1}{mathc}{m}{n}{ <-> mathcm10 }{}%
+%    \DeclareFontShape{OT1}{mathc}{b}{n}{ <-> mathcb10 }{}%
+    \DeclareMathAlphabet\mathcal{OT1}{mathc}{m}{n}}}
+%    \SetMathAlphabet\mathcal{bold}{OT1}{mathc}{b}{n}}}
+%    \end{macrocode}
+%
+% Some symbols missing from MdSymbol can be obtained from other fonts or
+% by combining several other symbols.
+%
+%    \begin{macrocode}
+\newcommand*\Md@Fake@Missing{
+  \@ifpackageloaded{textcomp}{}{\RequirePackage{textcomp}}
+  \@ifundefined{mathfrak}{\RequirePackage{eufrak}}{}
+
+  \DeclareRobustCommand{\dagger}{\Md@Text@With@MathVersion{\textdagger}}
+  \DeclareRobustCommand{\ddagger}{\Md@Text@With@MathVersion{\textdaggerdbl}}
+  \DeclareRobustCommand{\mathparagraph}{\Md@Text@With@MathVersion{\textparagraph}}
+  \DeclareRobustCommand{\mathsection}{\Md@Text@With@MathVersion{\textsection}}
+  \DeclareRobustCommand{\mathdollar}{\Md@Text@With@MathVersion{\textdollar}}
+  \DeclareRobustCommand{\mathsterling}{\Md@Text@With@MathVersion{\textsterling}}
+  \DeclareRobustCommand{\yen}{\Md@Text@With@MathVersion{\textyen}}
+  \DeclareRobustCommand{\circledR}{\Md@Text@With@MathVersion{\textcircled{%
+                                     \check@mathfonts\fontsize\sf@size\z@\math@fontsfalse\selectfont R}}}
+  \DeclareRobustCommand{\circledS}{\Md@Text@With@MathVersion{\textcircled{%
+                                     \check@mathfonts\fontsize\sf@size\z@\math@fontsfalse\selectfont S}}}
+  \DeclareRobustCommand{\Re}{\mathfrak{R}}
+  \DeclareRobustCommand{\Im}{\mathfrak{I}}
+  \DeclareRobustCommand{\dotplus}{\dot{+}}
+  \DeclareRobustCommand{\thicksim}{\mathrel{\text{\boldmath$\m@th\sim$}}}
+  \DeclareRobustCommand{\thickapprox}{\mathrel{\text{\boldmath$\m@th\approx$}}}
+  \let\hbar\undefined
+  \let\hslash\undefined
+  % Hack for backward compatibility with the MinionPro package:
+  % If the package is loaded then we do not need to define \hbar.
+  \@ifpackageloaded{MinionPro}{}{%
+    \DeclareRobustCommand{\hbar}{\middlebar h}}
+  \DeclareRobustCommand{\hslash}{\middleslash h}
+
+  \let\lneq\nleq
+  \let\gneq\ngeq
+  \let\precneqq\npreceq
+  \let\succneqq\nsucceq
+  \DeclareRobustCommand\veebar{\mathbin{\underline{\vee}}}
+  \DeclareRobustCommand\barwedge{\mathbin{\overline{\wedge}}}
+  \DeclareRobustCommand\doublebarwedge{\mathbin{\overline{\overline{\wedge}}}}
+  \DeclareRobustCommand\centerdot{\mathbin{\rule{0.15em}{0.15em}}}
+  \DeclareRobustCommand\divideontimes{\mathbin{\ooalign{$\div$\crcr$\times$}}}
+%    \end{macrocode}
+%
+% MdSymbol lacks some symbols that are present in the Computer Modern or the AMS fonts.
+% In order to warn the user we undefine the corresponding commands.
+%
+% (a) Missing letters.
+%
+%    \begin{macrocode}
+  \let\eth\undefined
+  \let\digamma\undefined
+  \let\varkappa\undefined
+  \let\backepsilon\undefined
+
+  \let\mho\undefined
+  \let\Finv\undefined
+  \let\Game\undefined
+  \let\Bbbk\undefined
+%    \end{macrocode}
+%
+% (b) Unneeded partial symbols.
+%
+%    \begin{macrocode}
+  \let\mapstochar\undefined
+  \let\lhook\undefined
+  \let\rhook\undefined
+}
+\DeclareOption{retainmissing}{\let\Md@Fake@Missing\relax}
+
+\ExecuteOptions{mdsy}
+\ProcessOptions\relax
+%    \end{macrocode}
+%
+% Loading external packages. But only if they are not already loaded
+% in order to avoid warning messages about loading a package twice
+% with different options.
+%
+%    \begin{macrocode}
+\@ifpackageloaded{amsmath}{}{\RequirePackage{amsmath}}
+\Md@Fake@Missing
+%    \end{macrocode}
+%
+% Short hands to simplify the definitions below.
+%
+%    \begin{macrocode}
+\def\Set@Md@Sym#1{\@tempcnta #1\relax}
+\def\Next@Md@Sym{\advance\@tempcnta 1\relax}
+\def\Prev@Md@Sym{\advance\@tempcnta-1\relax}
+
+\def\@Decl@Md@Sym#1#2#3#4{\DeclareMathSymbol{#2}{#3}{#4}{#1}}
+\def\Decl@Md@Sym#1#2#3{%
+  \if\relax\noexpand#1%
+    \let#1\undefined
+  \fi
+  \expandafter\@Decl@Md@Sym\expandafter{\the\@tempcnta}{#1}{#3}{#2}%
+  \Next@Md@Sym}
+\def\Decl@Md@Alias#1#2#3{\Prev@Md@Sym\Decl@Md@Sym{#1}{#2}{#3}}
+\let\Decl@Md@Char\Decl@Md@Sym
+\def\Decl@Md@Op#1#2#3{\def#1{\DOTSB#3\slimits@}}
+\def\Decl@Md@Int#1#2#3{\def#1{\DOTSI#3\ilimits@}}
+
+\def\Decl@Md@Delim#1#2#3#4{%
+  \if\relax\noexpand#1%
+    \let#1\undefined
+  \fi
+  \DeclareMathDelimiter{#1}{#2}{#3}{#4}{#3}{#4}}
+\def\Decl@Md@Open#1#2#3{\Decl@Md@Delim{#1}{\mathopen}{#2}{#3}}
+\def\Decl@Md@Close#1#2#3{\Decl@Md@Delim{#1}{\mathclose}{#2}{#3}}
+%    \end{macrocode}
+%
+% Font definitions.
+%
+%    \begin{macrocode}
+\DeclareFontFamily{U}  {MdSymbolA}{}
+\DeclareFontFamily{U}  {MdSymbolB}{}
+\DeclareFontFamily{U}  {MdSymbolC}{}
+\DeclareFontFamily{U}  {MdSymbolD}{}
+\DeclareFontFamily{OMX}{MdSymbolE}{}
+\DeclareFontFamily{U}  {MdSymbolF}{}
+\DeclareFontFamily{OMS}{MdSymbolS}{\skewchar\font=0}
+\DeclareSymbolFont{MdSyA}         {U}  {MdSymbolA}{m}{n}
+\DeclareSymbolFont{MdSyB}         {U}  {MdSymbolB}{m}{n}
+\DeclareSymbolFont{MdSyC}         {U}  {MdSymbolC}{m}{n}
+\DeclareSymbolFont{MdSyD}         {U}  {MdSymbolD}{m}{n}
+\DeclareSymbolFont{largesymbols}  {OMX}{MdSymbolE}{m}{n}
+\DeclareSymbolFont{symbols}       {U}  {MdSymbolF}{m}{n}
+\SetSymbolFont{MdSyA}       {bold}{U}  {MdSymbolA}{b}{n}
+\SetSymbolFont{MdSyB}       {bold}{U}  {MdSymbolB}{b}{n}
+\SetSymbolFont{MdSyC}       {bold}{U}  {MdSymbolC}{b}{n}
+\SetSymbolFont{MdSyD}       {bold}{U}  {MdSymbolD}{b}{n}
+\SetSymbolFont{largesymbols}{bold}{OMX}{MdSymbolE}{b}{n}
+\SetSymbolFont{symbols}     {bold}{U}  {MdSymbolF}{b}{n}
+
+\DeclareFontShape{U}{MdSymbolA}{m}{n}{
+    <-6>  MdSymbolA5
+   <6-7>  MdSymbolA6
+   <7-8>  MdSymbolA7
+   <8-9>  MdSymbolA8
+   <9-10> MdSymbolA9
+  <10-12> MdSymbolA10
+  <12->   MdSymbolA12}{}
+\DeclareFontShape{U}{MdSymbolA}{b}{n}{
+    <-6>  MdSymbolA-Bold5
+   <6-7>  MdSymbolA-Bold6
+   <7-8>  MdSymbolA-Bold7
+   <8-9>  MdSymbolA-Bold8
+   <9-10> MdSymbolA-Bold9
+  <10-12> MdSymbolA-Bold10
+  <12->   MdSymbolA-Bold12}{}
+\DeclareFontShape{U}{MdSymbolB}{m}{n}{
+    <-6>  MdSymbolB5
+   <6-7>  MdSymbolB6
+   <7-8>  MdSymbolB7
+   <8-9>  MdSymbolB8
+   <9-10> MdSymbolB9
+  <10-12> MdSymbolB10
+  <12->   MdSymbolB12}{}
+\DeclareFontShape{U}{MdSymbolB}{b}{n}{
+    <-6>  MdSymbolB-Bold5
+   <6-7>  MdSymbolB-Bold6
+   <7-8>  MdSymbolB-Bold7
+   <8-9>  MdSymbolB-Bold8
+   <9-10> MdSymbolB-Bold9
+  <10-12> MdSymbolB-Bold10
+  <12->   MdSymbolB-Bold12}{}
+\DeclareFontShape{U}{MdSymbolC}{m}{n}{
+    <-6>  MdSymbolC5
+   <6-7>  MdSymbolC6
+   <7-8>  MdSymbolC7
+   <8-9>  MdSymbolC8
+   <9-10> MdSymbolC9
+  <10-12> MdSymbolC10
+  <12->   MdSymbolC12}{}
+\DeclareFontShape{U}{MdSymbolC}{b}{n}{
+    <-6>  MdSymbolC-Bold5
+   <6-7>  MdSymbolC-Bold6
+   <7-8>  MdSymbolC-Bold7
+   <8-9>  MdSymbolC-Bold8
+   <9-10> MdSymbolC-Bold9
+  <10-12> MdSymbolC-Bold10
+  <12->   MdSymbolC-Bold12}{}
+\DeclareFontShape{U}{MdSymbolD}{m}{n}{
+    <-6>  MdSymbolD5
+   <6-7>  MdSymbolD6
+   <7-8>  MdSymbolD7
+   <8-9>  MdSymbolD8
+   <9-10> MdSymbolD9
+  <10-12> MdSymbolD10
+  <12->   MdSymbolD12}{}
+\DeclareFontShape{U}{MdSymbolD}{b}{n}{
+    <-6>  MdSymbolD-Bold5
+   <6-7>  MdSymbolD-Bold6
+   <7-8>  MdSymbolD-Bold7
+   <8-9>  MdSymbolD-Bold8
+   <9-10> MdSymbolD-Bold9
+  <10-12> MdSymbolD-Bold10
+  <12->   MdSymbolD-Bold12}{}
+\DeclareFontShape{OMX}{MdSymbolE}{m}{n}{
+    <-6>  MdSymbolE5
+   <6-7>  MdSymbolE6
+   <7-8>  MdSymbolE7
+   <8-9>  MdSymbolE8
+   <9-10> MdSymbolE9
+  <10-12> MdSymbolE10
+  <12->   MdSymbolE12}{}
+\DeclareFontShape{OMX}{MdSymbolE}{b}{n}{
+    <-6>  MdSymbolE-Bold5
+   <6-7>  MdSymbolE-Bold6
+   <7-8>  MdSymbolE-Bold7
+   <8-9>  MdSymbolE-Bold8
+   <9-10> MdSymbolE-Bold9
+  <10-12> MdSymbolE-Bold10
+  <12->   MdSymbolE-Bold12}{}
+\DeclareFontShape{U}{MdSymbolF}{m}{n}{
+    <-6>  MdSymbolF5
+   <6-7>  MdSymbolF6
+   <7-8>  MdSymbolF7
+   <8-9>  MdSymbolF8
+   <9-10> MdSymbolF9
+  <10-12> MdSymbolF10
+  <12->   MdSymbolF12}{}
+\DeclareFontShape{U}{MdSymbolF}{b}{n}{
+    <-6>  MdSymbolF-Bold5
+   <6-7>  MdSymbolF-Bold6
+   <7-8>  MdSymbolF-Bold7
+   <8-9>  MdSymbolF-Bold8
+   <9-10> MdSymbolF-Bold9
+  <10-12> MdSymbolF-Bold10
+  <12->   MdSymbolF-Bold12}{}
+\DeclareFontShape{OMS}{MdSymbolS}{m}{n}{
+    <-6>  MdSymbolS5
+   <6-7>  MdSymbolS6
+   <7-8>  MdSymbolS7
+   <8-9>  MdSymbolS8
+   <9-10> MdSymbolS9
+  <10-12> MdSymbolS10
+  <12->   MdSymbolS12}{}
+\DeclareFontShape{OMS}{MdSymbolS}{b}{n}{
+    <-6>  MdSymbolS-Bold5
+   <6-7>  MdSymbolS-Bold6
+   <7-8>  MdSymbolS-Bold7
+   <8-9>  MdSymbolS-Bold8
+   <9-10> MdSymbolS-Bold9
+  <10-12> MdSymbolS-Bold10
+  <12->   MdSymbolS-Bold12}{}
+
+\Md@Load@Cal@Font
+%    \end{macrocode}
+%
+% A command to take math symbols from text fonts.
+%
+%    \begin{macrocode}
+\def\Md@Bold{bold}
+\def\Md@Text@With@MathVersion#1{
+  \ifx\Md@Bold\math@version
+    \text{\bfseries#1}%
+  \else
+    \text{\mdseries#1}%
+  \fi}
+%    \end{macrocode}
+%
+% MdSymbolA\?: arrows.
+%
+%    \begin{macrocode}
+\Set@Md@Sym{0}
+\Decl@Md@Char\rightarrow             {MdSyA}{\mathrel}
+  \Decl@Md@Alias\to                  {MdSyA}{\mathrel}
+\Decl@Md@Char\uparrow                {MdSyA}{\mathrel}
+\Decl@Md@Char\leftarrow              {MdSyA}{\mathrel}
+  \Decl@Md@Alias\gets                {MdSyA}{\mathrel}
+\Decl@Md@Char\downarrow              {MdSyA}{\mathrel}
+\Decl@Md@Char\nearrow                {MdSyA}{\mathrel}
+\Decl@Md@Char\nwarrow                {MdSyA}{\mathrel}
+\Decl@Md@Char\swarrow                {MdSyA}{\mathrel}
+\Decl@Md@Char\searrow                {MdSyA}{\mathrel}
+\Decl@Md@Char\Rightarrow             {MdSyA}{\mathrel}
+\Decl@Md@Char\Uparrow                {MdSyA}{\mathrel}
+\Decl@Md@Char\Leftarrow              {MdSyA}{\mathrel}
+\Decl@Md@Char\Downarrow              {MdSyA}{\mathrel}
+\Decl@Md@Char\Nearrow                {MdSyA}{\mathrel}
+\Decl@Md@Char\Nwarrow                {MdSyA}{\mathrel}
+\Decl@Md@Char\Swarrow                {MdSyA}{\mathrel}
+\Decl@Md@Char\Searrow                {MdSyA}{\mathrel}
+\Decl@Md@Char\leftrightarrow         {MdSyA}{\mathrel}
+\Decl@Md@Char\updownarrow            {MdSyA}{\mathrel}
+\Decl@Md@Char\neswarrow              {MdSyA}{\mathrel}
+\Decl@Md@Char\nwsearrow              {MdSyA}{\mathrel}
+\Decl@Md@Char\Leftrightarrow         {MdSyA}{\mathrel}
+\Decl@Md@Char\Updownarrow            {MdSyA}{\mathrel}
+\Decl@Md@Char\Neswarrow              {MdSyA}{\mathrel}
+\Decl@Md@Char\Nwsearrow              {MdSyA}{\mathrel}
+\Decl@Md@Char\twoheadrightarrow      {MdSyA}{\mathrel}
+\Decl@Md@Char\twoheaduparrow         {MdSyA}{\mathrel}
+\Decl@Md@Char\twoheadleftarrow       {MdSyA}{\mathrel}
+\Decl@Md@Char\twoheaddownarrow       {MdSyA}{\mathrel}
+\Decl@Md@Char\twoheadnearrow         {MdSyA}{\mathrel}
+\Decl@Md@Char\twoheadnwarrow         {MdSyA}{\mathrel}
+\Decl@Md@Char\twoheadswarrow         {MdSyA}{\mathrel}
+\Decl@Md@Char\twoheadsearrow         {MdSyA}{\mathrel}
+\Decl@Md@Char\rightarrowtail         {MdSyA}{\mathrel}
+\Decl@Md@Char\uparrowtail            {MdSyA}{\mathrel}
+\Decl@Md@Char\leftarrowtail          {MdSyA}{\mathrel}
+\Decl@Md@Char\downarrowtail          {MdSyA}{\mathrel}
+\Decl@Md@Char\nearrowtail            {MdSyA}{\mathrel}
+\Decl@Md@Char\nwarrowtail            {MdSyA}{\mathrel}
+\Decl@Md@Char\swarrowtail            {MdSyA}{\mathrel}
+\Decl@Md@Char\searrowtail            {MdSyA}{\mathrel}
+\Decl@Md@Char\rightmapsto            {MdSyA}{\mathrel}
+  \Decl@Md@Alias\mapsto              {MdSyA}{\mathrel}
+\Decl@Md@Char\upmapsto               {MdSyA}{\mathrel}
+\Decl@Md@Char\leftmapsto             {MdSyA}{\mathrel}
+\Decl@Md@Char\downmapsto             {MdSyA}{\mathrel}
+\Decl@Md@Char\nemapsto               {MdSyA}{\mathrel}
+\Decl@Md@Char\nwmapsto               {MdSyA}{\mathrel}
+\Decl@Md@Char\swmapsto               {MdSyA}{\mathrel}
+\Decl@Md@Char\semapsto               {MdSyA}{\mathrel}
+\Decl@Md@Char\lhookrightarrow        {MdSyA}{\mathrel}
+  \Decl@Md@Alias\hookrightarrow      {MdSyA}{\mathrel}
+\Decl@Md@Char\lhookuparrow           {MdSyA}{\mathrel}
+\Decl@Md@Char\lhookleftarrow         {MdSyA}{\mathrel}
+\Decl@Md@Char\lhookdownarrow         {MdSyA}{\mathrel}
+\Decl@Md@Char\lhooknearrow           {MdSyA}{\mathrel}
+\Decl@Md@Char\lhooknwarrow           {MdSyA}{\mathrel}
+\Decl@Md@Char\lhookswarrow           {MdSyA}{\mathrel}
+\Decl@Md@Char\lhooksearrow           {MdSyA}{\mathrel}
+\Decl@Md@Char\rhookrightarrow        {MdSyA}{\mathrel}
+\Decl@Md@Char\rhookuparrow           {MdSyA}{\mathrel}
+\Decl@Md@Char\rhookleftarrow         {MdSyA}{\mathrel}
+  \Decl@Md@Alias\hookleftarrow       {MdSyA}{\mathrel}
+\Decl@Md@Char\rhookdownarrow         {MdSyA}{\mathrel}
+\Decl@Md@Char\rhooknearrow           {MdSyA}{\mathrel}
+\Decl@Md@Char\rhooknwarrow           {MdSyA}{\mathrel}
+\Decl@Md@Char\rhookswarrow           {MdSyA}{\mathrel}
+\Decl@Md@Char\rhooksearrow           {MdSyA}{\mathrel}
+\Decl@Md@Char\rightharpoonccw        {MdSyA}{\mathrel}
+  \Decl@Md@Alias\rightharpoonup      {MdSyA}{\mathrel}
+\Decl@Md@Char\upharpoonccw           {MdSyA}{\mathrel}
+  \Decl@Md@Alias\upharpoonleft       {MdSyA}{\mathrel}
+\Decl@Md@Char\leftharpoonccw         {MdSyA}{\mathrel}
+  \Decl@Md@Alias\leftharpoondown     {MdSyA}{\mathrel}
+\Decl@Md@Char\downharpoonccw         {MdSyA}{\mathrel}
+  \Decl@Md@Alias\downharpoonright    {MdSyA}{\mathrel}
+\Decl@Md@Char\neharpoonccw           {MdSyA}{\mathrel}
+\Decl@Md@Char\nwharpoonccw           {MdSyA}{\mathrel}
+\Decl@Md@Char\swharpoonccw           {MdSyA}{\mathrel}
+\Decl@Md@Char\seharpoonccw           {MdSyA}{\mathrel}
+\Decl@Md@Char\rightharpooncw         {MdSyA}{\mathrel}
+  \Decl@Md@Alias\rightharpoondown    {MdSyA}{\mathrel}
+\Decl@Md@Char\upharpooncw            {MdSyA}{\mathrel}
+  \Decl@Md@Alias\upharpoonright      {MdSyA}{\mathrel}
+  \Decl@Md@Alias\restriction         {MdSyA}{\mathrel}
+\Decl@Md@Char\leftharpooncw          {MdSyA}{\mathrel}
+  \Decl@Md@Alias\leftharpoonup       {MdSyA}{\mathrel}
+\Decl@Md@Char\downharpooncw          {MdSyA}{\mathrel}
+  \Decl@Md@Alias\downharpoonleft     {MdSyA}{\mathrel}
+\Decl@Md@Char\neharpooncw            {MdSyA}{\mathrel}
+\Decl@Md@Char\nwharpooncw            {MdSyA}{\mathrel}
+\Decl@Md@Char\swharpooncw            {MdSyA}{\mathrel}
+\Decl@Md@Char\seharpooncw            {MdSyA}{\mathrel}
+\Decl@Md@Char\leftrightharpoonupdown {MdSyA}{\mathrel}
+\Decl@Md@Char\updownharpoonleftright {MdSyA}{\mathrel}
+\Decl@Md@Char\neswharpoonnwse        {MdSyA}{\mathrel}
+\Decl@Md@Char\nwseharpoonnesw        {MdSyA}{\mathrel}
+\Decl@Md@Char\leftrightharpoondownup {MdSyA}{\mathrel}
+\Decl@Md@Char\updownharpoonrightleft {MdSyA}{\mathrel}
+\Decl@Md@Char\neswharpoonsenw        {MdSyA}{\mathrel}
+\Decl@Md@Char\nwseharpoonswne        {MdSyA}{\mathrel}
+\Decl@Md@Char\rightleftharpoons      {MdSyA}{\mathrel}
+\Decl@Md@Char\updownharpoons         {MdSyA}{\mathrel}
+\Decl@Md@Char\neswharpoons           {MdSyA}{\mathrel}
+\Decl@Md@Char\senwharpoons           {MdSyA}{\mathrel}
+\Decl@Md@Char\leftrightharpoons      {MdSyA}{\mathrel}
+\Decl@Md@Char\downupharpoons         {MdSyA}{\mathrel}
+\Decl@Md@Char\swneharpoons           {MdSyA}{\mathrel}
+\Decl@Md@Char\nwseharpoons           {MdSyA}{\mathrel}
+\Decl@Md@Char\dashedrightarrow       {MdSyA}{\mathrel}
+  \Decl@Md@Alias\dashrightarrow      {MdSyA}{\mathrel}
+  \Decl@Md@Alias\dasharrow           {MdSyA}{\mathrel}
+\Decl@Md@Char\dasheduparrow          {MdSyA}{\mathrel}
+\Decl@Md@Char\dashedleftarrow        {MdSyA}{\mathrel}
+  \Decl@Md@Alias\dashleftarrow       {MdSyA}{\mathrel}
+\Decl@Md@Char\dasheddownarrow        {MdSyA}{\mathrel}
+\Decl@Md@Char\dashednearrow          {MdSyA}{\mathrel}
+\Decl@Md@Char\dashednwarrow          {MdSyA}{\mathrel}
+\Decl@Md@Char\dashedswarrow          {MdSyA}{\mathrel}
+\Decl@Md@Char\dashedsearrow          {MdSyA}{\mathrel}
+\Decl@Md@Char\rightspoon             {MdSyA}{\mathrel}
+  \Decl@Md@Alias\multimap            {MdSyA}{\mathrel}
+\Decl@Md@Char\upspoon                {MdSyA}{\mathrel}
+\Decl@Md@Char\leftspoon              {MdSyA}{\mathrel}
+\Decl@Md@Char\downspoon              {MdSyA}{\mathrel}
+\Decl@Md@Char\nespoon                {MdSyA}{\mathrel}
+\Decl@Md@Char\nwspoon                {MdSyA}{\mathrel}
+\Decl@Md@Char\swspoon                {MdSyA}{\mathrel}
+\Decl@Md@Char\sespoon                {MdSyA}{\mathrel}
+\Decl@Md@Char\rightfilledspoon       {MdSyA}{\mathrel}
+\Decl@Md@Char\upfilledspoon          {MdSyA}{\mathrel}
+\Decl@Md@Char\leftfilledspoon        {MdSyA}{\mathrel}
+\Decl@Md@Char\downfilledspoon        {MdSyA}{\mathrel}
+\Decl@Md@Char\nefilledspoon          {MdSyA}{\mathrel}
+\Decl@Md@Char\nwfilledspoon          {MdSyA}{\mathrel}
+\Decl@Md@Char\swfilledspoon          {MdSyA}{\mathrel}
+\Decl@Md@Char\sefilledspoon          {MdSyA}{\mathrel}
+\Decl@Md@Char\rightfootline          {MdSyA}{\mathrel}
+\Decl@Md@Char\upfootline             {MdSyA}{\mathrel}
+\Decl@Md@Char\leftfootline           {MdSyA}{\mathrel}
+\Decl@Md@Char\downfootline           {MdSyA}{\mathrel}
+\Decl@Md@Char\nefootline             {MdSyA}{\mathrel}
+\Decl@Md@Char\nwfootline             {MdSyA}{\mathrel}
+\Decl@Md@Char\swfootline             {MdSyA}{\mathrel}
+\Decl@Md@Char\sefootline             {MdSyA}{\mathrel}
+\Decl@Md@Char\rightfree              {MdSyA}{\mathrel}
+\Decl@Md@Char\upfree                 {MdSyA}{\mathrel}
+\Decl@Md@Char\leftfree               {MdSyA}{\mathrel}
+\Decl@Md@Char\downfree               {MdSyA}{\mathrel}
+\Decl@Md@Char\nefree                 {MdSyA}{\mathrel}
+\Decl@Md@Char\nwfree                 {MdSyA}{\mathrel}
+\Decl@Md@Char\swfree                 {MdSyA}{\mathrel}
+\Decl@Md@Char\sefree                 {MdSyA}{\mathrel}
+\Decl@Md@Char\rightpitchfork         {MdSyA}{\mathrel}
+\Decl@Md@Char\uppitchfork            {MdSyA}{\mathrel}
+  \Decl@Md@Alias\pitchfork           {MdSyA}{\mathrel}
+\Decl@Md@Char\leftpitchfork          {MdSyA}{\mathrel}
+\Decl@Md@Char\downpitchfork          {MdSyA}{\mathrel}
+\Decl@Md@Char\nepitchfork            {MdSyA}{\mathrel}
+\Decl@Md@Char\nwpitchfork            {MdSyA}{\mathrel}
+\Decl@Md@Char\swpitchfork            {MdSyA}{\mathrel}
+\Decl@Md@Char\sepitchfork            {MdSyA}{\mathrel}
+\Decl@Md@Char\rightrightarrows       {MdSyA}{\mathrel}
+\Decl@Md@Char\upuparrows             {MdSyA}{\mathrel}
+\Decl@Md@Char\leftleftarrows         {MdSyA}{\mathrel}
+\Decl@Md@Char\downdownarrows         {MdSyA}{\mathrel}
+\Decl@Md@Char\nenearrows             {MdSyA}{\mathrel}
+\Decl@Md@Char\nwnwarrows             {MdSyA}{\mathrel}
+\Decl@Md@Char\swswarrows             {MdSyA}{\mathrel}
+\Decl@Md@Char\sesearrows             {MdSyA}{\mathrel}
+\Decl@Md@Char\rightleftarrows        {MdSyA}{\mathrel}
+\Decl@Md@Char\updownarrows           {MdSyA}{\mathrel}
+\Decl@Md@Char\neswarrows             {MdSyA}{\mathrel}
+\Decl@Md@Char\nwsearrows             {MdSyA}{\mathrel}
+\Decl@Md@Char\leftrightarrows        {MdSyA}{\mathrel}
+\Decl@Md@Char\downuparrows           {MdSyA}{\mathrel}
+\Decl@Md@Char\swnearrows             {MdSyA}{\mathrel}
+\Decl@Md@Char\senwarrows             {MdSyA}{\mathrel}
+\Decl@Md@Char\rightlsquigarrow       {MdSyA}{\mathrel}
+  \Decl@Md@Alias\leadsto             {MdSyA}{\mathrel}
+  \Decl@Md@Alias\rightsquigarrow     {MdSyA}{\mathrel}
+\Decl@Md@Char\uplsquigarrow          {MdSyA}{\mathrel}
+\Decl@Md@Char\leftlsquigarrow        {MdSyA}{\mathrel}
+\Decl@Md@Char\downlsquigarrow        {MdSyA}{\mathrel}
+\Decl@Md@Char\nelsquigarrow          {MdSyA}{\mathrel}
+\Decl@Md@Char\nwlsquigarrow          {MdSyA}{\mathrel}
+\Decl@Md@Char\swlsquigarrow          {MdSyA}{\mathrel}
+\Decl@Md@Char\selsquigarrow          {MdSyA}{\mathrel}
+\Decl@Md@Char\rightrsquigarrow       {MdSyA}{\mathrel}
+\Decl@Md@Char\uprsquigarrow          {MdSyA}{\mathrel}
+\Decl@Md@Char\leftrsquigarrow        {MdSyA}{\mathrel}
+\Decl@Md@Char\downrsquigarrow        {MdSyA}{\mathrel}
+\Decl@Md@Char\nersquigarrow          {MdSyA}{\mathrel}
+\Decl@Md@Char\nwrsquigarrow          {MdSyA}{\mathrel}
+\Decl@Md@Char\swrsquigarrow          {MdSyA}{\mathrel}
+\Decl@Md@Char\sersquigarrow          {MdSyA}{\mathrel}
+\Decl@Md@Char\squigarrowleftright    {MdSyA}{\mathrel}
+  \Decl@Md@Alias\leftrightsquigarrow {MdSyA}{\mathrel}
+\Decl@Md@Char\squigarrowupdown       {MdSyA}{\mathrel}
+\Decl@Md@Char\squigarrowrightleft    {MdSyA}{\mathrel}
+\Decl@Md@Char\squigarrowdownup       {MdSyA}{\mathrel}
+\Decl@Md@Char\squigarrownesw         {MdSyA}{\mathrel}
+\Decl@Md@Char\squigarrownwse         {MdSyA}{\mathrel}
+\Decl@Md@Char\squigarrowswne         {MdSyA}{\mathrel}
+\Decl@Md@Char\squigarrowsenw         {MdSyA}{\mathrel}
+\Decl@Md@Char\lcurvearrowright       {MdSyA}{\mathrel}
+  \Decl@Md@Alias\curvearrowright     {MdSyA}{\mathrel}
+\Decl@Md@Char\lcurvearrowup          {MdSyA}{\mathrel}
+\Decl@Md@Char\lcurvearrowleft        {MdSyA}{\mathrel}
+\Decl@Md@Char\lcurvearrowdown        {MdSyA}{\mathrel}
+\Decl@Md@Char\lcurvearrowne          {MdSyA}{\mathrel}
+\Decl@Md@Char\lcurvearrownw          {MdSyA}{\mathrel}
+\Decl@Md@Char\lcurvearrowsw          {MdSyA}{\mathrel}
+\Decl@Md@Char\lcurvearrowse          {MdSyA}{\mathrel}
+\Decl@Md@Char\rcurvearrowright       {MdSyA}{\mathrel}
+\Decl@Md@Char\rcurvearrowup          {MdSyA}{\mathrel}
+\Decl@Md@Char\rcurvearrowleft        {MdSyA}{\mathrel}
+  \Decl@Md@Alias\curvearrowleft      {MdSyA}{\mathrel}
+\Decl@Md@Char\rcurvearrowdown        {MdSyA}{\mathrel}
+\Decl@Md@Char\rcurvearrowne          {MdSyA}{\mathrel}
+\Decl@Md@Char\rcurvearrownw          {MdSyA}{\mathrel}
+\Decl@Md@Char\rcurvearrowsw          {MdSyA}{\mathrel}
+\Decl@Md@Char\rcurvearrowse          {MdSyA}{\mathrel}
+\Decl@Md@Char\curvearrowleftright    {MdSyA}{\mathrel}
+\Decl@Md@Char\curvearrowupdown       {MdSyA}{\mathrel}
+\Decl@Md@Char\curvearrowrightleft    {MdSyA}{\mathrel}
+\Decl@Md@Char\curvearrowdownup       {MdSyA}{\mathrel}
+\Decl@Md@Char\curvearrownesw         {MdSyA}{\mathrel}
+\Decl@Md@Char\curvearrownwse         {MdSyA}{\mathrel}
+\Decl@Md@Char\curvearrowswne         {MdSyA}{\mathrel}
+\Decl@Md@Char\curvearrowsenw         {MdSyA}{\mathrel}
+\Decl@Md@Char\leftrightline          {MdSyA}{\mathrel}
+  \Decl@Md@Alias\relbar              {MdSyA}{\mathrel}
+\Decl@Md@Char\updownline             {MdSyA}{\mathrel}
+  \Decl@Md@Alias\divides             {MdSyA}{\mathrel}
+\Decl@Md@Char\neswline               {MdSyA}{\mathrel}
+  \Decl@Md@Alias\diagup              {MdSyA}{\mathrel}
+\Decl@Md@Char\nwseline               {MdSyA}{\mathrel}
+  \Decl@Md@Alias\diagdown            {MdSyA}{\mathrel}
+\Decl@Md@Char\Leftrightline          {MdSyA}{\mathrel}
+  \Decl@Md@Alias\Relbar              {MdSyA}{\mathrel}
+\Decl@Md@Char\Updownline             {MdSyA}{\mathrel}
+  \Decl@Md@Alias\parallel            {MdSyA}{\mathrel}
+\Decl@Md@Char\Neswline               {MdSyA}{\mathrel}
+\Decl@Md@Char\Nwseline               {MdSyA}{\mathrel}
+\Decl@Md@Char\rightvdash             {MdSyA}{\mathrel}
+  \Decl@Md@Alias\vdash               {MdSyA}{\mathrel}
+\Decl@Md@Char\upvdash                {MdSyA}{\mathrel}
+  \Decl@Md@Alias\perp                {MdSyA}{\mathrel}
+\Decl@Md@Char\leftvdash              {MdSyA}{\mathrel}
+  \Decl@Md@Alias\dashv               {MdSyA}{\mathrel}
+\Decl@Md@Char\downvdash              {MdSyA}{\mathrel}
+\Decl@Md@Char\nevdash                {MdSyA}{\mathrel}
+\Decl@Md@Char\nwvdash                {MdSyA}{\mathrel}
+\Decl@Md@Char\swvdash                {MdSyA}{\mathrel}
+\Decl@Md@Char\sevdash                {MdSyA}{\mathrel}
+\Decl@Md@Char\rightmodels            {MdSyA}{\mathrel}
+  \Decl@Md@Alias\models              {MdSyA}{\mathrel}
+  \Decl@Md@Alias\vDash               {MdSyA}{\mathrel}
+\Decl@Md@Char\upmodels               {MdSyA}{\mathrel}
+\Decl@Md@Char\leftmodels             {MdSyA}{\mathrel}
+\Decl@Md@Char\downmodels             {MdSyA}{\mathrel}
+\Decl@Md@Char\nemodels               {MdSyA}{\mathrel}
+\Decl@Md@Char\nwmodels               {MdSyA}{\mathrel}
+\Decl@Md@Char\swmodels               {MdSyA}{\mathrel}
+\Decl@Md@Char\semodels               {MdSyA}{\mathrel}
+\Decl@Md@Char\rightVdash             {MdSyA}{\mathrel}
+  \Decl@Md@Alias\Vdash               {MdSyA}{\mathrel}
+\Decl@Md@Char\upVdash                {MdSyA}{\mathrel}
+\Decl@Md@Char\leftVdash              {MdSyA}{\mathrel}
+\Decl@Md@Char\downVdash              {MdSyA}{\mathrel}
+\Decl@Md@Char\neVdash                {MdSyA}{\mathrel}
+\Decl@Md@Char\nwVdash                {MdSyA}{\mathrel}
+\Decl@Md@Char\swVdash                {MdSyA}{\mathrel}
+\Decl@Md@Char\seVdash                {MdSyA}{\mathrel}
+\Decl@Md@Char\rightModels            {MdSyA}{\mathrel}
+  \Decl@Md@Alias\VDash               {MdSyA}{\mathrel}
+\Decl@Md@Char\upModels               {MdSyA}{\mathrel}
+\Decl@Md@Char\leftModels             {MdSyA}{\mathrel}
+\Decl@Md@Char\downModels             {MdSyA}{\mathrel}
+\Decl@Md@Char\neModels               {MdSyA}{\mathrel}
+\Decl@Md@Char\nwModels               {MdSyA}{\mathrel}
+\Decl@Md@Char\swModels               {MdSyA}{\mathrel}
+\Decl@Md@Char\seModels               {MdSyA}{\mathrel}
+\Decl@Md@Char\rcirclearrowright      {MdSyA}{\mathrel}
+\Decl@Md@Char\rcirclearrowup         {MdSyA}{\mathrel}
+  \Decl@Md@Alias\circlearrowleft     {MdSyA}{\mathrel}
+\Decl@Md@Char\rcirclearrowleft       {MdSyA}{\mathrel}
+\Decl@Md@Char\rcirclearrowdown       {MdSyA}{\mathrel}
+\Decl@Md@Char\lcirclearrowright      {MdSyA}{\mathrel}
+\Decl@Md@Char\lcirclearrowup         {MdSyA}{\mathrel}
+  \Decl@Md@Alias\circlearrowright    {MdSyA}{\mathrel}
+\Decl@Md@Char\lcirclearrowleft       {MdSyA}{\mathrel}
+\Decl@Md@Char\lcirclearrowdown       {MdSyA}{\mathrel}
+
+\let\joinrel\undefined
+\DeclareRobustCommand\joinrel{\mathrel{\mkern-3.1mu}}
+\DeclareRobustCommand\longrightarrow{\DOTSB\leftrightline\joinrel\rightarrow}
+\DeclareRobustCommand\longleftarrow{\DOTSB\leftarrow\joinrel\leftrightline}
+\DeclareRobustCommand\longleftrightarrow{\DOTSB\leftarrow\joinrel\rightarrow}
+\DeclareRobustCommand\Longrightarrow{\DOTSB\Leftrightline\joinrel\Rightarrow}
+\DeclareRobustCommand\Longleftarrow{\DOTSB\Leftarrow\joinrel\Leftrightline}
+\DeclareRobustCommand\Longleftrightarrow{\DOTSB\Leftarrow\joinrel\Rightarrow}
+\DeclareRobustCommand\longmapsto{\DOTSB\leftfootline\joinrel\rightarrow}
+\DeclareRobustCommand\emptyfilledspoon{\DOTSB\leftspoon\mkern-14mu\rightfilledspoon}
+\DeclareRobustCommand\filledemptyspoon{\DOTSB\leftfilledspoon\mkern-14mu\rightspoon}
+\DeclareRobustCommand\largeemptyfilledspoon{\DOTSB\mathrel{\circ\mkern-8mu\relbar\mkern-8mu\bullet}}
+\DeclareRobustCommand\largefilledemptyspoon{\DOTSB\mathrel{\bullet\mkern-8mu\relbar\mkern-8mu\circ}}
+%    \end{macrocode}
+%
+% MdSymbolB\?: stroked arrows.
+%
+%    \begin{macrocode}
+\Set@Md@Sym{0}
+\Decl@Md@Char\nrightarrow            {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nto                 {MdSyB}{\mathrel}
+\Decl@Md@Char\nuparrow               {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftarrow             {MdSyB}{\mathrel}
+  \Decl@Md@Alias\ngets               {MdSyB}{\mathrel}
+\Decl@Md@Char\ndownarrow             {MdSyB}{\mathrel}
+\Decl@Md@Char\nnearrow               {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwarrow               {MdSyB}{\mathrel}
+\Decl@Md@Char\nswarrow               {MdSyB}{\mathrel}
+\Decl@Md@Char\nsearrow               {MdSyB}{\mathrel}
+\Decl@Md@Char\nRightarrow            {MdSyB}{\mathrel}
+\Decl@Md@Char\nUparrow               {MdSyB}{\mathrel}
+\Decl@Md@Char\nLeftarrow             {MdSyB}{\mathrel}
+\Decl@Md@Char\nDownarrow             {MdSyB}{\mathrel}
+\Decl@Md@Char\nNearrow               {MdSyB}{\mathrel}
+\Decl@Md@Char\nNwarrow               {MdSyB}{\mathrel}
+\Decl@Md@Char\nSwarrow               {MdSyB}{\mathrel}
+\Decl@Md@Char\nSearrow               {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftrightarrow        {MdSyB}{\mathrel}
+\Decl@Md@Char\nupdownarrow           {MdSyB}{\mathrel}
+\Decl@Md@Char\nneswarrow             {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwsearrow             {MdSyB}{\mathrel}
+\Decl@Md@Char\nLeftrightarrow        {MdSyB}{\mathrel}
+\Decl@Md@Char\nUpdownarrow           {MdSyB}{\mathrel}
+\Decl@Md@Char\nNeswarrow             {MdSyB}{\mathrel}
+\Decl@Md@Char\nNwsearrow             {MdSyB}{\mathrel}
+\Decl@Md@Char\ntwoheadrightarrow     {MdSyB}{\mathrel}
+\Decl@Md@Char\ntwoheaduparrow        {MdSyB}{\mathrel}
+\Decl@Md@Char\ntwoheadleftarrow      {MdSyB}{\mathrel}
+\Decl@Md@Char\ntwoheaddownarrow      {MdSyB}{\mathrel}
+\Decl@Md@Char\ntwoheadnearrow        {MdSyB}{\mathrel}
+\Decl@Md@Char\ntwoheadnwarrow        {MdSyB}{\mathrel}
+\Decl@Md@Char\ntwoheadswarrow        {MdSyB}{\mathrel}
+\Decl@Md@Char\ntwoheadsearrow        {MdSyB}{\mathrel}
+\Decl@Md@Char\nrightarrowtail        {MdSyB}{\mathrel}
+\Decl@Md@Char\nuparrowtail           {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftarrowtail         {MdSyB}{\mathrel}
+\Decl@Md@Char\ndownarrowtail         {MdSyB}{\mathrel}
+\Decl@Md@Char\nnearrowtail           {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwarrowtail           {MdSyB}{\mathrel}
+\Decl@Md@Char\nswarrowtail           {MdSyB}{\mathrel}
+\Decl@Md@Char\nsearrowtail           {MdSyB}{\mathrel}
+\Decl@Md@Char\nrightmapsto           {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nmapsto             {MdSyB}{\mathrel}
+\Decl@Md@Char\nupmapsto              {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftmapsto            {MdSyB}{\mathrel}
+\Decl@Md@Char\ndownmapsto            {MdSyB}{\mathrel}
+\Decl@Md@Char\nnemapsto              {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwmapsto              {MdSyB}{\mathrel}
+\Decl@Md@Char\nswmapsto              {MdSyB}{\mathrel}
+\Decl@Md@Char\nsemapsto              {MdSyB}{\mathrel}
+\Decl@Md@Char\nlhookrightarrow       {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nhookrightarrow     {MdSyB}{\mathrel}
+\Decl@Md@Char\nlhookuparrow          {MdSyB}{\mathrel}
+\Decl@Md@Char\nlhookleftarrow        {MdSyB}{\mathrel}
+\Decl@Md@Char\nlhookdownarrow        {MdSyB}{\mathrel}
+\Decl@Md@Char\nlhooknearrow          {MdSyB}{\mathrel}
+\Decl@Md@Char\nlhooknwarrow          {MdSyB}{\mathrel}
+\Decl@Md@Char\nlhookswarrow          {MdSyB}{\mathrel}
+\Decl@Md@Char\nlhooksearrow          {MdSyB}{\mathrel}
+\Decl@Md@Char\nrhookrightarrow       {MdSyB}{\mathrel}
+\Decl@Md@Char\nrhookuparrow          {MdSyB}{\mathrel}
+\Decl@Md@Char\nrhookleftarrow        {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nhookleftarrow      {MdSyB}{\mathrel}
+\Decl@Md@Char\nrhookdownarrow        {MdSyB}{\mathrel}
+\Decl@Md@Char\nrhooknearrow          {MdSyB}{\mathrel}
+\Decl@Md@Char\nrhooknwarrow          {MdSyB}{\mathrel}
+\Decl@Md@Char\nrhookswarrow          {MdSyB}{\mathrel}
+\Decl@Md@Char\nrhooksearrow          {MdSyB}{\mathrel}
+\Decl@Md@Char\nrightharpoonccw       {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nrightharpoonup     {MdSyB}{\mathrel}
+\Decl@Md@Char\nupharpoonccw          {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nupharpoonleft      {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftharpoonccw        {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nleftharpoondown    {MdSyB}{\mathrel}
+\Decl@Md@Char\ndownharpoonccw        {MdSyB}{\mathrel}
+  \Decl@Md@Alias\ndownharpoonright   {MdSyB}{\mathrel}
+\Decl@Md@Char\nneharpoonccw          {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwharpoonccw          {MdSyB}{\mathrel}
+\Decl@Md@Char\nswharpoonccw          {MdSyB}{\mathrel}
+\Decl@Md@Char\nseharpoonccw          {MdSyB}{\mathrel}
+\Decl@Md@Char\nrightharpooncw        {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nrightharpoondown   {MdSyB}{\mathrel}
+\Decl@Md@Char\nupharpooncw           {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nupharpoonright     {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nrestriction        {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftharpooncw         {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nleftharpoonup      {MdSyB}{\mathrel}
+\Decl@Md@Char\ndownharpooncw         {MdSyB}{\mathrel}
+  \Decl@Md@Alias\ndownharpoonleft    {MdSyB}{\mathrel}
+\Decl@Md@Char\nneharpooncw           {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwharpooncw           {MdSyB}{\mathrel}
+\Decl@Md@Char\nswharpooncw           {MdSyB}{\mathrel}
+\Decl@Md@Char\nseharpooncw           {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftrightharpoonupdown{MdSyB}{\mathrel}
+\Decl@Md@Char\nupdownharpoonleftright{MdSyB}{\mathrel}
+\Decl@Md@Char\nneswharpoonnwse       {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwseharpoonnesw       {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftrightharpoondownup{MdSyB}{\mathrel}
+\Decl@Md@Char\nupdownharpoonrightleft{MdSyB}{\mathrel}
+\Decl@Md@Char\nneswharpoonsenw       {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwseharpoonswne       {MdSyB}{\mathrel}
+\Decl@Md@Char\nrightleftharpoons     {MdSyB}{\mathrel}
+\Decl@Md@Char\nupdownharpoons        {MdSyB}{\mathrel}
+\Decl@Md@Char\nneswharpoons          {MdSyB}{\mathrel}
+\Decl@Md@Char\nsenwharpoons          {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftrightharpoons     {MdSyB}{\mathrel}
+\Decl@Md@Char\ndownupharpoons        {MdSyB}{\mathrel}
+\Decl@Md@Char\nswneharpoons          {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwseharpoons          {MdSyB}{\mathrel}
+\Decl@Md@Char\ndashedrightarrow      {MdSyB}{\mathrel}
+  \Decl@Md@Alias\ndashrightarrow     {MdSyB}{\mathrel}
+  \Decl@Md@Alias\ndasharrow          {MdSyB}{\mathrel}
+\Decl@Md@Char\ndasheduparrow         {MdSyB}{\mathrel}
+\Decl@Md@Char\ndashedleftarrow       {MdSyB}{\mathrel}
+  \Decl@Md@Alias\ndashleftarrow      {MdSyB}{\mathrel}
+\Decl@Md@Char\ndasheddownarrow       {MdSyB}{\mathrel}
+\Decl@Md@Char\ndashednearrow         {MdSyB}{\mathrel}
+\Decl@Md@Char\ndashednwarrow         {MdSyB}{\mathrel}
+\Decl@Md@Char\ndashedswarrow         {MdSyB}{\mathrel}
+\Decl@Md@Char\ndashedsearrow         {MdSyB}{\mathrel}
+\Decl@Md@Char\nrightspoon            {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nmultimap           {MdSyB}{\mathrel}
+\Decl@Md@Char\nupspoon               {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftspoon             {MdSyB}{\mathrel}
+\Decl@Md@Char\ndownspoon             {MdSyB}{\mathrel}
+\Decl@Md@Char\nnespoon               {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwspoon               {MdSyB}{\mathrel}
+\Decl@Md@Char\nswspoon               {MdSyB}{\mathrel}
+\Decl@Md@Char\nsespoon               {MdSyB}{\mathrel}
+\Decl@Md@Char\nrightfilledspoon      {MdSyB}{\mathrel}
+\Decl@Md@Char\nupfilledspoon         {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftfilledspoon       {MdSyB}{\mathrel}
+\Decl@Md@Char\ndownfilledspoon       {MdSyB}{\mathrel}
+\Decl@Md@Char\nnefilledspoon         {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwfilledspoon         {MdSyB}{\mathrel}
+\Decl@Md@Char\nswfilledspoon         {MdSyB}{\mathrel}
+\Decl@Md@Char\nsefilledspoon         {MdSyB}{\mathrel}
+\Decl@Md@Char\nrightfootline         {MdSyB}{\mathrel}
+\Decl@Md@Char\nupfootline            {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftfootline          {MdSyB}{\mathrel}
+\Decl@Md@Char\ndownfootline          {MdSyB}{\mathrel}
+\Decl@Md@Char\nnefootline            {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwfootline            {MdSyB}{\mathrel}
+\Decl@Md@Char\nswfootline            {MdSyB}{\mathrel}
+\Decl@Md@Char\nsefootline            {MdSyB}{\mathrel}
+\Decl@Md@Char\nrightfree             {MdSyB}{\mathrel}
+\Decl@Md@Char\nupfree                {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftfree              {MdSyB}{\mathrel}
+\Decl@Md@Char\ndownfree              {MdSyB}{\mathrel}
+\Decl@Md@Char\nnefree                {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwfree                {MdSyB}{\mathrel}
+\Decl@Md@Char\nswfree                {MdSyB}{\mathrel}
+\Decl@Md@Char\nsefree                {MdSyB}{\mathrel}
+\Decl@Md@Char\nrightpitchfork        {MdSyB}{\mathrel}
+\Decl@Md@Char\nuppitchfork           {MdSyB}{\mathrel}
+  \Decl@Md@Alias\npitchfork          {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftpitchfork         {MdSyB}{\mathrel}
+\Decl@Md@Char\ndownpitchfork         {MdSyB}{\mathrel}
+\Decl@Md@Char\nnepitchfork           {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwpitchfork           {MdSyB}{\mathrel}
+\Decl@Md@Char\nswpitchfork           {MdSyB}{\mathrel}
+\Decl@Md@Char\nsepitchfork           {MdSyB}{\mathrel}
+\Decl@Md@Char\nrightrightarrows      {MdSyB}{\mathrel}
+\Decl@Md@Char\nupuparrows            {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftleftarrows        {MdSyB}{\mathrel}
+\Decl@Md@Char\ndowndownarrows        {MdSyB}{\mathrel}
+\Decl@Md@Char\nnenearrows            {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwnwarrows            {MdSyB}{\mathrel}
+\Decl@Md@Char\nswswarrows            {MdSyB}{\mathrel}
+\Decl@Md@Char\nsesearrows            {MdSyB}{\mathrel}
+\Decl@Md@Char\nrightleftarrows       {MdSyB}{\mathrel}
+\Decl@Md@Char\nupdownarrows          {MdSyB}{\mathrel}
+\Decl@Md@Char\nneswarrows            {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwsearrows            {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftrightarrows       {MdSyB}{\mathrel}
+\Decl@Md@Char\ndownuparrows          {MdSyB}{\mathrel}
+\Decl@Md@Char\nswnearrows            {MdSyB}{\mathrel}
+\Decl@Md@Char\nsenwarrows            {MdSyB}{\mathrel}
+\Decl@Md@Char\nrightlsquigarrow      {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nleadsto            {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nrightsquigarrow    {MdSyB}{\mathrel}
+\Decl@Md@Char\nuplsquigarrow         {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftlsquigarrow       {MdSyB}{\mathrel}
+\Decl@Md@Char\ndownlsquigarrow       {MdSyB}{\mathrel}
+\Decl@Md@Char\nnelsquigarrow         {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwlsquigarrow         {MdSyB}{\mathrel}
+\Decl@Md@Char\nswlsquigarrow         {MdSyB}{\mathrel}
+\Decl@Md@Char\nselsquigarrow         {MdSyB}{\mathrel}
+\Decl@Md@Char\nrightrsquigarrow      {MdSyB}{\mathrel}
+\Decl@Md@Char\nuprsquigarrow         {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftrsquigarrow       {MdSyB}{\mathrel}
+\Decl@Md@Char\ndownrsquigarrow       {MdSyB}{\mathrel}
+\Decl@Md@Char\nnersquigarrow         {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwrsquigarrow         {MdSyB}{\mathrel}
+\Decl@Md@Char\nswrsquigarrow         {MdSyB}{\mathrel}
+\Decl@Md@Char\nsersquigarrow         {MdSyB}{\mathrel}
+\Decl@Md@Char\nsquigarrowleftright   {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nleftrightsquigarrow{MdSyB}{\mathrel}
+\Decl@Md@Char\nsquigarrowupdown      {MdSyB}{\mathrel}
+\Decl@Md@Char\nsquigarrowrightleft   {MdSyB}{\mathrel}
+\Decl@Md@Char\nsquigarrowdownup      {MdSyB}{\mathrel}
+\Decl@Md@Char\nsquigarrownesw        {MdSyB}{\mathrel}
+\Decl@Md@Char\nsquigarrownwse        {MdSyB}{\mathrel}
+\Decl@Md@Char\nsquigarrowswne        {MdSyB}{\mathrel}
+\Decl@Md@Char\nsquigarrowsenw        {MdSyB}{\mathrel}
+\Decl@Md@Char\nlcurvearrowright      {MdSyB}{\mathrel}
+  \Decl@Md@Alias\ncurvearrowright    {MdSyB}{\mathrel}
+\Decl@Md@Char\nlcurvearrowup         {MdSyB}{\mathrel}
+\Decl@Md@Char\nlcurvearrowleft       {MdSyB}{\mathrel}
+\Decl@Md@Char\nlcurvearrowdown       {MdSyB}{\mathrel}
+\Decl@Md@Char\nlcurvearrowne         {MdSyB}{\mathrel}
+\Decl@Md@Char\nlcurvearrownw         {MdSyB}{\mathrel}
+\Decl@Md@Char\nlcurvearrowsw         {MdSyB}{\mathrel}
+\Decl@Md@Char\nlcurvearrowse         {MdSyB}{\mathrel}
+\Decl@Md@Char\nrcurvearrowright      {MdSyB}{\mathrel}
+\Decl@Md@Char\nrcurvearrowup         {MdSyB}{\mathrel}
+\Decl@Md@Char\nrcurvearrowleft       {MdSyB}{\mathrel}
+  \Decl@Md@Alias\ncurvearrowleft     {MdSyB}{\mathrel}
+\Decl@Md@Char\nrcurvearrowdown       {MdSyB}{\mathrel}
+\Decl@Md@Char\nrcurvearrowne         {MdSyB}{\mathrel}
+\Decl@Md@Char\nrcurvearrownw         {MdSyB}{\mathrel}
+\Decl@Md@Char\nrcurvearrowsw         {MdSyB}{\mathrel}
+\Decl@Md@Char\nrcurvearrowse         {MdSyB}{\mathrel}
+\Decl@Md@Char\ncurvearrowleftright   {MdSyB}{\mathrel}
+\Decl@Md@Char\ncurvearrowupdown      {MdSyB}{\mathrel}
+\Decl@Md@Char\ncurvearrowrightleft   {MdSyB}{\mathrel}
+\Decl@Md@Char\ncurvearrowdownup      {MdSyB}{\mathrel}
+\Decl@Md@Char\ncurvearrownesw        {MdSyB}{\mathrel}
+\Decl@Md@Char\ncurvearrownwse        {MdSyB}{\mathrel}
+\Decl@Md@Char\ncurvearrowswne        {MdSyB}{\mathrel}
+\Decl@Md@Char\ncurvearrowsenw        {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftrightline         {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nrelbar             {MdSyB}{\mathrel}
+\Decl@Md@Char\nupdownline            {MdSyB}{\mathrel}
+  \Decl@Md@Alias\ndivides            {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nmid                {MdSyB}{\mathrel}
+\Decl@Md@Char\nneswline              {MdSyB}{\mathrel}
+  \Decl@Md@Alias\ndiagup             {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwseline              {MdSyB}{\mathrel}
+  \Decl@Md@Alias\ndiagdown           {MdSyB}{\mathrel}
+\Decl@Md@Char\nLeftrightline         {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nRelbar             {MdSyB}{\mathrel}
+\Decl@Md@Char\nUpdownline            {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nparallel           {MdSyB}{\mathrel}
+\Decl@Md@Char\nNeswline              {MdSyB}{\mathrel}
+\Decl@Md@Char\nNwseline              {MdSyB}{\mathrel}
+\Decl@Md@Char\nrightvdash            {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nvdash              {MdSyB}{\mathrel}
+\Decl@Md@Char\nupvdash               {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nperp               {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftvdash             {MdSyB}{\mathrel}
+  \Decl@Md@Alias\ndashv              {MdSyB}{\mathrel}
+\Decl@Md@Char\ndownvdash             {MdSyB}{\mathrel}
+\Decl@Md@Char\nnevdash               {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwvdash               {MdSyB}{\mathrel}
+\Decl@Md@Char\nswvdash               {MdSyB}{\mathrel}
+\Decl@Md@Char\nsevdash               {MdSyB}{\mathrel}
+\Decl@Md@Char\nrightmodels           {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nmodels             {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nvDash              {MdSyB}{\mathrel}
+\Decl@Md@Char\nupmodels              {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftmodels            {MdSyB}{\mathrel}
+\Decl@Md@Char\ndownmodels            {MdSyB}{\mathrel}
+\Decl@Md@Char\nnemodels              {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwmodels              {MdSyB}{\mathrel}
+\Decl@Md@Char\nswmodels              {MdSyB}{\mathrel}
+\Decl@Md@Char\nsemodels              {MdSyB}{\mathrel}
+\Decl@Md@Char\nrightVdash            {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nVdash              {MdSyB}{\mathrel}
+\Decl@Md@Char\nupVdash               {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftVdash             {MdSyB}{\mathrel}
+\Decl@Md@Char\ndownVdash             {MdSyB}{\mathrel}
+\Decl@Md@Char\nneVdash               {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwVdash               {MdSyB}{\mathrel}
+\Decl@Md@Char\nswVdash               {MdSyB}{\mathrel}
+\Decl@Md@Char\nseVdash               {MdSyB}{\mathrel}
+\Decl@Md@Char\nrightModels           {MdSyB}{\mathrel}
+  \Decl@Md@Alias\nVDash              {MdSyB}{\mathrel}
+\Decl@Md@Char\nupModels              {MdSyB}{\mathrel}
+\Decl@Md@Char\nleftModels            {MdSyB}{\mathrel}
+\Decl@Md@Char\ndownModels            {MdSyB}{\mathrel}
+\Decl@Md@Char\nneModels              {MdSyB}{\mathrel}
+\Decl@Md@Char\nnwModels              {MdSyB}{\mathrel}
+\Decl@Md@Char\nswModels              {MdSyB}{\mathrel}
+\Decl@Md@Char\nseModels              {MdSyB}{\mathrel}
+\Decl@Md@Char\nrcirclearrowright     {MdSyB}{\mathrel}
+\Decl@Md@Char\nrcirclearrowup        {MdSyB}{\mathrel}
+  \Decl@Md@Alias\ncirclearrowleft    {MdSyB}{\mathrel}
+\Decl@Md@Char\nrcirclearrowleft      {MdSyB}{\mathrel}
+\Decl@Md@Char\nrcirclearrowdown      {MdSyB}{\mathrel}
+\Decl@Md@Char\nlcirclearrowright     {MdSyB}{\mathrel}
+\Decl@Md@Char\nlcirclearrowup        {MdSyB}{\mathrel}
+  \Decl@Md@Alias\ncirclearrowright   {MdSyB}{\mathrel}
+\Decl@Md@Char\nlcirclearrowleft      {MdSyB}{\mathrel}
+\Decl@Md@Char\nlcirclearrowdown      {MdSyB}{\mathrel}
+%    \end{macrocode}
+%
+% MdSymbolC\?: operators.
+%
+%    \begin{macrocode}
+\Set@Md@Sym{0}
+\Decl@Md@Char\cdot                   {MdSyC}{\mathbin}
+  \Decl@Md@Alias\cdotp               {MdSyC}{\mathpunct}
+\Decl@Md@Char\hdotdot                {MdSyC}{\mathbin}
+\Decl@Md@Char\vdotdot                {MdSyC}{\mathbin}
+  \Decl@Md@Alias\colon               {MdSyC}{\mathpunct}
+\Decl@Md@Char\udotdot                {MdSyC}{\mathbin}
+\Decl@Md@Char\ddotdot                {MdSyC}{\mathbin}
+\Decl@Md@Char\hdots                  {MdSyC}{\mathord}
+  \Decl@Md@Alias\@cdots              {MdSyC}{\mathinner}
+%  \DeclareRobustCommand{\@cdots}{\mathinner{\hdots}}
+  \let\cdots\@cdots
+\Decl@Md@Char\@vdots                 {MdSyC}{\mathord}
+  \DeclareRobustCommand{\vdots}{%
+    \ifmmode \@vdots \else \hbox{$\@vdots$}\fi}
+\Decl@Md@Char\udots                  {MdSyC}{\mathord}
+\Decl@Md@Char\ddots                  {MdSyC}{\mathord}
+\Decl@Md@Char\righttherefore         {MdSyC}{\mathbin}
+\Decl@Md@Char\uptherefore            {MdSyC}{\mathbin}
+  \Decl@Md@Alias\therefore           {MdSyC}{\mathbin}
+\Decl@Md@Char\lefttherefore          {MdSyC}{\mathbin}
+\Decl@Md@Char\downtherefore          {MdSyC}{\mathbin}
+  \Decl@Md@Alias\because             {MdSyC}{\mathbin}
+\Decl@Md@Char\diamonddots            {MdSyC}{\mathbin}
+\Decl@Md@Char\squaredots             {MdSyC}{\mathbin}
+\Decl@Md@Char\fivedots               {MdSyC}{\mathbin}
+\Decl@Md@Char\minus                  {MdSyC}{\mathbin}
+\Decl@Md@Char\medvert                {MdSyC}{\mathbin}
+  \Decl@Md@Alias\shortmid            {MdSyC}{\mathrel}
+\Decl@Md@Char\medslash               {MdSyC}{\mathbin}
+\Decl@Md@Char\medbackslash           {MdSyC}{\mathbin}
+  \Decl@Md@Alias\setminus            {MdSyC}{\mathbin}
+  \Decl@Md@Alias\smallsetminus       {MdSyC}{\mathbin}
+\Decl@Md@Char\plus                   {MdSyC}{\mathbin}
+\Decl@Md@Char\times                  {MdSyC}{\mathbin}
+\Decl@Md@Char\pm                     {MdSyC}{\mathbin}
+\Decl@Md@Char\mp                     {MdSyC}{\mathbin}
+\Decl@Md@Char\dotminus               {MdSyC}{\mathbin}
+\Decl@Md@Char\dotmedvert             {MdSyC}{\mathbin}
+\Decl@Md@Char\minusdot               {MdSyC}{\mathbin}
+\Decl@Md@Char\medvertdot             {MdSyC}{\mathbin}
+\Decl@Md@Char\div                    {MdSyC}{\mathbin}
+\Decl@Md@Char\slashdiv               {MdSyC}{\mathbin}
+\Decl@Md@Char\vertdiv                {MdSyC}{\mathbin}
+\Decl@Md@Char\backslashdiv           {MdSyC}{\mathbin}
+\Decl@Md@Char\neg                    {MdSyC}{\mathord}
+  \Decl@Md@Alias\lnot                {MdSyC}{\mathord}
+  \Decl@Md@Alias\minushookdown       {MdSyC}{\mathbin}
+\Decl@Md@Char\backneg                {MdSyC}{\mathord}
+  \Decl@Md@Alias\hookdownminus       {MdSyC}{\mathbin}
+\Decl@Md@Char\dtimes                 {MdSyC}{\mathbin}
+\Decl@Md@Char\rtimes                 {MdSyC}{\mathbin}
+\Decl@Md@Char\utimes                 {MdSyC}{\mathbin}
+\Decl@Md@Char\ltimes                 {MdSyC}{\mathbin}
+\Decl@Md@Char\bowtie                 {MdSyC}{\mathbin}
+  \Decl@Md@Alias\Join                {MdSyC}{\mathbin}
+\Decl@Md@Char\vertbowtie             {MdSyC}{\mathbin}
+\Decl@Md@Char\rightY                 {MdSyC}{\mathbin}
+\Decl@Md@Char\upY                    {MdSyC}{\mathbin}
+\Decl@Md@Char\leftY                  {MdSyC}{\mathbin}
+\Decl@Md@Char\downY                  {MdSyC}{\mathbin}
+\Decl@Md@Char\wedge                  {MdSyC}{\mathbin}
+  \Decl@Md@Alias\land                {MdSyC}{\mathbin}
+\Decl@Md@Char\vee                    {MdSyC}{\mathbin}
+  \Decl@Md@Alias\lor                 {MdSyC}{\mathbin}
+\Decl@Md@Char\wedgedot               {MdSyC}{\mathbin}
+\Decl@Md@Char\veedot                 {MdSyC}{\mathbin}
+\Decl@Md@Char\doublewedge            {MdSyC}{\mathbin}
+\Decl@Md@Char\doublevee              {MdSyC}{\mathbin}
+\Decl@Md@Char\curlywedge             {MdSyC}{\mathbin}
+\Decl@Md@Char\curlyvee               {MdSyC}{\mathbin}
+\Decl@Md@Char\curlywedgedot          {MdSyC}{\mathbin}
+\Decl@Md@Char\curlyveedot            {MdSyC}{\mathbin}
+\Decl@Md@Char\doublecurlywedge       {MdSyC}{\mathbin}
+\Decl@Md@Char\doublecurlyvee         {MdSyC}{\mathbin}
+\Decl@Md@Char\cup                    {MdSyC}{\mathbin}
+\Decl@Md@Char\cap                    {MdSyC}{\mathbin}
+\Decl@Md@Char\doublecup              {MdSyC}{\mathbin}
+  \Decl@Md@Alias\Cup                 {MdSyC}{\mathbin}
+\Decl@Md@Char\doublecap              {MdSyC}{\mathbin}
+  \Decl@Md@Alias\Cap                 {MdSyC}{\mathbin}
+\Decl@Md@Char\cupdot                 {MdSyC}{\mathbin}
+\Decl@Md@Char\capdot                 {MdSyC}{\mathbin}
+\Decl@Md@Char\cupplus                {MdSyC}{\mathbin}
+  \Decl@Md@Alias\uplus               {MdSyC}{\mathbin}
+\Decl@Md@Char\capplus                {MdSyC}{\mathbin}
+\Decl@Md@Char\sqcup                  {MdSyC}{\mathbin}
+\Decl@Md@Char\sqcap                  {MdSyC}{\mathbin}
+\Decl@Md@Char\doublesqcup            {MdSyC}{\mathbin}
+\Decl@Md@Char\doublesqcap            {MdSyC}{\mathbin}
+\Decl@Md@Char\sqcupdot               {MdSyC}{\mathbin}
+\Decl@Md@Char\sqcapdot               {MdSyC}{\mathbin}
+\Decl@Md@Char\sqcupplus              {MdSyC}{\mathbin}
+\Decl@Md@Char\sqcapplus              {MdSyC}{\mathbin}
+\Decl@Md@Char\smalltriangleright     {MdSyC}{\mathbin}
+\Decl@Md@Char\smalltriangleup        {MdSyC}{\mathbin}
+\Decl@Md@Char\smalltriangleleft      {MdSyC}{\mathbin}
+\Decl@Md@Char\smalltriangledown      {MdSyC}{\mathbin}
+\Decl@Md@Char\filledtriangleright    {MdSyC}{\mathbin}
+  \Decl@Md@Alias\blacktriangleright  {MdSyC}{\mathbin}
+\Decl@Md@Char\filledtriangleup       {MdSyC}{\mathbin}
+\Decl@Md@Char\filledtriangleleft     {MdSyC}{\mathbin}
+  \Decl@Md@Alias\blacktriangleleft   {MdSyC}{\mathbin}
+\Decl@Md@Char\filledtriangledown     {MdSyC}{\mathbin}
+\Decl@Md@Char\medtriangleright       {MdSyC}{\mathbin}
+  \Decl@Md@Alias\triangleright       {MdSyC}{\mathbin}
+\Decl@Md@Char\medtriangleup          {MdSyC}{\mathbin}
+  \Decl@Md@Alias\triangle            {MdSyC}{\mathbin}
+  \Decl@Md@Alias\vartriangle         {MdSyC}{\mathbin}
+  \Decl@Md@Alias\bigtriangleup       {MdSyC}{\mathbin}
+\Decl@Md@Char\medtriangleleft        {MdSyC}{\mathbin}
+  \Decl@Md@Alias\triangleleft        {MdSyC}{\mathbin}
+\Decl@Md@Char\medtriangledown        {MdSyC}{\mathbin}
+  \Decl@Md@Alias\bigtriangledown     {MdSyC}{\mathbin}
+  \Decl@Md@Alias\triangledown        {MdSyC}{\mathbin}
+\Decl@Md@Char\largetriangleright     {MdSyC}{\mathord}
+\Decl@Md@Char\largetriangleup        {MdSyC}{\mathord}
+\Decl@Md@Char\largetriangleleft      {MdSyC}{\mathord}
+\Decl@Md@Char\largetriangledown      {MdSyC}{\mathord}
+\Decl@Md@Char\circ                   {MdSyC}{\mathbin}
+\Decl@Md@Char\bullet                 {MdSyC}{\mathbin}
+\Decl@Md@Char\medcircle              {MdSyC}{\mathbin}
+\Decl@Md@Char\largecircle            {MdSyC}{\mathord}
+  \Decl@Md@Alias\bigcirc             {MdSyC}{\mathord}
+\Decl@Md@Char\ominus                 {MdSyC}{\mathbin}
+  \Decl@Md@Alias\circleddash         {MdSyC}{\mathbin}
+\Decl@Md@Char\overt                  {MdSyC}{\mathbin}
+\Decl@Md@Char\oslash                 {MdSyC}{\mathbin}
+\Decl@Md@Char\obackslash             {MdSyC}{\mathbin}
+\Decl@Md@Char\oplus                  {MdSyC}{\mathbin}
+\Decl@Md@Char\otimes                 {MdSyC}{\mathbin}
+\Decl@Md@Char\odot                   {MdSyC}{\mathbin}
+\Decl@Md@Char\ocirc                  {MdSyC}{\mathbin}
+  \Decl@Md@Alias\circledcirc         {MdSyC}{\mathbin}
+\Decl@Md@Char\otriangle              {MdSyC}{\mathbin}
+\Decl@Md@Char\oast                   {MdSyC}{\mathbin}
+  \Decl@Md@Alias\circledast          {MdSyC}{\mathbin}
+\Decl@Md@Char\ostar                  {MdSyC}{\mathbin}
+\Decl@Md@Char\diameter               {MdSyC}{\mathord}
+  \Decl@Md@Alias\emptyset            {MdSyC}{\mathord}
+  \Decl@Md@Alias\varnothing          {MdSyC}{\mathord}
+\Decl@Md@Char\smallsquare            {MdSyC}{\mathbin}
+\Decl@Md@Char\filledsquare           {MdSyC}{\mathbin}
+\Decl@Md@Char\medsquare              {MdSyC}{\mathbin}
+  \Decl@Md@Alias\square              {MdSyC}{\mathbin}
+  \Decl@Md@Alias\Box                 {MdSyC}{\mathbin}
+\Decl@Md@Char\largesquare            {MdSyC}{\mathord}
+\Decl@Md@Char\smalldiamond           {MdSyC}{\mathbin}
+  \Decl@Md@Alias\diamond             {MdSyC}{\mathbin}
+\Decl@Md@Char\filleddiamond          {MdSyC}{\mathbin}
+\Decl@Md@Char\meddiamond             {MdSyC}{\mathbin}
+  \Decl@Md@Alias\Diamond             {MdSyC}{\mathbin}
+\Decl@Md@Char\largediamond           {MdSyC}{\mathord}
+\Decl@Md@Char\boxminus               {MdSyC}{\mathbin}
+\Decl@Md@Char\boxvert                {MdSyC}{\mathbin}
+\Decl@Md@Char\boxslash               {MdSyC}{\mathbin}
+\Decl@Md@Char\boxbackslash           {MdSyC}{\mathbin}
+\Decl@Md@Char\boxplus                {MdSyC}{\mathbin}
+\Decl@Md@Char\boxtimes               {MdSyC}{\mathbin}
+\Decl@Md@Char\boxdot                 {MdSyC}{\mathbin}
+\Decl@Md@Char\boxbox                 {MdSyC}{\mathbin}
+\Decl@Md@Char\diamondminus           {MdSyC}{\mathbin}
+\Decl@Md@Char\diamondvert            {MdSyC}{\mathbin}
+\Decl@Md@Char\diamondslash           {MdSyC}{\mathbin}
+\Decl@Md@Char\diamondbackslash       {MdSyC}{\mathbin}
+\Decl@Md@Char\diamondplus            {MdSyC}{\mathbin}
+\Decl@Md@Char\diamondtimes           {MdSyC}{\mathbin}
+\Decl@Md@Char\diamonddot             {MdSyC}{\mathbin}
+\Decl@Md@Char\diamonddiamond         {MdSyC}{\mathbin}
+\Decl@Md@Char\smallstar              {MdSyC}{\mathbin}
+\Decl@Md@Char\filledstar             {MdSyC}{\mathbin}
+\Decl@Md@Char\medstar                {MdSyC}{\mathbin}
+\Decl@Md@Char\largestar              {MdSyC}{\mathord}
+\Decl@Md@Char\pentagram              {MdSyC}{\mathbin}
+\Decl@Md@Char\largepentagram         {MdSyC}{\mathord}
+\Decl@Md@Char\thinstar               {MdSyC}{\mathbin}
+  \Decl@Md@Alias\star                {MdSyC}{\mathbin}
+\Decl@Md@Char\ast                    {MdSyC}{\mathbin}
+\Decl@Md@Char\hbipropto              {MdSyC}{\mathbin}
+\Decl@Md@Char\neswbipropto           {MdSyC}{\mathbin}
+\Decl@Md@Char\vbipropto              {MdSyC}{\mathbin}
+\Decl@Md@Char\nwsebipropto           {MdSyC}{\mathbin}
+\Decl@Md@Char\leftpropto             {MdSyC}{\mathrel}
+  \Decl@Md@Alias\propto              {MdSyC}{\mathrel}
+  \Decl@Md@Alias\varpropto           {MdSyC}{\mathrel}
+\Decl@Md@Char\downpropto             {MdSyC}{\mathrel}
+\Decl@Md@Char\rightpropto            {MdSyC}{\mathrel}
+\Decl@Md@Char\uppropto               {MdSyC}{\mathrel}
+\Decl@Md@Char\hcrossing              {MdSyC}{\mathrel}
+\Decl@Md@Char\neswcrossing           {MdSyC}{\mathrel}
+\Decl@Md@Char\vcrossing              {MdSyC}{\mathrel}
+\Decl@Md@Char\nwsecrossing           {MdSyC}{\mathrel}
+\Decl@Md@Char\between                {MdSyC}{\mathrel}
+\Decl@Md@Char\separated              {MdSyC}{\mathrel}
+\Decl@Md@Char\bot                    {MdSyC}{\mathord}
+\Decl@Md@Char\top                    {MdSyC}{\mathord}
+  \Decl@Md@Alias\intercal            {MdSyC}{\mathbin}
+\Decl@Md@Char\wreath                 {MdSyC}{\mathbin}
+  \Decl@Md@Alias\wr                  {MdSyC}{\mathbin}
+\Decl@Md@Char\angle                  {MdSyC}{\mathord}
+\Decl@Md@Char\measuredangle          {MdSyC}{\mathord}
+\Decl@Md@Char\sphericalangle         {MdSyC}{\mathord}
+\Decl@Md@Char\prime                  {MdSyC}{\mathord}
+\Decl@Md@Char\backprime              {MdSyC}{\mathord}
+\Decl@Md@Char\smallprod              {MdSyC}{\mathbin}
+\Decl@Md@Char\amalg                  {MdSyC}{\mathbin}
+\Decl@Md@Char\checkmark              {MdSyC}{\mathord}
+\Decl@Md@Char\lightning              {MdSyC}{\mathord}
+\Decl@Md@Char\diamondsuit            {MdSyC}{\mathord}
+\Decl@Md@Char\heartsuit              {MdSyC}{\mathord}
+\Decl@Md@Char\spadesuit              {MdSyC}{\mathord}
+\Decl@Md@Char\clubsuit               {MdSyC}{\mathord}
+\Decl@Md@Char\forall                 {MdSyC}{\mathord}
+\Decl@Md@Char\exists                 {MdSyC}{\mathord}
+\Decl@Md@Char\nexists                {MdSyC}{\mathord}
+\Decl@Md@Char\nabla                  {MdSyC}{\mathord}
+\Decl@Md@Char\infty                  {MdSyC}{\mathord}
+\Decl@Md@Char\smallint               {MdSyC}{\mathop}
+\Decl@Md@Char\flat                   {MdSyC}{\mathop}
+\Decl@Md@Char\natural                {MdSyC}{\mathop}
+\Decl@Md@Char\sharp                  {MdSyC}{\mathop}
+\Decl@Md@Char\aleph                  {MdSyC}{\mathord}
+\Decl@Md@Char\beth                   {MdSyC}{\mathord}
+\Decl@Md@Char\gimel                  {MdSyC}{\mathord}
+\Decl@Md@Char\daleth                 {MdSyC}{\mathord}
+\Decl@Md@Char\wp                     {MdSyC}{\mathord}
+\Decl@Md@Char\powerset               {MdSyC}{\mathord}
+\Decl@Md@Char\invneg                 {MdSyC}{\mathord}
+  \Decl@Md@Alias\minushookup         {MdSyC}{\mathbin}
+\Decl@Md@Char\invbackneg             {MdSyC}{\mathord}
+  \Decl@Md@Alias\hookupminus         {MdSyC}{\mathbin}
+\Decl@Md@Char\lefthalfcup            {MdSyC}{\mathbin}
+\Decl@Md@Char\righthalfcup           {MdSyC}{\mathbin}
+\Decl@Md@Char\lefthalfcap            {MdSyC}{\mathbin}
+\Decl@Md@Char\righthalfcap           {MdSyC}{\mathbin}
+\Decl@Md@Char\closedsucc             {MdSyC}{\mathrel}
+\Decl@Md@Char\closedcurlywedge       {MdSyC}{\mathbin}
+\Decl@Md@Char\closedprec             {MdSyC}{\mathrel}
+\Decl@Md@Char\closedcurlyvee         {MdSyC}{\mathbin}
+\Decl@Md@Char\rightslice             {MdSyC}{\mathrel}
+\Decl@Md@Char\upslice                {MdSyC}{\mathbin}
+\Decl@Md@Char\leftslice              {MdSyC}{\mathrel}
+\Decl@Md@Char\downslice              {MdSyC}{\mathbin}
+\Decl@Md@Char\smalllozenge           {MdSyC}{\mathord}
+\Decl@Md@Char\filledlozenge          {MdSyC}{\mathord}
+\Decl@Md@Char\medlozenge             {MdSyC}{\mathord}
+  \Decl@Md@Alias\lozenge             {MdSyC}{\mathord}
+\Decl@Md@Char\filledmedlozenge       {MdSyC}{\mathord}
+  \Decl@Md@Alias\blacklozenge        {MdSyC}{\mathord}
+\Decl@Md@Char\largelozenge           {MdSyC}{\mathord}
+\Decl@Md@Char\filledmedtriangleright {MdSyC}{\mathbin}
+\Decl@Md@Char\filledmedtriangleup    {MdSyC}{\mathbin}
+  \Decl@Md@Alias\blacktriangle       {MdSyC}{\mathbin}
+\Decl@Md@Char\filledmedtriangleleft  {MdSyC}{\mathbin}
+\Decl@Md@Char\filledmedtriangledown  {MdSyC}{\mathbin}
+  \Decl@Md@Alias\blacktriangledown   {MdSyC}{\mathbin}
+\Decl@Md@Char\filledmedsquare        {MdSyC}{\mathbin}
+  \Decl@Md@Alias\blacksquare         {MdSyC}{\mathbin}
+\Decl@Md@Char\filledlargestar        {MdSyC}{\mathord}
+  \Decl@Md@Alias\bigstar             {MdSyC}{\mathord}
+\Decl@Md@Char\medstarofdavid         {MdSyC}{\mathord}
+\Decl@Md@Char\largestarofdavid       {MdSyC}{\mathord}
+\Decl@Md@Char\maltese                {MdSyC}{\mathord}
+\Set@Md@Sym{220}
+\Decl@Md@Char\closedequal            {MdSyC}{\mathrel}
+\Decl@Md@Char\equalclosed            {MdSyC}{\mathrel}
+\Decl@Md@Char\equivclosed            {MdSyC}{\mathrel}
+\Decl@Md@Char\lesssim                {MdSyC}{\mathrel}
+\Decl@Md@Char\gtrsim                 {MdSyC}{\mathrel}
+\Decl@Md@Char\lessapprox             {MdSyC}{\mathrel}
+\Decl@Md@Char\gtrapprox              {MdSyC}{\mathrel}
+\Decl@Md@Char\eqslantless            {MdSyC}{\mathrel}
+\Decl@Md@Char\eqslantgtr             {MdSyC}{\mathrel}
+\Decl@Md@Char\curlyeqprec            {MdSyC}{\mathrel}
+\Decl@Md@Char\curlyeqsucc            {MdSyC}{\mathrel}
+\Decl@Md@Char\Rrightarrow            {MdSyC}{\mathrel}
+\Decl@Md@Char\Lleftarrow             {MdSyC}{\mathrel}
+\Decl@Md@Char\nclosedequal           {MdSyC}{\mathrel}
+\Decl@Md@Char\nequalclosed           {MdSyC}{\mathrel}
+\Decl@Md@Char\nequivclosed           {MdSyC}{\mathrel}
+\Decl@Md@Char\lnsim                  {MdSyC}{\mathrel}
+\Decl@Md@Char\gnsim                  {MdSyC}{\mathrel}
+\Decl@Md@Char\lnapprox               {MdSyC}{\mathrel}
+\Decl@Md@Char\gnapprox               {MdSyC}{\mathrel}
+\Decl@Md@Char\neqslantless           {MdSyC}{\mathrel}
+\Decl@Md@Char\neqslantgtr            {MdSyC}{\mathrel}
+\Decl@Md@Char\ncurlyeqprec           {MdSyC}{\mathrel}
+\Decl@Md@Char\ncurlyeqsucc           {MdSyC}{\mathrel}
+\Decl@Md@Char\nRrightarrow           {MdSyC}{\mathrel}
+\Decl@Md@Char\nLleftarrow            {MdSyC}{\mathrel}
+\Decl@Md@Char\Rsh                    {MdSyC}{\mathrel}
+\Decl@Md@Char\Lsh                    {MdSyC}{\mathrel}
+\Decl@Md@Char\looparrowright         {MdSyC}{\mathrel}
+\Decl@Md@Char\looparrowleft          {MdSyC}{\mathrel}
+\Decl@Md@Char\leftthreetimes         {MdSyC}{\mathbin}
+\Decl@Md@Char\rightthreetimes        {MdSyC}{\mathbin}
+\Decl@Md@Char\Vvdash                 {MdSyC}{\mathrel}
+\Decl@Md@Char\nshortmid              {MdSyC}{\mathrel}
+\Decl@Md@Char\shortparallel          {MdSyC}{\mathrel}
+\Decl@Md@Char\nshortparallel         {MdSyC}{\mathrel}
+%    \end{macrocode}
+%
+% MdSymbolD\?: Relations.
+%
+%    \begin{macrocode}
+\Set@Md@Sym{0}
+\Decl@Md@Char\equal                  {MdSyD}{\mathrel}
+\Decl@Md@Char\equiv                  {MdSyD}{\mathrel}
+\Decl@Md@Char\sim                    {MdSyD}{\mathrel}
+\Decl@Md@Char\backsim                {MdSyD}{\mathrel}
+\Decl@Md@Char\approx                 {MdSyD}{\mathrel}
+\Decl@Md@Char\backapprox             {MdSyD}{\mathrel}
+\Decl@Md@Char\triplesim              {MdSyD}{\mathrel}
+\Decl@Md@Char\backtriplesim          {MdSyD}{\mathrel}
+\Decl@Md@Char\simeq                  {MdSyD}{\mathrel}
+\Decl@Md@Char\backsimeq              {MdSyD}{\mathrel}
+\Decl@Md@Char\eqsim                  {MdSyD}{\mathrel}
+\Decl@Md@Char\backeqsim              {MdSyD}{\mathrel}
+\Decl@Md@Char\cong                   {MdSyD}{\mathrel}
+\Decl@Md@Char\backcong               {MdSyD}{\mathrel}
+\Decl@Md@Char\approxeq               {MdSyD}{\mathrel}
+\Decl@Md@Char\backapproxeq           {MdSyD}{\mathrel}
+\Decl@Md@Char\bumpeq                 {MdSyD}{\mathrel}
+\Decl@Md@Char\eqbump                 {MdSyD}{\mathrel}
+\Decl@Md@Char\Bumpeq                 {MdSyD}{\mathrel}
+\Decl@Md@Char\doteq                  {MdSyD}{\mathrel}
+\Decl@Md@Char\eqdot                  {MdSyD}{\mathrel}
+\Decl@Md@Char\Doteq                  {MdSyD}{\mathrel}
+  \Decl@Md@Alias\doteqdot            {MdSyD}{\mathbin}
+\Decl@Md@Char\fallingdotseq          {MdSyD}{\mathrel}
+\Decl@Md@Char\risingdotseq           {MdSyD}{\mathrel}
+\Decl@Md@Char\smile                  {MdSyD}{\mathrel}
+  \Decl@Md@Alias\smallsmile          {MdSyD}{\mathrel}
+\Decl@Md@Char\frown                  {MdSyD}{\mathrel}
+  \Decl@Md@Alias\smallfrown          {MdSyD}{\mathrel}
+\Decl@Md@Char\doublesmile            {MdSyD}{\mathrel}
+\Decl@Md@Char\doublefrown            {MdSyD}{\mathrel}
+\Decl@Md@Char\triplesmile            {MdSyD}{\mathrel}
+\Decl@Md@Char\triplefrown            {MdSyD}{\mathrel}
+\Decl@Md@Char\smilefrown             {MdSyD}{\mathrel}
+  \Decl@Md@Alias\asymp               {MdSyD}{\mathrel}
+\Decl@Md@Char\frownsmile             {MdSyD}{\mathrel}
+\Decl@Md@Char\smileeq                {MdSyD}{\mathrel}
+\Decl@Md@Char\frowneq                {MdSyD}{\mathrel}
+\Decl@Md@Char\eqsmile                {MdSyD}{\mathrel}
+\Decl@Md@Char\eqfrown                {MdSyD}{\mathrel}
+\Decl@Md@Char\doublesmileeq          {MdSyD}{\mathrel}
+\Decl@Md@Char\doublefrowneq          {MdSyD}{\mathrel}
+\Decl@Md@Char\smileeqfrown           {MdSyD}{\mathrel}
+\Decl@Md@Char\frowneqsmile           {MdSyD}{\mathrel}
+\Decl@Md@Char\smilefrowneq           {MdSyD}{\mathrel}
+\Decl@Md@Char\frownsmileeq           {MdSyD}{\mathrel}
+\Decl@Md@Char\sqsmile                {MdSyD}{\mathrel}
+\Decl@Md@Char\sqfrown                {MdSyD}{\mathrel}
+\Decl@Md@Char\sqdoublesmile          {MdSyD}{\mathrel}
+\Decl@Md@Char\sqdoublefrown          {MdSyD}{\mathrel}
+\Decl@Md@Char\sqtriplesmile          {MdSyD}{\mathrel}
+\Decl@Md@Char\sqtriplefrown          {MdSyD}{\mathrel}
+\Decl@Md@Char\sqsmilefrown           {MdSyD}{\mathrel}
+\Decl@Md@Char\sqfrownsmile           {MdSyD}{\mathrel}
+\Decl@Md@Char\sqsmileeq              {MdSyD}{\mathrel}
+\Decl@Md@Char\sqfrowneq              {MdSyD}{\mathrel}
+\Decl@Md@Char\sqeqsmile              {MdSyD}{\mathrel}
+\Decl@Md@Char\sqeqfrown              {MdSyD}{\mathrel}
+\Decl@Md@Char\sqdoublesmileeq        {MdSyD}{\mathrel}
+\Decl@Md@Char\sqdoublefrowneq        {MdSyD}{\mathrel}
+\Decl@Md@Char\sqsmileeqfrown         {MdSyD}{\mathrel}
+\Decl@Md@Char\sqfrowneqsmile         {MdSyD}{\mathrel}
+\Decl@Md@Char\eqcirc                 {MdSyD}{\mathrel}
+\Decl@Md@Char\circeq                 {MdSyD}{\mathrel}
+\Decl@Md@Char\triangleeq             {MdSyD}{\mathrel}
+  \Decl@Md@Alias\triangleq           {MdSyD}{\mathrel}
+\Decl@Md@Char\hateq                  {MdSyD}{\mathrel}
+\Decl@Md@Char\in                     {MdSyD}{\mathrel}
+\Decl@Md@Char\owns                   {MdSyD}{\mathrel}
+  \Decl@Md@Alias\ni                  {MdSyD}{\mathrel}
+\Decl@Md@Char\less                   {MdSyD}{\mathrel}
+\Decl@Md@Char\gtr                    {MdSyD}{\mathrel}
+\Decl@Md@Char\leq                    {MdSyD}{\mathrel}
+  \Decl@Md@Alias\le                  {MdSyD}{\mathrel}
+\Decl@Md@Char\geq                    {MdSyD}{\mathrel}
+  \Decl@Md@Alias\ge                  {MdSyD}{\mathrel}
+\Decl@Md@Char\leqslant               {MdSyD}{\mathrel}
+\Decl@Md@Char\geqslant               {MdSyD}{\mathrel}
+\Decl@Md@Char\leqq                   {MdSyD}{\mathrel}
+\Decl@Md@Char\geqq                   {MdSyD}{\mathrel}
+\Decl@Md@Char\lessgtr                {MdSyD}{\mathrel}
+\Decl@Md@Char\gtrless                {MdSyD}{\mathrel}
+\Decl@Md@Char\lesseqgtr              {MdSyD}{\mathrel}
+\Decl@Md@Char\gtreqless              {MdSyD}{\mathrel}
+\Decl@Md@Char\lesseqqgtr             {MdSyD}{\mathrel}
+\Decl@Md@Char\gtreqqless             {MdSyD}{\mathrel}
+\Decl@Md@Char\lesseqgtrslant         {MdSyD}{\mathrel}
+\Decl@Md@Char\gtreqlessslant         {MdSyD}{\mathrel}
+\Decl@Md@Char\ll                     {MdSyD}{\mathrel}
+\Decl@Md@Char\gg                     {MdSyD}{\mathrel}
+\Decl@Md@Char\lll                    {MdSyD}{\mathrel}
+  \Decl@Md@Alias\llless              {MdSyD}{\mathrel}
+\Decl@Md@Char\ggg                    {MdSyD}{\mathrel}
+  \Decl@Md@Alias\gggtr               {MdSyD}{\mathrel}
+\Decl@Md@Char\lessclosed             {MdSyD}{\mathrel}
+  \Decl@Md@Alias\lhd                 {MdSyD}{\mathrel}
+  \Decl@Md@Alias\vartriangleleft     {MdSyD}{\mathrel}
+\Decl@Md@Char\gtrclosed              {MdSyD}{\mathrel}
+  \Decl@Md@Alias\rhd                 {MdSyD}{\mathrel}
+  \Decl@Md@Alias\vartriangleright    {MdSyD}{\mathrel}
+\Decl@Md@Char\leqclosed              {MdSyD}{\mathrel}
+  \Decl@Md@Alias\unlhd               {MdSyD}{\mathrel}
+  \Decl@Md@Alias\trianglelefteq      {MdSyD}{\mathrel}
+\Decl@Md@Char\geqclosed              {MdSyD}{\mathrel}
+  \Decl@Md@Alias\unrhd               {MdSyD}{\mathrel}
+  \Decl@Md@Alias\trianglerighteq     {MdSyD}{\mathrel}
+\Decl@Md@Char\sqsubset               {MdSyD}{\mathrel}
+\Decl@Md@Char\sqsupset               {MdSyD}{\mathrel}
+\Decl@Md@Char\sqsubseteq             {MdSyD}{\mathrel}
+\Decl@Md@Char\sqsupseteq             {MdSyD}{\mathrel}
+\Decl@Md@Char\sqsubseteqq            {MdSyD}{\mathrel}
+\Decl@Md@Char\sqsupseteqq            {MdSyD}{\mathrel}
+\Decl@Md@Char\Sqsubset               {MdSyD}{\mathrel}
+\Decl@Md@Char\Sqsupset               {MdSyD}{\mathrel}
+\Decl@Md@Char\subset                 {MdSyD}{\mathrel}
+\Decl@Md@Char\supset                 {MdSyD}{\mathrel}
+\Decl@Md@Char\subseteq               {MdSyD}{\mathrel}
+\Decl@Md@Char\supseteq               {MdSyD}{\mathrel}
+\Decl@Md@Char\subseteqq              {MdSyD}{\mathrel}
+\Decl@Md@Char\supseteqq              {MdSyD}{\mathrel}
+\Decl@Md@Char\Subset                 {MdSyD}{\mathrel}
+\Decl@Md@Char\Supset                 {MdSyD}{\mathrel}
+\Decl@Md@Char\prec                   {MdSyD}{\mathrel}
+\Decl@Md@Char\succ                   {MdSyD}{\mathrel}
+\Decl@Md@Char\preceq                 {MdSyD}{\mathrel}
+\Decl@Md@Char\succeq                 {MdSyD}{\mathrel}
+\Decl@Md@Char\preccurlyeq            {MdSyD}{\mathrel}
+\Decl@Md@Char\succcurlyeq            {MdSyD}{\mathrel}
+\Decl@Md@Char\precsim                {MdSyD}{\mathrel}
+\Decl@Md@Char\succsim                {MdSyD}{\mathrel}
+\Decl@Md@Char\precapprox             {MdSyD}{\mathrel}
+\Decl@Md@Char\succapprox             {MdSyD}{\mathrel}
+\Decl@Md@Char\lessdot                {MdSyD}{\mathrel}
+\Decl@Md@Char\gtrdot                 {MdSyD}{\mathrel}
+\Decl@Md@Char\leqdot                 {MdSyD}{\mathrel}
+\Decl@Md@Char\geqdot                 {MdSyD}{\mathrel}
+\Decl@Md@Char\leqslantdot            {MdSyD}{\mathrel}
+\Decl@Md@Char\geqslantdot            {MdSyD}{\mathrel}
+\Decl@Md@Char\nequal                 {MdSyD}{\mathrel}
+  \Decl@Md@Alias\neq                 {MdSyD}{\mathrel}
+  \Decl@Md@Alias\ne                  {MdSyD}{\mathrel}
+\Decl@Md@Char\nequiv                 {MdSyD}{\mathrel}
+\Decl@Md@Char\nsim                   {MdSyD}{\mathrel}
+\Decl@Md@Char\nbacksim               {MdSyD}{\mathrel}
+\Decl@Md@Char\napprox                {MdSyD}{\mathrel}
+\Decl@Md@Char\nbackapprox            {MdSyD}{\mathrel}
+\Decl@Md@Char\ntriplesim             {MdSyD}{\mathrel}
+\Decl@Md@Char\nbacktriplesim         {MdSyD}{\mathrel}
+\Decl@Md@Char\nsimeq                 {MdSyD}{\mathrel}
+\Decl@Md@Char\nbacksimeq             {MdSyD}{\mathrel}
+\Decl@Md@Char\neqsim                 {MdSyD}{\mathrel}
+\Decl@Md@Char\nbackeqsim             {MdSyD}{\mathrel}
+\Decl@Md@Char\ncong                  {MdSyD}{\mathrel}
+\Decl@Md@Char\nbackcong              {MdSyD}{\mathrel}
+\Decl@Md@Char\napproxeq              {MdSyD}{\mathrel}
+\Decl@Md@Char\nbackapproxeq          {MdSyD}{\mathrel}
+\Decl@Md@Char\nbumpeq                {MdSyD}{\mathrel}
+\Decl@Md@Char\neqbump                {MdSyD}{\mathrel}
+\Decl@Md@Char\nBumpeq                {MdSyD}{\mathrel}
+\Decl@Md@Char\ndoteq                 {MdSyD}{\mathrel}
+\Decl@Md@Char\neqdot                 {MdSyD}{\mathrel}
+\Decl@Md@Char\nDoteq                 {MdSyD}{\mathrel}
+\Decl@Md@Char\nfallingdotseq         {MdSyD}{\mathrel}
+\Decl@Md@Char\nrisingdotseq          {MdSyD}{\mathrel}
+\Decl@Md@Char\nsmile                 {MdSyD}{\mathrel}
+\Decl@Md@Char\nfrown                 {MdSyD}{\mathrel}
+\Decl@Md@Char\ndoublesmile           {MdSyD}{\mathrel}
+\Decl@Md@Char\ndoublefrown           {MdSyD}{\mathrel}
+\Decl@Md@Char\ntriplesmile           {MdSyD}{\mathrel}
+\Decl@Md@Char\ntriplefrown           {MdSyD}{\mathrel}
+\Decl@Md@Char\nsmilefrown            {MdSyD}{\mathrel}
+  \Decl@Md@Alias\nasymp              {MdSyD}{\mathrel}
+\Decl@Md@Char\nfrownsmile            {MdSyD}{\mathrel}
+\Decl@Md@Char\nsmileeq               {MdSyD}{\mathrel}
+\Decl@Md@Char\nfrowneq               {MdSyD}{\mathrel}
+\Decl@Md@Char\neqsmile               {MdSyD}{\mathrel}
+\Decl@Md@Char\neqfrown               {MdSyD}{\mathrel}
+\Decl@Md@Char\ndoublesmileeq         {MdSyD}{\mathrel}
+\Decl@Md@Char\ndoublefrowneq         {MdSyD}{\mathrel}
+\Decl@Md@Char\nsmileeqfrown          {MdSyD}{\mathrel}
+\Decl@Md@Char\nfrowneqsmile          {MdSyD}{\mathrel}
+\Decl@Md@Char\nsmilefrowneq          {MdSyD}{\mathrel}
+\Decl@Md@Char\nfrownsmileeq          {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqsmile               {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqfrown               {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqdoublesmile         {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqdoublefrown         {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqtriplesmile         {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqtriplefrown         {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqsmilefrown          {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqfrownsmile          {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqsmileeq             {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqfrowneq             {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqeqsmile             {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqeqfrown             {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqdoublesmileeq       {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqdoublefrowneq       {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqsmileeqfrown        {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqfrowneqsmile        {MdSyD}{\mathrel}
+\Decl@Md@Char\neqcirc                {MdSyD}{\mathrel}
+\Decl@Md@Char\ncirceq                {MdSyD}{\mathrel}
+\Decl@Md@Char\ntriangleeq            {MdSyD}{\mathrel}
+\Decl@Md@Char\nhateq                 {MdSyD}{\mathrel}
+\Decl@Md@Char\nin                    {MdSyD}{\mathrel}
+  \Decl@Md@Alias\notin               {MdSyD}{\mathrel}
+\Decl@Md@Char\nowns                  {MdSyD}{\mathrel}
+\Decl@Md@Char\nless                  {MdSyD}{\mathrel}
+\Decl@Md@Char\ngtr                   {MdSyD}{\mathrel}
+\Decl@Md@Char\nleq                   {MdSyD}{\mathrel}
+\Decl@Md@Char\ngeq                   {MdSyD}{\mathrel}
+\Decl@Md@Char\nleqslant              {MdSyD}{\mathrel}
+\Decl@Md@Char\ngeqslant              {MdSyD}{\mathrel}
+\Decl@Md@Char\nleqq                  {MdSyD}{\mathrel}
+\Decl@Md@Char\ngeqq                  {MdSyD}{\mathrel}
+\Decl@Md@Char\nlessgtr               {MdSyD}{\mathrel}
+\Decl@Md@Char\ngtrless               {MdSyD}{\mathrel}
+\Decl@Md@Char\nlesseqgtr             {MdSyD}{\mathrel}
+\Decl@Md@Char\ngtreqless             {MdSyD}{\mathrel}
+\Decl@Md@Char\nlesseqqgtr            {MdSyD}{\mathrel}
+\Decl@Md@Char\ngtreqqless            {MdSyD}{\mathrel}
+\Decl@Md@Char\nlesseqgtrslant        {MdSyD}{\mathrel}
+\Decl@Md@Char\ngtreqlessslant        {MdSyD}{\mathrel}
+\Decl@Md@Char\nll                    {MdSyD}{\mathrel}
+\Decl@Md@Char\ngg                    {MdSyD}{\mathrel}
+\Decl@Md@Char\nlll                   {MdSyD}{\mathrel}
+\Decl@Md@Char\nggg                   {MdSyD}{\mathrel}
+\Decl@Md@Char\nlessclosed            {MdSyD}{\mathrel}
+  \Decl@Md@Alias\ntriangleleft       {MdSyD}{\mathrel}
+\Decl@Md@Char\ngtrclosed             {MdSyD}{\mathrel}
+  \Decl@Md@Alias\ntriangleright      {MdSyD}{\mathrel}
+\Decl@Md@Char\nleqclosed             {MdSyD}{\mathrel}
+  \Decl@Md@Alias\ntrianglelefteq     {MdSyD}{\mathrel}
+\Decl@Md@Char\ngeqclosed             {MdSyD}{\mathrel}
+  \Decl@Md@Alias\ntrianglerighteq    {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqsubset              {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqsupset              {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqsubseteq            {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqsupseteq            {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqsubseteqq           {MdSyD}{\mathrel}
+\Decl@Md@Char\nsqsupseteqq           {MdSyD}{\mathrel}
+\Decl@Md@Char\nSqsubset              {MdSyD}{\mathrel}
+\Decl@Md@Char\nSqsupset              {MdSyD}{\mathrel}
+\Decl@Md@Char\nsubset                {MdSyD}{\mathrel}
+\Decl@Md@Char\nsupset                {MdSyD}{\mathrel}
+\Decl@Md@Char\nsubseteq              {MdSyD}{\mathrel}
+\Decl@Md@Char\nsupseteq              {MdSyD}{\mathrel}
+\Decl@Md@Char\nsubseteqq             {MdSyD}{\mathrel}
+\Decl@Md@Char\nsupseteqq             {MdSyD}{\mathrel}
+\Decl@Md@Char\nSubset                {MdSyD}{\mathrel}
+\Decl@Md@Char\nSupset                {MdSyD}{\mathrel}
+\Decl@Md@Char\nprec                  {MdSyD}{\mathrel}
+\Decl@Md@Char\nsucc                  {MdSyD}{\mathrel}
+\Decl@Md@Char\npreceq                {MdSyD}{\mathrel}
+\Decl@Md@Char\nsucceq                {MdSyD}{\mathrel}
+\Decl@Md@Char\npreccurlyeq           {MdSyD}{\mathrel}
+\Decl@Md@Char\nsucccurlyeq           {MdSyD}{\mathrel}
+\Decl@Md@Char\nprecsim               {MdSyD}{\mathrel}
+\Decl@Md@Char\nsuccsim               {MdSyD}{\mathrel}
+\Decl@Md@Char\nprecapprox            {MdSyD}{\mathrel}
+\Decl@Md@Char\nsuccapprox            {MdSyD}{\mathrel}
+\Decl@Md@Char\nlessdot               {MdSyD}{\mathrel}
+\Decl@Md@Char\ngtrdot                {MdSyD}{\mathrel}
+\Decl@Md@Char\nleqdot                {MdSyD}{\mathrel}
+\Decl@Md@Char\ngeqdot                {MdSyD}{\mathrel}
+\Decl@Md@Char\nleqslantdot           {MdSyD}{\mathrel}
+\Decl@Md@Char\ngeqslantdot           {MdSyD}{\mathrel}
+\Decl@Md@Char\lneqq                  {MdSyD}{\mathrel}
+  \Decl@Md@Alias\lvertneqq           {MdSyD}{\mathrel}
+\Decl@Md@Char\gneqq                  {MdSyD}{\mathrel}
+  \Decl@Md@Alias\gvertneqq           {MdSyD}{\mathrel}
+\Decl@Md@Char\lessneqqgtr            {MdSyD}{\mathrel}
+\Decl@Md@Char\gtrneqqless            {MdSyD}{\mathrel}
+\Decl@Md@Char\sqsubsetneq            {MdSyD}{\mathrel}
+\Decl@Md@Char\sqsupsetneq            {MdSyD}{\mathrel}
+\Decl@Md@Char\sqsubsetneqq           {MdSyD}{\mathrel}
+\Decl@Md@Char\sqsupsetneqq           {MdSyD}{\mathrel}
+\Decl@Md@Char\subsetneq              {MdSyD}{\mathrel}
+  \Decl@Md@Alias\varsubsetneq        {MdSyD}{\mathrel}
+\Decl@Md@Char\supsetneq              {MdSyD}{\mathrel}
+  \Decl@Md@Alias\varsupsetneq        {MdSyD}{\mathrel}
+\Decl@Md@Char\subsetneqq             {MdSyD}{\mathrel}
+  \Decl@Md@Alias\varsubsetneqq       {MdSyD}{\mathrel}
+\Decl@Md@Char\supsetneqq             {MdSyD}{\mathrel}
+  \Decl@Md@Alias\varsupsetneqq       {MdSyD}{\mathrel}
+\Decl@Md@Char\precnsim               {MdSyD}{\mathrel}
+\Decl@Md@Char\succnsim               {MdSyD}{\mathrel}
+\Decl@Md@Char\precnapprox            {MdSyD}{\mathrel}
+\Decl@Md@Char\succnapprox            {MdSyD}{\mathrel}
+
+\DeclareRobustCommand{\coloneq}{\mathrel{{\vdotdot}{\equal}}}
+%    \end{macrocode}
+%
+% MdSymbolF\?: Big operators.
+%
+%    \begin{macrocode}
+\Set@Md@Sym{0}
+\Decl@Md@Char\tbigplus                  {symbols}{\mathop}
+\Decl@Md@Char\dbigplus                  {symbols}{\mathop}
+\Decl@Md@Char\tbigtimes                 {symbols}{\mathop}
+\Decl@Md@Char\dbigtimes                 {symbols}{\mathop}
+\Decl@Md@Char\tbigwedge                 {symbols}{\mathop}
+\Decl@Md@Char\dbigwedge                 {symbols}{\mathop}
+\Decl@Md@Char\tbigvee                   {symbols}{\mathop}
+\Decl@Md@Char\dbigvee                   {symbols}{\mathop}
+\Decl@Md@Char\tbigwedgedot              {symbols}{\mathop}
+\Decl@Md@Char\dbigwedgedot              {symbols}{\mathop}
+\Decl@Md@Char\tbigveedot                {symbols}{\mathop}
+\Decl@Md@Char\dbigveedot                {symbols}{\mathop}
+\Decl@Md@Char\tbigdoublewedge           {symbols}{\mathop}
+\Decl@Md@Char\dbigdoublewedge           {symbols}{\mathop}
+\Decl@Md@Char\tbigdoublevee             {symbols}{\mathop}
+\Decl@Md@Char\dbigdoublevee             {symbols}{\mathop}
+\Decl@Md@Char\tbigcurlywedge            {symbols}{\mathop}
+\Decl@Md@Char\dbigcurlywedge            {symbols}{\mathop}
+\Decl@Md@Char\tbigcurlyvee              {symbols}{\mathop}
+\Decl@Md@Char\dbigcurlyvee              {symbols}{\mathop}
+\Decl@Md@Char\tbigcurlywedgedot         {symbols}{\mathop}
+\Decl@Md@Char\dbigcurlywedgedot         {symbols}{\mathop}
+\Decl@Md@Char\tbigcurlyveedot           {symbols}{\mathop}
+\Decl@Md@Char\dbigcurlyveedot           {symbols}{\mathop}
+\Decl@Md@Char\tbigdoublecurlywedge      {symbols}{\mathop}
+\Decl@Md@Char\dbigdoublecurlywedge      {symbols}{\mathop}
+\Decl@Md@Char\tbigdoublecurlyvee        {symbols}{\mathop}
+\Decl@Md@Char\dbigdoublecurlyvee        {symbols}{\mathop}
+\Decl@Md@Char\tbigcap                   {symbols}{\mathop}
+\Decl@Md@Char\dbigcap                   {symbols}{\mathop}
+\Decl@Md@Char\tbigcup                   {symbols}{\mathop}
+\Decl@Md@Char\dbigcup                   {symbols}{\mathop}
+\Decl@Md@Char\tbigcapdot                {symbols}{\mathop}
+\Decl@Md@Char\dbigcapdot                {symbols}{\mathop}
+\Decl@Md@Char\tbigcupdot                {symbols}{\mathop}
+\Decl@Md@Char\dbigcupdot                {symbols}{\mathop}
+\Decl@Md@Char\tbigcapplus               {symbols}{\mathop}
+\Decl@Md@Char\dbigcapplus               {symbols}{\mathop}
+\Decl@Md@Char\tbigcupplus               {symbols}{\mathop}
+\Decl@Md@Char\dbigcupplus               {symbols}{\mathop}
+\Decl@Md@Char\tbigsqcap                 {symbols}{\mathop}
+\Decl@Md@Char\dbigsqcap                 {symbols}{\mathop}
+\Decl@Md@Char\tbigsqcup                 {symbols}{\mathop}
+\Decl@Md@Char\dbigsqcup                 {symbols}{\mathop}
+\Decl@Md@Char\tbigsqcapdot              {symbols}{\mathop}
+\Decl@Md@Char\dbigsqcapdot              {symbols}{\mathop}
+\Decl@Md@Char\tbigsqcupdot              {symbols}{\mathop}
+\Decl@Md@Char\dbigsqcupdot              {symbols}{\mathop}
+\Decl@Md@Char\tbigsqcapplus             {symbols}{\mathop}
+\Decl@Md@Char\dbigsqcapplus             {symbols}{\mathop}
+\Decl@Md@Char\tbigsqcupplus             {symbols}{\mathop}
+\Decl@Md@Char\dbigsqcupplus             {symbols}{\mathop}
+\Decl@Md@Char\tbigcircle                {symbols}{\mathop}
+\Decl@Md@Char\dbigcircle                {symbols}{\mathop}
+\Decl@Md@Char\tbigominus                {symbols}{\mathop}
+\Decl@Md@Char\dbigominus                {symbols}{\mathop}
+\Decl@Md@Char\tbigovert                 {symbols}{\mathop}
+\Decl@Md@Char\dbigovert                 {symbols}{\mathop}
+\Decl@Md@Char\tbigoslash                {symbols}{\mathop}
+\Decl@Md@Char\dbigoslash                {symbols}{\mathop}
+\Decl@Md@Char\tbigobackslash            {symbols}{\mathop}
+\Decl@Md@Char\dbigobackslash            {symbols}{\mathop}
+\Decl@Md@Char\tbigoplus                 {symbols}{\mathop}
+\Decl@Md@Char\dbigoplus                 {symbols}{\mathop}
+\Decl@Md@Char\tbigotimes                {symbols}{\mathop}
+\Decl@Md@Char\dbigotimes                {symbols}{\mathop}
+\Decl@Md@Char\tbigodot                  {symbols}{\mathop}
+\Decl@Md@Char\dbigodot                  {symbols}{\mathop}
+\Decl@Md@Char\tbigocirc                 {symbols}{\mathop}
+\Decl@Md@Char\dbigocirc                 {symbols}{\mathop}
+\Decl@Md@Char\tbigotriangle             {symbols}{\mathop}
+\Decl@Md@Char\dbigotriangle             {symbols}{\mathop}
+\Decl@Md@Char\tbigoast                  {symbols}{\mathop}
+\Decl@Md@Char\dbigoast                  {symbols}{\mathop}
+\Decl@Md@Char\tbigostar                 {symbols}{\mathop}
+\Decl@Md@Char\dbigostar                 {symbols}{\mathop}
+\Decl@Md@Char\tprod                     {symbols}{\mathop}
+\Decl@Md@Char\dprod                     {symbols}{\mathop}
+\Decl@Md@Char\tcoprod                   {symbols}{\mathop}
+\Decl@Md@Char\dcoprod                   {symbols}{\mathop}
+\Decl@Md@Char\tsum                      {symbols}{\mathop}
+\Decl@Md@Char\dsum                      {symbols}{\mathop}
+\Decl@Md@Char\tint                      {symbols}{\mathop}
+\Decl@Md@Char\dint                      {symbols}{\mathop}
+\Decl@Md@Char\tiint                     {symbols}{\mathop}
+\Decl@Md@Char\diint                     {symbols}{\mathop}
+\Decl@Md@Char\tiiint                    {symbols}{\mathop}
+\Decl@Md@Char\diiint                    {symbols}{\mathop}
+\Decl@Md@Char\tiiiint                   {symbols}{\mathop}
+\Decl@Md@Char\diiiint                   {symbols}{\mathop}
+\Decl@Md@Char\tidotsint                 {symbols}{\mathop}
+\Decl@Md@Char\didotsint                 {symbols}{\mathop}
+\Decl@Md@Char\tlandupint                {symbols}{\mathop}
+\Decl@Md@Char\dlandupint                {symbols}{\mathop}
+\Decl@Md@Char\tlanddownint              {symbols}{\mathop}
+\Decl@Md@Char\dlanddownint              {symbols}{\mathop}
+\Decl@Md@Char\tstrokedint               {symbols}{\mathop}
+\Decl@Md@Char\dstrokedint               {symbols}{\mathop}
+\Decl@Md@Char\toint                     {symbols}{\mathop}
+\Decl@Md@Char\doint                     {symbols}{\mathop}
+\Decl@Md@Char\toiint                    {symbols}{\mathop}
+\Decl@Md@Char\doiint                    {symbols}{\mathop}
+\Decl@Md@Char\trcirclerightint          {symbols}{\mathop}
+\Decl@Md@Char\drcirclerightint          {symbols}{\mathop}
+\Decl@Md@Char\tlcirclerightint          {symbols}{\mathop}
+\Decl@Md@Char\dlcirclerightint          {symbols}{\mathop}
+\Decl@Md@Char\trcircleleftint           {symbols}{\mathop}
+\Decl@Md@Char\drcircleleftint           {symbols}{\mathop}
+\Decl@Md@Char\tlcircleleftint           {symbols}{\mathop}
+\Decl@Md@Char\dlcircleleftint           {symbols}{\mathop}
+\Decl@Md@Char\tsumint                   {symbols}{\mathop}
+\Decl@Md@Char\dsumint                   {symbols}{\mathop}
+\Decl@Md@Char\partialvartint            {symbols}{\mathop}
+\Decl@Md@Char\partialvardint            {symbols}{\mathop}
+\Decl@Md@Char\partialvartlandupint      {symbols}{\mathop}
+\Decl@Md@Char\partialvardlandupint      {symbols}{\mathop}
+\Decl@Md@Char\partialvartlanddownint    {symbols}{\mathop}
+\Decl@Md@Char\partialvardlanddownint    {symbols}{\mathop}
+\Decl@Md@Char\partialvartstrokedint     {symbols}{\mathop}
+\Decl@Md@Char\partialvardstrokedint     {symbols}{\mathop}
+\Decl@Md@Char\partialvartoint           {symbols}{\mathop}
+\Decl@Md@Char\partialvardoint           {symbols}{\mathop}
+\Decl@Md@Char\partialvartoiint          {symbols}{\mathop}
+\Decl@Md@Char\partialvardoiint          {symbols}{\mathop}
+\Decl@Md@Char\partialvartrcirclerightint{symbols}{\mathop}
+\Decl@Md@Char\partialvardrcirclerightint{symbols}{\mathop}
+\Decl@Md@Char\partialvartlcirclerightint{symbols}{\mathop}
+\Decl@Md@Char\partialvardlcirclerightint{symbols}{\mathop}
+\Decl@Md@Char\partialvartrcircleleftint {symbols}{\mathop}
+\Decl@Md@Char\partialvardrcircleleftint {symbols}{\mathop}
+\Decl@Md@Char\partialvartlcircleleftint {symbols}{\mathop}
+\Decl@Md@Char\partialvardlcircleleftint {symbols}{\mathop}
+\Decl@Md@Char\partialvartsumint         {symbols}{\mathop}
+\Decl@Md@Char\partialvardsumint         {symbols}{\mathop}
+\Decl@Md@Char\tcomplement               {symbols}{\mathop}
+\Decl@Md@Char\dcomplement               {symbols}{\mathop}
+
+\let\intop\tint
+\let\ointop\toint
+\Decl@Md@Int\iint\diint\tiint
+\Decl@Md@Int\iiint\diiint\tiiint
+\Decl@Md@Int\iiiint\diiiint\tiiiint
+\Decl@Md@Int\idotsint\didotsint\tidotsint
+\Decl@Md@Int\landupint\dlandupint\tlandupint
+\Decl@Md@Int\landdownint\dlanddownint\tlanddownint
+\Decl@Md@Int\strokedint\dstrokedint\tstrokedint
+\Decl@Md@Int\oiint\doiint\toiint
+\Decl@Md@Int\rcirclerightint\drcirclerightint\trcirclerightint
+\Decl@Md@Int\lcirclerightint\dlcirclerightint\tlcirclerightint
+\Decl@Md@Int\rcircleleftint\drcircleleftint\trcircleleftint
+\Decl@Md@Int\lcircleleftint\dlcircleleftint\tlcircleleftint
+\Decl@Md@Int\sumint\dsumint\tsumint
+
+\def\intkern@{\mkern-10mu\mathchoice{\mkern-6mu}{}{}{}}
+\def\intdots@{\mkern-7mu%
+  \mathchoice{\mkern-3mu\@cdots\mkern-3mu}%
+  {{\cdotp}\mkern0.5mu{\cdotp}\mkern0.5mu{\cdotp}}%
+  {{\cdotp}{\cdotp}{\cdotp}}%
+  {{\cdotp}{\cdotp}{\cdotp}}%
+  \mkern-6mu}
+
+\Decl@Md@Op\bigplus\dbigplus\tbigplus
+\Decl@Md@Op\bigtimes\dbigtimes\tbigtimes
+\Decl@Md@Op\bigwedge\dbigwedge\tbigwedge
+\Decl@Md@Op\bigvee\dbigvee\tbigvee
+\Decl@Md@Op\bigwedgedot\dbigwedgedot\tbigwedgedot
+\Decl@Md@Op\bigveedot\dbigveedot\tbigveedot
+\Decl@Md@Op\bigdoublewedge\dbigdoublewedge\tbigdoublewedge
+\Decl@Md@Op\bigdoublevee\dbigdoublevee\tbigdoublevee
+\Decl@Md@Op\bigcurlywedge\dbigcurlywedge\tbigcurlywedge
+\Decl@Md@Op\bigcurlyvee\dbigcurlyvee\tbigcurlyvee
+\Decl@Md@Op\bigcurlywedgedot\dbigcurlywedgedot\tbigcurlywedgedot
+\Decl@Md@Op\bigcurlyveedot\dbigcurlyveedot\tbigcurlyveedot
+\Decl@Md@Op\bigdoublecurlywedge\dbigdoublecurlywedge\tbigdoublecurlywedge
+\Decl@Md@Op\bigdoublecurlyvee\dbigdoublecurlyvee\tbigdoublecurlyvee
+\Decl@Md@Op\bigcap\dbigcap\tbigcap
+\Decl@Md@Op\bigcup\dbigcup\tbigcup
+\Decl@Md@Op\bigcapdot\dbigcapdot\tbigcapdot
+\Decl@Md@Op\bigcupdot\dbigcupdot\tbigcupdot
+\Decl@Md@Op\bigcapplus\dbigcapplus\tbigcapplus
+\Decl@Md@Op\bigcupplus\dbigcupplus\tbigcupplus
+  \let\biguplus\bigcupplus
+\Decl@Md@Op\bigsqcap\dbigsqcap\tbigsqcap
+\Decl@Md@Op\bigsqcup\dbigsqcup\tbigsqcup
+\Decl@Md@Op\bigsqcapdot\dbigsqcapdot\tbigsqcapdot
+\Decl@Md@Op\bigsqcupdot\dbigsqcupdot\tbigsqcupdot
+\Decl@Md@Op\bigsqcapplus\dbigsqcapplus\tbigsqcapplus
+\Decl@Md@Op\bigsqcupplus\dbigsqcupplus\tbigsqcupplus
+\Decl@Md@Op\bigcircle\dbigcircle\tbigcircle
+\Decl@Md@Op\bigominus\dbigominus\tbigominus
+\Decl@Md@Op\bigovert\dbigovert\tbigovert
+\Decl@Md@Op\bigoslash\dbigoslash\tbigoslash
+\Decl@Md@Op\bigobackslash\dbigobackslash\tbigobackslash
+\Decl@Md@Op\bigoplus\dbigoplus\tbigoplus
+\Decl@Md@Op\bigotimes\dbigotimes\tbigotimes
+\Decl@Md@Op\bigodot\dbigodot\tbigodot
+\Decl@Md@Op\bigocirc\dbigocirc\tbigocirc
+\Decl@Md@Op\bigotriangle\dbigotriangle\tbigotriangle
+\Decl@Md@Op\bigoast\dbigoast\tbigoast
+\Decl@Md@Op\bigostar\dbigostar\tbigostar
+\Decl@Md@Op\sum\dsum\tsum
+\Decl@Md@Op\prod\dprod\tprod
+\Decl@Md@Op\coprod\dcoprod\tcoprod
+\Decl@Md@Op\complement\dcomplement\tcomplement
+%    \end{macrocode}
+%
+% Delimiters.
+%
+%    \begin{macrocode}
+\let\lfloor\undefined
+\let\rfloor\undefined
+\let\lceil\undefined
+\let\rceil\undefined
+\let\langle\undefined
+\let\rangle\undefined
+
+\Decl@Md@Open {[}                   {largesymbols}{'000}
+\Decl@Md@Close{]}                   {largesymbols}{'005}
+\Decl@Md@Open {\lfloor}             {largesymbols}{'012}
+\Decl@Md@Close{\rfloor}             {largesymbols}{'017}
+\Decl@Md@Open {\lceil}              {largesymbols}{'024}
+\Decl@Md@Close{\rceil}              {largesymbols}{'031}
+\Decl@Md@Open {\ulcorner}           {largesymbols}{'036}
+\Decl@Md@Close{\urcorner}           {largesymbols}{'043}
+\Decl@Md@Open {\llcorner}           {largesymbols}{'050}
+\Decl@Md@Close{\lrcorner}           {largesymbols}{'055}
+\Decl@Md@Open {\ullcorner}          {largesymbols}{'062}
+\Decl@Md@Close{\ulrcorner}          {largesymbols}{'067}
+\Decl@Md@Open {\lsem}               {largesymbols}{'102}
+\Decl@Md@Close{\rsem}               {largesymbols}{'107}
+\Decl@Md@Delim{|}         {\mathord}{largesymbols}{'123}
+\Decl@Md@Delim{\vert}     {\mathord}{largesymbols}{'123}
+\Decl@Md@Delim{\mvert}    {\mathrel}{largesymbols}{'123}
+  \let\mid\mvert
+\Decl@Md@Open {\lvert}              {largesymbols}{'123}
+\Decl@Md@Close{\rvert}              {largesymbols}{'123}
+\Decl@Md@Delim{\Vert}     {\mathord}{largesymbols}{'131}
+  \let\|\Vert
+\Decl@Md@Delim{\mVert}    {\mathrel}{largesymbols}{'131}
+\Decl@Md@Open {\lVert}              {largesymbols}{'131}
+\Decl@Md@Close{\rVert}              {largesymbols}{'131}
+\Decl@Md@Delim{\arrowvert}{\mathord}{largesymbols}{'122}
+\Decl@Md@Delim{\Arrowvert}{\mathord}{largesymbols}{'130}
+\Decl@Md@Open {\lwavy}              {largesymbols}{'136}
+\Decl@Md@Close{\rwavy}              {largesymbols}{'136}
+\Decl@Md@Open {\lWavy}              {largesymbols}{'137}
+\Decl@Md@Close{\rWavy}              {largesymbols}{'137}
+
+\Decl@Md@Open {<}                   {largesymbols}{'140}
+\Decl@Md@Close{>}                   {largesymbols}{'145}
+\Decl@Md@Open {\langle}             {largesymbols}{'140}
+\Decl@Md@Close{\rangle}             {largesymbols}{'145}
+\Decl@Md@Open {\langlebar}          {largesymbols}{'152}
+\Decl@Md@Close{\ranglebar}          {largesymbols}{'157}
+\Decl@Md@Open {\llangle}            {largesymbols}{'164}
+\Decl@Md@Close{\rrangle}            {largesymbols}{'171}
+\Decl@Md@Delim{/}         {\mathord}{largesymbols}{'176}
+\Decl@Md@Delim{\backslash}{\mathord}{largesymbols}{'203}
+\expandafter\DeclareMathDelimiter\@backslashchar
+                          {\mathord}{largesymbols}{'203}{largesymbols}{'203}
+\Decl@Md@Open {(}                   {largesymbols}{'210}
+\Decl@Md@Close{)}                   {largesymbols}{'215}
+\Decl@Md@Open {\lbrace}             {largesymbols}{'230}
+\Decl@Md@Close{\rbrace}             {largesymbols}{'235}
+\Decl@Md@Close{\lgroup}             {largesymbols}{'242}
+\Decl@Md@Open {\rgroup}             {largesymbols}{'243}
+\Decl@Md@Close{\rmoustache}         {largesymbols}{'244}
+\Decl@Md@Open {\lmoustache}         {largesymbols}{'245}
+\Decl@Md@Delim{\bracevert}{\mathord}{largesymbols}{'250}
+%    \end{macrocode}
+%
+% Support for expandable braces.
+%
+%    \begin{macrocode}
+\DeclareMathSymbol{\downbrace}    {\mathord}{largesymbols}{'251}
+\DeclareMathSymbol{\downbraceg}   {\mathord}{largesymbols}{'252}
+\DeclareMathSymbol{\downbracegg}  {\mathord}{largesymbols}{'253}
+\DeclareMathSymbol{\downbraceggg} {\mathord}{largesymbols}{'254}
+\DeclareMathSymbol{\downbracegggg}{\mathord}{largesymbols}{'255}
+\DeclareMathSymbol{\upbrace}      {\mathord}{largesymbols}{'256}
+\DeclareMathSymbol{\upbraceg}     {\mathord}{largesymbols}{'257}
+\DeclareMathSymbol{\upbracegg}    {\mathord}{largesymbols}{'260}
+\DeclareMathSymbol{\upbraceggg}   {\mathord}{largesymbols}{'261}
+\DeclareMathSymbol{\upbracegggg}  {\mathord}{largesymbols}{'262}
+\DeclareMathSymbol{\braceld}      {\mathord}{largesymbols}{'263}
+\DeclareMathSymbol{\bracelu}      {\mathord}{largesymbols}{'264}
+\DeclareMathSymbol{\bracerd}      {\mathord}{largesymbols}{'265}
+\DeclareMathSymbol{\braceru}      {\mathord}{largesymbols}{'266}
+\DeclareMathSymbol{\bracemd}      {\mathord}{largesymbols}{'267}
+\DeclareMathSymbol{\bracemu}      {\mathord}{largesymbols}{'270}
+\DeclareMathSymbol{\bracemid}     {\mathord}{largesymbols}{'271}
+
+\let\uparrow\undefined
+\let\downarrow\undefined
+\let\updownarrow\undefined
+\let\Uparrow\undefined
+\let\Downarrow\undefined
+\let\Updownarrow\undefined
+\DeclareMathDelimiter{\uparrow}    {\mathrel}{MdSyA}{'001}{largesymbols}{'325}
+\DeclareMathDelimiter{\downarrow}  {\mathrel}{MdSyA}{'003}{largesymbols}{'326}
+\DeclareMathDelimiter{\updownarrow}{\mathrel}{MdSyA}{'021}{largesymbols}{'327}
+\DeclareMathDelimiter{\Uparrow}    {\mathrel}{MdSyA}{'011}{largesymbols}{'330}
+\DeclareMathDelimiter{\Downarrow}  {\mathrel}{MdSyA}{'013}{largesymbols}{'331}
+\DeclareMathDelimiter{\Updownarrow}{\mathrel}{MdSyA}{'025}{largesymbols}{'332}
+
+
+% \horiz@expandable{sym1}..{sym6}{style}{arg}
+
+\def\horiz@expandable#1#2#3#4#5#6#7#8{%
+  \@mathmeasure\z@#7{#8}%
+  \@tempdima=\wd\z@
+  \@mathmeasure\z@#7{#1}%
+  \ifdim\noexpand\wd\z@>\@tempdima
+    $\m@th#7#1$%
+  \else
+    \@mathmeasure\z@#7{#2}%
+    \ifdim\noexpand\wd\z@>\@tempdima
+      $\m@th#7#2$%
+    \else
+      \@mathmeasure\z@#7{#3}%
+      \ifdim\noexpand\wd\z@>\@tempdima
+        $\m@th#7#3$%
+      \else
+        \@mathmeasure\z@#7{#4}%
+        \ifdim\noexpand\wd\z@>\@tempdima
+          $\m@th#7#4$%
+        \else
+          \@mathmeasure\z@#7{#5}%
+          \ifdim\noexpand\wd\z@>\@tempdima
+            $\m@th#7#5$%
+          \else
+           #6#7%
+          \fi
+        \fi
+      \fi
+    \fi
+  \fi}
+
+\def\overbrace@expandable#1#2#3{\vbox{\m@th\ialign{##\crcr
+  #1#2{#3}\crcr\noalign{\kern2\p@\nointerlineskip}%
+  $\m@th\hfil#2#3\hfil$\crcr}}}
+\def\underbrace@expandable#1#2#3{\vtop{\m@th\ialign{##\crcr
+  $\m@th\hfil#2#3\hfil$\crcr
+  \noalign{\kern2\p@\nointerlineskip}%
+  #1#2{#3}\crcr}}}
+
+\def\overbrace@#1#2#3{\vbox{\m@th\ialign{##\crcr
+  #1#2\crcr\noalign{\kern2\p@\nointerlineskip}%
+  $\m@th\hfil#2#3\hfil$\crcr}}}
+\def\underbrace@#1#2#3{\vtop{\m@th\ialign{##\crcr
+  $\m@th\hfil#2#3\hfil$\crcr
+  \noalign{\kern2\p@\nointerlineskip}%
+  #1#2\crcr}}}
+
+\def\bracefill@#1#2#3#4#5{$\m@th#5#1\leaders\hbox{$#4$}\hfill#2\leaders\hbox{$#4$}\hfill#3$}
+
+\def\downbracefill@{\bracefill@\braceld\bracemd\bracerd\bracemid}
+\def\upbracefill@{\bracefill@\bracelu\bracemu\braceru\bracemid}
+\def\downgroupfill@{\bracefill@\braceld{}\bracerd\bracemid}
+\def\upgroupfill@{\bracefill@\bracelu{}\braceru\bracemid}
+\def\linesegmentfill@{\arrowfill@\leftfootline\relbar\rightfootline}
+\def\leftharpoonfill@{\arrowfill@\leftharpoondown\relbar\relbar}
+\def\rightharpoonfill@{\arrowfill@\relbar\relbar\rightharpoonup}
+
+\DeclareRobustCommand{\downbracefill}{\downbracefill@\textstyle}
+\DeclareRobustCommand{\upbracefill}{\upbracefill@\textstyle}
+
+\def\upbrace@expandable{%
+  \horiz@expandable
+    \upbrace
+    \upbraceg
+    \upbracegg
+    \upbraceggg
+    \upbracegggg
+    \upbracefill@}
+\def\downbrace@expandable{%
+  \horiz@expandable
+    \downbrace
+    \downbraceg
+    \downbracegg
+    \downbraceggg
+    \downbracegggg
+    \downbracefill@}
+
+\DeclareRobustCommand{\overbrace}[1]{\mathop{\mathpalette{\overbrace@expandable\downbrace@expandable}{#1}}\limits}
+\DeclareRobustCommand{\underbrace}[1]{\mathop{\mathpalette{\underbrace@expandable\upbrace@expandable}{#1}}\limits}
+
+\DeclareRobustCommand{\overgroup}{\mathpalette{\overbrace@\downgroupfill@}}
+\DeclareRobustCommand{\undergroup}{\mathpalette{\underbrace@\upgroupfill@}}
+\DeclareRobustCommand{\overlinesegment}{\mathpalette{\overarrow@\linesegmentfill@}}
+\DeclareRobustCommand{\overleftharpoon}{\mathpalette{\overarrow@\leftharpoonfill@}}
+\DeclareRobustCommand{\overrightharpoon}{\mathpalette{\overarrow@\rightharpoonfill@}}
+\DeclareRobustCommand{\underlinesegment}{\mathpalette{\underarrow@\linesegmentfill@}}
+%    \end{macrocode}
+%
+% Mathchars.
+%
+%    \begin{macrocode}
+\DeclareMathSymbol{=}{\mathrel}  {MdSyD}{'000}
+\DeclareMathSymbol{<}{\mathrel}  {MdSyD}{'100}
+\DeclareMathSymbol{>}{\mathrel}  {MdSyD}{'101}
+\DeclareMathSymbol{+}{\mathbin}  {MdSyC}{'024}
+\DeclareMathSymbol{-}{\mathbin}  {MdSyC}{'020}
+\DeclareMathSymbol{*}{\mathbin}  {MdSyC}{'207}
+\DeclareMathSymbol{|}{\mathord}  {largesymbols}{'123}
+\DeclareMathSymbol{(}{\mathopen} {largesymbols}{'210}
+\DeclareMathSymbol{)}{\mathclose}{largesymbols}{'215}
+\DeclareMathSymbol{:}{\mathrel}  {MdSyC}{'002}
+\DeclareMathSymbol{[}{\mathopen} {largesymbols}{'000}
+\DeclareMathSymbol{]}{\mathclose}{largesymbols}{'005}
+\DeclareMathSymbol{/}{\mathord}  {largesymbols}{'176}
+
+\DeclareMathRadical{\sqrtsign}{largesymbols}{'272}{largesymbols}{'272}
+\DeclareRobustCommand{\surd}{{\mathchar'11672}}
+
+\DeclareMathAccent{\widehat}{\mathord}{largesymbols}{'302}
+\DeclareMathAccent{\widetilde}{\mathord}{largesymbols}{'307}
+\DeclareMathAccent{\wideparen}{\mathord}{largesymbols}{'314}
+\DeclareMathAccent{\vec}{\mathord}{largesymbols}{'321}
+\DeclareMathAccent{\middlebar}{\mathord}{largesymbols}{'322}
+\DeclareMathAccent{\middleslash}{\mathord}{largesymbols}{'323}
+\DeclareMathAccent{\strokethrough}{\mathord}{largesymbols}{'324}
+%    \end{macrocode}
+%
+% There is no |\not| symbol in MdSymbol since all symbols come with a stroked companion.
+% For compatibility we define a |\not| command that places a virgule over the following symbol.
+%
+%    \begin{macrocode}
+%\def\overstrike#1#2{%
+%  \mathchoice
+%    {\@overstrike\displaystyle{#1}{#2}}%
+%    {\@overstrike\textstyle{#1}{#2}}%
+%    {\@overstrike\scriptstyle{#1}{#2}}%
+%    {\@overstrike\scriptscriptstyle{#1}{#2}}%
+%  #2}
+%\def\@overstrike#1#2#3{%
+%  {\setbox0\hbox{$\m@th#1#3$}%
+%   \hbox to \wd0{\hss$\m@th#1#2$\hss}%
+%   \kern-\wd0}}
+%\def\not#1{\mathrel{\overstrike{/}{#1}}}
+\def\c@ncel#1#2{\m@th\ooalign{$\hfil#1/\hfil$\crcr$#1#2$}}
+\def\not#1{\mathrel{\m@th\mathpalette\c@ncel{#1}}}
+%
+%\renewcommand{\AmSfont}{%
+%  \usefont{OMS}{MdSymbolS}{\if\@xp\@car\f@series\@nil bb\else m\fi}{n}}
+%</style>
+%    \end{macrocode}
+\endinput

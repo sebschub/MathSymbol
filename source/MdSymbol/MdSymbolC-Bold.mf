@@ -1,0 +1,13 @@
+
+font_identifier:="MdSymbolC-Bold";
+font_size design_size * pt#;
+
+boolean bold_weight;
+bold_weight := true;
+
+input MdSymbol-Parameter.mf;
+input MdSym-Base.mf;
+
+input MdSym-Geometric.mf;
+
+bye;
